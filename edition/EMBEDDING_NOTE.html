@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The embedding note — what relates the code to the formal definitions — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+
+<a class="back" href="index.html">&larr; the almanac</a>
+<p><a href="https://github.com/almanac-editions">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg">
+  <img src="almanac-mark.svg" align="right" width="110"
+       alt="almanac — the word's three a's carry the three kinds of warrant: informal, computational, kernel-certified">
+</picture>
+</a></p>
+<h1 id="the-embedding-note-what-relates-the-code-to-the-formal-definitions">The embedding note — what relates the code to the formal definitions</h1>
+<p><em>almanacA0a. Form fixed by the edition manifest §10.</em></p>
+<p><strong>Read this before reading <code>CONCORDANCE.json</code>.</strong> Every warrant in that file is calibrated by this
+note. The edition has three layers — an informal manuscript, a Julia package, and a Lean
+development — and a reader is entitled to know exactly what joins them, because <em>the join is
+weaker than any of the three layers taken alone.</em></p>
+<hr>
+<h2 id="1-what-the-embedding-is">1. What the embedding IS</h2>
+<p><strong>Shallow, and by name-and-convention rather than by a checked morphism.</strong></p>
+<p>The package <code>almanac/GL1Newton/</code> and the Lean development <code>Sandbox/A1/GL1/</code> are <strong>two independent
+implementations of the same mathematical intent</strong>. What connects them is a naming discipline the
+project calls the <em>three-world same-name contract</em>: each mathematical stem carries the same
+identifier in the human manuscript (<code>informal/goalv0a.tex</code>), in the Julia layer, and in the Lean
+layer.</p>
+<table>
+<thead>
+<tr>
+<th>stem</th>
+<th>Julia (<code>GL1Newton</code>)</th>
+<th>informal (<code>goalv0a.tex</code>)</th>
+<th>Lean (<code>Sandbox/A1/GL1/</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>the divided class</td>
+<td><code>nu(R, r)</code></td>
+<td><code>ν_r(X)</code> (Def. <code>nu</code>)</td>
+<td>the <code>nu</code> family, <code>NewtonUnivGrid.lean</code></td>
+</tr>
+<tr>
+<td>the evaluation node</td>
+<td><code>grid(R, χ)</code></td>
+<td><code>ev_χ(Y̌) = q^χ</code> (Def. <code>nev</code>)</td>
+<td>the grid map, <code>NewtonUnivGrid.lean</code></td>
+</tr>
+<tr>
+<td>value on the grid</td>
+<td><code>nu_grid(R, r, χ)</code></td>
+<td><code>ν_r(q^χ)</code></td>
+<td><code>grid_nuGen</code> etc., <code>NewtonUnivGrid.lean</code></td>
+</tr>
+<tr>
+<td>Newton coordinates</td>
+<td><code>expand(R, f; D)</code></td>
+<td>the triangular sweep</td>
+<td><code>expand</code>, <code>NewtonUnivSpan.lean</code></td>
+</tr>
+<tr>
+<td>the target ring</td>
+<td><code>az(c)</code></td>
+<td><code>A_t = ℤ[v^{±1}, t^{±1}]</code></td>
+<td><code>Az</code>, <code>FamilyField1.lean</code></td>
+</tr>
+<tr>
+<td>the Newton lattice</td>
+<td><code>newton(R, f; window)</code></td>
+<td><code>N^ev</code> (Def. <code>nev</code>)</td>
+<td><code>Newton</code>, <code>NewtonUnivGrid.lean</code></td>
+</tr>
+<tr>
+<td>the span side</td>
+<td><code>mem_span(R, f)</code></td>
+<td><code>Σ_{u,r} A_t Y̌^u ν_r(Y̌)</code></td>
+<td><code>nuGenSet</code> / span, <code>NewtonUnivSpan.lean</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>This table is a dictionary, not a theorem.</strong> No artifact in this edition proves that
+<code>GL1Newton.nu</code> computes the <code>ν_r</code> that <code>NewtonUnivGrid.lean</code> reasons about. The identification is
+made by a human reading both, and maintained by the shared identifier. <strong>Stems are identifiers, not
+notation</strong> — the Sandbox-wide notation migration of 2026-08-10 (<code>Q→q</code>, <code>q→v</code>, <code>z→t</code>) changed the
+mathematical symbols on every layer and deliberately left the stems alone, precisely so this
+dictionary would survive it. A reader comparing the layers must therefore hold two things at once:
+the stems agree across layers, and the <em>symbols</em> may not — the legacy substrate <code>HybridQuantum</code>
+still writes <code>Q, q, z</code> where this package writes <code>q, v, t</code>.</p>
+<p>There is no verified compilation, no extraction, no reflection, and no checked homomorphism in
+either direction. <strong>Neither layer is generated from the other.</strong></p>
+<h2 id="2-what-was-tested">2. What was tested</h2>
+<p>Three distinct exercises, none of which is a proof of the correspondence:</p>
+<p><strong>(a) The package's own acceptance battery</strong> (<code>test/runtests.jl</code>, 12 test sets). It tests the
+Julia layer against <em>the mathematics</em>, not against the Lean layer — that <code>ν_r</code> is triangular on
+the grid, that its grid values are integral, that <code>newton</code>, <code>mem_span</code> and <code>laurent</code> separate as
+the theory says they must, plus a mutate-and-recompute negative control that corrupts <code>nu</code> and
+confirms the battery then fails. <strong>The measured result is recorded in <code>MEASUREMENT_LOG.md</code> (not distributed; figures in <code>MANIFEST.json</code>),
+including a discrepancy between the count recorded in the record and the count in the file.</strong></p>
+<p><strong>(b) The bridge identity, which is the one real cross-layer tie</strong> (test set A3):
+<code>ν_r(q^m) = v^{r(m−r)} · sym_q_binom_value(F, m, r)</code>, checked over <code>0 ≤ r ≤ m ≤ 8</code> (45 pairs) plus
+two named spot checks. This ties the package's <code>ν</code>-side to its own <code>v</code>-side symmetric-quantum
+module — the seam the project designates as the first CAS→Lean embedding target. It is a tie
+<em>within</em> the Julia layer, between two families that were built independently; it is evidence the
+package is self-consistent, <strong>not</strong> evidence that it agrees with Lean.</p>
+<p><strong>(c) The N1 clause-(iii) referee pin</strong> (<code>n1_clause3_referee_pin.jl/.out</code>, 2026-07-21). This
+exists because of a real defect found and fixed: the substrate's original <code>newton()</code> was defined
+by ν-span, so it could not referee clause (iii) — the claim that the evaluation-defined lattice
+<em>equals</em> the span — without circularity. The pin re-measures the two predicates independently at
+window 8 over 60 random positive samples, 5 adversarial seeds, and one separator (<code>ν_1</code>, which
+must lie in the lattice and the span but <strong>not</strong> in the Laurent ring), and reports
+<code>PROVED_BOUNDED … disagreements=0</code>. <strong>This is the strongest computational evidence in the
+edition</strong>, and it is still a bounded verdict about a Julia program.</p>
+<p><strong>At what commit.</strong> The package was extracted from the development substrate
+<code>HybridQuantum/src/A1/gl1_newton.jl</code> (BQ-13 build, 2026-07-20) at estate commit <code>7ddb2e8f</code>, source
+sha256 <code>2a2fe469…ff2c72</code>, on 2026-08-10, with four recorded test adaptations; the notation
+migration was applied the same day and the battery re-run after it. The package is a <strong>pinned
+snapshot</strong> — <code>HybridQuantum</code> remains the single development substrate.</p>
+<h2 id="3-over-what-range">3. Over what range</h2>
+<p>Bounds are part of the claim, and these are the actual ones, read from the test source:</p>
+<table>
+<thead>
+<tr>
+<th>what</th>
+<th>declared range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>grid-value integrality of <code>ν_r</code></td>
+<td><code>r ∈ 0..8</code>, <code>χ ∈ −9..9</code> — <strong>171 cases</strong>, all integral</td>
+</tr>
+<tr>
+<td>triangularity (<code>ν_r(q^m)=0</code> for <code>m&lt;r</code>; <code>ν_r(q^r)=1</code>)</td>
+<td><code>r ∈ 0..8</code></td>
+</tr>
+<tr>
+<td>the bridge identity (§2b)</td>
+<td><code>0 ≤ r ≤ m ≤ 8</code> — 45 pairs, plus spot checks <code>(1,2)</code>, <code>(2,6)</code></td>
+</tr>
+<tr>
+<td>the trap-4 witness separation</td>
+<td><code>k ∈ 0..6</code> — 7 values</td>
+</tr>
+<tr>
+<td>frame controls (grid unshifted; <code>t</code> a spectator)</td>
+<td><code>χ ∈ −4..4</code>, <code>r ∈ 0..4</code></td>
+</tr>
+<tr>
+<td>negative control (corrupted <code>nu</code> must fail)</td>
+<td><code>r ∈ 0..8 × χ ∈ −9..9</code> (171); <code>r ∈ 1..6 × m ∈ −6..6</code> (<strong>78</strong>, all must fail)</td>
+</tr>
+<tr>
+<td><code>newton()</code> default verdict window</td>
+<td><code>χ ∈ −12..12</code>; overridable, and <strong><code>window = 0</code> is legal and still reported as bounded</strong></td>
+</tr>
+<tr>
+<td>the N1 referee pin</td>
+<td>window 8; 60 positives, 5 hostiles, 1 separator; seed <code>20260721</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>newton()</code> never returns an unbounded verdict.</strong> Its return is <code>(Bool, Symbol, Int)</code> where the
+integer <em>is</em> the window, and the success symbol is literally <code>:PROVED_BOUNDED</code>. A caller cannot
+accidentally read a bounded check as a proof, because the bound is in the value. This is a design
+property worth naming: the instrument refuses to overclaim at the type level.</p>
+<h2 id="4-what-this-does-not-establish">4. What this does NOT establish</h2>
+<p>Stated plainly, because everything above is easy to over-read:</p>
+<ul>
+<li><strong>Agreement on a bounded range does not establish agreement in general.</strong> That <code>ν_r(q^χ)</code> is
+  integral for all 171 pairs with <code>r ≤ 8</code> and <code>|χ| ≤ 9</code> is not the statement that it is integral
+  for all <code>r</code> and all <code>χ</code>. The unbounded statement is a <em>theorem</em>, and where the edition has one it
+  is a Lean declaration, not a test.</li>
+<li><strong>A proof about the Lean definition is not a proof about the Julia code.</strong> The Lean development
+  proves things about objects defined in Lean. If <code>GL1Newton.nu</code> disagreed with the Lean <code>nu</code> —
+  through a transcription slip, a convention drift, an off-by-one in the product index — <strong>every
+  Lean theorem would remain true and every test would remain green.</strong> Nothing in this edition
+  would detect it except a human reading both. That is the honest size of the risk, and the
+  project has already been bitten once in this exact family: the N1 circularity in §2(c) was a
+  definitional drift between layers, found by reading, not by a gate.</li>
+<li><strong>The code is evidence and instrument, never certificate.</strong> Its role is to make a statement
+  worth proving (the oracle gate) and to referee a claim independently of the proof (the N1 pin).
+  It certifies nothing.</li>
+<li><strong>The dictionary in §1 is unproved.</strong> It is the most load-bearing unproved thing in the edition.</li>
+</ul>
+<h2 id="5-the-consequence-for-reading-the-concordance">5. The consequence for reading the concordance</h2>
+<p>Three rules follow, and <code>CONCORDANCE.json</code> is built to them:</p>
+<ol>
+<li><strong>A row may not carry <code>warrant: blue</code> on the strength of a Lean proof if the claim
+   the row makes is about the code.</strong> The Lean declaration certifies the Lean statement. Nothing
+   else.</li>
+<li><strong>Rows whose subject is the package carry <code>orange</code></strong> with the range from
+   §3 — never <code>blue</code>, however green the sandbox is. (This is also the accepting
+   counterparty's explicit instruction on adopting the package: adoption makes it a row, not a
+   certificate.)</li>
+<li><strong><code>blue</code> requires the actual axiom result</strong>, the clean triple <code>propext</code>,
+   <code>Classical.choice</code>, <code>Quot.sound</code> with no <code>sorryAx</code>. A row whose Lean declaration is absent is
+   not kernel-certified, and a row whose Lean declaration exists but whose <em>evidence of
+   certification</em> is not in the record is recorded as what it is. <strong>This edition has
+   exactly that case:</strong> its closure signature records thirteen certified declarations while the
+   log it cites carries five, and does not contain the endpoint the signature names — which is why
+   this rule is not merely theoretical here.</li>
+</ol>
+<h2 id="6-cannot-fill">6. Cannot fill</h2>
+<p>Per the manifest, an unexamined correspondence is a finding rather than a confident paragraph.
+Recorded per object:</p>
+<ul>
+<li><strong>No object in this edition has a <em>checked</em> correspondence between its Julia and Lean
+  realisations.</strong> The correspondence is by name and convention throughout (§1). That is the
+  actual, deliberately recorded state of the art here, and the project's
+  own roadmap treats a machine-checked CAS→Lean embedding as future work — with the <code>QFunctions</code>
+  symmetric family designated to go first and this package second, joined at the §2(b) bridge
+  identity.</li>
+<li><strong><code>expand</code>'s degree parameter <code>D</code></strong> has no Lean counterpart characterised in the record; the
+  Lean <code>expand</code> is a coordinate map introduced to close a faithfulness finding, and whether the
+  two agree on truncation behaviour has not been examined. Recorded as unexamined.</li>
+</ul>
+</main></body></html>

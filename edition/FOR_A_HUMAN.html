@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using this almanac by hand — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+
+<a class="back" href="index.html">&larr; the almanac</a>
+<p><a href="https://github.com/almanac-editions">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg">
+  <img src="almanac-mark.svg" align="right" width="110"
+       alt="almanac — the word's three a's carry the three kinds of warrant: informal, computational, kernel-certified">
+</picture>
+</a></p>
+<h1 id="using-this-almanac-by-hand">Using this almanac by hand</h1>
+<p><em>This is a complete record of one small mathematical result: the informal proof a
+mathematician would read, a computer program that computes with the objects, and a machine-checked
+formal proof — together with a per-claim account of </em><em>what actually warrants each one</em><em>.</em></p>
+<p><strong>If you only want to look, open <code>index.html</code> in any browser.</strong> It is fully self-contained, works
+offline, and is the right starting point. This file is for when you want to <em>check</em> things
+yourself.</p>
+<hr>
+<h2 id="part-0-what-to-read-first-in-order">Part 0 — What to read first, in order</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>file</th>
+<th>why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong><code>index.html</code></strong></td>
+<td>the guided tour. Opens directly in any browser, ready to use.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong><code>EDITION.md</code></strong></td>
+<td>the edition's own front matter, in prose.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong><code>source/informal/proofv0a.pdf</code></strong></td>
+<td>the actual mathematics, typeset.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong><code>CONCORDANCE.json</code></strong></td>
+<td>the heart of it: one row per result, joining all three layers.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The single most important idea in this almanac:</strong> the concordance's <code>warrant</code> field. It records,
+per result, what certifies it — and the values are <strong>not interchangeable</strong>:</p>
+<ul>
+<li><picture><source media="(prefers-color-scheme: dark)" srcset="w-ink-dark.svg"><img src="w-ink.svg" alt="ink" width="35" height="20" align="top"></picture> — an argument written out for a human reader and <strong>refereed</strong>, pinned to a hashed
+  document at a named location. A warrant in its own right, not the absence of one: it is what the
+  other two are checked against. None of eleven results, in this edition.</li>
+<li><picture><source media="(prefers-color-scheme: dark)" srcset="w-orange-dark.svg"><img src="w-orange.svg" alt="orange" width="61" height="20" align="top"></picture> — verified by computation over a stated bound, <strong>and over nothing else</strong>. The bound
+  is part of the claim. Two of eleven results.</li>
+<li><picture><source media="(prefers-color-scheme: dark)" srcset="w-blue-dark.svg"><img src="w-blue.svg" alt="blue" width="44" height="20" align="top"></picture> — a proof assistant's kernel checked a proof of <em>that statement</em>, and the axioms it
+  used were measured to be exactly the three standard ones. Nine of eleven results.</li>
+</ul>
+<p>A green result of one kind is never quietly upgraded into another. That discipline is the point of
+the edition.</p>
+<hr>
+<h2 id="part-1-checking-the-files-are-intact-5-minutes-with-tools-already-on-your-machine">Part 1 — Checking the files are intact (5 minutes, with tools already on your machine)</h2>
+<p>Every file's fingerprint is listed in <code>CHECKSUMS.txt</code>.</p>
+<p><strong>macOS:</strong></p>
+<pre><code class="language-sh">cd almanacA0a
+shasum -a 256 -c CHECKSUMS.txt
+</code></pre>
+<p><strong>Linux:</strong></p>
+<pre><code class="language-sh">cd almanacA0a
+sha256sum -c CHECKSUMS.txt
+</code></pre>
+<p><strong>Windows (PowerShell):</strong></p>
+<pre><code class="language-powershell">cd almanacA0a
+Get-Content CHECKSUMS.txt | Where-Object { $_ -notmatch '^#' } | ForEach-Object {
+  $h,$f = $_ -split '\s+',2
+  if ((Get-FileHash $f -Algorithm SHA256).Hash -ieq $h) { &quot;OK   $f&quot; } else { &quot;FAIL $f&quot; }
+}
+</code></pre>
+<p>Every line should say <code>OK</code>. If a line fails, the file has been altered since assembly — the
+almanac is still readable, but stop trusting that file until you know why.</p>
+<blockquote>
+<p><code>DIST_MANIFEST.json</code> additionally records, per file, whether its bytes matched the edition's own
+manifest <strong>at assembly time</strong>, and its <code>build_class</code> says whether every file matched.
+<strong>Read that there rather than here.</strong> This page is written once and travels with every build, so
+it cannot know which one you are holding; a number printed here would be true of at most one of
+them. A build with any mismatch says so on its own front page, and one with none says nothing,
+because there is nothing to say.</p>
+</blockquote>
+<hr>
+<h2 id="part-2-installing-the-software">Part 2 — Installing the software</h2>
+<p>You need three things, and <strong>you only need the ones you actually want to use</strong>. The checks are
+independent: Lean alone suffices for the formal proofs, and Julia alone for the computations.</p>
+<h3 id="21-python-3-for-the-almanacs-own-scripts-almost-certainly-already-installed">2.1 Python 3 — for the almanac's own scripts (almost certainly already installed)</h3>
+<pre><code class="language-sh">python3 --version        # anything 3.8+ is fine
+</code></pre>
+<ul>
+<li><strong>macOS:</strong> ships with it; or <code>brew install python</code></li>
+<li><strong>Linux:</strong> <code>sudo apt install python3</code> (Debian/Ubuntu) / <code>sudo dnf install python3</code> (Fedora)</li>
+<li><strong>Windows:</strong> install from <a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a> and tick <em>"Add python.exe to PATH"</em></li>
+</ul>
+<p>Optional, only for validating the Palomar disclosure file against its published schema:</p>
+<pre><code class="language-sh">python3 -m venv .venv
+.venv/bin/pip install pyyaml jsonschema        # Windows: .venv\Scripts\pip install ...
+</code></pre>
+<h3 id="22-lean-4-to-re-check-the-formal-proofs-yourself">2.2 Lean 4 — to re-check the formal proofs yourself</h3>
+<p>Lean is installed through <strong><code>elan</code></strong>, a version manager. Never install a Lean version directly:
+this almanac is pinned to an exact toolchain, and <code>elan</code> is what makes the pin work.</p>
+<p><strong>macOS / Linux:</strong></p>
+<pre><code class="language-sh">curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
+# then restart your shell, or:
+source $HOME/.elan/env
+elan --version
+</code></pre>
+<p><strong>Windows (PowerShell):</strong></p>
+<pre><code class="language-powershell">curl.exe -sSf -o elan-init.ps1 https://raw.githubusercontent.com/leanprover/elan/master/elan-init.ps1
+powershell -ExecutionPolicy Bypass -f elan-init.ps1
+</code></pre>
+<p><strong>The exact pins this almanac was certified against:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lean toolchain</td>
+<td><code>leanprover/lean4:v4.30.0</code></td>
+</tr>
+<tr>
+<td>Mathlib revision</td>
+<td><code>c5ea00351c28e24afc9f0f84379aa41082b1188f</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sh">elan toolchain install leanprover/lean4:v4.30.0
+</code></pre>
+<p><strong>Be warned about size and time.</strong> A Mathlib-dependent Lean project downloads several gigabytes of
+prebuilt artifacts, and building from source instead can take <strong>hours</strong>. Always fetch the cache
+first (<code>lake exe cache get</code>) rather than compiling Mathlib yourself.</p>
+<p><strong>One command rebuilds every proof and prints the axioms each one used:</strong></p>
+<pre><code class="language-sh">cd almanacA0a/edition/replay
+./replay.sh
+</code></pre>
+<p>It fetches the pinned Mathlib, builds the proofs, runs <code>#print axioms</code> on all 31 certified
+declarations, writes the transcript to <code>replay_axioms.txt</code>, and ends in <code>PASS</code> or <code>FAIL</code>. <strong>A build
+that succeeds is not a proof that anything is certified</strong> — the axiom lines are, which is why the
+script fails on any <code>sorryAx</code> or any axiom outside <code>[propext, Classical.choice, Quot.sound]</code> even
+when the build is clean.</p>
+<p><code>replay/</code> carries the <strong>complete transitive closure</strong> — 17 modules, 5,344 lines, including the
+rank-1 modules the seven certified ones import — together with <code>lakefile.toml</code>, <code>lean-toolchain</code>
+and <code>lake-manifest.json</code>, so every revision is pinned and nothing is fetched from this project.
+<code>replay/SOURCES.json</code> lists each module with the sha256 of the record file it was copied from.</p>
+<blockquote>
+<p><strong><code>source/lean/</code> is the reading copy</strong> — the same seven certified modules, flat and without
+directories, for opening one at a time. It is not buildable and is not meant to be: use
+<code>replay/</code> to rebuild, <code>source/lean/</code> to read.
+<code>source/record/formal/RELEASE_20260721_source_all_clean.log</code> is the certification log from the
+original run of record, for comparison against what your own replay prints.</p>
+</blockquote>
+<h3 id="23-julia-oscar-to-run-the-computational-instrument">2.3 Julia + OSCAR — to run the computational instrument</h3>
+<p><strong>Install Julia</strong> via <code>juliaup</code>:</p>
+<p><strong>macOS / Linux:</strong></p>
+<pre><code class="language-sh">curl -fsSL https://install.julialang.org | sh
+# restart your shell, then:
+julia --version
+</code></pre>
+<p><strong>Windows:</strong></p>
+<pre><code class="language-powershell">winget install julia -s msstore
+</code></pre>
+<p><strong>The pins:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>pinned</th>
+<th>minimum</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Julia</td>
+<td>1.12.6</td>
+<td>1.10</td>
+</tr>
+<tr>
+<td>OSCAR</td>
+<td>1.8.0</td>
+<td>1.7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Run the instrument's own test battery</strong> (this is the honest check — the outcome is a plain
+pass or fail):</p>
+<pre><code class="language-sh">cd almanacA0a/edition/source/instrument
+julia --project=. -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
+</code></pre>
+<p>Expected: <strong>87 of 87 tests pass.</strong> The first run installs OSCAR and its dependencies and is slow —
+budget <strong>20–40 minutes and several GB</strong>. Later runs take seconds.</p>
+<blockquote>
+<p><code>Manifest.toml</code> is the real pin — it records exact resolved versions. <code>Project.toml</code> only states
+compatible ranges. If you want the exact environment that was certified, keep <code>Manifest.toml</code>.</p>
+</blockquote>
+<hr>
+<h2 id="part-3-checking-the-mathematics-yourself">Part 3 — Checking the mathematics yourself</h2>
+<h3 id="31-read-the-statement-then-decide-whether-it-is-the-statement-you-care-about">3.1 Read the statement, then decide whether it is the statement you care about</h3>
+<p>This is the step no software can do for you, and it is the one that matters most. Open
+<code>source/informal/goalv0a.pdf</code> — the signed goal — and <code>source/informal/proofv0a.pdf</code> — the proof.</p>
+<p><strong>A crucial warning about notation.</strong> The Lean files were written before a notation change and use
+<strong>older symbols</strong> than the manuscripts:</p>
+<table>
+<thead>
+<tr>
+<th>in the Lean sources</th>
+<th>means, in the manuscripts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>A_z</code></td>
+<td><code>A_t</code></td>
+</tr>
+<tr>
+<td><code>Q</code></td>
+<td><code>q</code></td>
+</tr>
+</tbody>
+</table>
+<p>The sources keep their original bytes <strong>deliberately</strong>, because the signed goal's fingerprint is
+part of the closure record and survives only while every byte stays put. To bridge the notations,
+every concordance row carries the <strong>convention frame</strong> telling you how to read it. If you skip
+that field you will misread the Lean.</p>
+<h3 id="32-check-the-axioms-of-a-formal-result">3.2 Check the axioms of a formal result</h3>
+<p>Each certified row in <code>CONCORDANCE.json</code> names a Lean declaration and records the axioms measured
+for it. Inside a working copy of the full Lean development:</p>
+<pre><code class="language-lean">#print axioms HybridQuantumLean.A1.GL1Newton.clause_i
+</code></pre>
+<p><strong>What you should see:</strong> exactly <code>[propext, Classical.choice, Quot.sound]</code> — the three standard axioms of Lean's kernel — propositional extensionality (<code>propext</code>), the axiom of choice (<code>Classical.choice</code>) and quotient soundness (<code>Quot.sound</code>) — the base every Mathlib proof shares; a certificate is clean when these three are all it needs.</p>
+<p><strong>What must never appear:</strong> <code>sorryAx</code> (an admitted gap) or <code>Lean.ofReduceBool</code> (a proof by
+compiled evaluation). Either one means the result is <em>not</em> certified, whatever else is green.</p>
+<h3 id="33-understand-exactly-what-a-certificate-covers">3.3 Understand exactly what a certificate covers</h3>
+<p><strong>A kernel certifies the Lean statement, and nothing else.</strong> It does not tell you the Lean
+statement faithfully expresses the mathematics — that is a human judgement, and it is precisely
+what the concordance and the convention frames are there to let you make. <code>EMBEDDING_NOTE.md</code> sets
+out what the computational layer does and does not establish; it is deliberately <strong>not</strong> a
+certificate.</p>
+<hr>
+<h2 id="part-4-if-something-goes-wrong">Part 4 — If something goes wrong</h2>
+<table>
+<thead>
+<tr>
+<th>symptom</th>
+<th>what it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shasum: CHECKSUMS.txt: no such file</code></td>
+<td>you are not in the <code>almanacA0a</code> directory</td>
+</tr>
+<tr>
+<td>a <code>FAIL</code> line from the checksum check</td>
+<td>that file changed after assembly — investigate before trusting it</td>
+</tr>
+<tr>
+<td><code>lake: command not found</code></td>
+<td><code>elan</code> is installed but your shell was not restarted</td>
+</tr>
+<tr>
+<td>Julia test run takes forever the first time</td>
+<td>expected — OSCAR is large. Subsequent runs are fast.</td>
+</tr>
+<tr>
+<td>a Lean <code>import</code> cannot be found</td>
+<td>you are building in <code>source/lean/</code>, which is the flat reading copy — rebuild in <code>replay/</code> instead (see 2.2)</td>
+</tr>
+<tr>
+<td><code>replay.sh</code> fails at <code>lake exe cache get</code></td>
+<td>a network problem, and do not let the build continue past it: without the cache, Mathlib compiles from source and takes hours</td>
+</tr>
+<tr>
+<td><code>verify_edition.py</code> errors on missing paths</td>
+<td>expected: it is the <em>in-tree</em> verifier and resolves paths against the original project. Inside the almanac use <code>CHECKSUMS.txt</code> instead.</td>
+</tr>
+<tr>
+<td>the browser shows a blank <code>index.html</code></td>
+<td>your browser is blocking local files; try a different browser, or <code>python3 -m http.server</code> in this directory and visit <code>localhost:8000</code></td>
+</tr>
+</tbody>
+</table>
+</main></body></html>

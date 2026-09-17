@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>almanacA0a — the centre of the even hybrid family quantum GL₁ — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+
+<a class="back" href="index.html">&larr; the almanac</a>
+<p><a href="https://github.com/almanac-editions">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg">
+  <img src="almanac-mark.svg" align="right" width="110"
+       alt="almanac — the word's three a's carry the three kinds of warrant: informal, computational, kernel-certified">
+</picture>
+</a></p>
+<h1 id="almanaca0a-the-centre-of-the-even-hybrid-family-quantum-gl1">almanacA0a — the centre of the even hybrid family quantum GL₁</h1>
+<p><strong>Tamás Hausel</strong> · Institute of Science and Technology Austria</p>
+<p><strong>The pilot edition.</strong> Assembled 2026-08-13 over the closed record <code>SandboxA/sandboxA0a</code>.</p>
+<p><em>This is the file to read first. Everything else in this directory is either machine-readable or a
+reference.</em></p>
+<hr>
+<h2 id="what-this-is">What this is</h2>
+<p>A complete record of one small mathematical result, in three layers, with a per-claim account of
+<strong>what warrants each one</strong>.</p>
+<p>The result: for <code>G = GL₁</code>, the even hybrid family integral form <code>U^ev</code> is an <code>A_t</code>-subalgebra of
+<code>U</code>; the Harish–Chandra projection restricts to an isomorphism <code>Z(U^ev) ≅ (N^ev)^W</code>; and the even
+Newton lattice is exactly the <code>A_t</code>-span of the shifted divided classes,
+<code>N^ev = Σ_u Σ_r A_t Y̌^u ν_r(Y̌)</code>.</p>
+<p>The three layers: an <strong>informal manuscript</strong> (<code>informal/goalv0a.tex</code>, <code>informal/proofv0a.tex</code>), a
+<strong>Julia instrument</strong> (<code>almanac/GL1Newton/</code>), and a <strong>Lean development</strong> (<code>Sandbox/A1/GL1/</code>, seven
+modules).</p>
+<p><strong>What makes this an almanac rather than an archive</strong> is <code>CONCORDANCE.json</code>: one row per result,
+joining the three layers by a convention frame under which all the names denote one object, and
+recording per row what actually certifies it. The concordance does the aligning that a reader of
+three parallel archives would otherwise have to do by hand.</p>
+<h2 id="ancestry-these-manuscripts-predate-criterion-13-and-ancestry-is-carried-here">Ancestry: these manuscripts predate criterion 13, and ancestry is carried here</h2>
+<p><strong>Stated on the edition's face, because a reader is entitled to know it before anything else.</strong></p>
+<p>This edition's two manuscripts are <code>informal/goalv0a.tex</code> (the signed goal, approval-1
+2026-07-19) and <code>informal/proofv0a.tex</code> (the proof). <strong><code>goalv0a.tex</code> predates the project's
+ancestry rule</strong> — criterion 13, adopted 2026-08-05 — so its ancestry is carried at edition level
+(§6a below). <code>proofv0a.tex</code> carries the rule's declaration in-file, and passes the manuscript gate
+with the criterion enforced.</p>
+<p><strong>Ancestry for the pre-criterion manuscript is therefore discharged at EDITION level</strong> (edition
+manifest §6a), leaving the signed file intact. That is a deliberate trade and the reasoning is
+worth stating: <code>goalv0a.tex</code>'s sha256 is bound into the closure signature, and exchanging a
+checkable anchor for a tidier-looking manuscript would be the wrong way round. <strong>The criterion is
+met in full.</strong> Criterion 13 exists so that a reader can check ancestry <em>per claim</em>, and this edition
+delivers exactly that, in a place that can be written without breaking a signature:</p>
+<ul>
+<li><code>ANCESTRY.md</code> carries the edition-level search of record — what was searched, where, when, and
+  what the searches turned up, including the ones that failed and what that failure taught;</li>
+<li><strong>every row of <code>CONCORDANCE.json</code> carries its own <code>ancestry</code> field</strong> — a card id, or "none
+  located" <em>with the search that failed behind it</em>;</li>
+<li>and this section states which manuscripts predate the rule.</li>
+</ul>
+<p>A manuscript signed <em>after</em> 2026-08-05 gets no such treatment, and one touched substantively comes
+under the rule at that touch.</p>
+<p><strong>The three conditions are met</strong>: <code>ANCESTRY.md</code> §§1, 7, 8 carry the searches; all eleven concordance
+rows carry ancestry; this section is on the edition's face.</p>
+<p><strong>And meeting them did real work — it caught a false claim before it was written.</strong> On first
+assembly four rows read <em>"none located, and none searched for"</em>, which §6 rightly calls an assertion
+dressed as a finding. Worse, this Editor had advised the record's owner that the signed goal's five
+definitions were plausibly all without predecessors — a reading endorsed in good faith and built into
+a proposed act on the signed file. <strong>The first search refuted it</strong>: Definition 1's presentation half
+has a genuine predecessor in Lusztig's <em>Introduction to Quantum Groups</em>, Prop. 3.2.4. On searching
+all five, <strong>at most one of the five proposed no-predecessor declarations survives, and even that one
+is a half</strong> — three definitions have located, quotable predecessors, and one (the divided classes
+<code>ν_r</code>) turns out to be <em>exactly</em> the Harman–Hopkins <code>q</code>-binomial polynomial, verified symbolically
+rather than by eye. Declaring otherwise would have written four false claims about the literature
+into a signed lineage, where they would have looked verified forever.</p>
+<h2 id="the-scope-of-the-claim">The scope of the claim</h2>
+<p><strong>GL₁ is the degenerate case, and the edition says so first.</strong> The root system is empty, the Weyl
+group is trivial, <code>U</code> is commutative, and the Harish–Chandra projection is the identity map. Clause
+(ii) is therefore nearly vacuous at this rank. <strong>The value of this record is that a small true
+statement was carried end to end</strong> — signed before it was proved,
+refereed, kernel-certified, refuted-where-false, and then edited into a form a stranger can check —
+and that the cost and the failure modes of doing so were measured. The rank ≥ 2 cases are the open
+frontier and nothing here settles them.</p>
+<p><strong>A tested agreement is not a proof.</strong> The Julia layer and the Lean layer are two independent
+implementations joined by a naming discipline, not by a checked morphism. Read <code>EMBEDDING_NOTE.md</code>
+before drawing any conclusion about the code from a theorem, or about a theorem from the code.</p>
+<p><strong>Nothing here claims the ancestral literature result is our result.</strong> The Harman–Hopkins bilateral
+quantum Pólya theorem is the ancestor of the transported argument for clause (iii). The four-way
+lattice reconciliation that would identify their lattice with ours is <strong>open</strong>.</p>
+<h2 id="the-certification-split">The certification split</h2>
+<p>The three grades are distinct, and the edition keeps them distinct.</p>
+<table>
+<thead>
+<tr>
+<th>grade</th>
+<th style="text-align: right;">rows</th>
+<th>what it means</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ink</strong> — a refereed argument</td>
+<td style="text-align: right;"><strong>1 of 12</strong></td>
+<td>An argument written for a human reader and refereed. No kernel certifies it and no computation bounds it: the check is a referee reading the proof</td>
+</tr>
+<tr>
+<td><strong>orange</strong> — computed over a declared range</td>
+<td style="text-align: right;"><strong>2 of 12</strong></td>
+<td>Verified by computation over a stated bound, and over nothing else</td>
+</tr>
+<tr>
+<td><strong>blue</strong> — kernel-certified</td>
+<td style="text-align: right;"><strong>9 of 12</strong></td>
+<td>A Lean declaration states the row's claim, and its <code>#print axioms</code> result is exactly the three standard axioms of Lean's kernel — propositional extensionality (<code>propext</code>), the axiom of choice (<code>Classical.choice</code>) and quotient soundness (<code>Quot.sound</code>) — the base every Mathlib proof shares; a certificate is clean when these three are all it needs — with no <code>sorryAx</code> and no custom axiom</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Every axiom result in this edition was measured first-hand on 2026-08-13</strong>, through the Lean
+language server. That first-hand measurement turned out to matter: see F-E1 below.</p>
+<p>The two computed rows are the <strong>instrument</strong> and the <strong>oracle referee pin</strong> — and neither could ever
+be kernel-certified, because no Lean declaration states what a Julia program does. That is the
+manifest's rule and the record owner's explicit instruction on adopting the package: adoption makes
+it a row, not a certificate.</p>
+<h2 id="was-every-row-fillable">Was every row fillable?</h2>
+<p><strong>Yes — and every row was kept.</strong> 12 rows, 9 with all three layers filled, 3 carrying a named absence: the two computed rows have no Lean declaration, and the ink row has neither, because what it claims is not the kind of thing either instrument can check.</p>
+<p>The nulls are all of one kind: <em>this layer has nothing to say about this result.</em> Two rows are
+formal-side guarantees with no counterpart environment in the manuscript (the non-degeneracy pin and
+the coefficient-field bridge); two have no computational claim to make because the content is
+definitional. <strong>Each is named in the row rather than left blank</strong>, because a dropped row makes an
+edition look complete while a kept row with <code>lean: null</code> tells the truth.</p>
+<h2 id="what-this-edition-found">What this edition found</h2>
+<p>Assembling it surfaced <strong>sixteen</strong> findings — six at first assembly, the rest as the edition was
+checked and re-checked — and they are the pilot's actual product. <strong>The count rose as the edition matured, which is the correct direction</strong>: every
+finding added after assembly was found <em>by the form</em>, against the edition or its author. An edition
+whose gap list converges to zero as it matures is one that stopped looking.</p>
+<p><strong>One was blocking, and has been ruled.</strong> The signed goal manuscript predates criterion 13, and
+the manuscript gate stated that <em>an edition may not be published while any of its manuscripts still
+lacks the declaration</em>. That stopped the edition dead. The general form outlives this pilot —
+<strong>criterion 13 was adopted after this goal was signed</strong>, so every sandbox closed before the
+criterion existed meets the same wall at its own edition — and it was ruled at the form level:
+ancestry for a pre-criterion manuscript is now discharged at edition level (§6a above), with the
+signed file intact. The finding changed the standard, which is
+the more useful outcome than the edition quietly shipping.</p>
+<p><strong>One is a record-keeping defect at the heart of the closure.</strong> The closure signature records <strong>13</strong>
+certified declarations; the release log it cites contains <strong>5</strong>; a third record says <strong>8</strong>. All
+three cannot be right, and the endpoint the signature names does not appear in the log at all. The
+log is unaltered since it was hashed into the closure record, so this is the evidence the closure
+rests on.</p>
+<p><strong>The reassuring half of that finding, measured rather than assumed:</strong> the Editor verified the
+endpoint <code>GOALv0a</code> directly, and it carries exactly the clean triple. So the <em>mathematical</em> claim is
+sound; what is defective is the <em>retained evidence</em> for it. A third party re-running the public
+re-verification would not be able to see most of what the signature asserts. <strong>The concordance's
+per-row warrant discipline is what made this visible</strong> — had the edition been permitted the
+inference the manifest forbids ("the sandbox is closed, therefore every row is certified"), nothing
+would have surfaced.</p>
+<p><strong>Two are stale records.</strong> The formal source manifest is internally self-contradictory — it hashes
+seven files while declaring a five-file cone, and declares a set of non-degeneracy witnesses absent
+from the tree while listing the hash of the file containing them. Those witnesses are in the tree,
+committed a day <em>before</em> the manifest that says they are missing, and are certified clean. Several
+downstream documents still repeat the stale version.</p>
+<p><strong>One is a number that could not be reproduced.</strong> The instrument's acceptance battery is recorded as
+<code>70/70</code> in three places; the test file statically contains 83 test statements. The Editor re-ran the
+battery rather than ship a figure it could not reproduce: <strong>87/87 PASS</strong>. The edition prints the
+number it measured and names the discrepancy.</p>
+<p><strong>One is about the form itself.</strong> The Editor is instructed to run <code>release_verify.sh --source</code>, and
+that tool writes outside the Editor's chartered write surface, into a different closed sandbox's
+tree. Two rules that are each correct are jointly unsatisfiable. The conflict stands recorded as a
+finding, left for the form's owner to rule on.</p>
+<p><strong>And one is about the sources.</strong> The two literature cards carrying the ancestry this edition leads
+with are <strong>single-pass and unrefereed</strong>, with a referee pass requested and still outstanding. They
+are cited <strong>with that label printed in the concordance row itself</strong> — and their
+convention frames, written in symbols the project retired on 2026-08-10, are restated by the edition
+so that no reader is asked to transport retired notation themselves.</p>
+<h2 id="contents">Contents</h2>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>what it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>EDITION.md</code></td>
+<td>this file</td>
+</tr>
+<tr>
+<td><code>CONCORDANCE.json</code></td>
+<td><strong>the spine</strong> — one row per result, with its warrant</td>
+</tr>
+<tr>
+<td><code>EMBEDDING_NOTE.md</code></td>
+<td>what relates the code to the formal definitions, and what it does not establish</td>
+</tr>
+<tr>
+<td><code>ANCESTRY.md</code></td>
+<td>criterion 13 at edition level: the search of record, the frames, the findings</td>
+</tr>
+<tr>
+<td><code>AUTHORSHIP.md</code></td>
+<td>the authorship block</td>
+</tr>
+<tr>
+<td><code>MANIFEST.json</code></td>
+<td>the machine-readable inventory and the reproducibility recipe</td>
+</tr>
+<tr>
+<td><code>MEASUREMENT_LOG.md</code></td>
+<td>what the edition cost and what the gates caught — pinned by the manifest, <strong>not distributed</strong> with the edition; its figures are in <code>MANIFEST.json</code>'s cost block</td>
+</tr>
+</tbody>
+</table>
+<h2 id="status">Status</h2>
+<p><strong>ACCEPTED 2026-08-13 — DEPOSIT, PUBLICATION AND THE ROW-FREEZE ALL STILL LIE AHEAD.</strong></p>
+<p>The record's owner has reviewed and <strong>typed-accepted</strong> this edition as <em>a faithful and
+non-overclaiming account of the closed record</em> (<code>source/informal/EDITION_ACCEPTANCE_2026-08-13.md</code>).
+Acceptance is exactly that and nothing more: <strong>deposit, outward release and the row-freeze are the
+later steps of the chain</strong>, which runs <em>Editor (produced) → hypervisorA (accepted) → the
+Librarian's door (deposit) → the Overseer (anything outward)</em>.</p>
+<p><strong>Two conditions attached</strong>, both of which this edition proposed against itself: deposit is
+sequenced <strong>after</strong> the fresh certification log lands, so the public citation meets complete
+evidence rather than the incomplete evidence disclosed below; and the drift protocol governs — when
+record bytes move, the owner mails the Editor, who re-hashes and re-gates before deposit. <strong>Rows
+freeze at deposit.</strong></p>
+<p><strong>One judgement the Editor offers rather than hides.</strong> The edition would rather be deposited <em>after</em>
+the closure-evidence repair (F-E1) than before it. <strong>F-E1, stated here so that it travels:</strong> the closure signature of the underlying record claims thirteen certified declarations and the certification log it cites evidences five; the edition's own concordance names its certified declarations one by one, and <code>replay/</code> re-derives thirty-one of them from source with their axioms — so the finding is about the record's evidence retention, not about any claim this edition makes. As things stand the edition faithfully cites the
+sandbox's closure certification, and that citation points at evidence known to be incomplete. That
+is disclosed here and in the concordance, so a deposit today would carry the full disclosure with
+it — but citing
+complete evidence is strictly better than citing incomplete evidence plus an explanation, and the
+repair is already drafted and awaiting a signature. Timing is the tree owner's call.</p>
+<p>A shortfall recorded is a finding; a shortfall smoothed over is the one outcome that would damage
+this project. <strong>This edition records sixteen</strong>, and the last three were found against the Editor's own work by
+the form the Editor was told to follow: rows claiming "none located" with no search behind them; the
+inverted-dictionary defect written inside the section warning against it; and a CAS certificate that
+faithfully measured a mis-transcribed formula, followed by a retraction that itself overshot. All
+were caught with every warrant intact, and each left a lesson — which the accepting counterparty
+recorded as part of the basis <em>for</em> acceptance rather than against it.</p>
+</main></body></html>

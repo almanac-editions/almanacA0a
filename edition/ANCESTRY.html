@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ancestry — criterion 13 at edition level — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+
+<a class="back" href="index.html">&larr; the almanac</a>
+<p><a href="https://github.com/almanac-editions">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg">
+  <img src="almanac-mark.svg" align="right" width="110"
+       alt="almanac — the word's three a's carry the three kinds of warrant: informal, computational, kernel-certified">
+</picture>
+</a></p>
+<h1 id="ancestry-criterion-13-at-edition-level">Ancestry — criterion 13 at edition level</h1>
+<p><em>almanacA0a. Form fixed by the edition manifest §6.</em></p>
+<p>Criterion 13 binds a manuscript: every own result cites a predecessor or records that a search found
+none. At <strong>edition</strong> level the unit changes, and the question becomes: <em>does this edition, as a body
+of work, state its relation to the literature?</em></p>
+<p>Per-result ancestry is a <strong>field in <code>CONCORDANCE.json</code></strong>, not a bibliography — a reader checks
+ancestry per claim, not per volume. This file carries what does not fit in a row: the search of
+record, the convention frames restated, and the findings.</p>
+<hr>
+<h2 id="1-the-search-of-record">1. The search of record</h2>
+<p>The manuscript-level criterion-13 cycle was run <strong>2026-08-09 by the type-A programme hypervisor</strong>
+and is recorded in <code>informal/CITATION_VERIFICATION_2026-08-09.md</code>. It passed the machine gate 8/8
+with <code>criterion-13: adopted</code> (so the citation check was enforced, not advisory), and all six own
+result environments carry a citation. <strong>Step 4 of that cycle — no-predecessor judgements — was
+vacuous: no result in this manuscript claims to have no predecessor.</strong></p>
+<p>The edition-level search was re-run over the Library on <strong>2026-08-13</strong> by the Almanac Editor, to
+confirm that what the manuscript-level cycle filed as <em>missing</em> is still missing. It is not. Details
+in §4.</p>
+<p><strong>A methodological note, recorded because it changed the answer.</strong> The edition's own first query,
+the exact phrase <code>Harish-Chandra isomorphism</code> against the statement shelf, returned <strong>2 cards, both
+irrelevant</strong>. The shelf in fact holds <strong>twelve</strong> cards on that topic. A hit-count over a phrase
+reports the shape of the query, not the shape of the shelf. <strong>A "none located" finding is credible
+only if the query was rephrased at least once</strong> — and one of this edition's two near-misses (§4) was
+caused by exactly this failure mode, caught only because the search was repeated with a different
+instrument.</p>
+<h2 id="2-what-the-manuscript-cites">2. What the manuscript cites</h2>
+<p>The manuscript's bibliography has exactly two keys: <code>HarmanHopkins</code> and <code>SandboxGL2</code>.</p>
+<table>
+<thead>
+<tr>
+<th>result</th>
+<th>clause</th>
+<th>cite key</th>
+<th>resolving card(s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prop. (line 111): <code>U^ev = N^ev</code> is an <code>A_t</code>-subalgebra</td>
+<td>(i)</td>
+<td><code>HarmanHopkins §1</code></td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code></td>
+</tr>
+<tr>
+<td>Prop. (line 134): HC is an isomorphism, and is the identity</td>
+<td>(ii)</td>
+<td><code>SandboxGL2</code></td>
+<td><code>gl2-hc-image-theorem</code> (ours)</td>
+</tr>
+<tr>
+<td>Thm. <code>thm:iii</code> (line 181): <code>N^ev = S</code></td>
+<td>(iii)</td>
+<td><code>HarmanHopkins §§1,4</code></td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code> + <code>lit-harman-bilateral-q-integer-localization</code></td>
+</tr>
+<tr>
+<td>Lem. <code>lem:grid</code> (line 194): grid values are <code>ℤ[q^{±1}]</code>-integral</td>
+<td>(iii)</td>
+<td><code>HarmanHopkins §1</code></td>
+<td>as above + <code>even-newton-gaussian-grid-values</code> (ours)</td>
+</tr>
+<tr>
+<td>Lem. <code>lem:fwd</code> (line 254): forward inclusion <code>S ⊆ N^ev</code></td>
+<td>(iii)</td>
+<td><code>HarmanHopkins §1</code></td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code></td>
+</tr>
+<tr>
+<td>Lem. <code>lem:rev</code> (line 276): windowed reverse inclusion</td>
+<td>(iii)</td>
+<td><code>HarmanHopkins §1</code></td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code></td>
+</tr>
+<tr>
+<td>Attribution remark (the Lusztig sentence) — <em>not an own result</em></td>
+<td>(iii)</td>
+<td><code>HarmanHopkins §4</code></td>
+<td><code>lit-harman-z-variable-lusztig-cartan-form</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-convention-frames-restated-in-current-symbols">3. Convention frames, restated in current symbols</h2>
+<p><strong>This section is a restatement by the edition, not a quotation from the cards, and the distinction
+is load-bearing.</strong> Every card cited here was written <strong>before</strong> the Sandbox-wide notation migration
+of 2026-08-10 (<code>Q → q</code>, <code>q → v</code>, <code>z → t</code>, with <code>q = v²</code> and <code>t = z²</code>) and <strong>none has been migrated</strong>.
+A reader who lifts the phrase "our z" from a card and reads today's <code>z</code> gets an inverted dictionary
+— the precise defect an estate audit found in 10 of 15 unaudited cards on 2026-08-03. Where a frame
+is quoted below, the quoted symbols are marked as <strong>the card's own</strong>.</p>
+<h3 id="31-harmanhopkins-arxiv160106110-the-ancestor-of-clauses-i-and-iii">3.1 Harman–Hopkins (arXiv:1601.06110) — the ancestor of clauses (i) and (iii)</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>the source's symbols</th>
+<th><strong>current Sandbox symbols</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>their <code>q</code></td>
+<td><code>q_paper</code></td>
+<td><strong>our <code>q</code></strong> (before migration this was <code>Q</code>, with <code>Q = q²</code>)</td>
+</tr>
+<tr>
+<td>their adjoined square root <code>v</code></td>
+<td><code>v</code></td>
+<td><strong>our <code>v</code></strong> (<code>v² = q</code>)</td>
+</tr>
+<tr>
+<td>their grid variable <code>z</code></td>
+<td><code>z</code></td>
+<td><strong>our <code>Y̌</code></strong> — the grid coordinate</td>
+</tr>
+<tr>
+<td>our free family parameter</td>
+<td><em>absent from the source entirely</em></td>
+<td><strong><code>t</code></strong>, ring <code>A_t = ℤ[v^{±1}, t^{±1}]</code> — <strong>note <code>v</code>, not <code>q</code></strong>; the retired <code>A_z = ℤ[q^{±1},z^{±1}]</code> migrates to <code>ℤ[v^{±1},t^{±1}]</code> because retired <code>q</code> is current <code>v</code></td>
+</tr>
+</tbody>
+</table>
+<p>Four frame facts the edition carries forward:</p>
+<ol>
+<li><strong>Their grid is ADDITIVE, ours is MULTIPLICATIVE.</strong> They impose integrality on values <code>P([n]_q)</code>
+   at the <code>q</code>-integers; the programme imposes it at <code>Y̌ = q^m</code>. The two are exchanged by the
+   node-preserving affine substitution <code>Y̌ = 1 + (q−1)x</code>, i.e. <code>x = [m]_q ⟺ Y̌ = q^m</code>. This
+   substitution is invertible over <code>ℚ(q)</code> but <strong>not</strong> over <code>ℤ[q^{±1}]</code> — it divides by <code>q − 1</code> — so
+   it does <strong>not</strong> map <code>ℤ[q^{±1}][x]</code> into <code>ℤ[q^{±1}][Y̌]</code>. But because integrality is imposed <strong>at the
+   nodes</strong> and the nodes correspond, it does carry their lattice <strong>isomorphically</strong> onto ours — the
+   transport is legitimate precisely because it is a lattice isomorphism. <em>(Corrected 2026-08-13:
+   this file previously denied that, which was false.)</em></li>
+<li><strong>Their Gaussian binomial is ONE-SIDED</strong>, not the balanced/symmetric convention. The two differ
+   by a unit power of <code>q</code>: integrality statements survive the change, <strong>explicit coefficients do
+   not</strong>. The basis denominator is <code>q^{binom(k,2)}[k]_q!</code> and that exponent is where a
+   normalisation error would hide — which is why it was probed on the oracle (49/49 over
+   <code>0 ≤ n,k ≤ 6</code>).</li>
+<li><strong>The name collision, which the migration made worse rather than better.</strong> The card says "their
+   <code>z</code> is our <code>Y̌</code>, NOT our <code>z</code>". Post-migration there are now <em>three</em> letters in play: their <code>z</code> is
+   our <code>Y̌</code>; our free parameter is <code>t</code>; and the current letter <code>z</code> is the square root of <code>t</code>.
+   <strong>The edition prints the collision in current symbols precisely because the cards cannot.</strong></li>
+<li><strong>Positive part vs bilateral.</strong> §1's Proposition 1.2 is over <code>ℤ[q]</code> — a <em>proper subring</em> of
+   <code>A_t</code>. The bilateral statement the manuscript actually needs is §4 (Lemma 4.2 / Prop 4.3), where
+   the localization inverts <strong><code>q</code> only</strong> — not <code>t</code>, not cyclotomic factors — and where <strong>the finite
+   degree <code>d</code> is essential to the integrality test.</strong> That last point is what licenses the
+   manuscript's <em>windowed</em> reverse inclusion; it is not a convenience.</li>
+</ol>
+<p><strong>One caution the edition declines to repeat.</strong> The 2026-08-10 addendum to the citation-verification
+document contains the phrase "their adjoined square roots are exactly our <code>v</code> and <code>z</code>". The first
+half is correct; the second is loose — the second square root is the toral generator with
+<code>K₊² = Y̌</code>, whereas today's <code>z</code> is the square root of the free parameter <code>t</code>. <strong>This edition does not
+carry that phrase forward</strong>, and records it here so that a later edition does not reintroduce it.</p>
+<h3 id="32-gl2-hc-image-theorem-ours-the-in-programme-predecessor-for-clause-ii">3.2 <code>gl2-hc-image-theorem</code> (ours) — the in-programme predecessor for clause (ii)</h3>
+<p>Statement (card, verbatim in the card's own symbols): <em>"HC : Z(U^{hyb,ev}<em A_z>{A_z}) ≅ (N^ev</em>
+— every shifted-Weyl-invariant even-Newton toral function has a unique even-hybrid integral central
+lift."})^{s₁</em> In current symbols <code>A_z</code> is <code>A_t</code> and the card's <code>Q</code> is today's <code>q</code>; <strong>the card has not been
+migrated and the edition performs the restatement rather than leaving it to the reader.</strong></p>
+<p>Two traps travel with it:</p>
+<ul>
+<li><strong>Casimir order</strong>: the source Casimir is <code>eF</code>-order while the DCK rows are <code>Fe</code>-order; the
+  translation absorbs <code>B(c)(K₊ − K₋)</code> into row 0.</li>
+<li><strong>The two-frame trap</strong> (the load-bearing one): the hypothesis lattice <code>N^ev</code> is Newton in the
+  <strong>unshifted</strong> <code>Y̌ᵢ = (Tᵢ⁺)²</code>, while <code>s₁</code>-invariance is natural in the <strong>shifted</strong> coordinates.
+  Seeds <code>ν_d(Y_shifted)</code> are <strong>not</strong> in <code>N^ev</code> and are therefore not valid theorem inputs. Any
+  formalization or CAS probe that conflates the two frames is measuring the wrong object.</li>
+</ul>
+<p><strong>Its certification is partial, and the edition prints the limit next to the tick.</strong> The card records
+<code>✅ FULLY CERTIFIED 2026-07-09</code> for <code>gl2_center_closed_newton</code> — <em>and, in the same field</em>, "NOT yet:
+abstract <code>U_A</code> form + necessity/<code>⊆</code> (λ-transcendence layer), two-variable even-grid bridge." An
+edition that printed the tick without the limit would claim more than the kernel certified.</p>
+<h3 id="33-even-newton-gaussian-grid-values-ours-companion-to-lemgrid">3.3 <code>even-newton-gaussian-grid-values</code> (ours) — companion to <code>lem:grid</code></h3>
+<p>Cited for <strong>forward grid-integrality only</strong>. The card carries a 2026-08-10 addendum that the edition
+must carry with it: the <em>stronger</em> sentence in the same source — that the <code>Q^ev</code>-generated span
+<strong>equals</strong> the Verma-saturated Newton lattice — is <strong>REFUTED</strong>
+(<code>even-gaussian-span-not-newton-lattice-refuted</code>), with explicit witness <code>ν₁(q³) = (q²+q+1)/(q+1)</code>,
+which is not Laurent. <strong>Forward integrality on a grid never implies saturation of the lattice, and
+this card must not be cited for the equality.</strong> The edition cites it only where the manuscript does:
+for the grid values.</p>
+<h2 id="4-what-the-search-wanted-and-what-the-library-turned-out-to-hold">4. What the search wanted, and what the Library turned out to hold</h2>
+<p>The manuscript-level cycle filed <strong>one</strong> acquisition request: the quantum Harish–Chandra isomorphism
+itself — the <em>literature</em> ancestor of clause (ii), the in-programme predecessor having resolved.
+<code>corpus/requests/LR-20260809T093836Z-hypervisorA-quantum-harish-chandra-source.md</code>.</p>
+<p><strong>Disposition: FULFILLED, 2026-08-10 — "FOUND AND CARDED … Two cards answer this, one of them
+already on the shelf when the request was filed."</strong> <strong>The two cards, named here because a quoted
+count is not a citation</strong> (corrected 2026-08-14 on the Librarian's rule that <em>ancestry cites card
+ids, not request ids</em> — the same rule §8.5 already applies to the 2026-08-13 acquisitions):</p>
+<ul>
+<li><strong><code>lit-jantzen-harish-chandra-even-torus</code></strong> — the one already on the shelf, carrying <strong>both</strong>
+  halves and existing to keep them apart: §6.6 Prop. [p. 109] is <strong>containment only</strong>, and its own
+  first trap says <em>do not cite §6.6 for the isomorphism</em>; <strong>Thm 6.25</strong> [p. 124] with Lemmas 6.23,
+  6.24(1) is the isomorphism, <strong>as proved there</strong> under <code>char(k) = 0</code> <strong>and</strong> <code>q</code> transcendental
+  over <code>ℚ</code> — <strong>hypotheses the book itself lifts in §6.26 to <em><code>q</code> not a root of unity</em>; see rider 1.</strong></li>
+<li><strong><code>lit-dcp-generic-harish-chandra-isomorphism</code></strong> — De Concini–Procesi §18.3, written the same
+  day on residentA's Packet A, independently of this request.</li>
+</ul>
+<p><strong>Neither card supports an integral claim</strong> — both are <code>k(q)</code>, single torus, no integral form.
+Both are rows of this edition's manifest, so both resolve. No acquisition was needed. The original sweep
+had reported "67 hits, none carding the isomorphism itself" and had missed the card built for
+exactly that question, because that card's lens is <em>image-vs-isomorphism</em> and its body leads with
+the containment statement it exists to warn about.</p>
+<p><strong>So no <code>ancestry: "none located"</code> arises anywhere among the <em>manuscript's</em> results.</strong> Every result
+the manuscript states has a located predecessor. (One <strong>formal-side</strong> row does record "none
+located", with its failed search — see §7.) The two located literature ancestors for clause (ii):</p>
+<ul>
+<li><strong><code>lit-dcp-generic-harish-chandra-isomorphism</code></strong> — De Concini–Procesi, <em>Quantum Groups</em>, LNM 1565
+  §18.3. The isomorphism in a clean <strong>generic</strong> frame: over <code>k(q)</code>, <code>q</code> not a root of unity, single
+  torus, <strong>no integral form and no family parameter</strong>. The <code>ρ</code>-shift is carried by the map <code>γ</code>, not
+  inside the invariance condition (the programme instead puts the shift in the coordinates), and the
+  target is <code>k[2P]^W</code> — <em>twice</em> the weight lattice. Trap, verbatim: <em>"Citing 18.3 in support of an
+  integral claim proves nothing about lattices."</em></li>
+<li><strong><code>lit-jantzen-harish-chandra-even-torus</code></strong> — Jantzen, <em>Lectures on Quantum Groups</em>, GSM 6. The
+  card deliberately keeps two halves apart: <strong>§6.6 is containment only</strong> and its own first trap says
+  <strong>"DO NOT CITE SECTION 6.6 FOR THE HARISH–CHANDRA ISOMORPHISM"</strong>; the isomorphism is <strong>Theorem
+  6.25</strong> (with Lemmas 6.23, 6.24(1)). <strong>Its proof there</strong> assumes <code>char(k) = 0</code> and <code>q</code>
+  transcendental over <code>ℚ</code> — <strong>load-bearing for that proof, and NOT the theorem's reach: §6.26 removes
+  them in favour of <em><code>q</code> not a root of unity</em> (rider 1).</strong> Jantzen's map is the <strong>shifted</strong>
+  homomorphism <code>γ_{−ρ} ∘ π</code>, <strong>not a bare toral projection.</strong></li>
+</ul>
+<p><strong>Two riders, from the cards' own faces</strong> (Librarian REPORT <code>20260814T140333Z-librarian-54686-a347</code>,
+who checked this edition's quotation against both cards line for line rather than take it on trust):</p>
+<ol>
+<li><strong>The hypotheses bound the PROOF IN §6.25, NOT THE THEOREM — corrected 2026-08-15 by reading the
+   book.</strong> This rider first read <em>"the hypotheses bound OUR TRANSCRIPTION, not the book"</em> — the right
+   instinct, stated as a caution where a <strong>measurement</strong> was available. <strong>§6.26 (printed pp. 125–126)
+   removes them itself, two pages after the theorem.</strong> Reported by the Library
+   (<code>lit-jantzen-6-26-hypothesis-weakening-q-not-root-of-unity</code>, <code>3432f4d7</code>) and <strong>verified here
+   independently from the shelf copy's own text layer</strong>:</li>
+</ol>
+<blockquote>
+<p><em>"6.26. We shall see in 8.30 that we can drop in Proposition 6.18 the assumption that
+char(k) = 0 and that q is transcendental over Q and replace it by the weaker assumption that q
+is not a root of unity. I want to sketch here how we can use this fact to remove that stronger
+assumption from the other results (5.15, 5.17–5.19, 6.20–6.25) where it occurred."</em></p>
+</blockquote>
+<p>closing: <em>"Having 5.17 we get now also Lemma 6.3.b and (hence) </em><em>Theorem 6.25 in general</em><em>."</em></p>
+<p><strong>The honest sentence: Theorem 6.25 AS PROVED IN §6.25 assumes <code>char(k) = 0</code> and <code>q</code>
+   transcendental; §6.26 extends it to <code>q</code> NOT A ROOT OF UNITY, via §8.30.</strong> Anyone citing the card
+   for <em>"6.25 needs <code>q</code> transcendental"</em> was quoting a limit the book lifts two pages later — <strong>and
+   this edition was that anyone.</strong></p>
+<p><strong>THE CHAIN IS NOW CLOSED END TO END — the relayed link was read within the hour</strong> (Library card
+   amended, <code>eccfb4ea</code>; located at printed <strong>p. 168</strong>, Ch. 8, from this seat's clue that §8.30 opens
+   <em>"Fix a reduced expression w₀ = …"</em>). <strong>Verified independently here from the shelf copy's text
+   layer</strong>, which carries the prose intact:</p>
+<blockquote>
+<p><strong>COROLLARY.</strong> <em>The restriction of ( , ) to any <code>U⁻₋ᵤ × U⁺ᵤ</code> with <code>μ ∈ ℤΦ</code> is nondegenerate.</em>
+<strong>REMARK.</strong> <em>This corollary extends Proposition 6.18 to all q that are not a root of unity. As
+pointed out in 6.26 now </em><em>everything in Chapter 6 extends to that case. The same is true for
+Chapter 7.</em>**</p>
+</blockquote>
+<p>So <strong>§8.30 → 6.18 → 6.26 → 6.25 holds in the book's own voice</strong>, each step read by two seats
+   independently. <strong>And the reach is wider than §6.26's own list:</strong> 6.26 enumerates 5.15, 5.17–5.19,
+   6.20–6.25; <strong>§8.30's Remark says all of Chapter 6, and Chapter 7 too</strong> — so the strongest true
+   citation for the extension is <strong>§8.30's Remark</strong>, not §6.26's enumeration.</p>
+<p><strong>Nothing here depends on the extension</strong> — clause (ii) is a formality at rank 1 — so this stands
+   as a correction of record. Still untranscribed on the companion card: §§6.4–6.5, 6.22. <em>(A
+   cross-link that fell out of the same page: §8.30's Remark credits the explicit <code>Θ_μ</code> and universal
+   R-matrix formula to </em><em>Levendorskiĭ–Soibelman</em><em> and independently to Kirillov–Reshetikhin — a paper
+   this Library had reported absent on 2026-08-13 and then found on its own shelf.)</em>
+2. <strong>All three put the <code>ρ</code>-shift somewhere, and no two put it in the same place.</strong> Jantzen carries
+   it in the map (<code>γ_{−ρ} ∘ π</code>); De Concini–Procesi carry it in <code>γ(K_λ) = q^{(ρ|λ)}K_λ</code>, <strong>outside</strong>
+   the invariance condition; <strong>the programme puts it in the coordinates.</strong> Same idea in three
+   frames — <strong>a formula transported between them without moving the shift is wrong by a <code>ρ</code>-power.</strong>
+   The hazard is recorded as <em>avoided</em>, not merely flagged: <strong>this section states no version of the
+   isomorphism in the edition's own symbols</strong>, citing each source in its own frame instead. That is
+   where such an error would have entered, and there is no such sentence to enter it.</p>
+<p><strong>A discrepancy the edition prints rather than resolves.</strong> <code>proofv0a.tex</code> has <strong>not</strong> been updated
+to cite either: its bibliography is still <code>HarmanHopkins</code> + <code>SandboxGL2</code>, and clause (ii) says only
+that "the classical ancestor is the Harish–Chandra isomorphism itself, whose quantum-group form the
+GL₂ record cites". So <strong>the edition's clause-(ii) ancestry is richer than the manuscript's own
+citation.</strong> The concordance therefore records all three — the manuscript's citation
+(<code>gl2-hc-image-theorem</code>) <em>and</em> the two located literature ancestors — with an explicit note of
+which the manuscript itself prints. Updating the manuscript is not the Editor's act; the record is
+closed and belongs to its owner. This is filed as a finding, not fixed.</p>
+<h2 id="5-cards-travel-sources-do-not">5. Cards travel; sources do not</h2>
+<p>Every card named above ships inside this edition as the project's own writing about someone else's
+statement, each with the convention frame under which the project reads it (§3). <strong>No source PDF,
+scan, or transcript is redistributed</strong> — sources are referenced by author, title, series and
+section, and a reader obtains them as they normally would.</p>
+<h2 id="6-findings">6. Findings</h2>
+<p><strong>F-A1 — the two clause-(iii) ancestry cards are SINGLE-PASS and NOT REFEREED, as of 2026-08-13.</strong>
+<code>lit-harman-q-polya-qbinomial-basis</code> and <code>lit-harman-z-variable-lusztig-cartan-form</code> both carry
+<code>status_note: "REGISTERED SINGLE-PASS, NOT REFEREED … A second, independent referee pass has NOT
+been run"</code>, <code>verdict: none on file</code>, unchanged since 2026-08-09. The referee pass <strong>has been
+requested and is outstanding</strong> (REQUEST <code>20260812T201756Z-hypervisorA-77484-182d</code>, still unread in
+the Librarian's inbox), and the requester's own words are that "its absence is now the kind of
+defect the 08-03 audit predicts", precisely because these cards carry the ancestry the edition leads
+with outwardly.</p>
+<p>The edition's response is <strong>not</strong> to suppress the citation and <strong>not</strong> to launder it:</p>
+<ul>
+<li>both cards are cited, and the concordance's <code>ancestry</code> field prints
+  <code>single-pass, not refereed (as of 2026-08-13)</code> <strong>in the row</strong>, not in a footnote;</li>
+<li>the frames are restated by the edition in current symbols (§3.1), so a reader is never asked to
+  transport retired symbols themselves;</li>
+<li>the evidence that <em>is</em> on the cards is stated for what it is: read by eye from the printed page,
+  with the load-bearing normalisation confirmed on the oracle 49/49 over <code>0 ≤ n,k ≤ 6</code>. That is
+  materially better than the defective population the audit measured — and it is still not a
+  referee pass.</li>
+</ul>
+<p><strong>F-A2 — every card this edition cites is written in retired notation.</strong> The manuscript migrated on
+2026-08-10; no card did. This is why §3 exists and why the concordance's frame field is a
+restatement rather than a quotation. It is also a standing hazard for the <em>next</em> edition, which will
+face the same six cards.</p>
+<p><strong>F-A4 — four rows claimed "none located" with no search behind them.</strong> Found by the form, against
+this edition's own author, and fixed by running the searches rather than rewording the rows. The resulting searches are §7 below.</p>
+<p><strong>F-A3 — a resolved four-way reconciliation is NOT claimed.</strong> The reconciliation
+<code>T^Lus = N = T_WN = T_HH</code> remains <strong>open</strong> on the shelf: three frame differences block chaining and
+no shelf-wide normalisation is fixed. This manuscript does not chain through it, and <strong>this edition's
+ancestry prose must not be read as claiming that the Harman–Hopkins lattice <em>is</em> the programme's
+Newton lattice.</strong> It is the ancestor of the transported argument, which is a weaker and true claim.</p>
+<h2 id="7-the-edition-level-searches-of-2026-08-13">7. The edition-level searches of 2026-08-13</h2>
+<p>Three results carried no ancestry search when the edition was first assembled (finding F-A4). The
+searches were run rather than the rows reworded. All queries below are verbatim, all against the
+statement, object and transcript shelves through the Library's typed interface, on <strong>2026-08-13</strong>.</p>
+<h3 id="71-definition-1-the-presented-torus-with-a-free-invertible-parameter">7.1 Definition 1 — the presented torus with a free invertible parameter</h3>
+<p><strong>The answer splits, and the split is the finding.</strong></p>
+<p><strong>Presentation half — PREDECESSOR LOCATED.</strong> Lusztig, <em>Introduction to Quantum Groups</em>, <strong>Proposition
+3.2.4</strong> (card <code>lit-lusztig-triangular-decomposition-toral-freeness</code>): the associative <code>ℚ(v)</code>-algebra
+on generators <code>K_μ</code> (<code>μ ∈ Y</code>) with the lattice relations, <em>"(This is the group algebra of <code>Y</code> over
+<code>ℚ(v)</code>.)"</em> — precisely our <code>K_{0,±}=1</code>, <code>K_{m+n,±}=K_{m,±}K_{n,±}</code>, with <code>Y</code> in place of <code>ℤ</code>.
+<strong>Cite the parenthesis, not only the proposition</strong>: the freeness on <code>{K_μ}</code> lives in that
+parenthetical remark, so a citation omitting it supports a presentation but not a basis. Frame in
+current symbols: Lusztig's <code>v</code> is our <code>v</code>; one Cartan family; <strong>no <code>t</code>, no integral structure</strong> —
+his <code>_𝒜U</code> is defined only for a simply connected root datum and declared unused in the sequel.</p>
+<p><strong>Family-parameter half — NONE LOCATED.</strong> No predecessor anywhere on the shelf for the second leg
+<code>K_{n,−}</code> together with an adjoined <strong>free invertible</strong> <code>t</code> satisfying <code>K_{1,+}K_{1,−} = t</code>. This is
+a <strong>positive absence rather than a silent zero-hit</strong>: three independently written cards assert it as
+a frame fact — <code>lit-dcp-generic-harish-chandra-isomorphism</code> ("no family parameter"),
+<code>lit-dcp-verma-contravariant-shapovalov</code> ("no family parameter"), and the Losev–Tsymbaliuk–Vu
+transcript ("no central group-like <code>z_a</code>"). The nearest structural neighbour, <strong>and not a
+predecessor</strong>, is Lacabanne's double Cartan, whose second parameter is the <em>quotient</em>
+<code>z_i = K_i L_i^{-1}</code> — a central root-torus variable, not an adjoined free one. Our own predecessor
+for this half is ours: transcript <code>own-habiro-le-even-hybrid-centers-explicit-torus (our internal note — pinned by this edition's manifest, not distributed with it)</code> §2 and
+<code>objects/gl4.coordinate-split-torus</code>.</p>
+<p><strong>Queries:</strong> <code>group algebra of the weight lattice torus Laurent Cartan part K_i invertible</code> (0) ·
+<code>hybrid family torus</code> (0) · <code>K_n^+ K_n^-</code> (0) · <code>hybrid torus</code> (11) · <code>Cartan part</code> (30) ·
+<code>split torus</code> (6) · <code>z_i = K_{i,+}K_{i,-}</code> (0) · <code>group algebra</code> (10) · <code>central group-like z_a</code> (0)
+· <code>family parameter</code> (9) · <code>generators and relations</code> (33). <strong>No acquisition warranted</strong> — the
+absence is structural, not a gap in holdings.</p>
+<h3 id="72-the-non-degeneracy-pin-predecessors-located-in-three-layers">7.2 The non-degeneracy pin — predecessors located, in three layers</h3>
+<p><strong>Classical:</strong> <strong>Pólya 1919</strong>, via the held transcript
+<code>harman-hopkins-quantum-integer-valued-polynomials</code>, Proposition 1.1 — <code>ℛ</code> is freely generated as an
+abelian group by the binomial polynomials <code>binom(x,k)</code>. <strong>The logical gap is named and not closed
+silently:</strong> the source states a <em>basis</em>, not a strict inclusion. Strictness follows immediately
+(<code>binom(x,2)</code> is integer-valued and not in <code>ℤ[x]</code>), so the honest phrasing is <em>"Pólya's basis
+theorem, from which the strict containment is immediate"</em> and never <em>"Pólya proved the strict
+containment"</em>.</p>
+<p><strong>q-analogue:</strong> Harman–Hopkins §1, Propositions 1.1–1.2 — one variable, additive grid, coefficient
+ring <code>ℤ[q]</code> or <code>ℤ[q^{±1}]</code>, no free parameter.</p>
+<p><strong>Ours, for the witness only:</strong> <code>even-gaussian-span-not-newton-lattice-refuted</code> displays the
+identical separating element <code>ν_1(Y̌) = (Y̌−1)/(q−1)</code> and proves a strict inclusion — <strong>but of a
+different pair, by a different mechanism</strong> (it separates the Gaussian-generator span from the Newton
+lattice by a finer-versus-coarser grid; this edition's row separates <code>A_t[Y̌^{±1}]</code> from <code>N^ev</code> by a
+non-unit coefficient). A predecessor for the <strong>witness</strong>, not for the <strong>inclusion</strong>, and the edition
+says which.</p>
+<p><strong>Queries:</strong> <code>integer-valued</code> (47) · <code>Polya</code> (2) · <code>Cahen</code> (2) · <code>P(x) integer-valued but not in
+Z[x]</code> (0) · <code>strictly larger than the Laurent</code> (0) · <code>strict inclusion</code> (2) · <code>Newton lattice</code> (31).</p>
+<p><strong>ACQUISITION WANTED, and this is the textbook case:</strong> <strong>Cahen–Chabert, <em>Integer-Valued
+Polynomials</em>, AMS Surveys 48 (1997)</strong> — the standard reference, <strong>cited by our own held source</strong>,
+never on our shelf. Also Pólya 1915 and Gramain 1990. Until they are held, the classical statement is
+reachable only <em>through a quotation inside another paper</em>, and this edition says so rather than
+citing what it does not hold.</p>
+<h3 id="73-the-coefficient-field-bridge-none-located-with-the-search-recorded">7.3 The coefficient-field bridge — NONE LOCATED, with the search recorded</h3>
+<p><strong>Queries:</strong> <code>base change</code> (138) · <code>faithfully flat</code> (21) · <code>extension of scalars</code> (5) ·
+<code>localization</code> (66). Every hit unrelated: <code>faithfully flat</code> lands in q-Witt-vector material; the
+statement-shelf <code>base change</code> hits are our own <code>SP-2026-031</code>'s convention frame (a
+notation-migration base change, <strong>not</strong> an integrality-invariance theorem); <code>extension of scalars</code>
+returns nothing about integer-valued rings.</p>
+<p><strong>Assessed and REJECTED as a predecessor: Harman–Hopkins §4 Proposition 4.3</strong>
+(<code>ℛ_q = ℛ⁺_q ⊗_{ℤ[q]} ℤ[q,q^{-1}]</code>). It is <strong>adjacent, not ancestral</strong>, and the edition declines to
+cite it, for three reasons that point the opposite way:</p>
+<ol>
+<li><strong>4.3 says the object GROWS by a controlled amount and identifies the enlargement; this row says
+   it does NOT grow.</strong> "Bigger, and here is exactly how much bigger" is not evidence for "not bigger
+   at all", however much both statements wear the word <em>localization</em>.</li>
+<li><strong>Their localization inverts the DEFORMATION parameter <code>q</code>; this row moves the FAMILY parameter
+   <code>t</code></strong> — which their setting does not have at all.</li>
+<li><strong>Their Lemma 4.2 varies the grid</strong> (<code>n ∈ ℕ</code> to <code>n ∈ ℤ</code>) at the same time as the coefficients;
+   this row holds the grid fixed and moves only the ambient field.</li>
+</ol>
+<p>It is the kind of citation that reads well and warrants nothing. <strong>Acquisition:</strong> subsumed by §7.2's
+Cahen–Chabert request, whose several-variables and base-change material is the natural home for such
+a rigidity statement, rather than filed as a second request.</p>
+<h3 id="74-a-defect-in-the-shelf-found-on-the-way-and-not-this-editions-to-fix">7.4 A defect in the shelf, found on the way and not this edition's to fix</h3>
+<p><code>list_by_goal("center-GL1")</code> returns <strong>no routed cards at all</strong>: the live routing document
+(<code>corpus/CARD_ROUTING_2026-07-17.md</code> (pinned by this edition's manifest, not distributed with it)) has no <code>center-GL1</code> section, so this goal is served today only
+by cards that happen to name it in a <code>feeds</code> field. Reported to the Librarian; recorded here because
+an edition that depended on that routing would have been depending on nothing.</p>
+<h2 id="8-the-five-definitions-of-the-signed-goal-searched-2026-08-13">8. The five definitions of the signed goal — searched 2026-08-13</h2>
+<p><strong>Why this section exists.</strong> The signed goal <code>goalv0a.tex</code> predates criterion 13. A proposed record
+act would have declared <code>\nopredecessor</code> on all five of its numbered definitions. Manifest §6b
+forbids writing such a declaration before the failed search behind it is recorded — <em>a
+<code>\nopredecessor</code> is a substantive claim about the literature, not a formatting line.</em> These are
+those searches. <strong>The per-definition verdicts are in <code>DEFINITION_VERDICTS_2026-08-13.md</code>.</strong></p>
+<p><strong>The headline: of the five proposed declarations, at most one would have been true, and even that
+one is a half.</strong> Three definitions have located, quotable predecessors. The edition records this
+because the near-miss is the finding: the reading that all five were "definitions of the object under
+study, hence without predecessors" was <strong>this Editor's own</strong>, offered in good faith, endorsed in good
+faith, and refuted by the first search that tested it.</p>
+<table>
+<thead>
+<tr>
+<th>definition</th>
+<th>verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>def:U</code> (the presented algebra)</td>
+<td><strong>SPLIT</strong> — cite Lusztig Prop. 3.2.4 for the presentation; <code>\nopredecessor</code> honest only for the adjoined free <code>t</code></td>
+</tr>
+<tr>
+<td><code>def:nev</code> (the even Newton lattice)</td>
+<td><strong>predecessors located</strong> — <code>\nopredecessor</code> would be false</td>
+</tr>
+<tr>
+<td><code>def:nu</code> (the divided classes)</td>
+<td><strong>predecessor located, exactly</strong> — <code>\nopredecessor</code> would be false</td>
+</tr>
+<tr>
+<td><code>def:uev</code> (the integral form)</td>
+<td><strong>predecessor located</strong> for the shape (Habiro–Lê, <em>published</em> Thm 8.11(c))</td>
+</tr>
+<tr>
+<td><code>def:hc</code> (HC projection, shifted Weyl action)</td>
+<td><strong>cite the theorem's own cards</strong>, plus a degenerate-rank note; the shift <em>placement</em> is ours</td>
+</tr>
+</tbody>
+</table>
+<h3 id="81-defnu-an-exact-identification-not-a-resemblance">8.1 <code>def:nu</code> — an exact identification, not a resemblance</h3>
+<p>The one result here that is arithmetic rather than judgement. Our
+<code>ν_r(X) = ∏_{s&lt;r}(X − q^s)/(q^r − q^s)</code> is <strong>exactly</strong> the Harman–Hopkins <code>q</code>-binomial coefficient
+polynomial under the node-preserving substitution <code>X = 1 + (q−1)x</code> — <em>not</em> merely equal up to a unit:</p>
+<ul>
+<li>the denominator <code>∏_{s&lt;r}(q^r − q^s)</code> factors as <code>q^{binom(r,2)} (q−1)^r [r]_q!</code>;</li>
+<li>each numerator factor <code>X − q^s</code> becomes <code>(q−1)(x − [s]_q)</code>;</li>
+<li>the two factors of <code>(q−1)^r</code> cancel, leaving their polynomial with its <code>q^{binom(r,2)}[r]_q!</code>
+  denominator on the nose.</li>
+</ul>
+<p>Verified symbolically in the fraction field of <code>ℚ[q][x]</code> for <code>r = 0…6</code>, certificate
+<code>4e97ac26f5351d271b7dbfa2ed9e57997224adf346852df49be0dbbc30afbfb4</code>. A second check confirms the
+multiplicative-grid reading — <code>ν_r(q^m)</code> is the one-sided Gaussian binomial for <code>0 ≤ m ≤ 7</code>,
+<code>0 ≤ r ≤ 5</code> — and that values at <strong>negative</strong> nodes remain Laurent (e.g. <code>ν_2(q^{-2}) =
+(q²+q+1)/q⁵</code>), which is what <code>def:nev</code>'s bilateral condition <code>χ ∈ ℤ</code> requires. Certificate
+<code>b97ca632baedd6d1e33450b9d3e72a6b08246bc53734c7e46087d2f6224a217c</code>.</p>
+<h3 id="82-defnev-and-the-acquisition-that-blocks-a-declaration-on-it">8.2 <code>def:nev</code> — and the acquisition that blocks a declaration on it</h3>
+<p>Predecessors: Pólya (quoted as Harman–Hopkins Prop. 1.1), the <code>q</code>-deformed additive-grid basis
+(<code>lit-harman-q-polya-qbinomial-basis</code>), and — the form <code>def:nev</code> actually uses, since its grid is
+<code>χ ∈ ℤ</code> rather than <code>ℕ</code> — the <strong>bilateral</strong> statement <code>lit-harman-bilateral-q-integer-localization</code>
+§4 Lemma 4.2(2). The multiplicative-grid transport is itself carded
+(<code>lit-harman-z-variable-lusztig-cartan-form</code>), with the two cautions this edition already carries:
+the substitution divides by <code>q − 1</code>, so it is a change of coordinate rather than an isomorphism of
+integral lattices, and the source's letter <code>z</code> is our <code>Y̌</code>, never our <code>t</code>.</p>
+<p><strong>What is missing is the multiplicative-grid ancestor specifically.</strong> Gramain, <em>Fonctions entières …
+prenant des valeurs entières sur une progression géométrique</em> (LNM 1415, 1990) is precisely "integer
+values on a <strong>geometric progression</strong>" — the classical statement over our exact grid — and it exists
+on this shelf <strong>only inside two Harman–Hopkins cards' bibliographies</strong>. So does Cahen–Chabert (AMS
+Surveys 48) and Ostrowski 1919. Under §6b, <em>a predecessor that exists but is not held blocks a
+declaration exactly as firmly as a located card does.</em></p>
+<p><strong>Acquisition of record for this definition: REQUEST <code>20260813T111346Z-editor-56787-5977</code></strong> (both
+titles; confirmed by the record owner as the id the repair instrument cites). Detail in §8.5.</p>
+<p><strong>Queries:</strong> <code>integer-valued</code> (47) · <code>Polya</code> (2) · <code>ostrowski</code> (1) · <code>Cahen</code> (2) · <code>Gramain</code> (2) ·
+<code>geometric progression</code> (6) · <code>P(x) integer-valued but not in Z[x]</code> (0) · <code>strict inclusion</code> (2) ·
+<code>Newton lattice</code> (31). <em>Recorded because it will bite the next searcher: <code>ostrowski</code> returns 1 and
+<code>Ostrowski</code> returns 0 — the shelf search is smart-case.</em></p>
+<h3 id="83-defhc-the-row-that-wants-neither-a-citation-nor-a-declaration">8.3 <code>def:hc</code> — the row that wants neither a citation nor a declaration</h3>
+<p>At <code>GL₁</code> both stated clauses are <strong>empty</strong>: <code>HC = id</code> because there is nothing to project, and <code>W</code> is
+trivial, so <code>w(Y_n) = Y_{wn}</code> is the identity and <code>(N^ev)^W = N^ev</code>. What the definition genuinely
+fixes is the <strong>coordinate</strong> <code>Y_n = t^{-n} K_{n,+}^2</code> — the shift carried <em>in the coordinate rather
+than in the map</em>. De Concini–Procesi instead carry it in the twist <code>γ(K_λ) = q^{(ρ|λ)}K_λ</code>, and
+Jantzen's route needs a dictionary the card records as <strong>not written</strong>. Both cards independently
+attribute the coordinate placement to this programme. So the honest row cites the theorem's own cards
+for the projection-and-invariance pair, records that <strong>the shift-placement convention is ours with no
+located predecessor</strong>, and notes that the definition is degenerate at this rank.</p>
+<h3 id="84-one-thing-owed-elsewhere-now-discharged-and-the-second-home-is-filled">8.4 One thing owed elsewhere — now DISCHARGED, and the second home is filled</h3>
+<p>The Librarian flagged — unprompted, twice — that its own <code>MINING_LOG.md</code> (held in the Library — pinned by this edition's manifest, not distributed with it) line covering these searches
+was <strong>owed and not yet written</strong>, because this Editor set the task read-only. The searches are
+recorded here (queries, shelves, date), which is what §6b requires of the edition; but §6b exists so
+that a cited search is <em>findable afterwards</em>, and one of its two homes was empty.</p>
+<p><strong>WRITTEN 2026-08-14, commit <code>650200ae</code> — <code>corpus/MINING_LOG.md</code>, entry "2026-08-13 (§6b) — the A0a
+edition-level definition searches, journalled late".</strong> It records both query sets with their hit
+counts, the verdict that <strong>at most one of the five proposed <code>\nopredecessor</code> declarations survives
+and that one only as a half</strong>, the acquisition block on <code>def:nev</code>, and the <code>center-GL1</code> routing gap
+found on the way — <strong>and it says openly that it is late and why.</strong> §7 here and that journal now say
+the same thing in both homes, which is the whole point of §6b. <strong>Nothing is open against the
+Library.</strong> <em>(It went in about an hour before this seat restated the item, so the restatement crossed
+it — recorded because a stale "still owed" is its own small defect.)</em></p>
+<h3 id="85-the-two-acquisitions-and-the-sweep-that-confirmed-they-are-real">8.5 The two acquisitions, and the sweep that confirmed they are real</h3>
+<p><strong>Filed 2026-08-13</strong> as REQUEST <code>20260813T111346Z-editor-56787-5977</code> to the Librarian. <strong>Both are
+now HELD, READ, AND CARDED</strong>, so <strong>no acquisition <code>LR-</code> id is owed</strong> — the Librarian ruled (and this
+edition accepts) that <em>the ancestry record cites CARD IDS, not request ids</em>, because a card is what
+resolves under criterion 13:</p>
+<table>
+<thead>
+<tr>
+<th>source</th>
+<th>card</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gramain, LNM 1415, Prop. 2.2, p. 124</td>
+<td><code>lit-gramain-geometric-progression-integer-valued-basis</code></td>
+</tr>
+<tr>
+<td>Cahen–Chabert, Prop. I.3.1 + Rem. I.3.2, p. 9</td>
+<td><code>lit-cahen-chabert-vandermonde-coefficient-descent</code></td>
+</tr>
+<tr>
+<td>Harman–Hopkins q-Pólya basis</td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code> <em>(qualification added 2026-08-13)</em></td>
+</tr>
+</tbody>
+</table>
+<p>Both cards were <strong>read at source by the Librarian</strong>, not transcribed from this edition's reports —
+which is why the frame reading below is corroborated rather than merely repeated.</p>
+<p><strong>CITE BY ARTICLE, NEVER BY VOLUME</strong> — a trap the Librarian hit and put on the card. LNM 1415 is a
+<em>volume</em> whose articles number independently, and searching it for "Proposition 2.2" lands <strong>first on
+a different article's statement about primes <code>p^k</code> dividing a binomial-type coefficient.</strong> The
+citation must read <em>"Gramain, LNM 1415, Prop. 2.2, p. 124"</em> and never <em>"LNM 1415 Prop. 2.2"</em>, or a
+reader following this row with a naive search arrives at the wrong statement.</p>
+<ol>
+<li><strong>Gramain</strong>, <em>Fonctions entières … prenant des valeurs entières sur une progression géométrique</em>,
+   LNM 1415 (1990) — the classical statement over a <strong>multiplicative</strong> grid, which is our grid. Every
+   ancestor we hold is on the additive grid and reaches ours only through the substitution.</li>
+<li><strong>Cahen–Chabert</strong>, <em>Integer-Valued Polynomials</em>, AMS Surveys 48 (1997) — the standard reference,
+   <strong>cited by our own held source</strong>. <strong>RECEIVED 2026-08-13 13:37</strong>; title page verified as
+   <strong>Paul-Jean</strong> Cahen and Jean-Luc Chabert, AMS Surveys and Monographs vol. 48 — i.e. the right
+   Cahen, resolving the wrong-author trap below. PDF page offset: printed 1 = PDF 25. Its bearing on
+   row A0a-09 is under reading; <strong>it gated no declaration</strong> and was never on the critical path once
+   Gramain landed. Its several-variables and base-change material is
+   also the natural home for the rigidity statement §7.3 searched for and did not find, so no third
+   request was filed.</li>
+</ol>
+<p><strong>Both were swept for locally before being treated as real</strong>, over the estate's whole document store
+(~29.5k PDFs), case-insensitively, on 2026-08-13: <code>gramain</code> → 0; <code>progression géométrique</code> /
+<code>ganzwertige</code> → 0; <code>1415</code> → 0 relevant; <code>integer valued</code> → only our own Harman–Hopkins material,
+already carded. <strong>Both are genuinely absent</strong>, so the acquisitions stand.</p>
+<p><strong>A trap recorded because it nearly closed the acquisition wrongly.</strong> A surname sweep for <code>cahen</code>
+returns four confident-looking local hits — <strong>and every one is the wrong Cahen</strong>: Moshé Cahen
+(Berezin–Weyl quantization, Kähler manifolds, Dooley–Rice contraction). The integer-valued-polynomials
+author is <strong>Paul-Jean</strong> Cahen. A seat in a hurry could mark this "already held" and close the request
+on four irrelevant files. This is the same shape as the smart-case trap in §8.2 (<code>ostrowski</code> returns
+1, <code>Ostrowski</code> returns 0): <em>a query returning something is not a query returning the right thing.</em></p>
+<h3 id="86-acquisition-fulfilled-gramain-is-held-and-it-settles-defnev-by-cite">8.6 ACQUISITION FULFILLED — Gramain is held, and it settles <code>def:nev</code> by CITE</h3>
+<p><strong>LNM 1415 arrived on the shelf 2026-08-13 13:27</strong> as the conference volume
+<code>corpus/literature/pdf/Cinquante Ans de Polynomes - Fifty Years of Polynomials LNM 1415.pdf</code>
+(<em>Cinquante Ans de Polynômes / Hommage à Alain Durand</em>, ed. M. Langevin). <strong>Gramain's article is
+inside it</strong>, and the volume's own table of contents gives the locus:</p>
+<blockquote>
+<p><strong>F. Gramain</strong>, <em>Fonctions entières d'une ou plusieurs variables complexes prenant des valeurs
+entières sur une progression géométrique</em>, <strong>printed pp. 123–137</strong>. (PDF offset +9: printed 123 =
+PDF page 132.)</p>
+</blockquote>
+<p><strong>The predecessor is §2, Proposition 2.2, printed p. 124</strong> — quoted verbatim:</p>
+<blockquote>
+<p><strong>PROPOSITION 2.2 :</strong> <em>Soit <code>q ≥ 2</code> un entier naturel. L'ensemble des polynômes <code>P ∈ ℂ[X]</code> tels que
+<code>P(q^k) ∈ ℤ</code> pour tout <code>k ∈ ℕ</code> est le ℤ-module engendré par les polynômes binomiaux de Gauss</em>
+<code>G_0 = 1</code>, <code>G_n(X) = (X−1)(X−q)⋯(X−q^{n−1}) / ((q−1)(q²−1)⋯(q^n−1)) · q^{n(n−1)/2}</code>, <em>pour tous les
+entiers <code>n ≥ 1</code>.</em></p>
+</blockquote>
+<p>That is <strong>the integer-valued statement on a multiplicative grid</strong>, generated by Gauss binomial
+polynomials — the classical ancestor of <code>def:nev</code> and of <code>def:nu</code> together, over our grid rather than
+reached through the additive substitution. Its companion <strong>Proposition 2.1</strong> (same page) is the
+classical <strong>additive</strong> Pólya statement on the Newton binomials <code>N_n(X) = binom(X,n)</code>, so the volume
+carries both halves side by side and <em>names the passage between them</em>.</p>
+<p><strong>CORRECTED 2026-08-13 — <code>G_n = ν_n</code> EXACTLY.</strong> Gramain's printed exponent is <strong>negative</strong>: he
+<em>divides</em> by <code>q^{n(n−1)/2}</code> where this edition first read him as multiplying. His normalization <strong>is</strong>
+ours, not ours up to a unit.</p>
+<p><strong>Settled from the page's own content, independent of the glyph</strong> — which matters, because the minus
+is invisible at ordinary rendering resolution and absent from the scan's text layer. Printed p. 125,
+inside the proof of Proposition 2.2: <strong><em>"On voit que <code>G_n(q^n) = 1</code>"</em></strong>. Our <code>ν_n(q^n) = 1</code> holds by
+construction, so the exponent <strong>must</strong> be negative; a positive one would give <code>G_n(q^n) = q^{n(n−1)}</code>.
+The page states the normalization, and the normalization forces the sign. A second reading at 500 dpi
+by two other seats found the minus present.</p>
+<p><strong>WITHDRAWN: the claim <code>G_n = q^{n(n−1)}·ν_n</code> and its certificate <code>b058e915…</code>.</strong> The certificate is
+not false — it faithfully certifies that identity <strong>for the formula that was typed into it</strong>, which
+carried a dropped minus.</p>
+<p><strong>The correction makes the row stronger, not weaker:</strong> exact coincidence of normalizations rather
+than agreement up to a unit.</p>
+<p><strong>Frame, and it is a real difference the row must carry.</strong> Gramain's <code>q</code> is a <strong>natural number
+<code>≥ 2</code></strong>, his coefficients are <strong>ℤ</strong>, and his <code>X</code> is a complex variable; ours is <code>q</code> an
+<strong>indeterminate</strong> with coefficient ring <code>A_t = ℤ[v^{±1}, t^{±1}]</code> and no free parameter on his side
+at all. So <code>q^{n(n−1)}</code> is <strong>a unit in our ring and not in his</strong> — the two normalisations are
+interchangeable for us and not for him. His statement is about a <em>ℤ-module of complex polynomials</em>;
+ours about an <code>A_t</code>-lattice. <strong>Ancestor of the form, not a citable instance of our statement.</strong></p>
+<p><strong>One caution that makes the citation stronger, not weaker.</strong> Gramain says of both propositions
+<em>"Les deux résultats suivants sont sans doute classiques"</em>, and his §1 explains why he proves them
+anyway: they are <em>"des résultats classiques sur les polynômes à valeurs entières, résultats qui ne
+semblent pas disponibles dans la littérature"</em> — doubtless classical, <strong>but not available in the
+literature</strong>. So Gramain is the <em>citable</em> source for the multiplicative-grid statement precisely
+because the folklore version has no earlier printed home. He also records the deeper context: the
+entire-function analogue on a geometric progression is <strong>Gel'fond 1933</strong>, the <em>"analogue
+multiplicatif du problème additif précédent"</em> (Pólya 1914).</p>
+<p><strong>CONSEQUENCE FOR THE RECORD ACT.</strong> <code>\nopredecessor</code> on <code>def:nev</code> is now <strong>definitively false</strong>, and
+the §6b block on it is <strong>discharged in the CITE direction</strong>: the row cites <strong>Gramain, LNM 1415,
+Proposition 2.2, p. 124</strong>, with the frame above. The same locus strengthens <code>def:nu</code>'s ancestry from
+a <code>q</code>-deformed analogue (Harman–Hopkins) to a <em>classical</em> one on our own grid.</p>
+<h2 id="9-cahenchabert-read-2026-08-13-one-predecessor-found-and-one-error-of-ours-exposed">9. Cahen–Chabert, read 2026-08-13 — one predecessor found, and one error of ours exposed</h2>
+<p>The second acquisition arrived at 13:37 and was read the same hour. It resolves the edition's one
+remaining <code>none located</code>, corrects a claim on a card we cite, and confirms Gramain as the source of
+record. Copy read as <strong>page images</strong>, not from the scan's text layer, which is noisy (it renders <code>K</code>
+as <code>kK</code>). Offset: printed p. 1 = PDF sheet 25.</p>
+<h3 id="91-row-a0a-09s-predecessor-proposition-i31-printed-p-9">9.1 Row A0a-09's predecessor — Proposition I.3.1, printed p. 9</h3>
+<p><strong>Found in §I.3 "Trivial cases", subsection <em>Vandermonde</em> — not in §I.2 Localization</strong>, which is
+adjacent only and which the edition had already searched.</p>
+<blockquote>
+<p><strong>PROPOSITION I.3.1.</strong> <em>Let <code>D</code> be a domain contained in a field <code>L</code> and <code>f</code> be a polynomial of
+degree <code>n</code> with coefficients in <code>L</code>. If <code>a₀, …, aₙ</code> are <code>n+1</code> elements of <code>D</code> such that
+<code>f(aᵢ) ∈ D</code>, and if <code>d = ∏_{i&lt;j}(aⱼ − aᵢ)</code>, then <code>df ∈ D[X]</code>.</em></p>
+<p><strong>Remarks I.3.2.</strong> (i) <em>… if <code>E</code> is an infinite subset of <code>K</code>, then a polynomial with coefficients
+in a larger field which maps <code>E</code> into <code>D</code>, is in fact a polynomial with coefficients in <code>K</code>.</em> …
+(ii) <em>If <code>E</code> is finite, however, it would make sense to consider polynomials with coefficients in a
+larger field <code>L</code> mapping <code>E</code> into <code>D</code> … We should then probably denote by <code>Int(E, D, L)</code> …</em></p>
+</blockquote>
+<p>That is this row's claim, made in 1997: the evaluation set and target fixed, only the ambient
+enlarged, and integrality on an <strong>infinite</strong> evaluation set forcing the coefficients back down. They
+even name the enlarged object and record that it is new <strong>only for finite</strong> evaluation sets. Ours is
+infinite.</p>
+<p><strong>Why the proposition and not just the remark.</strong> Remark I.3.2(i) lands coefficients in the <em>quotient
+field</em>; this row needs them in <code>F_t = ℚ(v)[t^{±1}]</code>, which is <strong>not</strong> a field. Proposition I.3.1 is
+sharper than the remark drawn from it: it lands them in <code>(1/d)·A_t</code> with <code>d</code> an <strong>explicit</strong> product
+of node differences. Every node here is a power of <code>q</code>, so <code>d</code> lies in <code>ℤ[q^{±1}]</code> and <strong>carries no
+<code>t</code></strong> — no <code>t</code> can enter a denominator, which is exactly the non-field landing the row needs.</p>
+<p><strong>Adjacent and explicitly rejected</strong>, recorded so nobody re-searches them: all of §I.2; §IV.3 Prop.
+IV.3.4 / Cor. IV.3.5 (pp. 82–84); §IV.4; Chapter IV Exercise 3 (p. 91). Across the whole book
+<strong>exactly three passages vary a field at all</strong>, and only p. 9 varies the <em>ambient</em>.</p>
+<h3 id="92-an-error-of-ours-exposed-by-the-reading-and-it-is-the-one-this-file-warns-about">9.2 An error of ours, exposed by the reading — and it is the one this file warns about</h3>
+<p>The brief written for this reading described our base ring as <code>A_t = ℤ[q^{±1}, t^{±1}]</code>. <strong>The signed
+goal says <code>A_t = ℤ[v^{±1}, t^{±1}]</code></strong> — with <code>v</code>. The migration sends the <em>retired</em> <code>q</code> to the
+<em>current</em> <code>v</code>, so the retired <code>A_z = ℤ[q^{±1}, z^{±1}]</code> becomes <code>ℤ[v^{±1}, t^{±1}]</code>, and translating
+the retired <code>q</code> to a current <code>q</code> is precisely the <strong>inverted dictionary</strong> this section exists to
+prevent. It appeared twice in this file, <strong>including in §3.1's own translation table</strong>, corrected
+2026-08-13.</p>
+<p><strong>Bounded, and the spine was never wrong:</strong> <code>CONCORDANCE.json</code> and <code>EMBEDDING_NOTE.md</code> both carried
+<code>ℤ[v^{±1}, t^{±1}]</code> correctly throughout. The defect was confined to this file's prose.</p>
+<p><strong>It had one knock-on worth recording.</strong> Under the mis-stated ring, <code>F_t = ℚ(v)[t^{±1}]</code> is <em>not</em>
+contained in <code>Frac(A_t) = ℚ(q,t)</code>, and the reading duly reported "a frame problem in your setup".
+<strong>That reported problem is an artefact of the bad brief, not a defect in the record or the
+concordance</strong>: under the correct <code>A_t</code>, <code>Frac(A_t) = ℚ(v,t) ⊇ ℚ(v)[t^{±1}] = F_t</code>, and the
+containment holds. A false finding about the record was one step from entering it.</p>
+<h3 id="93-a-correction-owed-to-a-card-we-cite-chapter-ii-exercise-15-printed-p-46">9.3 A correction owed to a card we cite — Chapter II, Exercise 15, printed p. 46</h3>
+<p>Our card <code>lit-harman-q-polya-qbinomial-basis</code> quotes Harman–Hopkins saying their Proposition 1.2 "is
+essentially the same as [CC97, Chapter II, Exercise 15]". Read directly, <strong>it is not the same
+statement</strong>, in three ways: Exercise 15 evaluates on the <strong>multiplicative</strong> set <code>{q^k}</code> where Prop.
+1.2 evaluates on the <strong>additive</strong> <code>q</code>-integers; Exercise 15's <code>q</code> is <strong>a fixed integer ≥ 2</strong> where
+theirs is an indeterminate; Exercise 15 gives a <strong>ℤ</strong>-module basis of <code>Int(E, ℤ)</code> where theirs is a
+free <code>ℤ[q]</code>-module. "Essentially" is a defensible informal remark about family resemblance; a reader
+following the citation expecting Proposition 1.2 will not find it.</p>
+<p><strong>For us the mismatch cuts the helpful way</strong> — Exercise 15 is in the <em>multiplicative</em> frame, which is
+ours.</p>
+<p><strong>JOINTLY VERIFIED 2026-08-13 — both misprints in Exercise 15(ii) STAND</strong>, after a retraction by
+this seat that turned out to be over-broad. The sequence is worth keeping, because the near-miss ran
+in both directions.</p>
+<p>When the Gramain reverse pass showed that a printed minus in this material is invisible at ordinary
+rendering resolution, this seat inferred that its reading of Cahen–Chabert's prefactor was probably
+the same defect, and <strong>retracted the misprint claims as unsafe</strong>. That inference was wrong. The
+Librarian had independently rendered printed p. 46 as a page image at the same time, reached sheet 70
+by the same route, and <strong>confirmed both misprints line for line</strong> — re-deriving the prefactor
+refutation <strong>symbolically in <code>q</code></strong> rather than on seeds: with the printed sign,
+<code>gₙ(q^n) = 1, q², q⁶, q¹²</code> for <code>n = 1…4</code> (certificate <code>ebece83d</code>), against the page's own
+<code>gₙ(q^n) = 1</code>. This edition's seed-based refutation <code>eec044c7…</code> is cited on their card as the
+independent prior.</p>
+<p><strong>The two books genuinely differ, and that is the whole point:</strong> Gramain <strong>prints</strong> the minus, so his
+formula is correct and <code>G_n = ν_n</code>; Cahen–Chabert <strong>dropped</strong> it in transcribing from him, so their
+exercise contradicts its own stated normalization two lines below. <strong>The same low-resolution reading
+was wrong about Gramain and right about Cahen–Chabert</strong> — which is why neither the resolution
+argument nor its negation could settle either book, and why the independent read was needed.</p>
+<p>So the finding is <strong>stronger</strong> than first stated: C–C's prefactor error is precisely <em>a dropped minus
+in a transcription from a source that prints it correctly</em>, and their own citation <code>[143]</code> points at
+that source. Carded as <code>lit-cahen-chabert-ex15-erratum-two-misprints</code>, recording both misprints, the
+corrected part (ii), the joint route (sheet 70, offset +24, text layer abandoned), and the three
+ancestry rows read off the page — <code>[137, p. 16]</code> Gauss for the definition, <code>[168, I]</code> Pólya–Szegő for
+the integrality, <code>[143, Prop. 2.2]</code> Gramain for (iii). The Harman–Hopkins qualification is no longer
+carried on this seat's reading alone.</p>
+<p><em>The superseded retraction, retained so the record shows what was claimed and withdrawn:</em> (upgraded 2026-08-13 from a delegated reading, per F-A5's lesson that a delegated finding is
+evidence rather than a verdict; the Librarian could not isolate the exercise because the scan's OCR
+mangles chapter-level exercise numbering — it is legible as an <em>image</em>). The numerator prints <code>(X−1)(X−2)⋯(X−q^{n−1})</code>;
+the second factor must be <code>(X−q)</code>, or the stated vanishing fails. The prefactor prints
+<code>q^{n(n−1)/2}</code> and must be <code>q^{−n(n−1)/2}</code>: with the positive exponent <code>gₙ(q^n) = q^{n(n−1)} ≠ 1</code>,
+<strong>self-contradictory on the page</strong>, with no kernel needed: at <code>X = q^n</code> the numerator product
+<code>∏_{s&lt;n}(q^n − q^s)</code> already equals <code>q^{n(n−1)/2}∏_{j=1}^{n}(q^j − 1)</code>, cancelling the printed
+denominator exactly, so the printed form gives <code>gₙ(q^n) = q^{n(n−1)}</code> while the page states
+<code>gₙ(q^n) = 1</code> two lines below. Also machine-refuted at seeds <code>(q,n) = (3,2), (2,3), (5,4)</code> (identity
+sha256 <code>eec044c7…</code>); the negative exponent confirms both printed evaluation claims (<code>c7dd85af…</code>,
+<code>ed681223…</code>).</p>
+<p><strong>And the Gramain attribution is on the page in the book's own hand</strong>, verified first-hand: Exercise
+15(iii) ends <em>"…if and only if <code>f(q^k) ∈ ℤ</code> for <code>k = 0,1,…,n</code>. </em><em>[143, Proposition 2.2]</em><em>"</em>.</p>
+<h3 id="94-gramain-confirmed-as-the-source-of-record">9.4 Gramain confirmed as the source of record</h3>
+<p>Cahen–Chabert treats the geometric progression <strong>in exactly one place</strong> — Exercise 15 — <strong>states it
+without proof</strong>, and attributes it to <strong><code>[143, Proposition 2.2]</code></strong>, whose bibliography entry (printed
+p. 315) is Gramain, LNM 1415, pp. 123–137: <em>the very proposition this edition already cites</em>. Gramain
+is cited exactly once in the whole book. The only internal pointer to the multiplicative case is one
+sentence, Remark I.1.3(i), p. 2: <em>"For a multiplicative analogous result, see Exercise II.15."</em></p>
+<p><strong>So Cahen–Chabert is not a better home for <code>def:nev</code> than Gramain</strong> — it is a signpost confirming
+Gramain, and its own attribution points at exactly the proposition we hold. Its Exercise 15 is also
+stated for <code>q</code> a fixed integer with values in <code>ℤ</code>, so it never reaches a parameter-carrying
+coefficient ring, which our setting requires.</p>
+<p><strong>Searched and absent</strong>, for the record: "geometric progression", "progression", "geometric",
+"q-analogue", "Gaussian binomial", "Gramain", "Vandermonde", "subfield", "larger field", "smaller
+field", "field extension" across all 352 sheets, the subject index (pp. 319–322) and the bibliography
+(pp. 305–318). No index entry exists for "geometric progression" or "Vandermonde"; the sole relevant
+index entry is <em>Gaussian binomial coefficient, 46</em> — the exercise.</p>
+<h2 id="10-redundancy-of-the-ancestry-measured-and-the-one-source-that-is-single-carded">10. Redundancy of the ancestry, measured — and the one source that is single-carded</h2>
+<p><strong>Measured 2026-08-15</strong>, first by the Librarian over this edition's eleven concordance rows and then
+<strong>independently here, with a different denominator and a different answer worth stating precisely.</strong></p>
+<p><strong>The good half reproduces.</strong> Normalising the concordance's named records to the external works
+behind them gives <strong>six works</strong> — Harman–Hopkins, Lusztig, De Concini–Procesi, Jantzen,
+Cahen–Chabert, Gramain. Counted <strong>Library-wide</strong> (342 statement cards), five carry two or more cards:
+Lusztig 37, De Concini–Procesi 12, Harman–Hopkins 8, Gramain 4, Cahen–Chabert 3.</p>
+<p><strong>The exception, which this seat could not make disappear: JANTZEN, <em>Lectures on Quantum Groups</em>
+(GSM 6), IS CARRIED BY EXACTLY ONE CARD IN THE WHOLE LIBRARY</strong> —
+<code>lit-jantzen-harish-chandra-even-torus</code>. One other card names the book in its body
+(<code>lit-v2.jantzen-dilated-linkage-blocks</code> — a card built from an unpublished collaboration draft, pinned
+by this edition's manifest as evidence for this sentence but <strong>not distributed with it</strong>) but not as a
+source, and the many other Jantzen mentions
+across the shelf are <strong>different Jantzen works</strong> — the sum formula, the filtration, affine walls.</p>
+<p><strong>What that does and does not mean.</strong> <em>No row of this edition is one card-defect away from being
+unsupported</em>: the only row citing Jantzen, <strong>A0a-02 (clause ii)</strong>, cites it <strong>alongside</strong> De Concini–
+Procesi §18.3 (12-carded) and our own in-programme predecessor <code>gl2-hc-image-theorem</code>. So the
+property that matters for the rows holds. <strong>The stronger reading — every source behind the edition is
+multiply carded — does not.</strong></p>
+<p><strong>And the single-carded source is the one already known to be partial.</strong> That same card records on
+its face that §§6.4–6.5, 6.22, <strong>6.26 and 8.30 are not transcribed</strong>, and 6.26/8.30 are where the
+later extension of Thm 6.25 lives (§4, rider 1). <strong>Single-carded and self-declared incomplete is the
+weakest ancestry point in this edition</strong>, and it is stated here rather than left to be found — it
+warrants no repair by this seat, since the row it serves is independently supported, and a second
+Jantzen card is the Library's to write if it ever wants one.</p>
+<p><strong>Correction and method limit, same night, and it is against this seat's own count.</strong> The Librarian
+re-measured before answering, keyed on the <strong>work</strong> and counting <strong>distinct citing cards</strong>, and
+<strong>confirmed the exception</strong>: Jantzen GSM 6 → <strong>1 card</strong>; De Concini–Procesi → 3, Lusztig → 16,
+Harman–Hopkins → 7. They <strong>withdrew "zero single points of ancestry"</strong> as a false reassurance, having
+computed <code>blob.count(source) &lt; 2</code> over a concatenation of all cards — <strong>which counts OCCURRENCES, not
+CITERS</strong>: one card naming a source in both its <code>sources:</code> field and its body scores 2 and passes.</p>
+<p><strong>This seat's numbers above (Lusztig 37, DCP 12, …) are NOT method-safe and are superseded by
+theirs.</strong> They were keyed on a <strong>surname</strong>, which does not distinguish <em>works</em>: the shelf's Lusztig
+citations include both <em>Introduction to Quantum Groups</em> and <strong>Lusztig 1990</strong>, a different paper.
+<strong>The conclusion survives on the better measurement, not on this one</strong> — all five still carry ≥ 2
+citing cards under the stricter count.</p>
+<p><strong>The lesson is sharper than either error.</strong> This seat applied work-level discrimination — checking
+the printed title — to <strong>exactly one</strong> of the six: Jantzen, the case it was already suspicious of.
+The other five were passed on a surname. <strong><em>A check applied only where you already suspect the
+answer is not a check; it is a confirmation of the suspicion you brought.</em></strong> Both seats over-counted
+from the same instinct in opposite directions — <strong>counting the convenient token rather than the
+thing.</strong></p>
+</main></body></html>

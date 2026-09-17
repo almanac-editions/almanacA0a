@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authorship — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+
+<a class="back" href="index.html">&larr; the almanac</a>
+<p><a href="https://github.com/almanac-editions">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg">
+  <img src="almanac-mark.svg" align="right" width="110"
+       alt="almanac — the word's three a's carry the three kinds of warrant: informal, computational, kernel-certified">
+</picture>
+</a></p>
+<h1 id="authorship">Authorship</h1>
+<p><em>almanacA0a — the centre of the even hybrid family quantum GL₁.</em>
+Form fixed by the edition manifest §8; scheme settled 2026-08-05.</p>
+<h2 id="author">Author</h2>
+<p><strong>Tamás Hausel</strong> — who directed this sandbox throughout its life.</p>
+<p>The scheme is deliberate on this point: authorship follows <em>direction over the whole life of the
+work</em>. The goal statement was fixed and signed before any proving budget
+was spent, every approval gate was a human act, and the closure signature is a human act; the
+assembly and checking between those acts was done by machine.</p>
+<h2 id="released-by">Released by</h2>
+<p>Every push of this edition to its public repositories was performed by Tamás Hausel from his own
+account; the editing seat assembles and never releases. The commits of the published history carry
+his identity, and responsibility for everything the edition contains is his.</p>
+<h2 id="issued-by">Issued by</h2>
+<p><strong>Project Sandbox.</strong></p>
+<h2 id="general-editor">General editor</h2>
+<p>This edition was assembled by the Almanac Editor. For the series as designed, the Almanac Editor is
+a funded human post serving as general editor across editions. <strong>For this pilot edition the post was
+discharged by a software agent</strong>, and the edition says so on its face. What that cost, and what a
+human would have had to do instead, is measured in <code>MEASUREMENT_LOG.md</code> (held in the record, not distributed; the figures are in <code>MANIFEST.json</code>).</p>
+<h2 id="contributors">Contributors</h2>
+<p>The work was produced by software agents operating under the Project Sandbox Rule — a written
+operating standard that fixes the statement before the proof, requires a computer-algebra oracle to
+confirm a statement (including against adversarial inputs) before proving effort is spent, and
+accepts a result as certified only on the verdict of a proof kernel. Agents hold defined roles with
+single-writer boundaries; no agent approves its own work, and the seat that produces an edition is
+never the seat that accepts it.</p>
+<p>Contributing roles for this edition: the type-A programme hypervisor (record owner and accepting
+counterparty), the sandbox Resident (mathematics), the Librarian (literature and cards), the
+Architect (the form this edition is built to), and the Almanac Editor (assembly and measurement).</p>
+<h2 id="the-certifier">The certifier</h2>
+<p>Formal results are certified by the <strong>Lean 4 proof kernel</strong> (toolchain <code>leanprover/lean4:v4.30.0</code>,
+Mathlib revision <code>c5ea00351c28e24afc9f0f84379aa41082b1188f</code>). A result counts as kernel-certified
+only when its axiom base is exactly the three standard axioms of Lean's kernel — propositional extensionality (<code>propext</code>), the axiom of choice (<code>Classical.choice</code>) and quotient soundness (<code>Quot.sound</code>) — the base every Mathlib proof shares; a certificate is clean when these three are all it needs — with no
+<code>sorryAx</code> and no custom axiom. <strong>Per-result warrants are in <code>CONCORDANCE.json</code> and they are not
+uniform</strong>: the certifier certifies the Lean statement and nothing else. What the computational
+layer does and does not establish is in <code>EMBEDDING_NOTE.md</code>, and it is not a certificate.</p>
+<h2 id="sources">Sources</h2>
+<p>Cited literature appears per result in the concordance's <code>ancestry</code> field and in <code>ANCESTRY.md</code>.
+Cards — this project's own written statements <em>about</em> other people's results, carrying the
+convention frame under which they are read — travel inside the edition. <strong>Sources themselves are
+referenced and never redistributed.</strong></p>
+<hr>
+<p><em>A reader of this edition meets the people and the institution; role names used in the estate's
+own internal governance stay within the estate. The one internal-facing exception is the
+contributor list above, which names roles rather than seats because a reader is entitled to know
+which functions were machine-held.</em></p>
+</main></body></html>

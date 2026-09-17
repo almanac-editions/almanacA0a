@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operating instructions for an AI agent — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+
+<a class="back" href="index.html">&larr; the almanac</a>
+<p><a href="https://github.com/almanac-editions">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg">
+  <img src="almanac-mark.svg" align="right" width="110"
+       alt="almanac — the word's three a's carry the three kinds of warrant: informal, computational, kernel-certified">
+</picture>
+</a></p>
+<h1 id="operating-instructions-for-an-ai-agent">Operating instructions for an AI agent</h1>
+<p><em>You are working inside a self-contained almanac: a closed mathematical record in three layers,
+with a per-claim account of what warrants each one. This file tells you how to make everything in
+it work, and — more importantly — what you are not permitted to conclude.</em></p>
+<p><strong>Read this whole file before running anything.</strong> Section 0 binds; the rest is procedure.</p>
+<hr>
+<h2 id="0-the-rules-that-bind-before-any-command">0. The rules that bind before any command</h2>
+<p><strong>0.1 — <code>warrant</code> is a property of a ROW, never of the almanac.</strong> <code>CONCORDANCE.json</code> records, per
+result, one of <code>ink</code>, <code>orange</code>, <code>blue</code> — the three warrants, in that order. These are <strong>not
+interchangeable and never collapse into "we showed"</strong>. Nine of eleven rows are kernel-certified.
+The other two are verified over a <strong>declared bound and over nothing else, and the bound is part of
+the claim.</strong> If you summarise this almanac in a way that loses that distinction, you have
+misreported it.</p>
+<p><strong>0.2 — A kernel certifies the Lean statement, and nothing else.</strong> It does not establish that the
+Lean statement faithfully renders the mathematics. A row may <strong>not</strong> be called kernel-certified on
+the strength of a Lean proof when the claim the row makes is about the <em>code</em> rather than the
+mathematics. See <code>EMBEDDING_NOTE.md</code>.</p>
+<p><strong>0.3 — Never repair a discrepancy by changing a statement.</strong> If a proof, a computation and a
+manuscript disagree, that is a <strong>finding to report</strong>, not a defect to smooth. Weakening a statement
+so that something passes is the one prohibited move.</p>
+<p><strong>0.4 — Do not invent provenance.</strong> If a field cannot be filled from the record — a model id, a
+citation, a licence, a budget — leave it unfilled and say why. An unfillable field is a result. A
+plausible fabricated one is a defect that survives review because it looks like an answer.</p>
+<p><strong>0.5 — Distinguish "I could not check" from "it passed."</strong> Every verification below has a
+distinguishable <em>could-not-run</em> outcome. Never report a missing dependency, a skipped step or an
+absent file as a pass. Where a check has an exit code, read the exit code <strong>unpiped</strong> — a piped
+command reports the exit status of the last process in the pipe, not of your check.</p>
+<p><strong>0.6 — The notation trap, and it will catch you.</strong> The Lean sources predate a notation migration:
+Lean <code>A_z</code> <strong>is</strong> the manuscripts' <code>A_t</code>, and Lean <code>Q</code> <strong>is</strong> the manuscripts' <code>q</code>. The sources
+keep their original bytes deliberately — the signed goal's hash is bound into the closure record.
+Every concordance row carries a <code>convention_frame</code> field. <strong>Read it before comparing any Lean name to any
+manuscript name.</strong> Names that look equal across layers frequently are not.</p>
+<hr>
+<h2 id="1-the-layout">1. The layout</h2>
+<pre><code>almanacA0a/
+  index.html              interactive reader view; fully offline and self-contained
+  FOR_A_HUMAN.md          the human's guide (install instructions live there)
+  FOR_AN_AI_AGENT.md      this file
+  EDITION.md              front matter, prose
+  CONCORDANCE.json        THE JOIN: one row per result across all three layers  &lt;- start here
+  MANIFEST.json           artifacts, hashes, gates, cost, reproducibility recipe
+  DIST_MANIFEST.json      what was shipped, and whether each file matched its manifest hash
+  CHECKSUMS.txt           sha256 of every shipped file
+  ANCESTRY.md AUTHORSHIP.md EMBEDDING_NOTE.md   (MEASUREMENT_LOG.md is pinned but not distributed)
+  almanac.html almanac.artifact.html almanac.explained.html    static reader views
+  render_index.py render_almanac.py render_artifact.py          the renderers
+  verify_edition.py       THE IN-TREE VERIFIER — resolves paths against the original
+                          project and does NOT run standalone here. Use CHECKSUMS.txt.
+  palomar/                Palomar / Mathlib-Initiative disclosure layer
+  source/
+    informal/             the manuscripts (.tex/.pdf), the evidence ledger, referee reports
+    lean/                 the seven certified modules, flat — A READING COPY, not buildable
+  replay/                 the SAME proofs plus their whole import closure, with pins and one
+                          command: ./replay.sh rebuilds and prints the axioms
+    instrument/           the Julia/OSCAR package, with its own test battery
+    record/               closure signature, certification log, consistency record, panel
+  sources-cited/          the literature cards this edition relies on
+</code></pre>
+<p><strong>Authority order when two files disagree:</strong> <code>CONCORDANCE.json</code> (per-row warrants and frames) &gt;
+<code>MANIFEST.json</code> (artifacts, hashes, gates) &gt; prose (<code>EDITION.md</code>, the HTML views). Prose is written
+for a reader; the JSON is written for you. <strong>Report any disagreement you find — do not silently
+prefer one.</strong></p>
+<hr>
+<h2 id="2-verification-in-order-of-cost">2. Verification, in order of cost</h2>
+<h3 id="21-integrity-seconds-no-dependencies">2.1 Integrity — seconds, no dependencies</h3>
+<pre><code class="language-sh">cd almanacA0a
+shasum -a 256 -c CHECKSUMS.txt          # Linux: sha256sum -c CHECKSUMS.txt
+echo &quot;exit=$?&quot;
+</code></pre>
+<p>Exit 0 = every shipped file is byte-identical to assembly.</p>
+<p>Then read <code>DIST_MANIFEST.json</code> → <code>build_class</code> and → <code>integrity</code>.</p>
+<p><strong><code>build_class</code> is the first thing to read and the first thing to report.</strong> A distributable is
+<code>PUBLISHABLE</code> only with <strong>zero</strong> DRIFT rows; any DRIFT makes it a <code>PREVIEW</code>, because the zip would
+otherwise freeze bytes the underlying record has not frozen. A <code>PREVIEW</code> says so on its own face —
+a banner at the head of this file, of <code>FOR_A_HUMAN.md</code>, and of <code>index.html</code> — and its zip is named
+<code>…-PREVIEW.zip</code>. <strong>Never describe a PREVIEW build as the edition of record</strong>, and never cite it as
+one. The rule is ALMANAC_EDITION_MANIFEST §12.7. <strong>Read the drift count from
+<code>DIST_MANIFEST.json</code> → <code>integrity</code>, never from this file</strong> — this page ships with every build and
+cannot know which one you are holding. If any row drifts, and you are asked whether the almanac's
+hashes all match, the answer is <strong>no, these do not, and here they are</strong>; do not report it as clean.
+If none drifts, say so plainly.</p>
+<h3 id="22-the-concordance-the-check-that-actually-matters">2.2 The concordance — the check that actually matters</h3>
+<pre><code class="language-sh">python3 - &lt;&lt;'EOF'
+import json, collections
+c = json.load(open(&quot;CONCORDANCE.json&quot;))
+print(&quot;rows:&quot;, len(c[&quot;rows&quot;]))
+print(collections.Counter(r[&quot;warrant&quot;] for r in c[&quot;rows&quot;]))
+for r in c[&quot;rows&quot;]:
+    ax = r.get(&quot;axioms&quot;) or []
+    clean = set(ax) == {&quot;propext&quot;, &quot;Classical.choice&quot;, &quot;Quot.sound&quot;}
+    print(f'{r[&quot;id&quot;]:26s} {r[&quot;warrant&quot;]:28s} axioms_clean={clean}')
+EOF
+</code></pre>
+<p><strong>Expected:</strong> 11 rows; 0 <code>ink</code>, 2 <code>orange</code>, 9 <code>blue</code>; every blue-warrantified
+row clean. A kernel-certified row whose axioms are <strong>not</strong> the clean triple is a serious finding —
+report it, do not explain it away.</p>
+<h3 id="23-the-palomar-disclosure">2.3 The Palomar disclosure</h3>
+<pre><code class="language-sh">python3 palomar/emit_formalization.py                 # regenerate from the record
+python3 -m venv .venv &amp;&amp; .venv/bin/pip install pyyaml jsonschema
+.venv/bin/python palomar/validate_formalization.py    # 0 valid · 1 invalid · 4 COULD NOT CHECK
+</code></pre>
+<p><strong>Expected today: exit 1, with exactly one error — <code>project/license</code> is empty.</strong> No licence is
+declared for this material and the generator refuses to invent one. Supplying <code>--license &lt;SPDX&gt;</code>
+makes it validate; that has been confirmed by positive control. <strong>Exit 4 is not a pass</strong> — it means
+the dependencies are absent and nothing was checked.</p>
+<p><strong>Never regenerate this file by hand-editing it.</strong> Every value is read from <code>CONCORDANCE.json</code> and
+<code>MANIFEST.json</code>; a hand edit silently detaches the disclosure from the record it describes.</p>
+<h3 id="24-the-instrument-minutes-to-tens-of-minutes">2.4 The instrument — minutes to tens of minutes</h3>
+<pre><code class="language-sh">cd source/instrument
+julia --project=. -e 'using Pkg; Pkg.instantiate(); Pkg.test()'
+</code></pre>
+<p><strong>Expected: 87/87 pass.</strong> First run installs OSCAR: slow, several GB. <code>Manifest.toml</code> is the pin
+(Julia 1.12.6, OSCAR 1.8.0); <code>Project.toml</code> states only compatible ranges.</p>
+<h3 id="25-the-lean-layer-rebuildable-in-replay-readable-in-sourcelean">2.5 The Lean layer — rebuildable in <code>replay/</code>, readable in <code>source/lean/</code></h3>
+<p><strong><code>replay/</code> rebuilds.</strong> It carries the complete transitive import closure (17 modules, 5,344 lines),
+<code>lakefile.toml</code>, <code>lean-toolchain</code> and <code>lake-manifest.json</code>, and <code>./replay.sh</code> fetches the pinned
+Mathlib, builds, runs <code>#print axioms</code> on all 31 certified declarations and ends PASS or FAIL. Run it
+if you are checking this edition; a build that succeeds certifies nothing, the axiom lines do.</p>
+<p><strong><code>source/lean/</code> is a flat reading copy</strong> of the seven certified modules and is not buildable — its
+<code>import</code> lines resolve only inside the tree, so do not "fix" them and do not build there.</p>
+<blockquote>
+<p><strong>This paragraph used to tell you the opposite, and it was wrong.</strong> Until 2026-09-16 it said the
+Lean layer rebuilt only in the original development and instructed you <strong>not to report that as a
+defect of the almanac</strong>. An independent reviewer of the public download reported it anyway, and
+was right: the edition was cited as one-command reproducible and shipped no build files. The
+instruction to suppress the finding was worse than the gap it covered, and both are fixed here.</p>
+</blockquote>
+<p>What you can also do:</p>
+<ul>
+<li>read the declarations named in <code>CONCORDANCE.json</code>;</li>
+<li>compare each against <code>source/record/formal/RELEASE_20260721_source_all_clean.log</code>, the
+  certification log from the run of record;</li>
+<li>confirm the pins in <code>MANIFEST.json</code> → <code>reproducibility_recipe</code>: <code>leanprover/lean4:v4.30.0</code>,
+  Mathlib <code>c5ea00351c28e24afc9f0f84379aa41082b1188f</code>.</li>
+</ul>
+<p>To re-certify from scratch you need the full development (<code>source/record/formal/SOURCE_MANIFEST.json</code>
+identifies it) and, per declaration:</p>
+<pre><code class="language-lean">#print axioms &lt;fully.qualified.name&gt;     -- expect exactly propext, Classical.choice, Quot.sound
+</code></pre>
+<hr>
+<h2 id="3-regenerating-the-reader-views">3. Regenerating the reader views</h2>
+<pre><code class="language-sh">python3 render_almanac.py       # -&gt; almanac.html
+python3 render_artifact.py      # -&gt; almanac.artifact.html
+python3 render_index.py         # -&gt; index.html   (the interactive view)
+</code></pre>
+<p><code>render_index.py</code> <strong>embeds</strong> the concordance and manifest data directly into the HTML. That is
+deliberate: a browser opening a <code>file://</code> page cannot <code>fetch()</code> a sibling JSON file, so an almanac
+that loaded its data at runtime would be blank for exactly the least technical reader. If you change
+<code>CONCORDANCE.json</code>, re-run the renderer or the page will silently show stale numbers.</p>
+<hr>
+<h2 id="4-what-you-may-not-claim-about-this-almanac">4. What you may not claim about this almanac</h2>
+<ul>
+<li><strong>Not peer reviewed.</strong> No external referee has read it. Internal review was by parties
+  structurally separated from the authors; that is not journal review.</li>
+<li><strong>Not registered</strong> with Palomar, and <strong>never describe it as "Palomar-ready"</strong> — that phrase is
+  forbidden in this project. <code>palomar/README.md</code> lists precisely which preconditions are unmet.</li>
+<li><strong>No licence is declared.</strong> Do not assume one, and do not infer permission to redistribute.</li>
+<li><strong><code>100%</code> anywhere means coverage, never closure</strong>, and closure is a human signature.</li>
+<li><strong>The two <code>orange</code> rows are not theorems for all inputs.</strong> Their bound is
+  part of their claim. Quoting them without the bound misstates them.</li>
+<li><strong>Cited sources are referenced, never redistributed.</strong> <code>sources-cited/</code> holds <em>this project's own
+  written cards about</em> other people's results — with the convention frame under which they were
+  read — not copies of those works.</li>
+</ul>
+<hr>
+<h2 id="5-if-you-are-asked-to-extend-or-repair-this-almanac">5. If you are asked to extend or repair this almanac</h2>
+<ol>
+<li><strong>Change the record, then regenerate — never the reverse.</strong> <code>CONCORDANCE.json</code> and
+   <code>MANIFEST.json</code> are upstream of every rendered view and of the Palomar disclosure.</li>
+<li><strong>Re-run the generators and the validator, and read their exit codes unpiped.</strong></li>
+<li><strong>Re-assemble</strong> (<code>assemble_almanac.py</code> in the source tree) so <code>CHECKSUMS.txt</code> and
+   <code>DIST_MANIFEST.json</code> match what you shipped. A stale checksum file is worse than none: it
+   reports a match that was never checked.</li>
+<li><strong>Anything you could not fill, or could not check, is recorded with its reason</strong> — in your
+   report, and in the edition's own findings register, which lives with the record and does not
+   travel in this package. A recorded shortfall is a deliverable. A smoothed-over one is the only
+   outcome that damages the record.</li>
+</ol>
+</main></body></html>
