@@ -1,0 +1,213 @@
+{
+  "generated_by": "render_replay.py",
+  "closure_roots": [
+    "Sandbox.A1.GL1.GOALv0a",
+    "Sandbox.A1.GL1.PresentedU",
+    "Sandbox.A1.GL1.FamilyField1",
+    "Sandbox.A1.GL1.NewtonUnivGrid",
+    "Sandbox.A1.GL1.NewtonUnivSpan",
+    "Sandbox.A1.GL1.NonDegeneracy",
+    "Sandbox.A1.GL1.KzBridge"
+  ],
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "mathlib_rev": "v4.30.0",
+  "mathlib_commit": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+  "package_revisions": {
+    "mathlib": "c5ea00351c28e24afc9f0f84379aa41082b1188f",
+    "plausible": "a456461b368b71d2accd95234832cd9c174b5437",
+    "LeanSearchClient": "c5d5b8fe6e5158def25cd28eb94e4141ad97c843",
+    "importGraph": "515cf9d0c00ece5e661f6de4326a53dedc1e8ea1",
+    "proofwidgets": "a84b3e2475d5c5ab979567b1ad8aea21b764bcf8",
+    "aesop": "558915ae105bfd8074e22d597613d1961822adc2",
+    "Qq": "a6e6c34c4ef182f83b219a3a5a385f51f44bdc4c",
+    "batteries": "32dc18cde3684679f3c003de608743b57498c56f",
+    "Cli": "6b907cf12b2e445ccb7c24bc208ef04a1f39e84c"
+  },
+  "mathlib_modules_imported": [
+    "Mathlib.Algebra.BigOperators.Fin",
+    "Mathlib.Algebra.BigOperators.Finsupp.Basic",
+    "Mathlib.Algebra.BigOperators.Group.Finset.Basic",
+    "Mathlib.Algebra.BigOperators.Intervals",
+    "Mathlib.Algebra.CharP.Algebra",
+    "Mathlib.Algebra.Field.Basic",
+    "Mathlib.Algebra.Field.Subfield.Basic",
+    "Mathlib.Algebra.GroupWithZero.Units.Basic",
+    "Mathlib.Algebra.Module.LinearMap.End",
+    "Mathlib.Algebra.MonoidAlgebra.MapDomain",
+    "Mathlib.Algebra.MvPolynomial.Basic",
+    "Mathlib.Algebra.MvPolynomial.CommRing",
+    "Mathlib.Algebra.MvPolynomial.Degrees",
+    "Mathlib.Algebra.MvPolynomial.Eval",
+    "Mathlib.Algebra.MvPolynomial.NoZeroDivisors",
+    "Mathlib.Algebra.Polynomial.EraseLead",
+    "Mathlib.Algebra.Polynomial.Laurent",
+    "Mathlib.Algebra.Ring.GeomSum",
+    "Mathlib.Algebra.Ring.Subring.Basic",
+    "Mathlib.Data.Fin.VecNotation",
+    "Mathlib.Data.Finsupp.Defs",
+    "Mathlib.Data.Finsupp.SMul",
+    "Mathlib.Data.Finsupp.Single",
+    "Mathlib.LinearAlgebra.Finsupp.LinearCombination",
+    "Mathlib.LinearAlgebra.Finsupp.VectorSpace",
+    "Mathlib.RingTheory.Ideal.Quotient.Operations",
+    "Mathlib.RingTheory.Localization.FractionRing",
+    "Mathlib.Tactic.FieldSimp",
+    "Mathlib.Tactic.FinCases",
+    "Mathlib.Tactic.Ring"
+  ],
+  "declarations_checked": [
+    "HybridQuantumLean.A1.GL1Newton.clause_i",
+    "HybridQuantumLean.A1.GL1Newton.clause_i_ambient",
+    "HybridQuantumLean.A1.GL1Newton.clause_i_in_torus",
+    "HybridQuantumLean.A1.GL1Newton.KzBridge.clause_i_Kz",
+    "HybridQuantumLean.A1.GL1Newton.clause_ii",
+    "HybridQuantumLean.A1.GL1Newton.clause_ii_ambient",
+    "HybridQuantumLean.A1.GL1Newton.ZUev_eq_ZUevAmbient",
+    "HybridQuantumLean.A1.GL1Newton.Nev_eq_span",
+    "HybridQuantumLean.A1.GL1Newton.Newton_iff_mem_span",
+    "HybridQuantumLean.A1.GL1Newton.mem_span_of_Newton",
+    "HybridQuantumLean.A1.GL1Newton.clause_iii",
+    "HybridQuantumLean.A1.GL1Newton.KzBridge.clause_iii_Kz",
+    "HybridQuantumLean.A1.GL1Newton.Az_nuGrid",
+    "HybridQuantumLean.A1.GL1Newton.Newton_nuGen",
+    "HybridQuantumLean.A1.GL1Newton.Newton_of_mem_span",
+    "HybridQuantumLean.A1.GL1Newton.expand",
+    "HybridQuantumLean.A1.GL1Newton.expand_spec",
+    "HybridQuantumLean.A1.GL1Newton.expand_witnesses_span",
+    "HybridQuantumLean.A1.GL1Newton.Presentation.equivTorus",
+    "HybridQuantumLean.A1.GL1Newton.Presentation.uBasis",
+    "HybridQuantumLean.A1.GL1Newton.Presentation.existsUnique_lift",
+    "HybridQuantumLean.A1.GL1Newton.Presentation.modelEquiv",
+    "HybridQuantumLean.A1.GL1Newton.clause_iii_nondegenerate",
+    "HybridQuantumLean.A1.GL1Newton.trap4_separator",
+    "HybridQuantumLean.A1.GL1Newton.FamilyField1.Qsub_one_inv_not_mem",
+    "HybridQuantumLean.A1.GL1Newton.Newton_ssubset_univ",
+    "HybridQuantumLean.A1.GL1Newton.nuGenSpan_ne_top",
+    "HybridQuantumLean.A1.GL1Newton.Laurent_ssubset_Newton",
+    "HybridQuantumLean.A1.GL1Newton.KzBridge.Newton_mem_KzAmbient",
+    "HybridQuantumLean.A1.GL1Newton.KzBridge.nuGenSet_subset_KzAmbient",
+    "HybridQuantumLean.A1.GL1Newton.KzBridge.mem_UevKz_iff_Newton"
+  ],
+  "modules": [
+    {
+      "module": "Sandbox.A1.Center",
+      "path": "Sandbox/A1/Center.lean",
+      "record_path": "Sandbox/A1/Center.lean",
+      "sha256": "b59e79c6546ef027c2ce4d8df8999e22b942464b28b1240210344579f0edf650",
+      "lines": 474
+    },
+    {
+      "module": "Sandbox.A1.CenterIntegralRows",
+      "path": "Sandbox/A1/CenterIntegralRows.lean",
+      "record_path": "Sandbox/A1/CenterIntegralRows.lean",
+      "sha256": "53e27d9b53ec9007273328876df767a8e91840771ac25b9e9ad4d8a6b039ae4e",
+      "lines": 414
+    },
+    {
+      "module": "Sandbox.A1.CenterLattice",
+      "path": "Sandbox/A1/CenterLattice.lean",
+      "record_path": "Sandbox/A1/CenterLattice.lean",
+      "sha256": "51b5ea459cff9920951bd6102afe472362f3875a93474474fa55d19dc057e161",
+      "lines": 299
+    },
+    {
+      "module": "Sandbox.A1.CenterNewton",
+      "path": "Sandbox/A1/CenterNewton.lean",
+      "record_path": "Sandbox/A1/CenterNewton.lean",
+      "sha256": "f69ab42c55371935b380b0ed2bcc0d74a06be805a6bfe0bdb4468f5a1c630810",
+      "lines": 116
+    },
+    {
+      "module": "Sandbox.A1.CenterNewtonZ",
+      "path": "Sandbox/A1/CenterNewtonZ.lean",
+      "record_path": "Sandbox/A1/CenterNewtonZ.lean",
+      "sha256": "86bb3bcaeea2caa6549e98dcd412d229afd6858627fb81260e0e5a76b5da51aa",
+      "lines": 254
+    },
+    {
+      "module": "Sandbox.A1.CenterPoly",
+      "path": "Sandbox/A1/CenterPoly.lean",
+      "record_path": "Sandbox/A1/CenterPoly.lean",
+      "sha256": "6cb01ce50c1b0fbbb82336dce0ad529fc855ecb4a5fc015407f20e7f3e8533c2",
+      "lines": 403
+    },
+    {
+      "module": "Sandbox.A1.CenterSupport",
+      "path": "Sandbox/A1/CenterSupport.lean",
+      "record_path": "Sandbox/A1/CenterSupport.lean",
+      "sha256": "111ca940aa9f71993ba8ba732ea882a5bcb3e5c13e5af756903f157f3b007b0c",
+      "lines": 159
+    },
+    {
+      "module": "Sandbox.A1.GL1.FamilyField1",
+      "path": "Sandbox/A1/GL1/FamilyField1.lean",
+      "record_path": "Sandbox/A1/GL1/FamilyField1.lean",
+      "sha256": "38bd6fd436556b6335b029992435438179a74e0635cc021b13952dde7fdcde6d",
+      "lines": 275
+    },
+    {
+      "module": "Sandbox.A1.GL1.GOALv0a",
+      "path": "Sandbox/A1/GL1/GOALv0a.lean",
+      "record_path": "Sandbox/A1/GL1/GOALv0a.lean",
+      "sha256": "3db277a957cb02a8132502e3286a6c0073d6538852165fec735af1a56a57b540",
+      "lines": 360
+    },
+    {
+      "module": "Sandbox.A1.GL1.KzBridge",
+      "path": "Sandbox/A1/GL1/KzBridge.lean",
+      "record_path": "Sandbox/A1/GL1/KzBridge.lean",
+      "sha256": "5eb1114a674dc6f15a63a33e80d4848a93c9c0283343a24e7aa3f808ac662669",
+      "lines": 257
+    },
+    {
+      "module": "Sandbox.A1.GL1.NewtonUnivGrid",
+      "path": "Sandbox/A1/GL1/NewtonUnivGrid.lean",
+      "record_path": "Sandbox/A1/GL1/NewtonUnivGrid.lean",
+      "sha256": "4ab6656818b57967fdd90de98ba214e0f792b1a103a63215600534217d483599",
+      "lines": 254
+    },
+    {
+      "module": "Sandbox.A1.GL1.NewtonUnivSpan",
+      "path": "Sandbox/A1/GL1/NewtonUnivSpan.lean",
+      "record_path": "Sandbox/A1/GL1/NewtonUnivSpan.lean",
+      "sha256": "1d1a1e50e95363b522e7c7368d7b1bb9027c1bd61cb8087f6d99af56d1652211",
+      "lines": 268
+    },
+    {
+      "module": "Sandbox.A1.GL1.NonDegeneracy",
+      "path": "Sandbox/A1/GL1/NonDegeneracy.lean",
+      "record_path": "Sandbox/A1/GL1/NonDegeneracy.lean",
+      "sha256": "69160c8b53a5c260d7d7754d2d8f2cc4dd3d4e55bdce1f336a62b7487e976835",
+      "lines": 323
+    },
+    {
+      "module": "Sandbox.A1.GL1.PresentedU",
+      "path": "Sandbox/A1/GL1/PresentedU.lean",
+      "record_path": "Sandbox/A1/GL1/PresentedU.lean",
+      "sha256": "5a5a7e68e8da1479efaf89ce3bfcb8eb4b412a70b4f969a7305f9e5e333b74d4",
+      "lines": 669
+    },
+    {
+      "module": "Sandbox.A1.LaurentZZ",
+      "path": "Sandbox/A1/LaurentZZ.lean",
+      "record_path": "Sandbox/A1/LaurentZZ.lean",
+      "sha256": "3fdf147f33f06283211576f6578426f134cad1510e3671fcb8479e6faa324980",
+      "lines": 112
+    },
+    {
+      "module": "Sandbox.A1.QArith",
+      "path": "Sandbox/A1/QArith.lean",
+      "record_path": "Sandbox/A1/QArith.lean",
+      "sha256": "ae3c2c424ac52a1fb9cdda90f105a79bdb5388c1e6c16f7a9dea55b44864c04c",
+      "lines": 481
+    },
+    {
+      "module": "Sandbox.A1.Verma",
+      "path": "Sandbox/A1/Verma.lean",
+      "record_path": "Sandbox/A1/Verma.lean",
+      "sha256": "e29d187d434f928036009e2c351392aee03865b555104d086d7a7aae6cae4288",
+      "lines": 226
+    }
+  ],
+  "note": "Every module below is a byte-identical copy of the record's file at the sha256 given. The closure was WALKED from the roots, not listed, so a module cannot go missing from this bundle while still being needed."
+}

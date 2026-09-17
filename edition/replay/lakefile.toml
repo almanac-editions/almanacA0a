@@ -1,0 +1,29 @@
+name = "Sandbox"
+version = "0.1.0"
+defaultTargets = ["Sandbox"]
+
+# defaultTargets IS LOAD-BEARING AND ITS ABSENCE IS SILENT. Without it `lake build` has nothing to
+# build and prints "Build completed successfully (0 jobs)" -- a success line over an empty build.
+# The first fresh-clone test of this tree did exactly that, and the failure only surfaced one step
+# later, as "unknown module prefix 'Sandbox'" from the axiom check. An untested replay would have
+# shipped a command that congratulates the reader and proves nothing.
+
+# THE ROOTS ARE THE SEVEN MODULES THIS EDITION CERTIFIES, not the whole programme library.
+# Lake builds a lean_lib's roots and their import closure and nothing else, so naming them here
+# is what makes this tree buildable on its own: the original project's root module imports the
+# entire development, most of which is not in this bundle and is not what the edition claims.
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.30.0"
+
+[[lean_lib]]
+name = "Sandbox"
+# EVERY MODULE IN THE CLOSURE IS A ROOT, and that is not redundancy. Lake produces an object file
+# only for a module that is a TARGET: `roots` defaults its `globs` to one glob per root, so the
+# modules those roots IMPORT are elaborated but never written, and the build fails partway with
+# "object file ... does not exist" for a file sitting right there in the tree. The programme's own
+# lakefile carries the same note, learned the same way. Measured here on the second fresh-clone
+# test: with the seven certified modules as roots, 1,478 targets built and two failed on missing
+# objects for Sandbox.A1.CenterNewtonZ and Sandbox.A1.CenterLattice.
+roots = ["Sandbox.A1.Center", "Sandbox.A1.CenterIntegralRows", "Sandbox.A1.CenterLattice", "Sandbox.A1.CenterNewton", "Sandbox.A1.CenterNewtonZ", "Sandbox.A1.CenterPoly", "Sandbox.A1.CenterSupport", "Sandbox.A1.GL1.FamilyField1", "Sandbox.A1.GL1.GOALv0a", "Sandbox.A1.GL1.KzBridge", "Sandbox.A1.GL1.NewtonUnivGrid", "Sandbox.A1.GL1.NewtonUnivSpan", "Sandbox.A1.GL1.NonDegeneracy", "Sandbox.A1.GL1.PresentedU", "Sandbox.A1.LaurentZZ", "Sandbox.A1.QArith", "Sandbox.A1.Verma"]
