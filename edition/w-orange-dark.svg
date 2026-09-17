@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="62" height="20" viewBox="0 0 62 20"
+     role="img" aria-label="orange">
+  <!-- The warrant name set in its own colour. An inline SVG rather than a style attribute, which
+       GitHub sanitises away, and rather than LaTeX colour, which renders on GitHub and NOWHERE
+       ELSE - and this almanac is meant to be read from an unzipped folder as much as from a
+       repository page. An image degrades to its alt text; a stripped style degrades to nothing. -->
+  <text x="1" y="15" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
+        font-size="14" font-weight="600" fill="#d95926">orange</text>
+</svg>

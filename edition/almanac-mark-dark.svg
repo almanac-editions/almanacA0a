@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024"
+     role="img" aria-label="almanac">
+  <!-- THE IN-PAGE MARK: the square cut with NO background rect, so it sits on whatever the
+       page is. The avatar variant bakes a background because an avatar is a tile and needs one;
+       a mark floated into a markdown page must not, or it shows as a pale block on a light page
+       and glares on a dark one. Same drawing, two jobs, two files. -->
+  <!-- THE SQUARE CUT of the W1 mark, for the almanac-editions avatar. The horizontal wordmark is
+       illegible cropped square, so this is a different cut of the same idea.
+       "almanac" breaks as alm / an / ac (Overseer, 2026-08-30) - the break that puts an 'a' FIRST
+       IN EVERY ROW, so the three a's align on the left edge with no trick: one x, one anchor,
+       three rows. Colours and order are the wordmark's, so the three warrants that run left-to-right
+       there stand in a column here: informal (ink), computational (orange), kernel-certified (blue).
+       SET AS LARGE AS THE FORM ALLOWS (Overseer: "I do not think we need much margin"). HEIGHT is
+       the binding constraint, not width - three rows of leading are taller than "alm" is wide - so
+       the leading is set just wide enough to clear the x-height and the type sized up against it.
+       PLACEMENT IS MEASURED, NOT COMPUTED: the ink bounding box is read back off the render, and
+       the numbers below are the ones that centred it. The 'a' carries a left sidebearing, so the
+       visual edge sits right of the anchor and the anchor is not the margin. -->
+  <g font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-size="500"
+     fill="#ffffff" text-anchor="start">
+    <text x="90" y="400">a<tspan>lm</tspan></text>
+    <text x="90" y="695"><tspan fill="#d95926">a</tspan>n</text>
+    <text x="90" y="990"><tspan fill="#3987e5">a</tspan>c</text>
+  </g>
+</svg>

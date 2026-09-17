@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang='en'><head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>almanacA0a — a bilateral q-Pólya theorem</title>
+<style>
+:root{
+  --paper:#f3f5f6; --panel:#e9edef; --ink:#16191c; --dim:#525a61; --faint:#7d868d;
+  --rule:#d3dade; --hair:#e2e7ea; --struct:#2f4a6b;
+  --kern:#1f5f5b; --comp:#7a5a18; --caution:#8c3a2e;
+  --measure:1680px;   /* the SHEET fills the screen; prose is metered separately */
+  --prose:88ch;       /* readable line length inside a wide page */
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#101315; --panel:#191d20; --ink:#e6eaed; --dim:#a2abb2; --faint:#79838a;
+  --rule:#2a3034; --hair:#22282c; --struct:#8fb0d2;
+  --kern:#74b8b1; --comp:#c9a461; --caution:#e09383;
+}}
+:root[data-theme="dark"]{
+  --paper:#101315; --panel:#191d20; --ink:#e6eaed; --dim:#a2abb2; --faint:#79838a;
+  --rule:#2a3034; --hair:#22282c; --struct:#8fb0d2;
+  --kern:#74b8b1; --comp:#c9a461; --caution:#e09383;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 17px/1.65 Charter,"Iowan Old Style","Palatino Linotype",Palatino,"Times New Roman",serif;
+  -webkit-font-smoothing:antialiased;
+  padding-inline:clamp(1.25rem,4vw,4.5rem);
+}
+.sheet{max-width:var(--measure); margin-inline:auto; padding-block:4.5rem 7rem}
+@media(max-width:640px){.sheet{padding-block:2.75rem 4.5rem}}
+/* narrative prose gets a measure; the register and tables use the full sheet */
+p,.lede,li,.deck{max-width:var(--prose)}
+
+.lbl{font-family:ui-sans-serif,-apple-system,"Segoe UI",system-ui,sans-serif;
+  font-size:.68rem; font-weight:600; letter-spacing:.13em; text-transform:uppercase; color:var(--faint)}
+.mono,code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:.84em}
+code{background:var(--panel); padding:.1em .34em; border-radius:2px}
+
+.masthead{border-top:3px solid var(--ink); padding-top:1.1rem}
+h1{font-size:clamp(2rem,5.5vw,2.85rem); line-height:1.08; margin:.4rem 0 .5rem;
+  font-weight:600; letter-spacing:-.018em; text-wrap:balance}
+.deck{font-size:1.12rem; color:var(--dim); margin:0 0 1.4rem; text-wrap:balance}
+.byline{display:flex; flex-wrap:wrap; gap:.4rem 1.4rem; padding:.8rem 0;
+  border-top:1px solid var(--hair); border-bottom:1px solid var(--hair)}
+
+.state{display:flex; flex-wrap:wrap; gap:.45rem; margin:1.3rem 0}
+.pill{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.7rem;
+  font-weight:600; letter-spacing:.09em; text-transform:uppercase;
+  padding:.32rem .62rem; border:1px solid currentColor; border-radius:2px; color:var(--dim)}
+.pill.on{color:var(--struct)} .pill.off{color:var(--caution)}
+
+h2{font-size:1.34rem; font-weight:600; letter-spacing:-.008em; margin:3.6rem 0 .2rem; text-wrap:balance}
+h2+.rule{height:2px; background:var(--ink); margin-bottom:1.1rem}
+h3{font-size:1.02rem; font-weight:600; margin:2.1rem 0 .45rem}
+p{margin:0 0 1.05rem; text-wrap:pretty} .lede{font-size:1.1rem; color:var(--dim)}
+.fine{font-size:.9rem; color:var(--dim)}
+
+.disclose{border-left:2px solid var(--caution); padding:.15rem 0 .15rem 1.1rem; margin:1.5rem 0}
+.disclose .lbl{color:var(--caution); display:block; margin-bottom:.3rem}
+
+.split{display:grid; gap:0; margin:1.2rem 0 .4rem}
+.grade{display:grid; grid-template-columns:auto 1fr; gap:.2rem 1rem; align-items:baseline;
+  padding:.85rem 0; border-top:1px solid var(--hair)}
+.grade:last-child{border-bottom:1px solid var(--hair)}
+.grade .n{font-size:1.75rem; font-weight:600; font-variant-numeric:tabular-nums; line-height:1}
+.grade .of{color:var(--faint); font-size:.9rem; font-weight:400}
+.grade .name{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.74rem;
+  font-weight:700; letter-spacing:.11em; text-transform:uppercase}
+.grade .what{grid-column:2; font-size:.92rem; color:var(--dim); max-width:var(--prose)}
+.g-k .n,.g-k .name{color:var(--kern)} .g-c .n,.g-c .name{color:var(--comp)}
+.g-i .n,.g-i .name{color:var(--ink)}
+
+.register{margin:1.6rem 0}
+.entry{display:grid; grid-template-columns:8rem minmax(0,1fr); gap:0 2.2rem;
+  padding:2.1rem 0; border-top:1px solid var(--rule)}
+.entry:last-child{border-bottom:1px solid var(--rule)}
+@media(max-width:640px){.entry{grid-template-columns:1fr; gap:.7rem}}
+.gutter{display:flex; flex-direction:column; gap:.4rem}
+.gutter .id{font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:.72rem;
+  color:var(--faint); letter-spacing:.02em}
+.wbadge{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.62rem;
+  font-weight:700; letter-spacing:.1em; text-transform:uppercase; line-height:1.35;
+  padding-top:.35rem; border-top:2px solid currentColor}
+.w-k{color:var(--kern)} .w-c{color:var(--comp)}
+.w-i{color:var(--ink)}
+.claim{font-size:1.12rem; line-height:1.45; margin:0 0 1.15rem; max-width:var(--prose); text-wrap:pretty}
+.facets{display:grid; grid-template-columns:5.6rem minmax(0,1fr); gap:.55rem 1.3rem; margin:0;
+  font-size:.945rem; line-height:1.58; align-items:baseline}
+.facets.short{margin-bottom:1rem; padding-bottom:.9rem; border-bottom:1px dotted var(--hair)}
+@media(min-width:1000px){
+  .facets.short{grid-template-columns:5.6rem minmax(0,1fr) 5.6rem minmax(0,1fr); column-gap:2.6rem}
+}
+.facets dt{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.64rem;
+  font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--faint); padding-top:.18rem}
+.facets dd{margin:0; color:var(--dim)}
+.facets.long dd{max-width:var(--prose)}
+.alsodecl{display:inline-block; color:var(--faint); font-size:.94em}
+.src dt{font-family:inherit; font-size:.95rem; font-weight:600; color:var(--ink)}
+.src{grid-template-columns:minmax(0,11rem) minmax(0,1fr)}
+.facets dd.strong{color:var(--ink)}
+@media(max-width:640px){.facets,.facets.short{grid-template-columns:1fr; gap:.15rem}
+  .facets dt{margin-top:.55rem}}
+
+.tbl{width:100%; border-collapse:collapse; font-size:.92rem; margin:1rem 0}
+.tbl th,.tbl td{text-align:left; padding:.52rem .7rem .52rem 0; border-bottom:1px solid var(--hair);
+  vertical-align:top}
+.tbl th{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.66rem;
+  font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--faint)}
+.tbl td.num{font-variant-numeric:tabular-nums; white-space:nowrap}
+.scroll{overflow-x:auto}
+ul{margin:0 0 1rem; padding-left:1.15rem} li{margin:0 0 .4rem}
+a{color:var(--struct)}
+.display{font-size:1.06rem; margin:1.1rem 0 1.3rem; padding:.9rem 0;
+  border-top:1px solid var(--hair); border-bottom:1px solid var(--hair); max-width:none}
+.display code{background:none; padding:0; font-size:1em}
+.grp{border-top:1px solid var(--hair)}
+.grp:last-of-type{border-bottom:1px solid var(--hair)}
+.grp summary{cursor:pointer; padding:.7rem 0; display:flex; gap:.9rem; align-items:baseline;
+  list-style:none}
+.grp summary::-webkit-details-marker{display:none}
+.grp summary::before{content:"+"; font-family:ui-monospace,Menlo,monospace; color:var(--faint);
+  font-size:.95rem; width:1ch}
+.grp[open] summary::before{content:"–"}
+.grp summary:focus-visible{outline:2px solid var(--struct); outline-offset:3px}
+.gname{font-weight:600}
+.gcount{font-family:ui-monospace,Menlo,monospace; font-size:.78rem; color:var(--faint);
+  font-variant-numeric:tabular-nums}
+.gblurb{font-size:.9rem; color:var(--dim); margin:0 0 .6rem 2ch; max-width:var(--prose)}
+.files{list-style:none; margin:0 0 .9rem; padding:0 0 0 2ch;
+  display:grid; grid-template-columns:1fr; gap:.3rem}
+@media(min-width:1000px){.files{grid-template-columns:repeat(2,minmax(0,1fr)); column-gap:2.6rem}}
+.files li{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.1rem .9rem;
+  align-items:baseline; font-size:.9rem; padding-bottom:.25rem;
+  border-bottom:1px dotted var(--hair)}
+.files a{text-decoration:none; border-bottom:1px solid var(--rule)}
+.files a:hover{border-bottom-color:var(--struct)}
+.fname{font-weight:620}
+.fpath{grid-column:1/-1; font-family:ui-monospace,Menlo,monospace; font-size:.7rem;
+  color:var(--faint); word-break:break-all}
+.fhash{font-size:.7rem; color:var(--faint)}
+.stems{display:grid; grid-template-columns:minmax(0,10rem) minmax(0,1fr); gap:.4rem 1.3rem;
+  font-size:.93rem; margin:1rem 0}
+@media(max-width:640px){.stems{grid-template-columns:1fr; gap:.1rem}}
+.stems dt{font-family:ui-monospace,Menlo,monospace; font-size:.86rem; color:var(--ink)}
+.stems dd{margin:0; color:var(--dim)}
+.colophon{margin-top:4.5rem; padding-top:1.3rem; border-top:3px solid var(--ink);
+  font-size:.86rem; color:var(--dim)}
+
+/* THE MARK, on every html face of the almanac (Overseer, 2026-09-04). Horizontal cut here,
+   because it sits in a masthead and the square cut is for a margin beside prose. */
+.wordmark{display:block;margin:0 0 .7rem;height:38px;width:126px}
+
+:root{--w-orange:#eb6834;--w-blue:#2a78d6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--w-orange:#d95926;--w-blue:#3987e5}}
+:root[data-theme="dark"]{--w-orange:#d95926;--w-blue:#3987e5}
+
+</style>
+<div class="sheet"><div class="masthead">
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><svg class="wordmark" width="126" height="38" viewBox="0 0 190 58" role="img" aria-label="almanac"><text x="5" y="43" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-size="44" fill="var(--ink)" textLength="180" lengthAdjust="spacingAndGlyphs">alm<tspan fill="var(--w-orange,#eb6834)">a</tspan>n<tspan fill="var(--w-blue,#2a78d6)">a</tspan>c</text></svg></a>
+<div class="lbl">Project Sandbox · Almanac series · pilot edition</div>
+<h1>almanacA0a</h1>
+<p class="deck">The Laurent polynomials taking values in <code>A_t</code> at every point of the multiplicative grid are exactly the <code>A_t</code>-span of the divided classes.</p>
+<div class="byline"><span class="lbl">Tamás Hausel</span><span class="lbl">assembled 2026-08-13</span><span class="lbl">12 entries · 85 artifacts</span></div>
+</div>
+<h2>The theorem</h2><div class="rule"></div>
+<p class="lede">Let <code>v, t</code> be independent indeterminates and <code>q = v²</code>. Write <code>A_t = ℤ[v^{±1}, t^{±1}]</code> and <code>F_t = ℚ(v)[t^{±1}]</code>. For <code>χ ∈ ℤ</code> let <code>ev_χ</code> be the <code>F_t</code>-algebra map with <code>ev_χ(Y̌) = q^χ</code>, and put <code>ν_0 = 1</code>, <code>ν_r(X) = ∏_{s&lt;r} (X − q^s)/(q^r − q^s)</code>.</p>
+<p><strong>The polynomials have coefficients in <code>F_t</code>; what is required to lie in <code>A_t</code> are their values.</strong> That gap is the whole of the theorem — with coefficients already in <code>A_t</code> there would be nothing to prove.</p>
+<p class="display"><code>N^ev = Σ<sub>u∈ℤ</sub> Σ<sub>r≥0</sub> A_t · Y̌^u ν_r(Y̌)</code></p>
+<p><strong>The divided classes are genuinely needed</strong>, and one element shows it. It is not the case that every grid-integral Laurent polynomial already has its coefficients in <code>A_t</code> — that is refuted by <code>ν_1(Y̌) = (Y̌−1)/(q−1)</code>, which lies in <code>N^ev</code> and not in <code>A_t[Y̌^{±1}]</code>: its value at <code>Y̌ = q^χ</code> is <code>(q^χ−1)/(q−1) = 1 + q + ⋯ + q^{χ−1}</code>, integral at every node, while its one coefficient <code>(q−1)^{-1}</code> is not in <code>A_t</code>. So <code>A_t[Y̌^{±1}] ⊊ N^ev</code>, strictly.</p>
+<p><strong>This is a spanning statement, not a basis theorem, and it does not improve to one.</strong> The generating family satisfies the relation <code>(q−1)·ν_1(Y̌) − Y̌ + 1 = 0</code> over <code>A_t</code>, so it is not independent. Whether <code>N^ev</code> is free over <code>A_t</code> on some other family is open.</p>
+<p><strong>The evenness of the grid is a hypothesis, not a convenience.</strong> It is not the case that the divided classes stay integral when the grid is refined from the even nodes <code>q^χ = v^{2χ}</code> to all powers of <code>v</code> — that is refuted by a single value. Since <code>q = v²</code>, at the odd node <code>v³</code> one has <code>ν_1(v³) = (v³−1)/(v²−1) = (v²+v+1)/(v+1)</code>, which is not in <code>A_t</code>, while <code>ν_1</code> is integral at every even node. Refine the grid and the theorem fails.</p>
+<h2>Where the statement came from</h2><div class="rule"></div>
+<p>The signed goal states three clauses about the even hybrid family form at rank one: that it is an <code>A_t</code>-subalgebra, that the Harish–Chandra projection restricts to an isomorphism onto the Weyl-invariants, and the span identity above.</p>
+<p><strong>At <em>GL</em><sub>1</sub> the first two are formalities.</strong> The root system is empty, so the algebra is commutative and its centre is the whole of it; the Weyl group is trivial, so the invariance condition is empty; and the Harish–Chandra projection is the identity map. They are recorded because the goal was posed as the rank-one case of a programme about centres in higher rank, where they carry weight. <strong>The mathematics in this record is the span identity</strong>, and this edition is about that.</p>
+<h2>How the theorem descends</h2><div class="rule"></div>
+<p><strong>The statement proved here is a known theorem</strong>, reached along a line that is worth setting out, because each step changed what the question was about. Every source named below is held, and each is carded in this edition with the convention frame under which we read it.</p>
+<h3>Pólya, 1915 — the additive origin</h3>
+<p>A polynomial with rational coefficients can take integer values at every integer without having integer coefficients; <code>binom(x,2) = x(x−1)/2</code> is the standard witness. Pólya's theorem is that these <em>integer-valued</em> polynomials are exactly the <code>ℤ</code>-span of the binomial polynomials <code>binom(x,k)</code> — the failure of integrality in the coefficients is completely accounted for by a change of basis. Everything below is a deformation of that sentence. <span class="fine">(<em>Über ganzwertige ganze Funktionen</em>, Rend. Circ. Mat. Palermo 40; printed as 1919 in Harman–Hopkins §1, and the standard modern reference is Cahen–Chabert, AMS Surveys 48.)</span></p>
+<h3>Gel'fond and Gramain — moving the grid from arithmetic to geometric</h3>
+<p>The natural next question is what happens when integrality is imposed not at <code>0, 1, 2, …</code> but along a <strong>geometric progression</strong> <code>1, q, q², …</code>. For entire functions that is Gel'fond, 1933 — Gramain calls it the <em>analogue multiplicatif</em> of Pólya's additive problem. For polynomials it is Gramain's own Proposition 2.2: for an integer <code>q ≥ 2</code>, the polynomials integral at every <code>q^k</code> are the <code>ℤ</code>-module generated by the <strong>Gauss binomial polynomials</strong> — and those are exactly the divided classes <code>ν_r</code> of this record. He remarks that such results are <em>sans doute classiques</em> yet <em>ne semblent pas disponibles dans la littérature</em>, and proves them for that reason, which is what makes him the citable source for the result.</p>
+<p class="fine">Gramain, Lecture Notes in Mathematics 1415, pp. 123–137; the statement is Prop. 2.2, p. 124. The volume's articles number independently, so a citation must name the article. Cahen–Chabert reach the same case only as an exercise, and attribute it to this proposition.</p>
+<h3>Harman and Hopkins — the q-deformation, and then both directions</h3>
+<p>Deforming the coefficients rather than the grid gives the quantum question: which <code>P ∈ ℚ(q)[x]</code> satisfy <code>P([n]_q) ∈ ℤ[q]</code>? Their §1 answers it on the <em>additive</em> grid of <code>q</code>-integers, with a free basis of <code>q</code>-binomial polynomials — Pólya's theorem, deformed. Their §4 then takes the nodes over all of <code>ℤ</code> rather than <code>ℕ</code>, inverting <code>q</code> in the coefficients: the <strong>bilateral</strong> form, which is the one this record needs.</p>
+<p><strong>And their §4 contains the remark that joins the two lines.</strong> Setting <code>z = 1 + (q−1)x</code> turns evaluation at <code>x = [n]_q</code> into evaluation at <code>z = q^n</code> — the additive grid becomes the geometric one, node for node. Their own closing observation is that adjoining square roots <code>K² = z</code>, <code>v² = q</code> produces the Cartan part of Lusztig's integral form of <code>U_v(sl₂)</code>. That is this record's setting, arrived at from the other side: the programme's frame <em>is</em> the square-root cover their remark constructs.</p>
+<p class="fine">Harman–Hopkins, <em>Quantum integer-valued polynomials</em>, arXiv:1601.06110, read against the arXiv source. Two of their statements are not used here: the freeness of their basis, and the Lusztig identification, which is an unproved remark in the source and is carded as one.</p>
+<h3>What this record adds to the line</h3>
+<p>Two additions, each a routine transport of the known theorem. The grid variable is inverted, so the objects are <strong>Laurent</strong> polynomials — at a grid of units this is a simple clearing argument. And the coefficients carry a <strong>free parameter <code>t</code></strong>, which arrives from the hybrid family setting the goal was posed in and rides through the argument as a spectator, the integrality test decomposing coefficient-wise. No predecessor is located for that parameter; three independent cards record its absence from the sources.</p>
+<p><strong>What is new is that the statement is machine-checked.</strong> No theory of integer-valued polynomials, classical or <code>q</code>-deformed, is present in Mathlib — not Pólya's theorem, not a <code>q</code>-analogue. The deliverable of this record is a proof with a clean axiom base, together with a per-entry account of what warrants each piece.</p>
+<p>One observation in this record belongs to it and to none of the ancestors: <strong>the evenness of the grid is essential, and one value shows it.</strong> <code>ν_1</code> is integral at every node <code>q^χ</code>, and at the odd node <code>v³</code> takes the value <code>(v²+v+1)/(v+1)</code>, which is not in <code>A_t</code>. The divided classes do not survive refinement of the grid, and that is why the goal reads <em>even</em>.</p>
+<h2>How the three layers relate</h2><div class="rule"></div>
+<p>The record exists as an informal manuscript, a computational instrument, and a formal development. The register below is what joins them: one entry per result, naming the same object in all three under a stated convention frame.</p>
+<p><strong>The instrument and the formal development are two independent implementations, joined by a shared naming discipline.</strong> Each stem — <code>nu</code>, <code>grid</code>, <code>expand</code>, <code>newton</code> — carries the same name in the manuscript, in the Julia package and in the Lean sources, and a human reading both is what identifies them. Agreement between the two is established by testing, over the bounds printed in each entry. The kernel certifies the formal statement; the instrument computes and refutes over a stated range; the register records which of the two stands behind each entry.</p>
+<h2>What warrants what</h2><div class="rule"></div>
+<p>The grades below are <strong>different kinds of claim</strong>, and are given equal weight. No declaration in this development refers to the Julia package, and none is planned: a computed entry is warranted by its range and never by the kernel.</p>
+<p class="fine">A computed entry records the <strong>range</strong> its computation ran over and an <strong>anchor</strong> to the certificate, and never the computed values themselves. A reader who wants the values follows the anchor. This edition reports that a claim’s warrant is a bounded computation; it never argues from the computation.</p>
+<div class="split">
+<div class="grade g-i"><div class="n">1<span class="of"> / 12</span></div><div class="name">ink</div><div class="what">An argument written out for a human reader and refereed. The row records who refereed it, when, at which hash, and with what verdict.</div></div>
+<div class="grade g-c"><div class="n">2<span class="of"> / 12</span></div><div class="name">orange</div><div class="what">Verified by computation over a stated bound, which is part of the claim, and it is printed in the entry.</div></div>
+<div class="grade g-k"><div class="n">9<span class="of"> / 12</span></div><div class="name">blue</div><div class="what">A formal declaration states this entry's claim, and its axiom base is exactly the three standard axioms of Lean's kernel — propositional extensionality (<code>propext</code>), the axiom of choice (<code>Classical.choice</code>) and quotient soundness (<code>Quot.sound</code>) — the base every Mathlib proof shares; a certificate is clean when these three are all it needs — no <code>sorryAx</code>, no custom axiom. Every axiom result here was measured first-hand, not quoted from the closure record.</div></div>
+</div>
+<p class="fine">Each warrant below was measured on that entry&rsquo;s own declaration.</p>
+<h2>The register</h2><div class="rule"></div>
+<p class="fine">12 entries, every one kept and every one carrying its ancestry. An entry that could not be completed appears with its missing field named: a kept entry that says <code>none</code> shows the register's true extent.</p>
+<div class="register">
+<article class="entry"><div class="gutter"><span class="id">A0a-01-clause-i</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">U^ev = N^ev is an A_t-subalgebra of U.</p><dl class="facets short">
+<dt>informal</dt><dd>Proposition (clause i), line 111<br><span class="mono">informal/proofv0a.tex</span></dd>
+<dt>computed</dt><dd>az / newton — closure of grid-integrality under products</dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.clause_i</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.clause_i_ambient</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.clause_i_in_torus</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.KzBridge.clause_i_Kz</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>evidence</dt><dd>informal/proofv0a.ledger.json, claim A1.closure-products, with receipts in proofv0a.ledger.cas_receipts.md</dd>
+<dt>ancestry</dt><dd>Harman–Hopkins §1 — see Sources.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-02-clause-ii</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">The Harish–Chandra projection restricts to an isomorphism of A_t-algebras HC : Z(U^ev) → (N^ev)^W, and this isomorphism is the identity map of N^ev.</p><dl class="facets short">
+<dt>informal</dt><dd>Proposition (clause ii), line 134<br><span class="mono">informal/proofv0a.tex</span></dd>
+<dt>computed</dt><dd><em>no computational claim</em></dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.clause_ii</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.clause_ii_ambient</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.ZUev_eq_ZUevAmbient</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>ancestry</dt><dd>The GL₂ predecessor in this programme, with De Concini–Procesi §18.3 and Jantzen Thm 6.25 as the literature ancestors — see Sources. The manuscript itself cites only the first.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-03-clause-iii</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">N^ev = S = Σ_{u∈Z} Σ_{r≥0} A_t · Y̌^u ν_r(Y̌) — the even Newton lattice is exactly the A_t-span of the shifted divided classes.</p><dl class="facets short">
+<dt>informal</dt><dd>Theorem (thm:iii), line 181<br><span class="mono">informal/proofv0a.tex</span></dd>
+<dt>computed</dt><dd>newton vs mem_span — agreement of the evaluation-defined predicate with the span-defined predicate</dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.Nev_eq_span</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.Newton_iff_mem_span</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.mem_span_of_Newton</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.clause_iii</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.KzBridge.clause_iii_Kz</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>evidence</dt><dd>n1_clause3_referee_pin.out for the independent agreement check; ledger claims via informal/proofv0a.ledger.json</dd>
+<dt>ancestry</dt><dd>Harman–Hopkins §§1 and 4; Gramain Prop. 2.2 for the classical multiplicative-grid statement — see Sources.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-04-lemma-grid</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">For all m ∈ Z and r ≥ 0, B_r(m) = ν_r(q^m) ∈ Z[q^{±1}] — the grid values of the divided classes are integral, including at negative nodes.</p><dl class="facets short">
+<dt>informal</dt><dd>Lemma (lem:grid), line 194<br><span class="mono">informal/proofv0a.tex</span></dd>
+<dt>computed</dt><dd>nu_grid + az — integrality of ν_r(q^χ) on the bilateral grid</dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.Az_nuGrid</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>evidence</dt><dd>informal/proofv0a.ledger.json, claims G1–G3, with receipts in proofv0a.ledger.cas_receipts.md</dd>
+<dt>ancestry</dt><dd>Harman–Hopkins §1; Gramain Prop. 2.2, whose Gauss binomials are exactly these divided classes — see Sources.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-05-lemma-fwd</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">For every u ∈ Z and r ≥ 0, Y̌^u ν_r(Y̌) ∈ N^ev; hence S ⊆ N^ev.</p><dl class="facets short">
+<dt>informal</dt><dd>Lemma (lem:fwd), line 254<br><span class="mono">informal/proofv0a.tex</span></dd>
+<dt>computed</dt><dd>newton on nuGen witnesses</dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.Newton_nuGen</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.Newton_of_mem_span</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>evidence</dt><dd>informal/proofv0a.ledger.json, claims F1–F3, with receipts in proofv0a.ledger.cas_receipts.md</dd>
+<dt>ancestry</dt><dd>Harman–Hopkins §1 — see Sources.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-06-lemma-rev</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">If g ∈ N^ev is an even toral POLYNOMIAL of degree ≤ d, then g = Σ_{r≤d} c_r ν_r(Y̌) with all c_r ∈ A_t. The windowed reverse inclusion.</p><dl class="facets short">
+<dt>informal</dt><dd>Lemma (lem:rev), line 276<br><span class="mono">informal/proofv0a.tex</span></dd>
+<dt>computed</dt><dd>expand — the triangular Newton-coordinate sweep</dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.mem_span_of_Newton</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.expand</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.expand_spec</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.expand_witnesses_span</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>evidence</dt><dd>informal/proofv0a.ledger.json, claims R1–R2, with receipts in proofv0a.ledger.cas_receipts.md</dd>
+<dt>ancestry</dt><dd>Pólya&#x27;s windowed interpolation as q-deformed in Harman–Hopkins §1; the finite degree is essential to the test — see Sources.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-07-definition-1-presented</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">U is the F_t-algebra on invertible pairwise commuting K_{n,±} with K_{0,±}=1, K_{m+n,±}=K_{m,±}K_{n,±}, K_{n,+}K_{n,−}=t^n; and the monomials (T^+)^w, w ∈ Z, form an F_t-basis.</p><dl class="facets short">
+<dt>informal</dt><dd>Definition 1 (def:U)<br><span class="mono">informal/goalv0a.tex</span></dd>
+<dt>computed</dt><dd><em>no computational claim</em></dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.Presentation.equivTorus</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.Presentation.uBasis</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.Presentation.existsUnique_lift</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.Presentation.modelEquiv</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>ancestry</dt><dd>Lusztig, Introduction to Quantum Groups, Prop. 3.2.4 with its parenthesis, for the lattice-group-algebra presentation. No predecessor is located for the adjoined free parameter; three independent cards record its absence.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-08-nondegeneracy</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">Clause (iii) is not vacuously true of a degenerate object: A_t[Ycheck^{±1}] ⊊ N^ev ⊊ K_1[Ycheck^{±1}] — strictly, on both sides, with K_1 = Frac(A_t) the ambient the certified declaration actually uses.</p><dl class="facets short">
+<dt>informal</dt><dd>Proved in the formal development; the manuscript states no counterpart.</dd>
+<dt>computed</dt><dd>the separating witness: nu_1 is grid-integral and in the span, and is not Laurent</dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.clause_iii_nondegenerate</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.trap4_separator</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.FamilyField1.Qsub_one_inv_not_mem</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.Newton_ssubset_univ</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.nuGenSpan_ne_top</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.Laurent_ssubset_Newton</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>evidence</dt><dd>almanac/GL1Newton/test/runtests.jl, the separation tests; the odd-node witness is verified at CAS identity 0f8f7d63dd6a37e4886d7cbb71edfc9e1f503705e3354bb52f25692f676eb64d</dd>
+<dt>ancestry</dt><dd>Pólya&#x27;s basis theorem, from which strictness is immediate; the q-analogue in Harman–Hopkins §1 — see Sources. The separating element is this programme&#x27;s own.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-09-kz-bridge</span><span class="wbadge w-k">blue</span></div><div>
+<p class="claim">Enlarging the ambient coefficient RING from F_t = Q(v)[t^{±1}] (not a field) to K_1 = Frac(A_t) = Q(v,t) adds no new Newton elements: the two readings cut out the same set.</p><dl class="facets short">
+<dt>informal</dt><dd>Proved in the formal development; the manuscript states no counterpart.</dd>
+<dt>computed</dt><dd><em>no computational claim</em></dd>
+<dt>formal</dt><dd><span class="mono">HybridQuantumLean.A1.GL1Newton.KzBridge.Newton_mem_KzAmbient</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.KzBridge.nuGenSet_subset_KzAmbient</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.KzBridge.clause_iii_Kz</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.KzBridge.clause_i_Kz</span><br><span class="mono alsodecl">HybridQuantumLean.A1.GL1Newton.KzBridge.mem_UevKz_iff_Newton</span></dd>
+<dt>axioms</dt><dd class="strong mono">propext, Classical.choice, Quot.sound</dd>
+</dl>
+<dl class="facets long">
+<dt>ancestry</dt><dd>Cahen–Chabert, Prop. I.3.1 with Remarks I.3.2, p. 9 — see Sources.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-10-instrument</span><span class="wbadge w-c">orange</span></div><div>
+<p class="claim">The GL1Newton package computes the object set of goalv0a — the divided classes, the grid, the Newton coordinates, and the three membership predicates — and separates them as the theory requires.</p><dl class="facets short">
+<dt>informal</dt><dd>THE INSTRUMENT (adopted into this edition 2026-08-13; ADOPT confirmed by the record owner)<br><span class="mono">almanac/GL1Newton/README.md</span></dd>
+<dt>computed</dt><dd>the ten GL1Newton stems + the four QFunctions stems</dd>
+<dt>formal</dt><dd><em>stated in the manuscript; no declaration in this development carries it</em></dd>
+</dl>
+<dl class="facets long">
+<dt>range</dt><dd class="strong">Acceptance battery 87/87, re-measured 2026-08-13 (Oscar 1.8.0, Julia 1.12.6). Ranges: grid integrality r ∈ 0..8 × χ ∈ −9..9 (171 cases); triangularity r ∈ 0..8; bridge identity 0 ≤ r ≤ m ≤ 8 (45 pairs); trap-4 separation k ∈ 0..6; frame controls χ ∈ −4..4, r ∈ 0..4; negative control 171 + 78 cases, all required to FAIL and doing so. newton() default verdict window χ ∈ −12..12.</dd>
+<dt>evidence</dt><dd>almanac/GL1Newton/test/runtests.jl — the battery and its bounds; re-run 2026-08-13 under the heavy-compute gate</dd>
+<dt>ancestry</dt><dd>A computation, not a theorem; its warrant is the range above.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-11-n1-referee-pin</span><span class="wbadge w-c">orange</span></div><div>
+<p class="claim">Clause (iii) is refereed independently of the proof: the evaluation-defined predicate and the span-defined predicate agree, with no disagreements, on positive samples, adversarial seeds and a separator.</p><dl class="facets short">
+<dt>informal</dt><dd>THE ORACLE GATE for clause (iii) (finding N1 arc, closed 2026-07-21)<br><span class="mono">n1_clause3_referee_pin.jl</span></dd>
+<dt>computed</dt><dd>newton vs mem_span, measured non-circularly</dd>
+<dt>formal</dt><dd><em>stated in the manuscript; no declaration in this development carries it</em></dd>
+</dl>
+<dl class="facets long">
+<dt>range</dt><dd class="strong">window = 8; 60 random positive samples (x^u ν_r(x), u ∈ 0..5, r ∈ 0..4, coefficients q^{rand(−3..3)} t^{rand(−2..2)}·rand(−5..5)); 5 named adversarial seeds, all required to be REFUTED by both predicates; 1 separator (ν_1, required to be in the lattice and the span but NOT in the Laurent ring); random seed fixed at 20260721. Recorded verdict: PROVED_BOUNDED, disagreements = 0.</dd>
+<dt>evidence</dt><dd>n1_clause3_referee_pin.jl with its recorded verdict in n1_clause3_referee_pin.out</dd>
+<dt>ancestry</dt><dd>A computation, not a theorem; its warrant is the range above.</dd>
+</dl></div></article>
+<article class="entry"><div class="gutter"><span class="id">A0a-12-proof-proves-the-signed-statement</span><span class="wbadge w-i">ink</span></div><div>
+<p class="claim">The stand-alone proof proves the statement that was signed: proofv0a.tex establishes the three clauses of goalv0a.tex — no clause weakened, none strengthened, no convention changed.</p><dl class="facets short">
+<dt>informal</dt><dd>THE CLAIM EVERY OTHER ROW RESTS ON, AND THE ONLY ONE NO MACHINE CAN SETTLE.<br><span class="mono">proofv0a.tex</span></dd>
+<dt>computed</dt><dd><em>no computational claim</em></dd>
+<dt>formal</dt><dd><em>stated in the manuscript; no declaration in this development carries it</em></dd>
+</dl>
+<dl class="facets long">
+<dt>evidence</dt><dd>REFEREE_REPORT_PROOFv0a.md attack (8) and EDITORIAL_REFEREE_REPORT_2026-08-12.md&#x27;s drift check, with both refereed versions kept in informal/versions/.</dd>
+<dt>ancestry</dt><dd>An editorial fact about this edition&#x27;s documents; its warrant is the referee chain above.</dd>
+</dl></div></article>
+</div>
+<h2>The instrument</h2><div class="rule"></div>
+<p>The computational layer is a standalone Julia package, <code>GL1Newton</code>, extracted from the development substrate and pinned. It computes the objects the theorem is about, and it is the referee that decides the span identity independently of the proof.</p>
+<dl class="stems">
+<dt>frame()</dt><dd>the base data — <code>K = ℚ(q,t)</code> and the polynomial ring over it</dd>
+<dt>nu(R, r)</dt><dd>the divided class <code>ν_r</code></dd>
+<dt>grid(R, χ)</dt><dd>the grid point <code>q^χ</code>, two-sided over all of <code>ℤ</code></dd>
+<dt>nu_grid(R, r, χ)</dt><dd>the value <code>ν_r(q^χ)</code></dd>
+<dt>expand(R, f)</dt><dd>the Newton coordinates of <code>f</code>, by triangular sweep</dd>
+<dt>az(c)</dt><dd>membership of a scalar in <code>A_t</code></dd>
+<dt>newton(R, f; window)</dt><dd>grid-integrality as a <strong>bounded verdict</strong> — it returns the window alongside the answer, so a bounded check can never be read as a proof</dd>
+<dt>mem_span(R, f)</dt><dd>membership in the span <code>Σ A_t ν_r</code> — deciding that this equals <code>newton</code> <em>is</em> the theorem</dd>
+<dt>laurent(R, f)</dt><dd>membership in <code>A_t[Y̌^{±1}]</code>, which is strictly smaller</dd>
+</dl>
+<p>A second module carries the symmetric quantum-bracket family on the <code>v</code>-side; the identity <code>ν_r(q^m) = v^{r(m−r)}·[m,r]</code> is the seam between the two, and it is checked.</p>
+<p><strong>Why the instrument is an independent referee.</strong> Its <code>newton</code> predicate was originally defined by the very span the theorem computes, which made it unable to referee the theorem. It was redefined by evaluation on the grid, and the independent pin then agreed with the span predicate on every one of the 60 random positives, 5 adversarial seeds and one separator, at window 8.</p>
+<p>The acceptance battery runs <strong>87 of 87</strong>, re-measured for this edition. Its ranges are printed in the entries that rest on it. To re-run it, instantiate the package against the pinned manifest and call its test suite; the pins are below.</p>
+<p class="fine">In the record: the package at <code>SandboxA/sandboxA0a/almanac/GL1Newton/</code> (source <code>src/GL1Newton.jl</code>, battery <code>test/runtests.jl</code>) · the referee pin at <code>SandboxA/sandboxA0a/n1_clause3_referee_pin.jl</code>.</p>
+<h2>Everything in this edition</h2><div class="rule"></div>
+<p>85 artifacts. Every one is listed here and every one opens. The rule is that <strong>cards travel while sources stay behind as citations</strong>: a card is this project's own writing about someone else's statement, carrying the frame under which we read it, and it ships. The source itself is referenced by author, title and section.</p>
+<details class="grp"><summary><span class="gname">The manuscript</span><span class="gcount">4</span></summary><p class="gblurb">The statement and its proof, in source and typeset form.</p><ul class="files"><li><span class="fname">goalv0a.pdf</span><span class="fpath">SandboxA/sandboxA0a/informal/goalv0a.pdf</span><span class="fhash mono">36e31c34eb4d…</span></li><li><span class="fname">goalv0a.tex</span><span class="fpath">SandboxA/sandboxA0a/informal/goalv0a.tex</span><span class="fhash mono">5853d84f33b7…</span></li><li><span class="fname">proofv0a.pdf</span><span class="fpath">SandboxA/sandboxA0a/informal/proofv0a.pdf</span><span class="fhash mono">7c998d49db88…</span></li><li><span class="fname">proofv0a.tex</span><span class="fpath">SandboxA/sandboxA0a/informal/proofv0a.tex</span><span class="fhash mono">ff4015250c56…</span></li></ul></details><details class="grp"><summary><span class="gname">The formal development</span><span class="gcount">20</span></summary><p class="gblurb">Lean sources and the certification record.</p><ul class="files"><li><span class="fname">Sandbox.lean</span><span class="fpath">Sandbox.lean</span><span class="fhash mono">4e00a2102237…</span></li><li><span class="fname">Center.lean</span><span class="fpath">Sandbox/A1/Center.lean</span><span class="fhash mono">b59e79c6546e…</span></li><li><span class="fname">CenterIntegralRows.lean</span><span class="fpath">Sandbox/A1/CenterIntegralRows.lean</span><span class="fhash mono">53e27d9b53ec…</span></li><li><span class="fname">CenterLattice.lean</span><span class="fpath">Sandbox/A1/CenterLattice.lean</span><span class="fhash mono">51b5ea459cff…</span></li><li><span class="fname">CenterNewton.lean</span><span class="fpath">Sandbox/A1/CenterNewton.lean</span><span class="fhash mono">f69ab42c5537…</span></li><li><span class="fname">CenterNewtonZ.lean</span><span class="fpath">Sandbox/A1/CenterNewtonZ.lean</span><span class="fhash mono">86bb3bcaeea2…</span></li><li><span class="fname">CenterPoly.lean</span><span class="fpath">Sandbox/A1/CenterPoly.lean</span><span class="fhash mono">6cb01ce50c1b…</span></li><li><span class="fname">CenterSupport.lean</span><span class="fpath">Sandbox/A1/CenterSupport.lean</span><span class="fhash mono">111ca940aa9f…</span></li><li><span class="fname">FamilyField1.lean</span><span class="fpath">Sandbox/A1/GL1/FamilyField1.lean</span><span class="fhash mono">38bd6fd43655…</span></li><li><span class="fname">GOALv0a.lean</span><span class="fpath">Sandbox/A1/GL1/GOALv0a.lean</span><span class="fhash mono">3db277a957cb…</span></li><li><span class="fname">KzBridge.lean</span><span class="fpath">Sandbox/A1/GL1/KzBridge.lean</span><span class="fhash mono">5eb1114a674d…</span></li><li><span class="fname">NewtonUnivGrid.lean</span><span class="fpath">Sandbox/A1/GL1/NewtonUnivGrid.lean</span><span class="fhash mono">4ab6656818b5…</span></li><li><span class="fname">NewtonUnivSpan.lean</span><span class="fpath">Sandbox/A1/GL1/NewtonUnivSpan.lean</span><span class="fhash mono">1d1a1e50e953…</span></li><li><span class="fname">NonDegeneracy.lean</span><span class="fpath">Sandbox/A1/GL1/NonDegeneracy.lean</span><span class="fhash mono">69160c8b53a5…</span></li><li><span class="fname">PresentedU.lean</span><span class="fpath">Sandbox/A1/GL1/PresentedU.lean</span><span class="fhash mono">5a5a7e68e8da…</span></li><li><span class="fname">LaurentZZ.lean</span><span class="fpath">Sandbox/A1/LaurentZZ.lean</span><span class="fhash mono">3fdf147f33f0…</span></li><li><span class="fname">QArith.lean</span><span class="fpath">Sandbox/A1/QArith.lean</span><span class="fhash mono">ae3c2c424ac5…</span></li><li><span class="fname">Verma.lean</span><span class="fpath">Sandbox/A1/Verma.lean</span><span class="fhash mono">e29d187d434f…</span></li><li><span class="fname">RELEASE_20260721_source_all_clean.log</span><span class="fpath">SandboxA/sandboxA0a/formal/RELEASE_20260721_source_all_clean.log</span><span class="fhash mono">0fd29a50dc36…</span></li><li><span class="fname">SOURCE_MANIFEST.json</span><span class="fpath">SandboxA/sandboxA0a/formal/SOURCE_MANIFEST.json</span><span class="fhash mono">7153982ec001…</span></li></ul></details><details class="grp"><summary><span class="gname">The instrument</span><span class="gcount">6</span></summary><p class="gblurb">The Julia package, with the dependency pin that makes it re-runnable.</p><ul class="files"><li><span class="fname">Manifest.toml</span><span class="fpath">SandboxA/sandboxA0a/almanac/GL1Newton/Manifest.toml</span><span class="fhash mono">f1b03d86c585…</span></li><li><span class="fname">Project.toml</span><span class="fpath">SandboxA/sandboxA0a/almanac/GL1Newton/Project.toml</span><span class="fhash mono">c0f6b59e4945…</span></li><li><span class="fname">README.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/GL1Newton/README.md</span><span class="fhash mono">a58c89265daa…</span></li><li><span class="fname">GL1Newton.jl</span><span class="fpath">SandboxA/sandboxA0a/almanac/GL1Newton/src/GL1Newton.jl</span><span class="fhash mono">e97031691f1e…</span></li><li><span class="fname">qFunctions.jl</span><span class="fpath">SandboxA/sandboxA0a/almanac/GL1Newton/src/qFunctions.jl</span><span class="fhash mono">49d7ac11877c…</span></li><li><span class="fname">runtests.jl</span><span class="fpath">SandboxA/sandboxA0a/almanac/GL1Newton/test/runtests.jl</span><span class="fhash mono">5ca55e936cf1…</span></li></ul></details><details class="grp"><summary><span class="gname">The oracle referee</span><span class="gcount">2</span></summary><p class="gblurb">The independent computational check on the span identity.</p><ul class="files"><li><span class="fname">n1_clause3_referee_pin.jl</span><span class="fpath">SandboxA/sandboxA0a/n1_clause3_referee_pin.jl</span><span class="fhash mono">6cb7108c675d…</span></li><li><span class="fname">n1_clause3_referee_pin.out</span><span class="fpath">SandboxA/sandboxA0a/n1_clause3_referee_pin.out</span><span class="fhash mono">fbfcb22a0151…</span></li></ul></details><details class="grp"><summary><span class="gname">The claim ledger</span><span class="gcount">2</span></summary><p class="gblurb">Every computational claim with its declared range, and the oracle receipts.</p><ul class="files"><li><span class="fname">proofv0a.ledger.cas_receipts.md</span><span class="fpath">SandboxA/sandboxA0a/informal/proofv0a.ledger.cas_receipts.md</span><span class="fhash mono">44db338e8f51…</span></li><li><span class="fname">proofv0a.ledger.json</span><span class="fpath">SandboxA/sandboxA0a/informal/proofv0a.ledger.json</span><span class="fhash mono">b21d04814d1d…</span></li></ul></details><details class="grp"><summary><span class="gname">The cards</span><span class="gcount">15</span></summary><p class="gblurb">This project&#x27;s own writing about other people&#x27;s statements, each with its convention frame.</p><ul class="files"><li><span class="fname">even-gaussian-span-not-newton-lattice-refuted.md</span><span class="fpath">corpus/statements/even-gaussian-span-not-newton-lattice-refuted.md</span><span class="fhash mono">1bc9730ed690…</span></li><li><span class="fname">even-newton-gaussian-grid-values.md</span><span class="fpath">corpus/statements/even-newton-gaussian-grid-values.md</span><span class="fhash mono">41f67b32ca51…</span></li><li><span class="fname">gl2-hc-image-theorem.md</span><span class="fpath">corpus/statements/gl2-hc-image-theorem.md</span><span class="fhash mono">cfb0eb7d2818…</span></li><li><span class="fname">lit-cahen-chabert-ex15-erratum-two-misprints.md</span><span class="fpath">corpus/statements/lit-cahen-chabert-ex15-erratum-two-misprints.md</span><span class="fhash mono">70d6faf39ce3…</span></li><li><span class="fname">lit-cahen-chabert-vandermonde-coefficient-descent.md</span><span class="fpath">corpus/statements/lit-cahen-chabert-vandermonde-coefficient-descent.md</span><span class="fhash mono">902cb264cf3b…</span></li><li><span class="fname">lit-dcp-generic-harish-chandra-isomorphism.md</span><span class="fpath">corpus/statements/lit-dcp-generic-harish-chandra-isomorphism.md</span><span class="fhash mono">f29dc994a360…</span></li><li><span class="fname">lit-dcp-verma-contravariant-shapovalov.md</span><span class="fpath">corpus/statements/lit-dcp-verma-contravariant-shapovalov.md</span><span class="fhash mono">27ef91c3b865…</span></li><li><span class="fname">lit-gramain-geometric-progression-integer-valued-basis.md</span><span class="fpath">corpus/statements/lit-gramain-geometric-progression-integer-valued-basis.md</span><span class="fhash mono">6bc7439d9442…</span></li><li><span class="fname">lit-habiro-le-mixed-pbw-hopf-form.md</span><span class="fpath">corpus/statements/lit-habiro-le-mixed-pbw-hopf-form.md</span><span class="fhash mono">6ebf8888ec59…</span></li><li><span class="fname">lit-harman-bilateral-q-integer-localization.md</span><span class="fpath">corpus/statements/lit-harman-bilateral-q-integer-localization.md</span><span class="fhash mono">47ffb589806c…</span></li><li><span class="fname">lit-harman-q-polya-qbinomial-basis.md</span><span class="fpath">corpus/statements/lit-harman-q-polya-qbinomial-basis.md</span><span class="fhash mono">3b2c5dd6f7fb…</span></li><li><span class="fname">lit-harman-z-variable-lusztig-cartan-form.md</span><span class="fpath">corpus/statements/lit-harman-z-variable-lusztig-cartan-form.md</span><span class="fhash mono">37b2d558044d…</span></li><li><span class="fname">lit-jantzen-6-26-hypothesis-weakening-q-not-root-of-unity.md</span><span class="fpath">corpus/statements/lit-jantzen-6-26-hypothesis-weakening-q-not-root-of-unity.md</span><span class="fhash mono">0b5f2b685144…</span></li><li><span class="fname">lit-jantzen-harish-chandra-even-torus.md</span><span class="fpath">corpus/statements/lit-jantzen-harish-chandra-even-torus.md</span><span class="fhash mono">dcfc3d0e9464…</span></li><li><span class="fname">lit-lusztig-triangular-decomposition-toral-freeness.md</span><span class="fpath">corpus/statements/lit-lusztig-triangular-decomposition-toral-freeness.md</span><span class="fhash mono">5a2ca7f58af0…</span></li></ul></details><details class="grp"><summary><span class="gname">Ancestry</span><span class="gcount">8</span></summary><p class="gblurb">The citation-verification cycle of record.</p><ul class="files"><li><span class="fname">CITATION_VERIFICATION_2026-08-09.md</span><span class="fpath">SandboxA/sandboxA0a/informal/CITATION_VERIFICATION_2026-08-09.md</span><span class="fhash mono">383391181ef3…</span></li><li><span class="fname">CARD_ROUTING_2026-07-17.md</span><span class="fpath">corpus/CARD_ROUTING_2026-07-17.md</span><span class="fhash mono">99868c262cb7…</span></li><li><span class="fname">MINING_LOG.md</span><span class="fpath">corpus/MINING_LOG.md</span><span class="fhash mono">308693545e2c…</span></li><li><span class="fname">lit-v2.jantzen-dilated-linkage-blocks.md</span><span class="fpath">corpus/literature/refmine/mined_cards/collab-notes/lit-v2.jantzen-dilated-linkage-blocks.md</span><span class="fhash mono">c08400d82b1b…</span></li><li><span class="fname">own-habiro-le-even-hybrid-centers-explicit-torus.md</span><span class="fpath">corpus/literature/transcribed/own-habiro-le-even-hybrid-centers-explicit-torus.md</span><span class="fhash mono">47b445ee501a…</span></li><li><span class="fname">gl4.coordinate-split-torus.md</span><span class="fpath">corpus/objects/gl4.coordinate-split-torus.md</span><span class="fhash mono">d2197c9da709…</span></li><li><span class="fname">HARMAN-HOPKINS-C1-REFEREE-PASS-2026-08-13.md</span><span class="fpath">corpus/reports/HARMAN-HOPKINS-C1-REFEREE-PASS-2026-08-13.md</span><span class="fhash mono">93175757cf9f…</span></li><li><span class="fname">LR-20260809T093836Z-hypervisorA-quantum-harish-chandra-source.md</span><span class="fpath">corpus/requests/LR-20260809T093836Z-hypervisorA-quantum-harish-chandra-source.md</span><span class="fhash mono">13ead43adaa3…</span></li></ul></details><details class="grp"><summary><span class="gname">Referee report</span><span class="gcount">1</span></summary><ul class="files"><li><span class="fname">REFEREE_REPORT_PROOFv0a.md</span><span class="fpath">SandboxA/sandboxA0a/informal/REFEREE_REPORT_PROOFv0a.md</span><span class="fhash mono">6e31018c647e…</span></li></ul></details><details class="grp"><summary><span class="gname">Editorial referee report</span><span class="gcount">1</span></summary><ul class="files"><li><span class="fname">EDITORIAL_REFEREE_REPORT_2026-08-12.md</span><span class="fpath">SandboxA/sandboxA0a/informal/EDITORIAL_REFEREE_REPORT_2026-08-12.md</span><span class="fhash mono">e8034b17455c…</span></li></ul></details><details class="grp"><summary><span class="gname">Faithfulness panel</span><span class="gcount">1</span></summary><p class="gblurb">Three independent engines judging whether the formal statement says what the manuscript says.</p><ul class="files"><li><span class="fname">COW_FAITHFULNESS_PANEL.md</span><span class="fpath">SandboxA/sandboxA0a/cow/COW_FAITHFULNESS_PANEL.md</span><span class="fhash mono">ef3a23212773…</span></li></ul></details><details class="grp"><summary><span class="gname">Closure records</span><span class="gcount">3</span></summary><ul class="files"><li><span class="fname">CLOSURE_SIGNATURE.json</span><span class="fpath">SandboxA/sandboxA0a/CLOSURE_SIGNATURE.json</span><span class="fhash mono">e998991026bf…</span></li><li><span class="fname">TERMINAL_CONSISTENCY_RECORD.json</span><span class="fpath">SandboxA/sandboxA0a/formal/TERMINAL_CONSISTENCY_RECORD.json</span><span class="fhash mono">8decaf25da94…</span></li><li><span class="fname">EDITION_ACCEPTANCE_2026-08-13.md</span><span class="fpath">SandboxA/sandboxA0a/informal/EDITION_ACCEPTANCE_2026-08-13.md</span><span class="fhash mono">2e9d82647107…</span></li></ul></details><details class="grp"><summary><span class="gname">The edition itself</span><span class="gcount">22</span></summary><p class="gblurb">Including the machine-readable register and manifest.</p><ul class="files"><li><span class="fname">ACTIVITY.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/ACTIVITY.md</span><span class="fhash mono">16684bf0d577…</span></li><li><span class="fname">ANCESTRY.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/ANCESTRY.md</span><span class="fhash mono">0d67c8f3962c…</span></li><li><span class="fname">AUTHORSHIP.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/AUTHORSHIP.md</span><span class="fhash mono">9c323634383b…</span></li><li><span class="fname">CONCORDANCE.json</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/CONCORDANCE.json</span><span class="fhash mono">7bb67e52bd66…</span></li><li><span class="fname">DEFINITION_VERDICTS_2026-08-13.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/DEFINITION_VERDICTS_2026-08-13.md</span><span class="fhash mono">a005c6b264e6…</span></li><li><span class="fname">EDITION.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/EDITION.md</span><span class="fhash mono">89ad062a2bf0…</span></li><li><span class="fname">EMBEDDING_NOTE.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/EMBEDDING_NOTE.md</span><span class="fhash mono">ff906c92aefa…</span></li><li><span class="fname">MEASUREMENT_LOG.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/MEASUREMENT_LOG.md</span><span class="fhash mono">ffe117f267d5…</span></li><li><span class="fname">almanac.artifact.html</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/almanac.artifact.html</span><span class="fhash mono">self-referential — no hash</span></li><li><span class="fname">almanac.explained.html</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/almanac.explained.html</span><span class="fhash mono">208f6f812e15…</span></li><li><span class="fname">almanac.html</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/almanac.html</span><span class="fhash mono">75f71d3e0363…</span></li><li><span class="fname">GAPS.md</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/gaps/GAPS.md</span><span class="fhash mono">84a9b6202a1a…</span></li><li><span class="fname">paper.pdf</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/paper.pdf</span><span class="fhash mono">41776dfd4c4d…</span></li><li><span class="fname">paper.tex</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/paper.tex</span><span class="fhash mono">485f92eaabeb…</span></li><li><span class="fname">render_almanac.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/render_almanac.py</span><span class="fhash mono">955b1808c90f…</span></li><li><span class="fname">render_artifact.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/render_artifact.py</span><span class="fhash mono">c3645bfad0a2…</span></li><li><span class="fname">render_docs.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/render_docs.py</span><span class="fhash mono">2b1746d59ba9…</span></li><li><span class="fname">render_explained.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/render_explained.py</span><span class="fhash mono">9916e4462fc1…</span></li><li><span class="fname">render_formal.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/render_formal.py</span><span class="fhash mono">855f178951f7…</span></li><li><span class="fname">render_informal.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/render_informal.py</span><span class="fhash mono">187805ff9391…</span></li><li><span class="fname">render_paper.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/render_paper.py</span><span class="fhash mono">f0189f2b2df5…</span></li><li><span class="fname">verify_edition.py</span><span class="fpath">SandboxA/sandboxA0a/almanac/edition/verify_edition.py</span><span class="fhash mono">5bd05b5bb13a…</span></li></ul></details>
+<p class="fine"><strong>Held as references, cited by author, title and section:</strong> Gramain (Lecture Notes in Mathematics 1415, pages 123–137), Cahen–Chabert (AMS Surveys 48), Harman–Hopkins (arXiv:1601.06110), De Concini–Procesi, Jantzen, Lusztig, Habiro–Lê, Pólya, Pólya–Szegő, Gauss.</p>
+<h2>Reproducibility</h2><div class="rule"></div>
+<p>Pinned by exact revision — a proof that compiles today compiles against <em>that</em> specific library revision.</p>
+<div class="scroll"><table class="tbl">
+<tr><th>component</th><th>pin</th></tr><tr><td>Lean toolchain</td><td class="mono">leanprover/lean4:v4.30.0</td></tr><tr><td>Mathlib</td><td class="mono">c5ea00351c28e24afc9f0f84379aa41082b1188f (inputRev v4.30.0)</td></tr><tr><td>Julia</td><td class="mono">1.12.6</td></tr><tr><td>OSCAR</td><td class="mono">1.8.0 · 6da224b10d8658c1…</td></tr><tr><td>record commit</td><td class="mono">a4c04990</td></tr></table></div>
+<p class="fine">A re-run at these pins reproduces the symbolic results exactly; the arithmetic is exact in fraction fields over <code>ℤ[q]</code>, with no floating point anywhere in the record. Wall-clock time and search order may differ. Where a result is bounded, the bound is part of the claim and is re-runnable at that bound.</p>
+<h2>Authorship</h2><div class="rule"></div>
+<p><strong>Tamás Hausel</strong>, who directed this work throughout its life. Issued by <strong>Project Sandbox</strong>.</p>
+<p>Authorship here follows direction over the whole life of the work: the statement was fixed and signed before any proving effort was spent, every approval was a human act, and the closure signature is a human act.</p>
+<p>The work was produced by software agents operating under a written standard that fixes the statement before the proof, requires a computer-algebra oracle to confirm a statement — including against adversarial inputs — before proving effort is spent, and accepts a result as certified only on the verdict of a proof kernel. No agent approves its own work, and the seat that produces an edition is never the one that accepts it. The editorial work on this edition was done by a software agent under that standard.</p>
+<p class="fine">Formal results are certified by the Lean 4 kernel. Per-entry warrants are in the register and they are not uniform: the certifier certifies the formal statement and nothing else.</p>
+<h2>Errata and measurements</h2><div class="rule"></div>
+<p class="fine">Dated 2026-08-13. Everything below was measured directly.</p>
+<p><strong>Certification evidence.</strong> The closure signature of 2026-07-21 records thirteen certified declarations. The release log it cites contains five and does not contain the endpoint the signature names; a third record gives eight. The log is unaltered since it was hashed into the closure record. Sixteen declarations were checked directly on 2026-08-13 through the Lean language server, and each returned the axiom base <code>propext, Classical.choice, Quot.sound</code> — the standard three, nothing else.</p>
+<p><strong>The formal source description.</strong> The manifest of 2026-07-21 hashes seven files while declaring a five-file cone, and declares the non-degeneracy witnesses absent from the tree. They are in the tree, committed 2026-07-20, and were checked clean.</p>
+<p><strong>The acceptance battery.</strong> Recorded as 70/70 in three places; the test file contains 83 test statements; a re-run on 2026-08-13 gave 87/87.</p>
+<p><strong>Corrections to this edition.</strong> Four entries were first written as &ldquo;no predecessor located&rdquo; with no search behind them; searches were then run and predecessors were found for three. A convention dictionary in the ancestry section was written inverted, stating the base ring with <code>q</code> where the signed statement has <code>v</code>. A witness printed against the span identity — <code>ν_1(q³)</code> — was false in the current frame, having been carried over from a card written in the retired notation; the true witness is <code>ν_1(v³) = (v²+v+1)/(v+1)</code>, at an odd node. A claim that the additive-to-multiplicative substitution is not a lattice isomorphism was false; it is one.</p>
+<p><strong>A withdrawn certificate, and what it cost.</strong> This edition asserted that Gramain's normalisation differed from ours by a unit, and obtained a computer-algebra certificate for it. The certificate was sound and the claim was wrong: the formula typed into it carried a dropped minus sign, invisible at ordinary resolution and absent from the scan's text layer. Gramain divides where the transcription multiplied, so his classes are ours exactly. <strong>A certificate establishes its input, not its source.</strong> The claim and the certificate are withdrawn; the matter was settled instead from a sentence on the printed page — <em>&ldquo;On voit que G_n(q^n) = 1&rdquo;</em> — which forces the sign without needing to read the glyph.</p>
+<div class="colophon"><p><strong>almanacA0a</strong> · the pilot edition · Project Sandbox · 2026-08-13</p><p>Generated from the edition's own register and manifest at render time, so this presentation always matches the edition it presents; every figure in it is read from the edition's own data.</p><p>Reviewed and accepted 2026-08-13 by the owner of the record. Proposal for review; deposit is a step still ahead of this edition.</p></div>
+</div>

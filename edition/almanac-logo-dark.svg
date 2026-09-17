@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="190" height="58" viewBox="0 0 190 58" role="img" aria-label="almanac">
+  <!-- W1, adopted by the Overseer 2026-08-29: the word carries the form. "almanac" has exactly
+       three a's, one per KIND OF WARRANT - informal (ink), computational (orange),
+       kernel-certified (blue). textLength pins the set width so system-font fallback cannot
+       reflow the mark. -->
+  <text x="5" y="43" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif"
+        font-size="44" fill="#ffffff" textLength="180" lengthAdjust="spacingAndGlyphs">alm<tspan fill="#d95926">a</tspan>n<tspan fill="#3987e5">a</tspan>c</text>
+</svg>

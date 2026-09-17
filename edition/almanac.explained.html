@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Multiplicative Grid</title>
+<style>
+:root{
+  --paper:#f4f6f7; --panel:#e8edef; --ink:#131a1e; --dim:#4e5b63; --faint:#7b878e;
+  --rule:#c9d4d9; --hair:#dde5e8;
+  --struct:#2f4a6b; --kern:#1f5f5b; --comp:#7a5a18; --caution:#8c3a2e;
+  --measure:84ch;   /* was 66ch; widened 2026-09-13 on the Overseer's word so the title sits on one line */
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0e1215; --panel:#171d21; --ink:#e7ecef; --dim:#a3aeb4; --faint:#77838a;
+  --rule:#283138; --hair:#1e262b;
+  --struct:#8fb2d6; --kern:#74bcb4; --comp:#cba765; --caution:#e2968a;
+}}
+:root[data-theme="dark"]{
+  --paper:#0e1215; --panel:#171d21; --ink:#e7ecef; --dim:#a3aeb4; --faint:#77838a;
+  --rule:#283138; --hair:#1e262b;
+  --struct:#8fb2d6; --kern:#74bcb4; --comp:#cba765; --caution:#e2968a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font:400 18px/1.72 "Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  -webkit-font-smoothing:antialiased;
+  padding-inline:clamp(1.1rem,5vw,2rem);
+}
+.wrap{max-width:var(--measure); margin-inline:auto; padding-block:clamp(3rem,9vw,6rem) 6rem}
+p,li,dd,dt{max-width:var(--measure)}
+p{margin:0 0 1.15rem; text-wrap:pretty}
+
+.eyebrow{font-family:ui-sans-serif,-apple-system,"Segoe UI",system-ui,sans-serif;
+  font-size:.68rem; font-weight:650; letter-spacing:.19em; text-transform:uppercase;
+  color:var(--faint); margin:0 0 1.1rem}
+h1{font-size:clamp(2.2rem,6.5vw,3.4rem); line-height:1.02; letter-spacing:-.028em;
+  font-weight:600; margin:0 0 1.3rem; text-wrap:balance}
+@media(min-width:700px){h1{white-space:nowrap}}   /* one line on any desk; phones may still wrap */
+h2{font-size:1.5rem; line-height:1.2; letter-spacing:-.014em; font-weight:600;
+  margin:4.2rem 0 1.2rem; text-wrap:balance}
+h2::before{content:""; display:block; width:2.4rem; height:2px;
+  background:var(--ink); margin-bottom:1.1rem}
+h3{font-size:1.06rem; font-weight:650; margin:2.4rem 0 .5rem; letter-spacing:-.004em}
+.lede{font-size:1.24rem; line-height:1.55; color:var(--dim); margin-bottom:2rem}
+strong{font-weight:650}
+code,.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace; font-size:.86em;
+  font-variant-ligatures:none}
+code{background:var(--panel); padding:.08em .32em; border-radius:2px}
+a{color:var(--struct); text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--struct); outline-offset:3px; border-radius:2px}
+
+/* full-width figure bands */
+.band{margin:2.4rem calc(50% - 50vw); padding:2.2rem calc(50vw - 50%);
+  background:var(--panel); border-block:1px solid var(--hair)}
+.band > *{max-width:var(--measure); margin-inline:auto}
+.cap{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.78rem;
+  line-height:1.5; color:var(--dim); margin:1.1rem auto 0}
+
+.display{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  font-size:1.02rem; line-height:1.9; margin:1.6rem 0; padding:1.2rem 0;
+  border-block:1px solid var(--rule); text-align:center; overflow-x:auto}
+.display .big{font-size:1.18rem}
+
+/* the grid figure */
+.gridfig{overflow-x:auto; padding-bottom:.4rem}
+.grid{border-collapse:collapse; margin:0 auto; font-variant-numeric:tabular-nums}
+.grid th,.grid td{padding:.55rem .85rem; text-align:center; white-space:nowrap;
+  font-family:ui-monospace,Menlo,monospace; font-size:.86rem}
+.grid th{font-family:ui-sans-serif,system-ui,sans-serif; font-size:.66rem;
+  letter-spacing:.13em; text-transform:uppercase; color:var(--faint); font-weight:650;
+  border-bottom:1px solid var(--rule); padding-bottom:.5rem}
+.grid td.node{color:var(--struct); font-weight:600}
+.grid td.val{color:var(--ink)}
+.grid tr.off td{color:var(--caution)}
+.grid tr.off td.node{color:var(--caution); font-weight:600}
+.grid .tag{font-family:ui-sans-serif,system-ui,sans-serif; font-size:.62rem;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--faint)}
+
+/* witnesses */
+.wit{border-left:2px solid var(--rule); padding:.1rem 0 .1rem 1.3rem; margin:1.8rem 0}
+.thm{background:var(--panel); border-left:3px solid var(--struct); padding:1rem 1.3rem .6rem; margin:2rem 0; border-radius:2px}
+.thm .edge{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.7rem; font-weight:650; letter-spacing:.14em; text-transform:uppercase; color:var(--struct); display:block; margin-bottom:.5rem}
+.thm p{margin-bottom:.6rem}
+.thm .display{margin:.4rem 0}
+.wit .edge{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif;
+  font-size:.7rem; font-weight:650; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--caution); display:block; margin-bottom:.45rem}
+.wit p:last-child{margin-bottom:0}
+
+/* grade chips */
+.grades{display:grid; gap:0; margin:1.6rem 0}
+.grade{display:grid; grid-template-columns:5.2rem 1fr; gap:.2rem 1.3rem; align-items:baseline;
+  padding:1rem 0; border-top:1px solid var(--hair)}
+.grade:last-child{border-bottom:1px solid var(--hair)}
+.grade .n{font-family:ui-monospace,Menlo,monospace; font-size:1.5rem; font-weight:600;
+  font-variant-numeric:tabular-nums; line-height:1}
+.grade .nm{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.7rem;
+  font-weight:700; letter-spacing:.12em; text-transform:uppercase}
+.grade .wh{grid-column:2; font-size:.95rem; color:var(--dim)}
+.g-k .n,.g-k .nm{color:var(--w-blue)} .g-c .n,.g-c .nm{color:var(--w-orange)}
+.g-n .n,.g-n .nm{color:var(--faint)}
+@media(max-width:520px){.grade{grid-template-columns:1fr} .grade .wh{grid-column:1}}
+
+/* descent steps */
+.steps{list-style:none; margin:1.6rem 0; padding:0; display:grid; gap:1.9rem}
+.steps li{display:grid; grid-template-columns:5.6rem 1fr; gap:0 1.4rem; max-width:none}
+.steps .yr{font-family:ui-sans-serif,-apple-system,system-ui,sans-serif; font-size:.72rem;
+  font-weight:700; letter-spacing:.1em; color:var(--faint); padding-top:.35rem;
+  font-variant-numeric:tabular-nums}
+.steps .bd{max-width:var(--measure)}
+.steps h3{margin-top:0}
+@media(max-width:560px){.steps li{grid-template-columns:1fr; gap:.3rem}}
+
+dl.defs{display:grid; grid-template-columns:auto 1fr; gap:.6rem 1.4rem; margin:1.5rem 0;
+  align-items:baseline}
+dl.defs dt{font-family:ui-monospace,Menlo,monospace; font-size:.88rem; color:var(--struct);
+  white-space:nowrap}
+dl.defs dd{margin:0; color:var(--dim); font-size:.97rem}
+@media(max-width:520px){dl.defs{grid-template-columns:1fr; gap:.15rem}
+  dl.defs dt{margin-top:.7rem}}
+
+math{font-size:1.05em}
+.display math[display="block"]{font-size:1.25rem; margin:.15rem 0}
+.note{font-size:.95rem; color:var(--dim)}
+.colophon{margin-top:5rem; padding-top:1.4rem; border-top:2px solid var(--ink);
+  font-size:.86rem; line-height:1.6; color:var(--dim)}
+.colophon p{max-width:none}
+
+/* THE MARK, on every html face of the almanac (Overseer, 2026-09-04). Horizontal cut here,
+   because it sits in a masthead and the square cut is for a margin beside prose. */
+.wordmark{display:block;margin:0 0 .7rem;height:38px;width:126px}
+
+:root{--w-orange:#eb6834;--w-blue:#2a78d6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--w-orange:#d95926;--w-blue:#3987e5}}
+:root[data-theme="dark"]{--w-orange:#d95926;--w-blue:#3987e5}
+
+</style>
+
+<div class="wrap">
+
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><svg class="wordmark" width="126" height="38" viewBox="0 0 190 58" role="img" aria-label="almanac"><text x="5" y="43" font-family="Georgia, 'Iowan Old Style', 'Times New Roman', serif" font-size="44" fill="var(--ink)" textLength="180" lengthAdjust="spacingAndGlyphs">alm<tspan fill="var(--w-orange,#eb6834)">a</tspan>n<tspan fill="var(--w-blue,#2a78d6)">a</tspan>c</text></svg></a>
+<p class="eyebrow">Project Sandbox · <a href="https://github.com/almanac-editions/almanacA0a">almanacA0a</a> · a reader's companion</p>
+<h1>The multiplicative&nbsp;grid</h1>
+
+<p class="lede">A polynomial can take whole-number values everywhere you look and still not have
+whole-number coefficients. This is the story of one small theorem that says exactly which
+polynomials do that on a geometric grid — and of how far that theorem has been checked.</p>
+
+<p><strong>The mathematics here is classical, and the theorem is not a new one.</strong> The
+question is Pólya's, from 1915; the geometric grid is Gel'fond's, from 1933, and Gramain's, from
+1990; the deformed two-sided form is Harman and Hopkins', from 2016. What this record adds to them
+is two routine transports, set out in full further down. What is unusual is not the theorem but the
+record: it was proved, machine-verified and then edited into a form a stranger can check, and every
+claim on this page carries a statement of what warrants it.</p>
+
+<h2>The oldest version of the question</h2>
+
+<p>Take the polynomial <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mn>2</mn></mrow></math>. Its coefficients are halves — not whole numbers —
+yet at every integer it returns an integer: 0, 0, 1, 3, 6, 10. The halving always cancels,
+because among any two consecutive integers one is even.</p>
+
+<p>So "has integer coefficients" and "takes integer values" are different properties, and the
+second is strictly weaker. <strong>Pólya's theorem</strong> (1915) says exactly how much weaker:
+the polynomials taking integer values at every integer are precisely the integer combinations of
+the <em>binomial polynomials</em>
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mo minsize="2.047em" maxsize="2.047em">&#x00028;</mo><mfrac linethickness="0"><mrow><mi>x</mi></mrow><mrow><mi>k</mi></mrow></mfrac><mo minsize="2.047em" maxsize="2.047em">&#x00029;</mo><mspace width="0.278em" /><mo>&#x0003D;</mo><mspace width="0.278em" /><mfrac><mrow><mi>x</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mn>2</mn><mo stretchy="false">&#x00029;</mo><mo>&#x022EF;</mo><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mi>k</mi><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mrow><mrow><mi>k</mi><mo>&#x00021;</mo></mrow></mfrac><mo>&#x0002C;</mo><mspace width="2em" /><mi>k</mi><mo>&#x0003D;</mo><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo>&#x0002C;</mo><mn>2</mn><mo>&#x0002C;</mo><mo>&#x02026;</mo></mrow></math>
+— for each <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>k</mi></mrow></math> a polynomial in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math> of degree <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>k</mi></mrow></math>, with rational coefficients; <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo minsize="2.047em" maxsize="2.047em">&#x00028;</mo><mfrac linethickness="0"><mrow><mi>x</mi></mrow><mrow><mn>2</mn></mrow></mfrac><mo minsize="2.047em" maxsize="2.047em">&#x00029;</mo><mo>&#x0003D;</mo><mi>x</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mn>2</mn></mrow></math>
+is the one above. The failure of integrality in the coefficients
+is entirely accounted for by changing basis. Everything below is a deformation of that sentence.</p>
+
+<h2>What this record proves</h2>
+
+<p>Pólya's sentence has three ingredients: the points where the values are tested (the integers),
+the numbers that the values and the coefficients are measured against (the integers again), and
+the binomial polynomials that mediate between the two. The theorem in this record deforms each of
+the three. Here they are, one at a time, in the notation this page will use; the statement follows,
+and nothing in it will not have been explained first.</p>
+
+<p><strong>Two variables.</strong> Throughout, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math> are two independent formal
+variables — letters about which nothing is assumed. Everything is written in terms of the square
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi><mo>&#x0003D;</mo><msup><mi>v</mi><mrow><mn>2</mn></mrow></msup></mrow></math>, for a reason that will become a hypothesis below: only <em>even</em> powers of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math>
+ever occur, and that is what the word <em>even</em> means on this page. The second variable <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math>
+is a spectator. It is there because the question was posed for a whole family of algebras at once,
+one for each value of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math>, and it rides through the argument without ever being constrained —
+but it has to be carried.</p>
+
+<p><strong>Two rings.</strong> Write
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi><mo>&#x0003D;</mo><mi>ℤ</mi><mo stretchy="false">[</mo><msup><mi>v</mi><mrow><mi>&#x000B1;</mi><mn>1</mn></mrow></msup><mo>&#x0002C;</mo><msup><mi>t</mi><mrow><mi>&#x000B1;</mi><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></math> for the whole-number combinations of powers of
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math>, positive or negative. On this page <em>integral</em> means <em>lies in
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math></em>. Write <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔽</mi><mo>&#x0003D;</mo><mi>ℚ</mi><mo stretchy="false">&#x00028;</mo><mi>v</mi><mo stretchy="false">&#x00029;</mo><mo stretchy="false">[</mo><msup><mi>t</mi><mrow><mi>&#x000B1;</mi><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></math> for the larger ring in which
+fractions in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math> are also allowed — <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mrow></math>, for instance — while <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math> still appears through
+its powers alone. Every element of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math> is an element of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔽</mi></mrow></math>, and the gap between
+the two is the whole theorem.</p>
+
+<p><strong>The grid.</strong> In place of the integers, values are tested on the
+<strong>geometric</strong> progression <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup></mrow></math>, where <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C7;</mi></mrow></math> runs over all the integers, of
+either sign:
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02026;</mo><mo>&#x0002C;</mo><mspace width="0.167em" /><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>2</mn></mrow></msup><mo>&#x0002C;</mo><mspace width="0.167em" /><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup><mo>&#x0002C;</mo><mspace width="0.167em" /><mn>1</mn><mo>&#x0002C;</mo><mspace width="0.167em" /><mi>q</mi><mo>&#x0002C;</mo><mspace width="0.167em" /><msup><mi>q</mi><mrow><mn>2</mn></mrow></msup><mo>&#x0002C;</mo><mspace width="0.167em" /><mo>&#x02026;</mo></mrow></math></p>
+
+<p><strong>The polynomials, and their values.</strong> A <em>Laurent polynomial in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Y</mi></mrow></math></em> is a
+finite sum <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msub><mo>&#x02211;</mo><mi>k</mi></msub><msub><mi>c</mi><mi>k</mi></msub><mspace width="0.167em" /><msup><mi>Y</mi><mrow><mi>k</mi></mrow></msup></mrow></math> in which the exponents <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>k</mi></mrow></math> are integers of either sign and
+the coefficients <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>c</mi><mi>k</mi></msub></mrow></math> lie in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔽</mi></mrow></math>. Its value at a point of the grid is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup><mo stretchy="false">&#x00029;</mo></mrow></math>,
+obtained by substituting <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup></mrow></math> for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Y</mi></mrow></math>. Call <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi></mrow></math> <em>grid-integral</em> if
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup><mo stretchy="false">&#x00029;</mo></mrow></math> lies in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math> for every integer <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C7;</mi></mrow></math>. This is the deformation of "takes
+an integer value at every integer".</p>
+
+<p><strong>The <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-binomial polynomials.</strong> Set <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>0</mn></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>1</mn></mrow></math> and, for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo>&#x02265;</mo><mn>1</mn></mrow></math>,
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003BD;</mi><mi>r</mi></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><munderover><mo>&#x0220F;</mo><mrow><mi>s</mi><mo>&#x0003D;</mo><mn>0</mn></mrow><mrow><mi>r</mi><mo>&#x02212;</mo><mn>1</mn></mrow></munderover><mfrac><mrow><mi>Y</mi><mo>&#x02212;</mo><msup><mi>q</mi><mrow><mi>s</mi></mrow></msup></mrow><mrow><msup><mi>q</mi><mrow><mi>r</mi></mrow></msup><mo>&#x02212;</mo><msup><mi>q</mi><mrow><mi>s</mi></mrow></msup></mrow></mfrac><mo>&#x0002E;</mo></mrow></math>
+For <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo>&#x02265;</mo><mn>1</mn></mrow></math> their coefficients lie in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔽</mi></mrow></math>
+and not in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math> — already <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mrow></math> — but their values on the grid are integral, and
+in exactly Pólya's way: at the node <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Y</mi><mo>&#x0003D;</mo><msup><mi>q</mi><mrow><mi>n</mi></mrow></msup></mrow></math> the value <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mi>r</mi></msub><mo stretchy="false">&#x00028;</mo><msup><mi>q</mi><mrow><mi>n</mi></mrow></msup><mo stretchy="false">&#x00029;</mo></mrow></math> is the Gaussian
+binomial coefficient <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mo minsize="2.047em" maxsize="2.047em">&#x00028;</mo><mfrac linethickness="0"><mrow><mi>n</mi></mrow><mrow><mi>r</mi></mrow></mfrac><mo minsize="2.047em" maxsize="2.047em">&#x00029;</mo></mrow><mrow><mi>q</mi></mrow></msub></mrow></math>, for every integer <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math>, positive or negative. That
+is the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-analogue of the fact that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo minsize="2.047em" maxsize="2.047em">&#x00028;</mo><mfrac linethickness="0"><mrow><mi>x</mi></mrow><mrow><mi>k</mi></mrow></mfrac><mo minsize="2.047em" maxsize="2.047em">&#x00029;</mo></mrow></math> takes the value <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo minsize="2.047em" maxsize="2.047em">&#x00028;</mo><mfrac linethickness="0"><mrow><mi>n</mi></mrow><mrow><mi>k</mi></mrow></mfrac><mo minsize="2.047em" maxsize="2.047em">&#x00029;</mo></mrow></math> at
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x0003D;</mo><mi>n</mi></mrow></math>, and it is what makes <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mi>r</mi></msub></mrow></math> the right replacement for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo minsize="2.047em" maxsize="2.047em">&#x00028;</mo><mfrac linethickness="0"><mrow><mi>x</mi></mrow><mrow><mi>k</mi></mrow></mfrac><mo minsize="2.047em" maxsize="2.047em">&#x00029;</mo></mrow></math>.</p>
+
+<div class="thm">
+  <span class="edge">Theorem — the exact <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-Pólya theorem for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>1</mn></msub></mrow></math></span>
+  <p>Let <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo></mrow></math> be a Laurent polynomial in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Y</mi></mrow></math> with coefficients in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔽</mi></mrow></math>. Then
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi></mrow></math> is grid-integral — that is, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup><mo stretchy="false">&#x00029;</mo><mo>&#x02208;</mo><mi>𝔸</mi></mrow></math> for every integer <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C7;</mi></mrow></math> — if
+  and only if <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>f</mi></mrow></math> can be written as a finite sum</p>
+  <div class="display"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>f</mi><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mspace width="0.278em" /><mo>&#x0003D;</mo><mspace width="0.278em" /><mo>&#x02211;</mo><msub><mi>a</mi><mrow><mi>u</mi><mo>&#x0002C;</mo><mi>r</mi></mrow></msub><mspace width="0.278em" /><msup><mi>Y</mi><mrow><mi>u</mi></mrow></msup><mspace width="0.167em" /><msub><mi>&#x003BD;</mi><mi>r</mi></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo></mrow></math></div>
+  <p>with integer shifts <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>u</mi></mrow></math> of either sign, indices <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi><mo>&#x02265;</mo><mn>0</mn></mrow></math>, and coefficients
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>a</mi><mrow><mi>u</mi><mo>&#x0002C;</mo><mi>r</mi></mrow></msub></mrow></math> in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>.</p>
+</div>
+
+<p>Read it against Pólya: his <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>ℤ</mi></mrow></math> is our <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>, his <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo minsize="2.047em" maxsize="2.047em">&#x00028;</mo><mfrac linethickness="0"><mrow><mi>x</mi></mrow><mrow><mi>k</mi></mrow></mfrac><mo minsize="2.047em" maxsize="2.047em">&#x00029;</mo></mrow></math> is our
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mi>r</mi></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo></mrow></math>, and the shifts <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>Y</mi><mrow><mi>u</mi></mrow></msup></mrow></math> are there because the grid runs in both directions. Read
+from right to left the theorem is the easy inclusion — each <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>Y</mi><mrow><mi>u</mi></mrow></msup><msub><mi>&#x003BD;</mi><mi>r</mi></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo></mrow></math> is grid-integral
+because the Gaussian binomials lie in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>, and sums of integral values are integral. The
+content is the other direction: <strong>every grid-integral Laurent polynomial is such a
+combination</strong>. The combination need not be unique — the second witness below shows the
+family is dependent — so this is a theorem about spanning, and it says exactly that.</p>
+
+<p class="note"><strong>In the paper</strong> the same objects wear more dress: the rings carry a
+subscript, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>A</mi><mi>t</mi></msub></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>F</mi><mi>t</mi></msub></mrow></math>, as a reminder that <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math> is present; the grid coordinate carries a
+check mark, which records where the grid comes from in higher rank and carries nothing at
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>1</mn></msub></mrow></math>; and the set of grid-integral Laurent polynomials is called the <em>even Newton
+lattice</em> and written <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>𝒩</mi><mrow><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">v</mi></mrow></mrow></msup></mrow></math>, <em>ev</em> for the even powers. The
+theorem is stated there as the equality of that set with the span of the shifted
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-binomial polynomials — the same statement, with the same content. This page drops the
+decoration and nothing else.</p>
+
+<h2>Where the difficulty lives</h2>
+
+<p><strong>The polynomials have coefficients in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔽</mi></mrow></math>; what is required to lie in
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math> are their values.</strong> If the coefficients were already in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>
+there would be nothing to prove — the values would follow for free. The content is that a
+polynomial can fail the coefficient test and pass the value test, and that the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-binomial polynomials
+account for every way this can happen.</p>
+
+<p>One element shows the gap is real. Take the first <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-binomial polynomial:</p>
+
+<div class="display"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><mi>Y</mi><mo>&#x02212;</mo><mn>1</mn></mrow><mrow><mi>q</mi><mo>&#x02212;</mo><mn>1</mn></mrow></mfrac></mrow></math></div>
+
+<p>Its single coefficient is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mrow></math>. That coefficient does not lie in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>, because
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi><mo>&#x02212;</mo><mn>1</mn></mrow></math> cannot be inverted there. But watch what the polynomial itself does on the grid:</p>
+
+<div class="band">
+  <div class="gridfig">
+    <table class="grid">
+      <thead>
+        <tr><th>node <span class="tag"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Y</mi><mo>&#x0003D;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup></mrow></math></span></th><th><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub></mrow></math> evaluated there</th><th></th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="node"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>2</mn></mrow></msup></mrow></math></td><td class="val"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup><mo>&#x02212;</mo><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>2</mn></mrow></msup></mrow></math></td><td class="tag">integral</td></tr>
+        <tr><td class="node"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup></mrow></math></td><td class="val"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup></mrow></math></td><td class="tag">integral</td></tr>
+        <tr><td class="node"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mn>0</mn></mrow></msup></mrow></math></td><td class="val"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0</mn></mrow></math></td><td class="tag">integral</td></tr>
+        <tr><td class="node"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mn>1</mn></mrow></msup></mrow></math></td><td class="val"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn></mrow></math></td><td class="tag">integral</td></tr>
+        <tr><td class="node"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mn>2</mn></mrow></msup></mrow></math></td><td class="val"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002B;</mo><mi>q</mi></mrow></math></td><td class="tag">integral</td></tr>
+        <tr><td class="node"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mn>3</mn></mrow></msup></mrow></math></td><td class="val"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002B;</mo><mi>q</mi><mo>&#x0002B;</mo><msup><mi>q</mi><mn>2</mn></msup></mrow></math></td><td class="tag">integral</td></tr>
+        <tr class="off"><td class="node"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>v</mi><mrow><mn>3</mn></mrow></msup></mrow></math></td><td class="val"><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mfrac><mrow><msup><mi>v</mi><mn>2</mn></msup><mo>&#x0002B;</mo><mi>v</mi><mo>&#x0002B;</mo><mn>1</mn></mrow><mrow><mi>v</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></mfrac></mrow></math></td><td class="tag">off the grid — not integral</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="cap">These are six nodes of a grid that runs on for ever in both directions, so the
+  table illustrates the cancellation and is never the argument for it. What settles every node at
+  once is the closed form <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub><mo stretchy="false">&#x00028;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mo stretchy="false">&#x00028;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo></mrow></math>, which equals
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002B;</mo><mi>q</mi><mo>&#x0002B;</mo><mo>&#x02026;</mo><mo>&#x0002B;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi><mo>&#x02212;</mo><mn>1</mn></mrow></msup></mrow></math> when <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C7;</mi><mo>&#x0003E;</mo><mn>0</mn></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mo stretchy="false">&#x00028;</mo><msup><mi>q</mi><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup><mo>&#x0002B;</mo><mo>&#x02026;</mo><mo>&#x0002B;</mo><msup><mi>q</mi><mrow><mi>&#x003C7;</mi></mrow></msup><mo stretchy="false">&#x00029;</mo></mrow></math> when <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C7;</mi><mo>&#x0003C;</mo><mn>0</mn></mrow></math>: a
+  whole-number combination of powers of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> either way. The last row is not a grid point at all,
+  and there the cancellation fails; that row is the subject of the third witness below. The seven
+  tabulated values were recomputed on the project's computer-algebra oracle while this page was
+  written.</p>
+</div>
+
+<h2>Three ways the statement is tight</h2>
+
+<p>Every clause in the statement is doing work, and one value each shows it. These are the sharp
+edges of the result: what it delivers, what it stops short of, and the hypothesis it cannot do
+without.</p>
+
+<div class="wit">
+  <span class="edge">The <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-binomial polynomials are genuinely needed</span>
+  <p><strong><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub></mrow></math> is grid-integral and its coefficient is not integral.</strong> The closed
+  form above puts its value in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math> at every one of the infinitely many nodes, while its
+  single coefficient <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mn>1</mn><msup><mo stretchy="false">&#x00029;</mo><mrow><mo>&#x02212;</mo><mn>1</mn></mrow></msup></mrow></math> lies outside <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>. So the grid-integral Laurent
+  polynomials form a <em>strictly</em> larger set than <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi><mo stretchy="false">[</mo><msup><mi>Y</mi><mrow><mi>&#x000B1;</mi><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></math>, and the theorem
+  says something the coefficients alone do not.</p>
+</div>
+
+<div class="wit">
+  <span class="edge">It spans, and stops there</span>
+  <p><strong>The generating family satisfies a relation:
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mspace width="0.167em" /><msub><mi>&#x003BD;</mi><mn>1</mn></msub><mo stretchy="false">&#x00028;</mo><mi>Y</mi><mo stretchy="false">&#x00029;</mo><mo>&#x02212;</mo><mi>Y</mi><mo>&#x0002B;</mo><mn>1</mn><mo>&#x0003D;</mo><mn>0</mn></mrow></math> over <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>.</strong> So the shifted <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-binomial
+  polynomials span the grid-integral Laurent polynomials without being independent, and this is a
+  <em>spanning</em> theorem — a basis theorem would be a stronger result and is not this one.
+  Whether the grid-integral Laurent polynomials have a basis over <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math> is <strong>not settled
+  by this record</strong>; the last section says what is known beyond it.</p>
+</div>
+
+<div class="wit">
+  <span class="edge">The grid must be even</span>
+  <p><strong>At the odd node <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>v</mi><mrow><mn>3</mn></mrow></msup></mrow></math> the value leaves <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>:</strong>
+  <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub><mo stretchy="false">&#x00028;</mo><msup><mi>v</mi><mn>3</mn></msup><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><msup><mi>v</mi><mn>3</mn></msup><mo>&#x02212;</mo><mn>1</mn></mrow><mrow><msup><mi>v</mi><mn>2</mn></msup><mo>&#x02212;</mo><mn>1</mn></mrow></mfrac><mo>&#x0003D;</mo><mfrac><mrow><msup><mi>v</mi><mn>2</mn></msup><mo>&#x0002B;</mo><mi>v</mi><mo>&#x0002B;</mo><mn>1</mn></mrow><mrow><mi>v</mi><mo>&#x0002B;</mo><mn>1</mn></mrow></mfrac></mrow></math>. Since <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi><mo>&#x0003D;</mo><msup><mi>v</mi><mn>2</mn></msup></mrow></math>, the grid is the
+  <em>even</em> powers <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>v</mi><mrow><mn>2</mn><mi>&#x003C7;</mi></mrow></msup></mrow></math>, and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub></mrow></math> is integral at every one of
+  them — but refine the grid to all powers of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math> and integrality breaks at the first
+  new node. <strong>The word <em>even</em> in the statement is a hypothesis, not a
+  convenience.</strong></p>
+</div>
+
+<p class="note">Each of these is settled by a single value, which is worth saying plainly: one
+value is a complete proof of a statement of this shape, not evidence for it. Nothing here rests on
+a sample.</p>
+
+<h2>Where the statement came from</h2>
+
+<p>The theorem is reached from known results along a line worth setting out, because each of the
+four steps below changed what the question was about.</p>
+
+<ol class="steps">
+  <li><span class="yr">1915</span><div class="bd">
+    <h3>Pólya — the additive origin</h3>
+    <p>Integer-valued polynomials on the integers are the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>ℤ</mi></mrow></math>-span of the binomial
+    polynomials. The template for everything that follows.</p>
+  </div></li>
+  <li><span class="yr">1933 · 1990</span><div class="bd">
+    <h3>Gel'fond, then Gramain — moving the grid</h3>
+    <p>Ask for integrality along <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002C;</mo><mspace width="0.167em" /><mi>q</mi><mo>&#x0002C;</mo><mspace width="0.167em" /><msup><mi>q</mi><mn>2</mn></msup><mo>&#x0002C;</mo><mspace width="0.167em" /><mo>&#x02026;</mo></mrow></math> instead. For entire functions that is
+    Gel'fond, 1933 — the <em>multiplicative analogue</em> of Pólya's problem. For polynomials it is
+    Gramain's Proposition 2.2: for an integer <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi><mo>&#x02265;</mo><mn>2</mn></mrow></math>, the polynomials integral at every
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mi>k</mi></mrow></msup></mrow></math> are generated by the Gauss binomial polynomials — <strong>which are
+    exactly the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mi>r</mi></msub></mrow></math> of this record.</strong></p>
+  </div></li>
+  <li><span class="yr">2016</span><div class="bd">
+    <h3>Harman and Hopkins — deforming the coefficients</h3>
+    <p>Which <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo>&#x02208;</mo><mi>ℚ</mi><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo stretchy="false">&#x00029;</mo><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></math> satisfy <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo stretchy="false">&#x00028;</mo><mo stretchy="false">[</mo><mi>n</mi><msub><mo stretchy="false">]</mo><mi>q</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x02208;</mo><mi>ℤ</mi><mo stretchy="false">[</mo><mi>q</mi><mo stretchy="false">]</mo></mrow></math>? Their §1 answers it on
+    the additive grid of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-integers; their §4 takes the nodes over all of
+    <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>ℤ</mi></mrow></math>, which is the <strong>bilateral</strong> form this record needs. Their §4 also
+    contains the remark that joins the two lines: setting <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi><mo>&#x0003D;</mo><mn>1</mn><mo>&#x0002B;</mo><mo stretchy="false">&#x00028;</mo><mi>q</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mi>x</mi></mrow></math> turns
+    evaluation at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x0003D;</mo><mo stretchy="false">[</mo><mi>n</mi><msub><mo stretchy="false">]</mo><mi>q</mi></msub></mrow></math> into evaluation at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>z</mi><mo>&#x0003D;</mo><msup><mi>q</mi><mrow><mi>n</mi></mrow></msup></mrow></math> — the
+    additive grid becomes the geometric one, node for node.</p>
+  </div></li>
+  <li><span class="yr">this record</span><div class="bd">
+    <h3>What is added — two routine transports</h3>
+    <p>The grid variable is inverted, so the objects are <strong>Laurent</strong> rather than
+    polynomial; at a grid of units that is a clearing argument, not a difficulty. And the
+    coefficients carry a <strong>free parameter <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math></strong>, which arrives from the
+    setting the goal was posed in and rides through as a spectator — the integrality test
+    decomposes coefficient-wise.</p>
+  </div></li>
+</ol>
+
+<h2>How far it has been checked</h2>
+
+<p>The record exists in three layers — a written proof, a Julia instrument that computes the
+objects, and a Lean development the proof kernel accepts. <strong>The grades below are different
+kinds of claim, each meaning exactly what it states</strong>, and the edition keeps them
+distinct.</p>
+
+<div class="grades">
+  <div class="grade g-n">
+    <div class="n">1<span class="nm" style="font-size:.62rem"> / 12</span></div>
+    <div class="nm">ink — a refereed argument</div>
+    <div class="wh">An argument written for a human reader and refereed. No kernel certifies it and
+      no computation bounds it: the check is a referee reading the proof. The one here is the claim
+      every other result rests on — that the proof proves the statement that was signed.</div>
+  </div>
+  <div class="grade g-c">
+    <div class="n">2<span class="nm" style="font-size:.62rem"> / 12</span></div>
+    <div class="nm">orange — computed over a declared range</div>
+    <div class="wh">Verified by computation over a stated bound, and over nothing else. The bound
+      is part of the claim. Neither of these could ever be kernel-certified: no Lean declaration
+      states what a Julia program does.</div>
+  </div>
+  <div class="grade g-k">
+    <div class="n">9<span class="nm" style="font-size:.62rem"> / 12</span></div>
+    <div class="nm">blue — kernel-certified</div>
+    <div class="wh">A Lean declaration states the claim and its axiom base is exactly
+      <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code>: the three standard axioms of Lean's kernel — propositional extensionality, the axiom of choice and quotient soundness — the base every Mathlib proof shares; a certificate is clean when these three are all it needs — with no
+      <code>sorryAx</code>, no custom axiom. Every one of these was measured first-hand
+      through the Lean language server.</div>
+  </div>
+</div>
+
+<p class="note">The computed rows are the instrument (acceptance battery 87/87, with the grid
+integrality checked for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi></mrow></math> in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0</mn><mo>&#x02026;</mo><mn>8</mn></mrow></math> against <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C7;</mi></mrow></math> in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mn>9</mn><mo>&#x02026;</mo><mn>9</mn></mrow></math>, and a negative
+control of 249 cases required to fail — which they do) and an independent oracle referee pin
+(verdict <code>PROVED_BOUNDED</code>, 60 positive and 5 hostile seeds, 0 disagreements).</p>
+
+<p><strong>The deliverable is the theorem with a clean axiom base.</strong>
+No theory of integer-valued polynomials, classical or <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-deformed, exists in Mathlib —
+not Pólya's theorem, not a <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-analogue. That absence is why the formal layer had to be
+built rather than cited.</p>
+
+<h2>The honest size of the result</h2>
+
+<p><strong>First, what <em>rank</em> means here</strong>, because it is the one word on this page
+with two readings. Rank is the <em>semisimple</em> rank: the number of simple roots. <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>1</mn></msub></mrow></math> has
+none, so this record is the <strong>rank <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0</mn></mrow></math></strong> case; <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>2</mn></msub></mrow></math> is rank 1, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>3</mn></msub></mrow></math> is rank
+2, and so on. The group <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>1</mn></msub></mrow></math> is of course one-dimensional, which is where the second reading
+comes from, but nothing on this page uses it.</p>
+
+<p><strong>At <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>1</mn></msub></mrow></math> this is the degenerate case, and the edition says so first.</strong>
+The root system is empty, so the algebra is commutative and its centre is all of it; the Weyl group
+is trivial; the Harish–Chandra projection is the identity map. Two of the three clauses in the
+original goal are formalities at rank 0. <strong>The value of the record is that a small true
+statement was carried end to end</strong>, and that the cost and the failure modes of doing so were
+measured. Rank 1, which is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>2</mn></msub></mrow></math>, is a separate closed record of the same programme and is cited
+in the paper; rank 2 and above are open, and nothing on this page bears on them.</p>
+
+<p><strong>A tested agreement is not a proof.</strong> The Julia and Lean layers are two independent
+implementations joined by a shared naming discipline, not by a checked morphism. Agreement between
+them is established by testing, over the bounds printed above, and it licenses nothing beyond them.</p>
+
+<p><strong>The ancestral result is not our result.</strong> The Harman–Hopkins bilateral quantum
+Pólya theorem is the ancestor of the transported argument. The reconciliation that would identify
+their lattice with this one is <strong>open</strong>.</p>
+
+<h2>What is still open</h2>
+
+<p>Three things, stated because an edition that lists only its results teaches a false boundary.
+<strong>"Open" on this page means one thing: not settled by this closed record.</strong> The programme
+has gone on with each of the three since the record closed, and what it holds is stated below with
+its warrant, because the three grades of warrant are not interchangeable.</p>
+
+<p><strong>A basis.</strong> This record proves that the grid-integral Laurent polynomials are spanned
+by the shifted <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math>-binomial polynomials and that this family is dependent; it exhibits no basis,
+and nothing certified here decides whether the set is a free module over <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>𝔸</mi></mrow></math>. The
+programme's closed, kernel-certified rank-one record (<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>2</mn></msub></mrow></math>) goes further: it exhibits bases —
+the bilateral elementary basis, and the affine-Grassmannian and affine-flag <em>flow-up</em> bases —
+and it proves, with the kernel's certificate, that the bilateral one-variable lattice is <em>free</em>
+on the signed bilateral Newton rows (nodes taken in the order <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>0</mn><mo>&#x0002C;</mo><mn>1</mn><mo>&#x0002C;</mo><mo>&#x02212;</mo><mn>1</mn><mo>&#x0002C;</mo><mn>2</mn><mo>&#x0002C;</mo><mo>&#x02212;</mo><mn>2</mn><mo>&#x0002C;</mo><mo>&#x02026;</mo></mrow></math>): a Laurent
+polynomial is integral at every signed node exactly when it has a unique expansion in those rows with
+integral coefficients. What no record has done is carry that statement into this record's rings —
+its coefficient ring has no square root of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>q</mi></mrow></math> and two spectator parameters where this one has
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>v</mi></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>t</mi></mrow></math> — a routine base change of the kind this record itself performs, performed by nobody
+for this statement. Work resting on the rank-one record's ordered-pair basis <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>E</mi><mi>a</mi></msub><msub><mi>E</mi><mi>b</mi></msub></mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>a</mi><mo>&#x02265;</mo><mi>b</mi><mo>&#x02265;</mo><mn>0</mn></mrow></math>,
+continues in a candidate manuscript, not adopted and not kernel-certified, and a further sandbox is
+planned behind it.</p>
+
+<p><strong>The four-way reconciliation.</strong> That Lusztig's toral lattice, this record's lattice,
+the bilateral weight-Newton span and the transported Harman–Hopkins ring are one lattice under one
+normalisation. Two of the three identifications are argued on the programme's own shelf, none is
+chained, three frame differences block chaining by inspection, and the computer-algebra evidence
+reaches degree 7. Open in the plain sense.</p>
+
+<p><strong>Rank <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02265;</mo><mn>2</mn></mrow></math>.</strong> The two clauses that are formalities here carry the weight there,
+and this record's argument does not transport. But the statement is not unknown. For <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mn>3</mn></msub></mrow></math> it is
+kernel-certified in full — twenty-four declarations on the clean axiom triple, no <code>sorry</code>,
+11 August 2026 — with the closure package filed and one criterion outstanding, the Overseer's
+signature. For <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mi>n</mi></msub></mrow></math>, every <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math>, the programme holds an informal proof, refereed and adopted on
+24 August 2026: the <em>statement</em> is kernel-checked, the <em>proof</em> is not, no closed record
+stands behind it, and its computational checks are bounded to declared ranges. What is open in the
+plain sense is the general-lattice centre conjecture beyond the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mrow><mi mathvariant="normal">G</mi><mi mathvariant="normal">L</mi></mrow><mi>n</mi></msub></mrow></math> lattice.</p>
+
+<div class="colophon">
+  <p><strong>This page is a companion: it explains, and the record certifies.</strong> The
+  record-bearing edition — one row per result, joining all three layers under a stated convention
+  frame, with per-row ancestry and a manifest of every shipped file and its hash — is a separate
+  document, and where the two ever disagree the record is right and this page is wrong.</p>
+  <p>Every mathematical claim on this page — the theorem, the three witnesses, the tabulated
+  values, the open problems — is drawn from that edition's register. The seven grid values
+  and the two identities in the witnesses were recomputed fresh on the project's warm
+  computer-algebra oracle while this page was written. The closed form for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mn>1</mn></msub></mrow></math>, and the
+  identification of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>&#x003BD;</mi><mi>r</mi></msub></mrow></math>'s values with the Gaussian binomial coefficients, are cancellations
+  from the definition quoted above — the powers of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>q</mi><mrow><mi>s</mi></mrow></msup></mrow></math> divide out — and were confirmed
+  symbolically over a range of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>r</mi></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003C7;</mi></mrow></math> when this page was last revised.</p>
+  <p>almanacA0a · pilot edition over the closed record <code>SandboxA/sandboxA0a</code> ·
+  assembled by the Almanac Editor.</p>
+</div>
+
+</div>

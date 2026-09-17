@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The formal layer — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><picture class="mark"><source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg"><img src="almanac-mark.svg" width="92" alt="almanac"></picture></a>
+<a class="back" href="index.html">&larr; the almanac</a>
+<h1>The formal layer</h1>
+<p>Nine of this edition&rsquo;s twelve results carry a proof-kernel certificate. This page is what that means, row by row, assembled from <a href="CONCORDANCE.json">CONCORDANCE.json</a> and the release log — it states no fact those files do not.</p>
+<h2>What the kernel said</h2>
+<blockquote><p><code>release_verify --source: ALL CLEAN (source rebuild + verifier + clean-triple axioms)</code></p></blockquote>
+<p>Quoted from <a href="source/record/formal/RELEASE_20260721_source_all_clean.log">the release log</a>, which is the artifact the certification cites. <strong>A result counts as kernel-certified only when its axiom base is exactly <code>propext</code>, <code>Classical.choice</code>, <code>Quot.sound</code></strong>: the three standard axioms of Lean's kernel — propositional extensionality, the axiom of choice and quotient soundness — the base every Mathlib proof shares; a certificate is clean when these three are all it needs — with no <code>sorryAx</code> and no custom axiom.</p>
+<h2>The certified results</h2>
+<table><thead><tr><th>result</th><th>Lean declaration</th><th>axioms measured</th></tr></thead><tbody>
+<tr><td><strong>A0a-01-clause-i</strong><br><span style='color:var(--dim)'>U^ev = N^ev is an A_t-subalgebra of U.</span></td><td><code>HybridQuantumLean.A1.GL1Newton.clause_i</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/GOALv0a.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-02-clause-ii</strong><br><span style='color:var(--dim)'>The Harish–Chandra projection restricts to an isomorphism of A_t-algebras HC : Z(U^ev) → (N^ev)^W, and this isomorphism is the identity map of N^ev.</span></td><td><code>HybridQuantumLean.A1.GL1Newton.clause_ii</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/GOALv0a.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-03-clause-iii</strong><br><span style='color:var(--dim)'>N^ev = S = Σ_{u∈Z} Σ_{r≥0} A_t · Y̌^u ν_r(Y̌) — the even Newton lattice is exactly the A_t-span of the shifted divided classes.</span></td><td><code>HybridQuantumLean.A1.GL1Newton.Nev_eq_span</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/NewtonUnivSpan.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-04-lemma-grid</strong><br><span style='color:var(--dim)'>For all m ∈ Z and r ≥ 0, B_r(m) = ν_r(q^m) ∈ Z[q^{±1}] — the grid values of the divided classes are integral, including at negative nodes.</span></td><td><code>HybridQuantumLean.A1.GL1Newton.Az_nuGrid</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/NewtonUnivGrid.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-05-lemma-fwd</strong><br><span style='color:var(--dim)'>For every u ∈ Z and r ≥ 0, Y̌^u ν_r(Y̌) ∈ N^ev; hence S ⊆ N^ev.</span></td><td><code>HybridQuantumLean.A1.GL1Newton.Newton_nuGen</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/NewtonUnivGrid.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-06-lemma-rev</strong><br><span style='color:var(--dim)'>If g ∈ N^ev is an even toral POLYNOMIAL of degree ≤ d, then g = Σ_{r≤d} c_r ν_r(Y̌) with all c_r ∈ A_t. The windowed reverse inclusion.</span></td><td><code>HybridQuantumLean.A1.GL1Newton.mem_span_of_Newton</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/NewtonUnivSpan.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-07-definition-1-presented</strong><br><span style='color:var(--dim)'>U is the F_t-algebra on invertible pairwise commuting K_{n,±} with K_{0,±}=1, K_{m+n,±}=K_{m,±}K_{n,±}, K_{n,+}K_{n,−}=t^n; and the monomials (T^+)^w,</span></td><td><code>HybridQuantumLean.A1.GL1Newton.Presentation.equivTorus</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/PresentedU.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-08-nondegeneracy</strong><br><span style='color:var(--dim)'>Clause (iii) is not vacuously true of a degenerate object: A_t[Ycheck^{±1}] ⊊ N^ev ⊊ K_1[Ycheck^{±1}] — strictly, on both sides, with K_1 = Frac(A_t) </span></td><td><code>HybridQuantumLean.A1.GL1Newton.clause_iii_nondegenerate</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/NonDegeneracy.lean</span></td><td>the clean triple</td></tr>
+<tr><td><strong>A0a-09-kz-bridge</strong><br><span style='color:var(--dim)'>Enlarging the ambient coefficient RING from F_t = Q(v)[t^{±1}] (not a field) to K_1 = Frac(A_t) = Q(v,t) adds no new Newton elements: the two readings</span></td><td><code>HybridQuantumLean.A1.GL1Newton.KzBridge.Newton_mem_KzAmbient</code><br><span style='color:var(--dim)'>Sandbox/A1/GL1/KzBridge.lean</span></td><td>the clean triple</td></tr>
+</tbody></table>
+<h2>The sources</h2>
+<p>7 files, shipped as they were built. They are Lean source: a browser shows them as text, which is what they are.</p><ul>
+<li><a href="source/lean/FamilyField1.lean"><code>FamilyField1.lean</code></a></li>
+<li><a href="source/lean/GOALv0a.lean"><code>GOALv0a.lean</code></a></li>
+<li><a href="source/lean/KzBridge.lean"><code>KzBridge.lean</code></a></li>
+<li><a href="source/lean/NewtonUnivGrid.lean"><code>NewtonUnivGrid.lean</code></a></li>
+<li><a href="source/lean/NewtonUnivSpan.lean"><code>NewtonUnivSpan.lean</code></a></li>
+<li><a href="source/lean/NonDegeneracy.lean"><code>NonDegeneracy.lean</code></a></li>
+<li><a href="source/lean/PresentedU.lean"><code>PresentedU.lean</code></a></li>
+</ul>
+<h2>What a certificate does not say</h2>
+<p>The kernel certifies <strong>the formal statement</strong>. Whether that statement is faithful to the informal one is a separate question, and this edition answers it separately — see <a href="EMBEDDING_NOTE.html">the embedding note</a>, and the one ink-warranted row in <a href="index.html">the concordance</a>.</p>
+</main></body></html>

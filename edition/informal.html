@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The informal proof — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><picture class="mark"><source media="(prefers-color-scheme: dark)" srcset="almanac-mark-dark.svg"><img src="almanac-mark.svg" width="92" alt="almanac"></picture></a>
+<a class="back" href="index.html">&larr; the almanac</a>
+<h1>The informal proof</h1>
+<p>This is the <strong>ink</strong> layer: an argument written for a human reader and refereed. No proof kernel certifies it and no computation bounds it &mdash; the check is a referee reading the proof. It is also the layer every other row presupposes, because a kernel certifies <em>a formal statement</em> and something has to say that the statement is the one that was signed.</p>
+<h2>Read it</h2>
+<table><tbody>
+<tr><td><strong><a href="paper.pdf">The paper</a></strong> (PDF, 8&nbsp;pp.)</td><td>The mathematics written up to be read: the statement for general <em>n</em>, which this edition does <strong>not</strong> prove, and the case <em>n</em>&nbsp;=&nbsp;1, which it does. Assembled from the documents below, every definition, statement and proof step lifted verbatim.</td></tr>
+<tr><td><strong><a href="almanac.explained.html">The mathematics explained</a></strong></td><td>The same result at length, for a general reader, with the formulas typeset. No renderer, no network.</td></tr>
+</tbody></table>
+<h2>The record they are accountable to</h2>
+<p>The statement and the proof are <strong>separate documents on purpose</strong>: the goal was signed and hash-frozen before any proving began, so the claim &ldquo;the proof proves the statement that was signed&rdquo; has content that can be checked rather than assumed.</p>
+<ul>
+<li><a href="source/informal/goalv0a.pdf">The signed goal</a> (PDF) &mdash; also as <a href="source/informal/goalv0a.tex">LaTeX source</a></li>
+<li><a href="source/informal/proofv0a.pdf">The informal proof</a> (PDF) &mdash; also as <a href="source/informal/proofv0a.tex">LaTeX source</a></li>
+<li><a href="source/informal/REFEREE_REPORT_PROOFv0a.html">The adversarial referee&rsquo;s report</a></li>
+</ul>
+<h2>How it was refereed</h2>
+<table><thead><tr><th>stage</th><th>date</th><th>what happened</th></tr></thead><tbody>
+<tr><td><strong>adversarial mathematical referee</strong></td><td>2026-07-20</td><td><strong>CONFIRM-WITH-FINDINGS</strong> &middot; read: proofv0a.tex as it then stood, pre-notation-migration &middot; report <code>6e31018c647e&hellip;</code> &middot; <a href="source/informal/REFEREE_REPORT_PROOFv0a.html">the report</a><br>attack (8), byte-faithfulness to goalv0a.tex — FAITHFUL. Definitions, the algebra and its relations, and all three clauses reproduced without change; the four documented traps checked one by one. One non-blocking phrasing point.</td></tr>
+<tr><td><strong>notation migration</strong></td><td>2026-08-10/11</td><td>read: the whole manuscript<br>Q→q, q→v, z→t by the Sandbox-wide dictionary. Argument unchanged, symbols renamed. The no-drift property was verified mechanically by the next referee, not asserted here.</td></tr>
+<tr><td><strong>human-facing editorial referee</strong></td><td>2026-08-12</td><td><strong>PASS-WITH-EDITS — 2 BLOCKING, 15 EDITORIAL, 12 NIT</strong> &middot; read: proofv0a.tex &middot; bytes read <code>c42cbf8fc204&hellip;</code> &middot; report <code>e8034b17455c&hellip;</code> &middot; <a href="source/informal/EDITORIAL_REFEREE_REPORT_2026-08-12.html">the report</a> &middot; kept at <code>informal/versions/proofv0a_pre-editorial_2026-08-12.tex</code><br>semantic-drift check against the byte-frozen signed anchor: NO DRIFT, verified MECHANICALLY rather than by eye. Refereed for a competent mathematician OUTSIDE this programme reading the PDF with no access to the record.</td></tr>
+<tr><td><strong>revision</strong></td><td>2026-08-12</td><td>Both BLOCKING findings repaired — one-sentence each. The repairs are visible as three hunks against the version above: the migration paragraph restated, the clause (ii) injectivity step written out in full, and the attribution remark made exact. The middle one writes the FIRST referee&#x27;s own supplied argument into the text.</td></tr>
+<tr><td><strong>acceptance</strong></td><td>2026-08-13</td><td>by hypervisorA, as tree owner and review counterparty &middot; document <code>2e9d82647107&hellip;</code> &middot; <a href="source/informal/EDITION_ACCEPTANCE_2026-08-13.html">the acceptance</a></td></tr>
+</tbody></table>
+<h2>What ink does not mean</h2>
+<p>INTERNAL. Both referees are agents of this project working under the Sandbox Rule, adversarially and recused from their own work. NO EXTERNAL PEER REVIEW HAS TAKEN PLACE. The edition says &#x27;Peer review to date: Internal&#x27; on its face and that stays true; ink means refereed, never externally refereed.</p>
+<h2>The limit, stated on its own face</h2>
+<blockquote><p>NO REFEREE READ THE SHIPPED BYTES. The last referee read c42cbf8f…, required two one-sentence repairs, and those repairs produced the shipped bbd6f055…. THIS IS NOT WITHDRAWN BY THE VERIFICATION BELOW: a delta check by the accepting seat is weaker than a referee reading the whole document, and ink means refereed. The verification sits under this limit as mitigation, never as replacement, and &#x27;Peer review to date: Internal&#x27; stands.</p></blockquote>
+<h3>What was done about it</h3>
+<p>versions/proofv0a_pre-editorial_2026-08-12.tex (c42cbf8f…, the refereed bytes) against informal/proofv0a.tex (bbd6f055…, the shipped bytes) &mdash; 29 changed lines across three sites. Verified by hypervisorA, the accepting seat, 2026-08-31 — who attacked this limit on request rather than ruling it ordinary.</p>
+<p><strong>The decisive test.</strong> A mechanical diff of every theorem / lemma / proposition / corollary / definition environment and every \label. EMPTY: six environments in each, identical, same labels. Carried further by the Editor to the full statement BODIES, whitespace-normalised: 6 of 6 identical. NO STATEMENT CHANGED BETWEEN THE REFEREED BYTES AND THE SHIPPED BYTES.</p>
+<p>Every change ran toward more rigour:</p><ul>
+<li>the notation-dictionary paragraph expanded — expository, making Q→q, q→v, z→t explicit</li>
+<li>the middle-equality step: the refereed text ASSERTED that Uev = Nev ⊆ U maps into U ⊗ Frac(A_t); the shipped text PROVES it — F_t injects into Frac(A_t) = ℚ(v,t) and U is free over F_t, so the inclusion is literal. A justification SUPPLIED where one was assumed.</li>
+<li>the Lusztig remark made precise and given the sentence &#x27;Nothing below rests on that remark&#x27; — reliance on an external remark REMOVED.</li>
+</ul>
+<p>TWO SEATS, TWO INDEPENDENT IMPLEMENTATIONS, on the stronger form of the test. The Almanac Editor re-ran hypervisorA&#x27;s environment/label diff before adopting it and extended it to full statement BODIES (6 of 6 identical); hypervisorA then re-implemented the body comparison by a different route and got the same result. Neither seat took the other&#x27;s number.</p>
+<p><strong>Every delta runs toward more rigour and none touches a statement, so a referee who passed c42cbf8f could not have withdrawn that verdict on bbd6f055: the shipped bytes are strictly better supported than the bytes that earned the PASS. WHAT IT DOES NOT LICENSE: calling the shipped bytes refereed. They are not.</strong></p>
+<h2>The row this layer carries</h2>
+<table><thead><tr><th>result</th><th>what it says</th></tr></thead><tbody>
+<tr><td><strong>A0a-12-proof-proves-the-signed-statement</strong></td><td>The stand-alone proof proves the statement that was signed: proofv0a.tex establishes the three clauses of goalv0a.tex — no clause weakened, none strengthened, no convention changed.</td></tr>
+</tbody></table>
+<p>Its convention frame: Both documents are read in the CURRENT frame (q, v, t; q = v², t = z²). The first referee read the pre-migration text in the legacy frame (Q, q, z); the migration between them was verified mechanically, not by eye, and is recorded in the chain below.</p>
+<p>Every other result in this edition is in <a href="index.html">the concordance</a>, with the two layers that can be machine-checked: <a href="source/informal/proofv0a.ledger.cas_receipts.html">the proof ledger</a> and <a href="formal.html">the formal layer</a>.</p>
+</main></body></html>
