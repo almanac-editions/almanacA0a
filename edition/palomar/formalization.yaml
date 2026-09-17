@@ -1,0 +1,198 @@
+# formalization.yaml — Mathlib Initiative schema v0.4
+#   schema:     https://github.com/mathlib-initiative/formalization.yaml  (Apache-2.0)
+#   comparator: https://github.com/leanprover/comparator
+#
+# GENERATED FILE. Regenerate with:  python3 palomar/emit_formalization.py --license <SPDX>
+# Do not hand-edit: every value is read from CONCORDANCE.json and MANIFEST.json, and a
+# hand-edit silently detaches this file from the record it is supposed to describe.
+#
+# +---------------------------------------------------------------------------+
+# | BLOCKING: project.license IS EMPTY, AND THE SCHEMA REQUIRES IT.            |
+# | This file therefore DOES NOT VALIDATE, deliberately and visibly.          |
+# | No licence is declared anywhere in this project. Choosing one is an        |
+# | outward-facing act and belongs to the project's director alone; this       |
+# | generator will not invent one to make a required field look satisfied.     |
+# | Re-run with --license <SPDX-ID> and the file validates.                    |
+# +---------------------------------------------------------------------------+
+version: "v0.4"
+project:
+  name: "almanacA0a — the centre of the even hybrid family quantum GL(1)"
+  description: "For G = GL(1): the even hybrid family integral form U^ev is an A_t-subalgebra of U; the Harish-Chandra projection restricts to an isomorphism Z(U^ev) = (N^ev)^W; and the even Newton lattice is exactly the A_t-span of the shifted divided classes. This is the rank-one base case of a programme formalising the centre of the even hybrid family quantum group of a reductive G. It is an ORIGINAL result of the programme, not a formalization of a previously published theorem."
+  authors:
+    - "Tamas Hausel"
+  responsible_maintainers:
+    - "Tamas Hausel"
+  license: ""
+repository:
+  role: "substantive-development"
+sources:
+  - title: "The centre of the even hybrid family quantum GL(1) (goalv0a / proofv0a)"
+    authors:
+      - "Tamas Hausel"
+    id: "SandboxA/sandboxA0a/informal/goalv0a.tex"
+    type: "original-proof"
+    location: "informal/goalv0a.tex (signed goal, approval-1 2026-07-19); informal/proofv0a.tex (proof)"
+    relationship: "formalizes"
+    author_endorsement: "participated"
+    note: "The theorem is first presented by this project, so this is an original-proof entry. The goal statement was fixed and cryptographically pinned BEFORE any proving budget was spent, and its sha256 is bound into the project's closure signature; the informal proof was written and then read by an independent adversarial referee agent."
+  - title: "Quantum integer-valued polynomials (Harman-Hopkins)"
+    type: "article"
+    relationship: "background"
+    location: "section 1"
+    author_endorsement: "not-contacted"
+    note: "ANCESTRY FOR THE IDEA, NOT A DEPENDENCY. The proof of the closure clause is the elementary one (an intersection of preimages of a subring under ring homomorphisms) and does not use the Harman-Hopkins content. Refereed and confirmed at source 2026-08-13 with re-derived probes. Full per-result ancestry is in ANCESTRY.md and in CONCORDANCE.json's 'ancestry' field."
+classification:
+  arxiv:
+    - "math.QA"
+    - "math.RT"
+  msc2020:
+    - "17B37"
+automation:
+  methods:
+    - method: "autonomous"
+      models:
+        - "Anthropic Claude, 'opus' tier — Gate-0 adversarial CAS pins"
+        - "Anthropic Claude, 'opus' + 'opus-xhigh' tiers — informal proof and its independent adversarial referee"
+        - "Anthropic Claude, 'opus' tier — formal-layout design"
+        - "Anthropic Claude, 'sonnet' tier — extraction/worksheet lane"
+      framework: "Claude Code, under this project's own seat harness and workflow orchestrator"
+      tool_setup: "Warm computer-algebra oracle (HybridQuantum, Julia+Oscar) on a pinned local socket; a warm Lean checker; a heavy-compute gate enforcing memory caps; single-writer file ownership per agent."
+      cost:
+        wall_time: "about 13 minutes wall-clock for this wave (5 agents, about 558,000 tokens)"
+        spend_usd: "subscription-based usage; no metered API spend was recorded"
+        hardware: "one Mac Studio (M1 Max, 64 GB). Local only, no cloud."
+      prompting_notes: "Anti-drift instructions carried into every lane: the goal statement is hash-locked and may not be weakened; sorries are reported and never hidden; a blueprint node is marked complete only on a genuinely sorry-free proof; the release verifier is the sole certifier. Wave id wf_e77747a5, landed 2026-07-19T23:55Z."
+    - method: "autonomous"
+      models:
+        - "Anthropic Claude, 'opus' tier — formal statement lane"
+        - "Anthropic Claude, 'opus/max' tier — THE LANE THAT PRODUCED THE LEAN PROOFS"
+        - "Anthropic Claude, 'opus/xhigh' tier — independent verification (compensating control)"
+        - "Anthropic Claude, 'sonnet' tier — toolchain and reporting kit"
+      framework: "Claude Code, workflow wf_81f55f31 ('v0a-completion')"
+      tool_setup: "As above. The verification lane was a different agent from the proving lane, by design."
+      cost:
+        wall_time: "not separately recorded for this wave in the campaign journal"
+        spend_usd: "subscription-based usage; no metered API spend was recorded"
+        hardware: "one Mac Studio (M1 Max, 64 GB). Local only, no cloud."
+      prompting_notes: "Same anti-drift instruction set. Dispatched 2026-07-20T02:05Z."
+  spend_usd: "0 USD metered spend. The project runs entirely on local hardware under a flat subscription."
+  notes: "TWO DISCLOSURES THAT LIMIT WHAT THE ABOVE MEANS, both recorded because omitting them would overstate the precision of this file. (1) ATTRIBUTION IS PER WAVE, NOT PER DECLARATION. The campaign record names the model tier for each LANE of each dispatched wave; it does not record which model emitted which Lean declaration. No per-declaration model attribution is given, because none was measured, and inventing one would defeat the purpose of this file. (2) THE MODEL STRINGS ABOVE ARE TIER LABELS, NOT EXACT MODEL IDS. The journal records 'opus', 'opus/max', 'opus/xhigh', 'sonnet'; the exact model identifiers and their versions were not written down at dispatch time. They are reported as recorded. HUMAN EFFORT: 0 human minutes in the assembly. The human acts were the summon, the seat design, and the approval and closure signatures; no human read, wrote, reviewed or decided anything inside the automated assembly. CROSS-PROVIDER CHECK: a non-Anthropic (Codex) agent served as an independent referee where a cross-provider check was required, and found at least one defect that two Anthropic agents missed, including an adversarial auditor at the highest reasoning tier, because both had swept Mathlib/ and never Archive/."
+status:
+  scope: "One closed result with three layers: an informal manuscript, a Julia/Oscar computational instrument, and a Lean development. Of the edition's 11 concordance rows, 9 are kernel-certified and are listed below as main_results; 2 are verified by computation over a declared range and are NOT listed here, because a bounded computation is not a kernel certificate and the two must never be blurred. NOTE ON sorry_count: a repo-wide sorry count is deliberately NOT asserted at this level. What was measured is per-declaration: each result below carries its own measured axiom set, and a clean triple entails no sorryAx in that declaration's dependency cone. A repo-wide figure would be a stronger claim than anything measured here."
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "HybridQuantumLean.A1.GL1Newton.clause_i"
+      file: "Sandbox/A1/GL1/GOALv0a.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies:
+        - statement: "quantum integer-valued polynomials form a ring (Harman–Hopkins §1)"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+    - declaration: "HybridQuantumLean.A1.GL1Newton.clause_ii"
+      file: "Sandbox/A1/GL1/GOALv0a.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies:
+        - statement: "De Concini–Procesi, Quantum Groups, LNM 1565 §18.3 (generic quantum Harish–Chandra isomorphism)"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+        - statement: "Jantzen, Lectures on Quantum Groups, GSM 6, THEOREM 6.25 (never §6.6, which is containment only)"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+        - statement: "the GL2 in-programme predecessor"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+    - declaration: "HybridQuantumLean.A1.GL1Newton.Nev_eq_span"
+      file: "Sandbox/A1/GL1/NewtonUnivSpan.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies:
+        - statement: "Harman–Hopkins, Quantum integer-valued polynomials, arXiv:1601.06110, §1 (quantum Pólya basis) and §4 (bilateral localization)"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+    - declaration: "HybridQuantumLean.A1.GL1Newton.Az_nuGrid"
+      file: "Sandbox/A1/GL1/NewtonUnivGrid.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies:
+        - statement: "Harman–Hopkins §1 (Gaussian-binomial value pattern), extended to negative nodes as their §4 bilateral localization requires"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+    - declaration: "HybridQuantumLean.A1.GL1Newton.Newton_nuGen"
+      file: "Sandbox/A1/GL1/NewtonUnivGrid.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies:
+        - statement: "Harman–Hopkins §1 — the transported forward half: q-binomials are quantum integer-valued"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+    - declaration: "HybridQuantumLean.A1.GL1Newton.mem_span_of_Newton"
+      file: "Sandbox/A1/GL1/NewtonUnivSpan.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies:
+        - statement: "Pólya's windowed-interpolation argument as q-deformed in Harman–Hopkins §1 (interpolation proof, printed pp. 3–4), run on the multiplicative grid with t a spectator"
+          source: "Harman-Hopkins (see sources); ancestry for the idea, not a dependency"
+    - declaration: "HybridQuantumLean.A1.GL1Newton.Presentation.equivTorus"
+      file: "Sandbox/A1/GL1/PresentedU.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies: []
+    - declaration: "HybridQuantumLean.A1.GL1Newton.clause_iii_nondegenerate"
+      file: "Sandbox/A1/GL1/NonDegeneracy.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies: []
+    - declaration: "HybridQuantumLean.A1.GL1Newton.KzBridge.Newton_mem_KzAmbient"
+      file: "Sandbox/A1/GL1/KzBridge.lean"
+      sorry_count: 0
+      axioms:
+        - "propext"
+        - "Classical.choice"
+        - "Quot.sound"
+      literature_dependencies: []
+fidelity:
+  divergences: "THREE, ALL DECLARED RATHER THAN DISCOVERED. (1) NOTATION. The Lean sources predate this project's 2026-08-10 notation migration and are written in legacy symbols: the Lean 'A_z' IS the manuscript's A_t, and the Lean 'Q' IS the manuscript's q. The edition restates the convention frame per result rather than rewriting the signed sources, and CONCORDANCE.json carries that frame on every row. A reader who assumes the Lean names mean what the manuscript names mean will misread them. (2) TWO RESULTS HAVE NO INFORMAL COUNTERPART. Two rows are formal-side guarantees with no counterpart environment in the manuscript; their informal file is recorded as null rather than the row being dropped. (3) THE CERTIFICATE'S REACH. A Lean declaration certifies the Lean statement and nothing else. The project's own rule, enforced per row: a row may not be called kernel-certified on the strength of a Lean proof if the claim the row makes is about the CODE rather than the mathematics. What the computational layer does and does not establish is set out separately in EMBEDDING_NOTE.md, and it is not a certificate."
+review:
+  status: "agent-reviewed"
+  reviewers:
+    - "an independent adversarial referee agent (informal proof), a different agent from the one that wrote it"
+    - "an independent verification lane (formal), a different agent from the proving lane"
+    - "the programme hypervisor, as record owner and accepting counterparty — a different seat from the one that produced the edition"
+  notes: "NO EXTERNAL PEER REVIEW. No referee outside this project has read this work, and nothing here should be read as claiming otherwise. What the project does have is a structural separation: the seat that produces an artifact is never the seat that accepts it, and no agent approves its own work. The edition was accepted by the record owner on 2026-08-13 as a faithful and non-overclaiming account of the closed record — which is explicitly NOT deposit, NOT outward release, and NOT a freeze."
+alignment:
+  how_to_read_this: "The full statement-to-declaration alignment is a machine-readable artifact of this edition: CONCORDANCE.json. It carries one row per result, joining the informal manuscript, the computational instrument and the Lean development by an explicit convention frame under which all three sets of names denote one object, and records per row WHAT ACTUALLY CERTIFIES IT. Three parallel archives that a reader must align by hand would not be an edition; the concordance is the thing that makes it one."
+  warrant_vocabulary:
+    ink: "THE INK WARRANT. An argument written out for a human reader and refereed. The row pins it to a hashed document at a named location, so a reader can check they are reading the bytes the row cites; its ancestry was refereed at source, per row; and the proof itself was read by an independent adversarial referee, recorded at edition level. This is a warrant, not the absence of one — a refereed informal proof is what the other two are checked against. WHAT IT DOES NOT YET CARRY, stated because the other two warrants do carry it: a per-row record of WHO refereed THIS claim and when. Refereeing of the sources is per row; refereeing of the argument is recorded for the edition. Neither is yet a per-claim anchor."
+    orange: "THE ORANGE WARRANT. Verified by computation over the bound in declared_range, and over nothing else. The bound is part of the claim."
+    blue: "THE BLUE WARRANT. A Lean declaration states THIS ROW'S claim and its #print axioms result is exactly the clean triple with no sorryAx. The axioms field is the ACTUAL measured result, never a restatement of the sandbox's closed status."
+  the_rule_that_matters: "warrant describes THIS ROW, not the sandbox. sandboxA0a is closed with a clean axiom triple; that does not make every row kernel_certified. A row whose Lean declaration is absent is not kernel-certified however green the sandbox is."
+  rows_not_listed_as_main_results:
+    - id: "A0a-10-instrument"
+      warrant: "orange"
+      why: "Verified by computation over a declared bound, and over nothing else. The bound is part of the claim. Not a kernel certificate, so not a main_result."
+    - id: "A0a-11-n1-referee-pin"
+      warrant: "orange"
+      why: "Verified by computation over a declared bound, and over nothing else. The bound is part of the claim. Not a kernel certificate, so not a main_result."
+acknowledgements: "Lean 4 and Mathlib; Julia and OSCAR. This disclosure file follows the Mathlib Initiative's formalization.yaml schema (Apache-2.0), and the Challenge/Solution contract it refers to is the Lean FRO's comparator. Both were adopted here because they make a formalization's human-checkable surface small and explicit, which is the same thing this almanac is for."
