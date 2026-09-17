@@ -1,0 +1,33 @@
+# How the rendered almanac is published.
+#
+# GitLab Pages serves whatever a job leaves in public/. The almanac's pages live in edition/,
+# so this copies that directory to the site root — which also means a visitor arriving at the
+# site lands on edition/index.html rather than on a directory with no index. The archive is
+# copied alongside so the README's download link resolves on the published site too.
+#
+# THIS FILE IS INERT ON GITHUB. It is GitLab's CI configuration and GitHub ignores it entirely;
+# it is here because one repository is mirrored to both. It publishes nothing by itself: a
+# project must have Pages enabled and a runner available before it does anything at all.
+#
+# It builds nothing. The almanac is assembled and checksummed before it ever reaches a
+# repository, so this job only copies files — it must never generate or modify one, or the
+# published site would differ from the bytes CHECKSUMS.txt certifies.
+
+pages:
+  stage: deploy
+  # The instance runner is tagged, and a tagged runner takes only jobs that ask for its tag.
+  tags:
+    - docker
+  image: alpine:latest          # ignored by shell runners, required by docker runners
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+  script:
+    - rm -rf public
+    - mkdir -p public
+    - cp -R edition/. public/
+    - cp almanacA0a.zip public/
+    - test -f public/index.html                       # the landing page must exist
+    - test -f public/CHECKSUMS.txt                    # and the integrity record must travel with it
+  artifacts:
+    paths:
+      - public

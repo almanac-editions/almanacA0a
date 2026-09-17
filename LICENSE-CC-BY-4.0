@@ -1,0 +1,78 @@
+almanacA0a — CC BY 4.0, for the text, the mathematics and the data
+==================================================================
+
+Copyright (c) 2026 Tamás Hausel and the Institute of Science and Technology
+Austria (ISTA).
+
+This package contains two kinds of material and they carry two licences.
+`LICENSE` beside this file is the MIT licence and covers everything that runs.
+THIS file covers everything written to be read. The split is by file, and the
+rule is meant to be applied mechanically rather than interpreted: if you can
+tell which list a file is in, you know its licence.
+
+WHY TWO FILES RATHER THAN ONE. They were one document until 2026-09-09, which
+was accurate and unreadable to a machine: a licence detector cannot match a file
+that states two licences, so the repository was published as "Other /
+NOASSERTION" — a label that tells a reader less than either licence does. The
+canonical MIT text now sits alone in `LICENSE` where a detector can find it, and
+this file carries the half that has no standard single-file form. Nothing about
+the terms changed in the split.
+
+--------------------------------------------------------------------------------
+1. TEXT, MATHEMATICS AND DATA — CC BY 4.0
+--------------------------------------------------------------------------------
+
+Everything written to be read, and the records that support it:
+
+  edition/paper.pdf, edition/paper.tex          the paper
+  edition/source/informal/**                    the signed goal, the proof,
+                                                the referee reports, the ledger
+  edition/*.html, edition/*.md                  the reader-facing pages and guides
+  edition/CONCORDANCE.json, edition/MANIFEST.json, edition/DIST_MANIFEST.json
+  edition/sources-cited/**                      the statement cards
+  README.md, AGENTS.md, CITATION.cff
+
+Licensed under the Creative Commons Attribution 4.0 International License
+(CC BY 4.0). You may share and adapt this material for any purpose, including
+commercially, provided you give appropriate credit, link to the licence, and
+indicate whether changes were made.
+
+  Licence text:  https://creativecommons.org/licenses/by/4.0/legalcode
+  Summary:       https://creativecommons.org/licenses/by/4.0/
+  SPDX:          CC-BY-4.0
+
+HOW TO ATTRIBUTE: cite the edition as CITATION.cff specifies. An edition is a
+versioned, hash-pinned object; citing it without its version defeats the point
+of pinning it.
+
+--------------------------------------------------------------------------------
+2. SOFTWARE — MIT, in `LICENSE`
+--------------------------------------------------------------------------------
+
+Everything that runs or is compiled:
+
+  edition/*.py                     the assembler, the renderers, the verifier
+  edition/palomar/**               the disclosure layer's scripts
+  edition/source/lean/**           the Lean 4 sources of the formal layer
+  edition/source/julia/**          the computational instrument, where present
+  .gitlab-ci.yml                   the publication job
+
+--------------------------------------------------------------------------------
+3. WHAT NEITHER LICENCE COVERS
+--------------------------------------------------------------------------------
+
+THIRD-PARTY WORK REMAINS ITS AUTHORS'. The statement cards under
+`edition/sources-cited/` are this project's own descriptions of results in the
+published literature; they quote briefly and cite in full, and that quotation is
+the authors' work, not ours to license. No paper by anyone else is redistributed
+in this package — the cards name where each source is held and do not carry it.
+
+TOOLCHAINS ARE NOT REDISTRIBUTED. Lean 4, Mathlib, Julia and their packages carry
+their own licences and are named, with pinned versions, in the reproducibility
+recipe rather than shipped here.
+
+A LICENCE IS NOT A WARRANT. This file says what you may DO with the material. It
+says nothing about what is proved, or how well: that is the concordance's job,
+and every claim in this edition carries its own warrant — refereed argument,
+computation over a stated range, or a proof-kernel certificate. The three are
+kept visibly distinct and a permissive licence does not blur them.

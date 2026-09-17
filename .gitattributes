@@ -1,0 +1,22 @@
+# .gitattributes — the language bar describes the CONTENT, not the tooling (the Overseer, 2026-09-15).
+#
+# GitHub's bar counts only files it classes as code or markup and divides by that total, so the
+# eleven renderer scripts that ship so a reader can REGENERATE the pages read as "24.2% Python", and
+# the rendered pages themselves as "53.7% HTML" — while the zip, the PDFs, the Markdown and the JSON
+# that make up most of the archive are not counted at all. linguist-detectable=false removes a path
+# from the statistic and nothing else: the files ship, are pinned, and are diffed exactly as before.
+# What is left to count is what was written: the Lean development, the TeX manuscripts and paper,
+# and the Julia instrument.
+# (Patterns with a slash are anchored and `*` does not cross a directory, so `**` is what reaches
+# the rendered reports under edition/source/ — measured 2026-09-15: five of them stayed in the count.)
+edition/**/*.py       linguist-detectable=false
+edition/**/*.html     linguist-detectable=false
+index.html            linguist-detectable=false
+# THE REPLAY IS A BUILD TREE, NOT WRITING (2026-09-16). edition/replay/ exists so that one command
+# rebuilds the proofs from this archive: it carries the ten rank-1 modules the certified ones IMPORT
+# (dependencies, shipped for the same reason Mathlib's cache is fetched and not because this edition
+# wrote them), a SECOND copy of the seven certified modules that already sit in edition/source/lean/,
+# and the build's own tooling (replay.sh, Verify.lean, lakefile). Counted, it read as 80% Lean and
+# a Shell entry appeared; what this edition wrote did not change. The bar describes what was written,
+# and the seven certified modules are counted once, where a reader opens them.
+edition/replay/**     linguist-detectable=false

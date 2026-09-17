@@ -1,0 +1,45 @@
+# SHIPPED ONLY WITH A PUBLISHABLE BUILD, NEVER WITH A PREVIEW.
+#
+# The rule is circular's, in their pre-release specification of 2026-08-29, and this file obeys it
+# mechanically, enforced by the assembler: "Preview = no identifier. Edition =
+# identifier." GitHub renders a prominent "Cite this repository" widget from a CITATION.cff, and on
+# a build whose own front page reads "do not cite this build as the edition of record" that widget
+# would contradict the banner beside it. So the assembler ships this file only when the build class
+# is PUBLISHABLE.
+#
+# TWO FIELDS ARE DELIBERATELY ABSENT AND MUST NOT BE FILLED HERE:
+#   license  — DECIDED 2026-09-07 by the project's director and filled below; it was never a
+#              generator's to invent, and it is not one now: the value here is theirs.
+#   doi      — minted at deposit, with the frozen edition; that is the moment it exists, by design.
+# date-released waits for publication: the release date is the day it is published — a later day
+# than assembly — and CFF 1.2.0 treats the field as optional until then.
+cff-version: 1.2.0
+# MIT for the software, CC BY 4.0 for the text and data — the split is stated file-by-file in
+# LICENSE at the root of this archive. CFF takes a list when a work carries more than one.
+license:
+  - MIT
+  - CC-BY-4.0
+message: "If you use this almanac, cite the deposited edition of record by its DOI."
+doi: 10.5281/zenodo.22808195
+date-released: "2026-09-17"
+title: "almanacA0a — the centre of the even hybrid family quantum GL(1) (PILOT)"
+type: dataset
+authors:
+  - family-names: Hausel
+    given-names: Tamás
+    affiliation: Institute of Science and Technology Austria (ISTA)
+    orcid: https://orcid.org/0000-0002-9582-2634
+version: "0.1.0"
+repository-code: "https://github.com/almanac-editions/almanacA0a"
+url: "https://almanac-editions.github.io/almanacA0a/edition/"
+abstract: >-
+  A complete record of one small mathematical result in three layers — an informal manuscript, a
+  computational instrument, and a Lean development — joined claim by claim by a concordance that
+  records what warrants each one. For G = GL(1): the even hybrid family integral form is an
+  A_t-subalgebra of U; the Harish-Chandra projection restricts to an isomorphism onto the Weyl
+  invariants; and the even Newton lattice is exactly the A_t-span of the shifted divided classes.
+keywords:
+  - quantum groups
+  - formalized mathematics
+  - Lean 4
+  - reproducible research
