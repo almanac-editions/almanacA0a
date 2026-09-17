@@ -1,0 +1,81 @@
+{
+  "schema": "terminal-consistency/v1",
+  "sandbox": "v0a",
+  "written_utc": "2026-09-15T11:29:25Z",
+  "written_by": "scripts/post_panel_finalize (machine-gathered; gates 1-9 met on this pass)",
+  "purpose": "SANDBOX_STANDARD section 6.6 \u2014 the durable record the approval-5 closure signature rests on",
+  "evidence": {
+    "goal_lock": {
+      "file": "goalv0a.lock.json",
+      "sha256": "48edcc05fb7ea968408a612ddec2d616efe045eaf4a1a08358d36b2d8809b6b1"
+    },
+    "signed_goal_tex": {
+      "file": "informal/goalv0a.tex",
+      "sha256": "5853d84f33b785b6060b46b05e39d6f19899a095bb341f139051b3099f84f8f4"
+    },
+    "gate0": {
+      "file": "gate0.json",
+      "sha256": "005d4038cec01e0bf7308eb592e28b5f52e8da93f247ccdef817df9a70033c72"
+    },
+    "informal_proof": {
+      "file": "informal/proofv0a.tex",
+      "sha256": "ff4015250c56f71ff12f94db5148cf25c70f42164aa931fbfa8167cf0a4378dc"
+    },
+    "referee_report": {
+      "file": "informal/REFEREE_REPORT_PROOFv0a.md",
+      "sha256": "6e31018c647ebfba656e90a011f497eb81fc00c1798af85b6476065f1db0fb0d"
+    },
+    "source_manifest": {
+      "file": "formal/SOURCE_MANIFEST.json",
+      "sha256": "7153982ec001d5e43dedab8cb5144d8218d6a2b36cea839ab66275fc7eb6420d"
+    },
+    "release_log": {
+      "file": "formal/RELEASE_20260721_source_all_clean.log",
+      "sha256": "0fd29a50dc3666bb6be47032db7c0c450a097f8a503423e9541bdea3456c61fc",
+      "verdict_line": "release_verify --source: ALL CLEAN (source rebuild + verifier + clean-triple axioms)"
+    },
+    "release_state": {
+      "file": "release_state.json",
+      "sha256": "d6487c60d039141f21fa2651d145bc4a2b55e5ee966affea639ca2dbeafbc2e6"
+    },
+    "cow_panel": {
+      "file": "cow/COW_FAITHFULNESS_PANEL.md",
+      "sha256": "ef3a23212773c999cfded3db98fb15643294825a8bb5d73629dd39bbe4a57dce",
+      "seat_outputs": {
+        "COW1_seat_fable.out": "507ee945742a83bda303746043c3a4c84f327c48966b924b6f6455caf9d482c3",
+        "COW1_seat_gpt.out": "aa9598b5fd4fc00904b7c0c749e8b24a0d6c76c7d43a5fa5ffc81b5b9bb567ea",
+        "COW2_seat_fable.out": "a19ec418c55f90b008fc60494982002e0153dbb8cc68ba7e3ead6e9e4eb21a6f",
+        "COW2_seat_gemini.out": "ecd3fe2027185018ded8eed5a521fd3b781c23a5d9231293c8e230397b8238d2",
+        "COW2_seat_gpt.out": "2610485cab446f16cb6638bd7170d2d8ac400c181bb22effeb03ead53c8e2940",
+        "COW3_seat_fable.out": "ba60c519697dae490c4e783d2bc20dae8fbf5ea90c9da7aaa99bc60a1f01c9f3",
+        "COW3_seat_gemini.out": "5db9849e60f32be2f24e0ad3b3fe87770b3ef009736ce5e953869d340ad87c6a",
+        "COW3_seat_gpt.out": "3194e3c5204ffab998fa524e8649fcc4f8bc182f9b8f024974244af359376894"
+      }
+    },
+    "n1_referee_pin": {
+      "file": "n1_clause3_referee_pin.out",
+      "sha256": "fbfcb22a015155adb26628c9316102f450dffb27e06e3fe4c9cca52a1d1cd2c5",
+      "verdict_line": "VERDICT\tPROVED_BOUNDED\twindow=8 positives=60 hostiles=5 separator=1 disagreements=0"
+    },
+    "semiformal_ledger": {
+      "file": "informal/proofv0a.ledger.json",
+      "sha256": "b21d04814d1d621ae9ab99d3483f01fcaa9885f32df4ce673885bc723082f27e"
+    },
+    "semiformal_report": {
+      "file": "informal/proofv0a.current.report.json",
+      "sha256": "e01854a949692c962ea8dc345a60281241ae6d9df6c08378c1ffa570bb986dc6"
+    },
+    "cas_receipts": {
+      "file": "informal/proofv0a.ledger.cas_receipts.md",
+      "sha256": "44db338e8f5185e8bb7f3c717b6520431f8cd2935b51a3b376c5972021bff894"
+    },
+    "citation_cycle": {
+      "file": "informal/CITATION_VERIFICATION_2026-08-09.md",
+      "sha256": "383391181ef3fb2ad48270dd60c1fcf021bfb261b505eab07327cdbf919b5382"
+    }
+  },
+  "git": {
+    "head": "8c370035"
+  },
+  "note": "Exit 0 of the gate pass + this record are NECESSARY preconditions for approval-5; the signature itself remains a separate act (golden rule 6)."
+}

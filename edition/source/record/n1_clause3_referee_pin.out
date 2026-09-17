@@ -1,0 +1,9 @@
+Precompiling packages...
+  25117.2 ms  ✓ HybridQuantum
+Info Given HybridQuantum was explicitly requested, output will be shown live [0K
+[0K  1 dependency successfully precompiled in 26 seconds. 154 already precompiled.
+[ Info: independent re-measurement of BQ-13 acceptance
+Test Summary:                      | Pass  Total  Time
+GL_1 even-Newton layer (GL1Newton) |   72     72  3.9s
+[ Info: N1 clause-(iii) referee pin
+VERDICT	PROVED_BOUNDED	window=8 positives=60 hostiles=5 separator=1 disagreements=0

@@ -1,0 +1,127 @@
+{
+  "schema": "sandbox-formal-source-manifest/v1",
+  "sandbox": "sandboxv0a",
+  "generated_utc": "2026-07-21T15:55:00Z",
+  "generated_by": "Overseerv0a (root), post release_verify --source ALL CLEAN 13 decls",
+  "regeneration_note": "Regenerated after the F-K1 bridge wave: 7 modules under Sandbox/A1/GL1/ (six certified 2026-07-20 + KzBridge.lean 2026-07-21). Backed by formal/RELEASE_20260721_source_all_clean.log (lake clean + full source rebuild + clean-triple axiom check on 13 decls, verdict ALL CLEAN). Statement pins 7/7 OK.",
+  "phase": "M2_STATEMENTS_AND_PROOFS_COMPLETE_WAVE3_REPAIRED_NOT_CERTIFIED",
+  "goal_lock": {
+    "path": "sandboxv0a/goalv0a.lock.json",
+    "tex_sha256": "91a501732d9d412f00a7ac7a334c68ca9a9ce7153f0700f0a9e8ef9ba47f5a7e",
+    "pdf_sha256": "066184d575c07d0a05c1719209892d011af9052459ec228baf85e7f5c4c93e9d"
+  },
+  "informal_goal": {
+    "locked": true,
+    "tex": {
+      "path": "sandboxv0a/informal/goalv0a.tex",
+      "bytes": 3390,
+      "lines": 104,
+      "sha256": "91a501732d9d412f00a7ac7a334c68ca9a9ce7153f0700f0a9e8ef9ba47f5a7e"
+    },
+    "pdf": {
+      "path": "sandboxv0a/informal/goalv0a.pdf",
+      "bytes": 206786,
+      "sha256": "066184d575c07d0a05c1719209892d011af9052459ec228baf85e7f5c4c93e9d"
+    }
+  },
+  "root_import_file": {
+    "path": "Sandbox.lean",
+    "bytes": 3928,
+    "lines": 94,
+    "sha256": "0c1c293c71e653f3470d27ce052d0d9577a5b1c88f9b171512e8df95a3306348",
+    "note": "Sandbox.lean:90-94 NOW imports all five files in the formal_source_cone below (verified by grep, not assumed) \u2014 the wave-2 manifest's 'not imported yet' statement is stale. This file is owned by the release owner, not by this manifest's writer, and is NOT modified here. Sandbox.lean:85-86's own comment ('All four modules are sorry-free') is itself STALE as of PresentedU.lean landing (now five modules) \u2014 recorded as verification finding N5; fixing that comment is outside this manifest's write scope.",
+    "aggregation_is_not_certification": "Being importable and building under `lake build` is a development diagnostic. It is NOT release_verify.sh --source certification (see kernel_certified below)."
+  },
+  "formal_source_cone": [
+    {
+      "path": "Sandbox/A1/GL1/NewtonUnivGrid.lean",
+      "bytes": 11848,
+      "lines": 254,
+      "sha256": "4ab6656818b57967fdd90de98ba214e0f792b1a103a63215600534217d483599",
+      "declared_module": "HybridQuantumLean.A1.GL1Newton",
+      "sorry_count": 0,
+      "note": "Wave-2's four sorries (grid_toLaurent_nu, grid_nuGen, Az_nuGrid, Newton_nuGen) are CLOSED. Comment-stripped grep for sorry/admit in this file: 0 occurrences in proof position (the only hits are the word 'sorry' inside prose docstrings asserting sorry-freedom)."
+    },
+    {
+      "path": "Sandbox/A1/GL1/NewtonUnivSpan.lean",
+      "bytes": 13280,
+      "lines": 268,
+      "sha256": "1d1a1e50e95363b522e7c7368d7b1bb9027c1bd61cb8087f6d99af56d1652211",
+      "declared_module": "HybridQuantumLean.A1.GL1Newton",
+      "sorry_count": 0,
+      "note": "Carries clause (iii) (Nev_eq_span, Newton_iff_mem_span, mem_span_of_Newton) and the mandated `expand` coordinate map (F5, re-verified non-circular: expand never mentions span/Newton/nuGenSet)."
+    },
+    {
+      "path": "Sandbox/A1/GL1/FamilyField1.lean",
+      "bytes": 11409,
+      "lines": 275,
+      "sha256": "38bd6fd436556b6335b029992435438179a74e0635cc021b13952dde7fdcde6d",
+      "declared_module": "HybridQuantumLean.A1.GL1Newton.FamilyField1",
+      "sorry_count": 0,
+      "note": "Unchanged since wave 2. Carries K1 = Frac(Z[q^\u00b1,z^\u00b1]), instQGenericK1, az1_model_equiv."
+    },
+    {
+      "path": "Sandbox/A1/GL1/PresentedU.lean",
+      "bytes": 30793,
+      "lines": 669,
+      "sha256": "5a5a7e68e8da1479efaf89ce3bfcb8eb4b412a70b4f969a7305f9e5e333b74d4",
+      "declared_module": "HybridQuantumLean.A1.GL1Newton.Presentation",
+      "sorry_count": 0,
+      "note": "NEW in wave 3, closes finding F1. Constructs the presented algebra U z (generators K_{n,\u00b1} as a quotient of the group algebra K[Z \u00d7 Z] by the single remaining relation K_{1,+}K_{1,-}=z) and PROVES equivTorus : U z \u2243\u2090 Torus K, the basis assertion uBasis, and existsUnique_lift (universal property, tested over [CommRing A] only \u2014 recorded, not a sorry: verification finding N2)."
+    },
+    {
+      "path": "Sandbox/A1/GL1/GOALv0a.lean",
+      "bytes": 18822,
+      "lines": 360,
+      "sha256": "3db277a957cb02a8132502e3286a6c0073d6538852165fec735af1a56a57b540",
+      "declared_module": "HybridQuantumLean.A1.GL1Newton",
+      "sorry_count": 0,
+      "note": "GOALv0aStatement now has EIGHT fields (was four in wave 2): subalgebra, even_embedded, hc_iso, newton_span (wave-2, unchanged) plus presented, torus_basis, subalgebra_of_U, hc_iso_ambient (wave-3, closing F1/F2/F3). The bundle is strictly stronger than wave 2's, not merely re-verified; GOALv0a remains unconditional (no explicit arguments, no instance hypotheses beyond the constructed instQGenericK1)."
+    }
+  ],
+  "formal_source_cone_file_count": 5,
+  "formal_source_cone_total_sorry_count": 0,
+  "formal_source_cone_total_declarations_scanned": 240,
+  "planned_but_not_yet_present": [],
+  "delivery_gap_carried_open": [
+    "F7 (verification finding, OPEN): the non-degeneracy witnesses (trap4_separator, Qsub1_inv_not_mem, newton_proper, span_ne_top) proving the Newton lattice is a PROPER superset of the monomial ring A_z[Y\u030c^{\u00b1}] \u2014 i.e. that clause (iii) is not vacuously true of a degenerate object \u2014 are kernel-clean but live ONLY in a scratch verification tree (/tmp/v0averify/), not in this formal_source_cone. Nothing in the delivered tree itself rules out the degenerate reading. Recommended: adopt them in-tree next wave; not done by this wave (out of this file's write scope, which is regeneration of the manifest, not new Lean content)."
+  ],
+  "status": "TYPECHECKED",
+  "sorryAx_free_in_tree": true,
+  "sorryAx_free_in_tree_basis": "Comment-stripped source scan (0 sorry/admit/sorryAx/native_decide/`axiom `/unsafe/partial/@[implemented_by] in proof position across all 5 files) plus an independent Lean.collectAxioms sweep over all 240 non-internal declarations defined in these 5 modules: 0 sorry-tainted, 0 foreign-axiom uses. `lake build Sandbox.A1.GL1.GOALv0a` re-run by this manifest generation: exit 0, 'Build completed successfully'.",
+  "kernel_certified": false,
+  "kernel_certified_basis": "release_verify.sh --source has NEVER been run for this cone. `lake build` succeeding and a manual axiom sweep are development diagnostics per CLAUDE.md; they are evidence toward certification, not certification itself. approval-2 (formal_translation_M1) is correspondingly NOT_SIGNED (APPROVAL_STATE.json: 'NOT_SIGNED \u2014 verification returned FAITHFULNESS_DRIFT'; findings F1/F2/F3/F5/F6 are recorded CLOSED as of wave 3 per VERIFICATION_WAVE3.md, but re-adjudication of approval-2 by the Overseer has not yet been recorded there \u2014 this manifest does not own or edit APPROVAL_STATE.json or VERIFICATION_WAVE3.md).",
+  "idiom_ledger_checked": "not run specifically against this 5-file cone by this manifest generation; formal/NO_ANALOGUE_QUEUE.md remains empty (no no_analogue entries recorded) as of this snapshot.",
+  "version_control_gap": "Sandbox/A1/GL1/ remains UNTRACKED in git (git log --all over the path: 0 commits; git ls-files: not tracked, all 5 files) and has no sandboxv0/engine/statement_pin.py snapshot (`statement_pin.py check` on GOALv0a.lean returns 'NO PIN (run snapshot first)'). With 5 files / 240 declarations now delivered, a pin snapshot before the next proving wave is materially more valuable than it was at wave 2 (verification finding N6).",
+  "note": "Honest statement of fact at generation time: all five planned v0a Lean modules exist, typecheck, and are sorry-free by both a source scan and an independent axiom sweep; GOALv0a is proved and imported into Sandbox.lean's build cone. This is NOT the same as CLOSED or CERTIFIED: release_verify.sh --source has not been run, approval-2 is unsigned pending the Overseer's read of VERIFICATION_WAVE3.md, the non-degeneracy witnesses are not in-tree, the tree is untracked in git with no statement_pin snapshot, and a Julia/CAS contract drift (verification finding N1: the HybridQuantum-side `newton()` is defined by \u03bd-span, not by evaluation, so it cannot referee clause (iii) without circularity) means the CAS oracle side of the golden-rule-2 loop is currently unable to re-confirm clause (iii) independently of the Lean proof itself.",
+  "modules": [
+    {
+      "path": "Sandbox/A1/GL1/FamilyField1.lean",
+      "sha256": "38bd6fd436556b6335b029992435438179a74e0635cc021b13952dde7fdcde6d"
+    },
+    {
+      "path": "Sandbox/A1/GL1/GOALv0a.lean",
+      "sha256": "3db277a957cb02a8132502e3286a6c0073d6538852165fec735af1a56a57b540"
+    },
+    {
+      "path": "Sandbox/A1/GL1/KzBridge.lean",
+      "sha256": "5eb1114a674dc6f15a63a33e80d4848a93c9c0283343a24e7aa3f808ac662669"
+    },
+    {
+      "path": "Sandbox/A1/GL1/NewtonUnivGrid.lean",
+      "sha256": "4ab6656818b57967fdd90de98ba214e0f792b1a103a63215600534217d483599"
+    },
+    {
+      "path": "Sandbox/A1/GL1/NewtonUnivSpan.lean",
+      "sha256": "1d1a1e50e95363b522e7c7368d7b1bb9027c1bd61cb8087f6d99af56d1652211"
+    },
+    {
+      "path": "Sandbox/A1/GL1/NonDegeneracy.lean",
+      "sha256": "69160c8b53a5c260d7d7754d2d8f2cc4dd3d4e55bdce1f336a62b7487e976835"
+    },
+    {
+      "path": "Sandbox/A1/GL1/PresentedU.lean",
+      "sha256": "5a5a7e68e8da1479efaf89ce3bfcb8eb4b412a70b4f969a7305f9e5e333b74d4"
+    }
+  ]
+}

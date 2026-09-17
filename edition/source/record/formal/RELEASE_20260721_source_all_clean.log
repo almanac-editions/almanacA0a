@@ -1,0 +1,6 @@
+PASS  HybridQuantumLean.A1.GL1Newton.KzBridge.nuGenSet_subset_KzAmbient  (axioms ⊆ clean triple)
+PASS  HybridQuantumLean.A1.GL1Newton.KzBridge.Newton_mem_KzAmbient  (axioms ⊆ clean triple)
+PASS  HybridQuantumLean.A1.GL1Newton.KzBridge.clause_iii_Kz  (axioms ⊆ clean triple)
+PASS  HybridQuantumLean.A1.GL1Newton.KzBridge.clause_i_Kz  (axioms ⊆ clean triple)
+PASS  HybridQuantumLean.A1.GL1Newton.KzBridge.mem_UevKz_iff_Newton  (axioms ⊆ clean triple)
+release_verify --source: ALL CLEAN (source rebuild + verifier + clean-triple axioms)
