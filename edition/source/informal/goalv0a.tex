@@ -1,0 +1,116 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\emergencystretch=3em
+
+\newtheorem{definition}{Definition}
+\newtheorem*{goal}{Goal}
+
+\newcommand{\At}{\mathbb{A}_t}
+\newcommand{\Ft}{\mathbb{F}_t}
+\newcommand{\Nev}{\mathcal N^{\mathrm{ev}}}
+\newcommand{\Uev}{U^{\mathrm{hyb,ev}}}
+\newcommand{\HC}{\operatorname{HC}}
+\newcommand{\Yc}{\check Y}
+
+\title{\textbf{goalv0a} --- the centre of the even hybrid family quantum $GL_1$}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\noindent
+Signed July 19, 2026; this is the notation-migrated edition of August 10--11, 2026.
+The statement is unchanged --- only symbols were renamed, by the Sandbox-wide dictionary
+$Q\mapsto q$, $q\mapsto v$, $z\mapsto t$: the relation formerly written $Q=q^{2}$ now
+reads $q=v^{2}$, and the family parameter formerly written $z$ is now written $t$.
+(In the current Sandbox-wide frame, $v$ and $z$ denote the square roots $v^{2}=q$ and
+$z^{2}=t$; only $v$ and $t$ occur below.)
+Since September 15, 2026 the rings are printed in blackboard face, $\At$ and $\Ft$ ---
+a change of face only: the two macro definitions and nothing else. Revised [2026-09-15-12:08 · hypervisorA · Opus 5 Max · castalia:SandboxHQ].
+
+\medskip
+
+Let $G=GL_1$: the root system is $\Phi=\emptyset$, the Weyl group is
+$W=\{1\}$, the cocharacter lattice is $\Lambda=\mathbb Z$, and
+$X_\Lambda=\mathbb Z$. Let
+\[
+  \At=\mathbb Z[v^{\pm1},t^{\pm1}],\qquad
+  \Ft=\mathbb Q(v)[t^{\pm1}],\qquad
+  q=v^{2},
+\]
+with $v,t$ independent indeterminates.
+
+\begin{definition}[Hybrid family quantum $GL_1$]\label{def:U}
+$U$ is the $\Ft$-algebra with invertible pairwise commuting generators
+$K_{n,+},K_{n,-}$ ($n\in\mathbb Z$) subject to
+\[
+  K_{0,\pm}=1,\qquad
+  K_{m+n,\pm}=K_{m,\pm}K_{n,\pm},\qquad
+  K_{n,+}K_{n,-}=t^{\,n}.
+\]
+There are no generators $e_i,F_i$, since $\Phi=\emptyset$. Writing
+$T^{\pm}:=K_{1,\pm}$, the monomials $(T^{+})^{w}$ ($w\in\mathbb Z$) form a
+$\Ft$-basis of $U$.
+\end{definition}
+
+\begin{definition}[Even Newton lattice]\label{def:nev}
+A \emph{toral} element is an element of $\Ft[(T^{+})^{\pm1}]$; it is \emph{even}
+when all its toral exponents are even --- equivalently, it is a Laurent
+polynomial in $\Yc:=(T^{+})^{2}$. For $\chi\in X_\Lambda$ let
+$\mathrm{ev}_\chi$ be the $\At$-linear map on even toral elements determined by
+$\mathrm{ev}_\chi(\Yc)=q^{\,\chi}$. The \emph{even Newton lattice} is the
+$\At$-submodule
+\[
+  \Nev=\bigl\{\,f\in\Ft[\Yc^{\pm1}]\;:\;
+  \mathrm{ev}_\chi(f)\in\At\ \text{ for every }\chi\in\mathbb Z\,\bigr\}.
+\]
+\end{definition}
+
+\begin{definition}[Even hybrid family integral form]\label{def:uev}
+Since $\Phi^{+}=\emptyset$, the \emph{even hybrid family integral form} is the
+$\At$-submodule
+\[
+  \Uev\;=\;\Nev\;\subset\;U,
+\]
+and its \emph{central part} is
+$Z(\Uev)=\Uev\cap Z\bigl(U\otimes_{\Ft}\operatorname{Frac}(\At)\bigr)$.
+\end{definition}
+
+\begin{definition}[Harish--Chandra projection; shifted Weyl action]\label{def:hc}
+Every element of $U$ is toral, so the \emph{Harish--Chandra projection} $\HC$ is
+the identity map on $U$. With
+\[
+  Y_n=t^{-n}K_{n,+}^{2}\qquad(n\in\mathbb Z),
+\]
+every even toral element is a Laurent polynomial in the $Y_n$, and the
+\emph{shifted Weyl action} of $W$ is the $\Ft$-algebra action
+$w(Y_n)=Y_{wn}$; set $(\Nev)^{W}=\{f\in\Nev: wf=f\ \text{for all}\ w\in W\}$.
+\end{definition}
+
+\begin{definition}[Newton divided classes]\label{def:nu}
+For $r\ge0$ set
+\[
+  \nu_{r}(X)=\prod_{s=0}^{r-1}\frac{X-q^{s}}{q^{r}-q^{s}}\;\in\;\mathbb Q(v)[X],
+  \qquad \nu_0(X)=1 .
+\]
+\end{definition}
+
+\begin{goal}\label{goal:main}
+For $G=GL_1$, with $\Lambda=\mathbb Z$:
+\begin{enumerate}
+  \item[(i)] $\Uev$ is an $\At$-subalgebra of $U$;
+  \item[(ii)] the Harish--Chandra projection restricts to an isomorphism of
+  $\At$-algebras
+  \[
+    \HC:\;Z\bigl(\Uev\bigr)\;\xrightarrow{\ \sim\ }\;\bigl(\Nev\bigr)^{W};
+  \]
+  \item[(iii)] $\displaystyle
+    \Nev=\sum_{u\in\mathbb Z}\ \sum_{r\ge0}\ \At\;\Yc^{\,u}\,\nu_{r}(\Yc)$.
+\end{enumerate}
+\end{goal}
+
+\end{document}

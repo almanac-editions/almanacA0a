@@ -1,0 +1,448 @@
+{
+ "document": "SandboxA/sandboxA0a/informal/proofv0a.tex",
+ "statement_of_record": {
+  "path": "SandboxA/sandboxA0a/informal/goalv0a.tex",
+  "sha256": "91a501732d9d412f00a7ac7a334c68ca9a9ce7153f0700f0a9e8ef9ba47f5a7e"
+ },
+ "mode": "forwards (closure boundary): semiformal map of the complete refereed proofv0a.tex, authored per audit R1 (adoption/closure-time ledger); referee findings seeded as claims/controls",
+ "direction": "forwards",
+ "liveness": "live",
+ "preload": "gl2",
+ "frame": "gl1-v0a; NOTATION 2026-08-10 (Overseer-ordered, Sandbox-wide): q=v^2, t=z^2 \u2014 the former Q,q,z are written q,v,t. Ring A_t=Z[v^pm,t^pm], F_t=QQ(v)[t^pm] (family field named F_t per the Overseer, 2026-08-11); Ycheck=(T^+)^2 with ev_m(Ycheck)=q^m. BACKEND DICTIONARY: the Backend-A claim exprs below run against the shared engine preload (gl2), whose API keeps the LEGACY symbols \u2014 engine Q = current q, engine z1 = current t, engine l1 = free interpolation top; z2,l2 unused. The exprs are code against that API and are NOT rewritten; this note is the translation. Legacy frame text of record: 'gl1-v0a; Q=q^2; z:=z1 (family variable); Ycheck=(T^+)^2 rendered in Backend A as z1*Y1/Q so that ev_m(Ycheck)=Q^m; z2,l2 unused; l1 = free interpolation variable x'",
+ "authored_by": "hypervisorA, 2026-08-05 (Overseer-ordered in-session); CAS-oracle cross-check receipts in proofv0a.ledger.cas_receipts.md",
+ "steps": [
+  {
+   "id": "input:goalv0a-statement",
+   "content": "input",
+   "title": "Signed statement goalv0a.tex (approval-1, sha 91a50173...5a7e)"
+  },
+  {
+   "id": "input:conventions-frame",
+   "content": "input",
+   "title": "Conventions: A_z=Z[q^{pm},z^{pm}], K_z=Q(q)[z^{pm}], Q=q^2; U commutative toral; Backend A dictionary Ycheck=z1*Y1/Q"
+  },
+  {
+   "id": "step:lemma.grid.vanishing",
+   "content": "computational",
+   "title": "Lemma 1(a): B_r(m)=0 for 0<=m<r"
+  },
+  {
+   "id": "step:lemma.grid.gaussian",
+   "content": "computational",
+   "title": "Lemma 1(b): B_r(m)=[m r]_Q in Z[Q] (q-Pascal construction)"
+  },
+  {
+   "id": "step:lemma.grid.reflection",
+   "content": "computational",
+   "title": "Lemma 1(c): B_r(-n)=(-1)^r Q^{-nr-binom(r,2)}[n+r-1 r]_Q in Z[Q^{pm1}]"
+  },
+  {
+   "id": "step:lemma.forward",
+   "content": "computational",
+   "title": "Lemma 2: ev_chi(Ycheck^u nu_r)=Q^{u chi}B_r(chi) in A_z; S subset N^ev"
+  },
+  {
+   "id": "step:lemma.reverse.unitriangular",
+   "content": "computational",
+   "title": "Lemma 3 core: V lower-unitriangular, det 1, V^{-1} over Z[Q^{pm1}]"
+  },
+  {
+   "id": "step:lemma.reverse.z-spectator",
+   "content": "prose",
+   "title": "Lemma 3, z-spectator + base change Z[Q^{pm}]->Z[q^{pm}]->A_z (referee findings 3,4)",
+   "depends": [
+    "input:conventions-frame",
+    "step:lemma.reverse.unitriangular"
+   ]
+  },
+  {
+   "id": "step:theorem.laurent-clearing",
+   "content": "computational",
+   "title": "Theorem 1 assembly: Laurent clearing by the unit Ycheck^N (referee finding 5)"
+  },
+  {
+   "id": "step:clause-i.closure-witness",
+   "content": "computational",
+   "title": "Clause (i) witness: products of generators stay grid-integral"
+  },
+  {
+   "id": "step:clause-i",
+   "content": "prose",
+   "title": "Clause (i): N^ev = intersection of ev_chi^{-1}(A_z) is an A_z-subalgebra",
+   "depends": [
+    "input:conventions-frame",
+    "step:clause-i.closure-witness",
+    "step:lemma.forward"
+   ]
+  },
+  {
+   "id": "step:clause-ii",
+   "content": "prose",
+   "title": "Clause (ii): U commutative => Z(U^ev)=N^ev, HC=id, W trivial",
+   "depends": [
+    "input:conventions-frame"
+   ]
+  },
+  {
+   "id": "step:clause-iii.theorem",
+   "content": "prose",
+   "title": "Clause (iii): N^ev = S (Theorem 1), via grid + forward + reverse + clearing",
+   "depends": [
+    "step:lemma.grid.vanishing",
+    "step:lemma.grid.gaussian",
+    "step:lemma.grid.reflection",
+    "step:lemma.forward",
+    "step:lemma.reverse.unitriangular",
+    "step:lemma.reverse.z-spectator",
+    "step:theorem.laurent-clearing"
+   ]
+  },
+  {
+   "id": "step:attribution.hh-dictionary",
+   "content": "computational",
+   "title": "Attribution: Harman-Hopkins dictionary (tests A/B of hh_dictionary_check.py, now in-ledger)"
+  }
+ ],
+ "claims": [
+  {
+   "id": "G1.grid.vanishing",
+   "kind": "identity",
+   "backend": "oscar",
+   "frame": "scalar grid B_r(m)=nu_r(Q^m) in Kcoeff",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    all( Bf(r,m) == zero(Kcoeff) for r in 1:8 for m in 0:r-1 )\nend",
+   "scope": "window(0<=m<r<=8)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "(r,m)",
+    "range": "0<=m<r<=8",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.grid.vanishing"
+   ]
+  },
+  {
+   "id": "G2.grid.gaussian-integral",
+   "kind": "integrality-by-construction",
+   "backend": "oscar",
+   "frame": "B_r(m) vs ZZ[X] q-Pascal Gaussian binomial, X=Q",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    SX, X = polynomial_ring(ZZ, \"X\")\n    function qbf(m,r)\n        (r < 0 || r > m) && return zero(SX)\n        r == 0 && return one(SX)\n        return qbf(m-1,r-1) + X^r*qbf(m-1,r)\n    end\n    all( Bf(r,m) == evaluate(qbf(m,r), Q) for r in 0:8 for m in r:10 )\nend",
+   "scope": "window(0<=r<=m<=10)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "(r,m)",
+    "range": "0<=r<=m<=10",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.grid.gaussian"
+   ],
+   "note": "equality with a ZZ[X]-constructed object certifies membership in Z[Q]"
+  },
+  {
+   "id": "G3.grid.reflection-integral",
+   "kind": "integrality-by-construction",
+   "backend": "oscar",
+   "frame": "Lemma 1(c): B_r(-n) = (-1)^r Q^(-nr-binom(r,2)) [n+r-1 r]_Q",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    SX, X = polynomial_ring(ZZ, \"X\")\n    function qbf(m,r)\n        (r < 0 || r > m) && return zero(SX)\n        r == 0 && return one(SX)\n        return qbf(m-1,r-1) + X^r*qbf(m-1,r)\n    end\n    all( Bf(r,-n) == (-1)^r * Q^(-n*r - binomial(r,2)) * evaluate(qbf(n+r-1,r), Q) for n in 1:5 for r in 0:5 )\nend",
+   "scope": "window(1<=n<=5, 0<=r<=5)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "(n,r)",
+    "range": "1<=n<=5, 0<=r<=5",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.grid.reflection"
+   ]
+  },
+  {
+   "id": "F1.module-scalar-bridge",
+   "kind": "identity",
+   "backend": "oscar",
+   "frame": "Backend A dictionary: Ycheck = z1*Y1/Q, ev_m is Y1 -> Q^(m+1)/z1",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    all( evaluate(nu1(r), [Q^(m+1)/z1, one(Kcoeff)]) == Bf(r,m) for r in 0:5 for m in -4:5 )\nend",
+   "scope": "window(0<=r<=5, -4<=m<=5)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "(r,m)",
+    "range": "0<=r<=5, -4<=m<=5",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.forward"
+   ]
+  },
+  {
+   "id": "F2.shifted-generator-evaluation",
+   "kind": "identity",
+   "backend": "oscar",
+   "frame": "ev_m(Ycheck^u nu_r) = Q^(um) B_r(m)",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    evF = function(x, m)\n        pt = [Q^(m+1)/z1, one(Kcoeff)]\n        return evaluate(numerator(x), pt)/evaluate(denominator(x), pt)\n    end\n    all( evF( FY(z1*Y1/Q)^u * FY(nu1(r)), m ) == Q^(u*m)*Bf(r,m) for u in -2:2 for r in 0:4 for m in -3:4 )\nend",
+   "scope": "window(|u|<=2, r<=4, -3<=m<=4)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "(u,r,m)",
+    "range": "-2<=u<=2, 0<=r<=4, -3<=m<=4",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.forward"
+   ]
+  },
+  {
+   "id": "F3.generator-values-integral",
+   "kind": "membership",
+   "backend": "oscar",
+   "frame": "values of shifted generators are z-free and lie in Z[q^{pm1}] (subset A_z)",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    iszq = function(v; even=false)\n        n = numerator(v); d = denominator(v)\n        length(d) == 1 || return false\n        coeff(d,1) == 1 || return false\n        dv = exponent_vector(d,1)\n        all(dv[i] == 0 for i in 2:5) || return false\n        even && dv[1] % 2 != 0 && return false\n        for j in 1:length(n)\n            ev = exponent_vector(n,j)\n            all(ev[i] == 0 for i in 2:5) || return false\n            even && (ev[1] - dv[1]) % 2 != 0 && return false\n            denominator(coeff(n,j)) == 1 || return false\n        end\n        return true\n    end\n    all( iszq( Q^(u*m)*Bf(r,m) ) for u in -2:2 for r in 0:4 for m in -3:4 )\nend",
+   "scope": "window(|u|<=2, r<=4, -3<=m<=4)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "(u,r,m)",
+    "range": "-2<=u<=2, 0<=r<=4, -3<=m<=4",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.forward"
+   ]
+  },
+  {
+   "id": "R1.unitriangular-det",
+   "kind": "identity",
+   "backend": "oscar",
+   "frame": "V[m,r]=B_r(m), 0<=m,r<=8: lower-unitriangular, det 1",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    M = matrix(Kcoeff, 9, 9, [ Bf(r,m) for m in 0:8 for r in 0:8 ])\n    all( M[i,j] == zero(Kcoeff) for i in 1:9 for j in (i+1):9 ) && all( M[i,i] == one(Kcoeff) for i in 1:9 ) && det(M) == one(Kcoeff)\nend",
+   "scope": "window(d=8)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "d",
+    "range": "window size d=8",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.reverse.unitriangular"
+   ]
+  },
+  {
+   "id": "R2.inverse-integral",
+   "kind": "membership",
+   "backend": "oscar",
+   "frame": "V^{-1} entries lie in Z[Q^{pm1}] (even q-powers enforced)",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    iszq = function(v; even=false)\n        n = numerator(v); d = denominator(v)\n        length(d) == 1 || return false\n        coeff(d,1) == 1 || return false\n        dv = exponent_vector(d,1)\n        all(dv[i] == 0 for i in 2:5) || return false\n        even && dv[1] % 2 != 0 && return false\n        for j in 1:length(n)\n            ev = exponent_vector(n,j)\n            all(ev[i] == 0 for i in 2:5) || return false\n            even && (ev[1] - dv[1]) % 2 != 0 && return false\n            denominator(coeff(n,j)) == 1 || return false\n        end\n        return true\n    end\n    M = matrix(Kcoeff, 9, 9, [ Bf(r,m) for m in 0:8 for r in 0:8 ])\n    W = inv(M)\n    all( iszq(W[i,j]; even=true) for i in 1:9 for j in 1:9 )\nend",
+   "scope": "window(d=8)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "d",
+    "range": "window size d=8",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:lemma.reverse.unitriangular"
+   ]
+  },
+  {
+   "id": "L1.laurent-clearing-witness",
+   "kind": "integrality-by-construction",
+   "backend": "oscar",
+   "frame": "nu_2(Q^{-3}) = Q^{-7}[4 2]_Q, a genuine Laurent value (referee finding 5)",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    SX, X = polynomial_ring(ZZ, \"X\")\n    function qbf(m,r)\n        (r < 0 || r > m) && return zero(SX)\n        r == 0 && return one(SX)\n        return qbf(m-1,r-1) + X^r*qbf(m-1,r)\n    end\n    iszq = function(v; even=false)\n        n = numerator(v); d = denominator(v)\n        length(d) == 1 || return false\n        coeff(d,1) == 1 || return false\n        dv = exponent_vector(d,1)\n        all(dv[i] == 0 for i in 2:5) || return false\n        even && dv[1] % 2 != 0 && return false\n        for j in 1:length(n)\n            ev = exponent_vector(n,j)\n            all(ev[i] == 0 for i in 2:5) || return false\n            even && (ev[1] - dv[1]) % 2 != 0 && return false\n            denominator(coeff(n,j)) == 1 || return false\n        end\n        return true\n    end\n    Bf(2,-3) == Q^(-7)*evaluate(qbf(4,2), Q) && iszq(Bf(2,-3); even=true)\nend",
+   "scope": "exact",
+   "instance_exactness": "exact",
+   "index_coverage": {
+    "var": "(n,r)",
+    "range": "single witness (3,2)",
+    "stopped_by": "witness choice"
+   },
+   "expect": true,
+   "justifies": [
+    "step:theorem.laurent-clearing"
+   ]
+  },
+  {
+   "id": "A1.closure-products",
+   "kind": "membership",
+   "backend": "oscar",
+   "frame": "products of shifted generators stay grid-integral (clause-i witness)",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    evF = function(x, m)\n        pt = [Q^(m+1)/z1, one(Kcoeff)]\n        return evaluate(numerator(x), pt)/evaluate(denominator(x), pt)\n    end\n    iszq = function(v; even=false)\n        n = numerator(v); d = denominator(v)\n        length(d) == 1 || return false\n        coeff(d,1) == 1 || return false\n        dv = exponent_vector(d,1)\n        all(dv[i] == 0 for i in 2:5) || return false\n        even && dv[1] % 2 != 0 && return false\n        for j in 1:length(n)\n            ev = exponent_vector(n,j)\n            all(ev[i] == 0 for i in 2:5) || return false\n            even && (ev[1] - dv[1]) % 2 != 0 && return false\n            denominator(coeff(n,j)) == 1 || return false\n        end\n        return true\n    end\n    gen = (u,r) -> FY(z1*Y1/Q)^u * FY(nu1(r))\n    all( iszq( evF( gen(u,r)*gen(v,s), m ) ) for u in -1:1 for v in -1:1 for r in 1:2 for s in 1:2 for m in -2:3 )\nend",
+   "scope": "window(|u|,|v|<=1, r,s<=2, -2<=m<=3)",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "(u,v,r,s,m)",
+    "range": "as stated",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:clause-i.closure-witness"
+   ]
+  },
+  {
+   "id": "H1.hh-substitution-transport",
+   "kind": "identity",
+   "backend": "oscar",
+   "frame": "nu_k(1+(Q-1)x) = HH q-binomial [x k]_Q term-by-term; x = l1 free",
+   "expr": "let\n    qint = t -> (Q^t - 1)/(Q - 1)\n    nuat = k -> prod([ ((1+(Q-1)*l1) - Q^t)/(Q^k - Q^t) for t in 0:k-1 ]; init=one(Kcoeff))\n    hh = k -> prod([ (l1 - qint(t))/(qint(k) - qint(t)) for t in 0:k-1 ]; init=one(Kcoeff))\n    all( nuat(k) == hh(k) for k in 0:5 )\nend",
+   "scope": "exact",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "k",
+    "range": "0<=k<=5",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:attribution.hh-dictionary"
+   ]
+  },
+  {
+   "id": "H2.hh-node-transport",
+   "kind": "identity",
+   "backend": "oscar",
+   "frame": "the affine substitution carries grid node x=[n]_Q to Ycheck=Q^n",
+   "expr": "let\n    qint = t -> (Q^t - 1)/(Q - 1)\n    all( 1 + (Q-1)*qint(n) == Q^n for n in -3:6 )\nend",
+   "scope": "exact",
+   "instance_exactness": "exact-per-instance",
+   "index_coverage": {
+    "var": "n",
+    "range": "-3<=n<=6",
+    "stopped_by": "window budget"
+   },
+   "expect": true,
+   "justifies": [
+    "step:attribution.hh-dictionary"
+   ]
+  },
+  {
+   "id": "control.reflection-exponent-drop",
+   "kind": "control",
+   "backend": "oscar",
+   "frame": "MUTATION: reflection formula without the binom(r,2) exponent",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    SX, X = polynomial_ring(ZZ, \"X\")\n    function qbf(m,r)\n        (r < 0 || r > m) && return zero(SX)\n        r == 0 && return one(SX)\n        return qbf(m-1,r-1) + X^r*qbf(m-1,r)\n    end\n    Bf(3,-2) == (-1)^3 * Q^(-6) * evaluate(qbf(4,3), Q)\nend",
+   "scope": "exact",
+   "instance_exactness": "exact",
+   "index_coverage": {
+    "var": "(n,r)",
+    "range": "(2,3)",
+    "stopped_by": "witness"
+   },
+   "expect": false,
+   "justifies": [
+    "step:lemma.grid.reflection"
+   ],
+   "note": "correct exponent is -nr-binom(r,2) = -9; mutant -6 must fail"
+  },
+  {
+   "id": "control.offdiagonal-not-one",
+   "kind": "control",
+   "backend": "oscar",
+   "frame": "MUTATION: below-diagonal entry claimed to be 1",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    Bf(3,2) == one(Kcoeff)\nend",
+   "scope": "exact",
+   "instance_exactness": "exact",
+   "index_coverage": {
+    "var": "(r,m)",
+    "range": "(3,2)",
+    "stopped_by": "witness"
+   },
+   "expect": false,
+   "justifies": [
+    "step:lemma.reverse.unitriangular"
+   ],
+   "note": "B_3(Q^2)=0; must fail"
+  },
+  {
+   "id": "control.pascal-shift-mutation",
+   "kind": "control",
+   "backend": "oscar",
+   "frame": "MUTATION: q-Pascal with Q^{r+1} in place of Q^r",
+   "expr": "let\n    Bf = (r,m) -> prod([ (Q^m - Q^t)/(Q^r - Q^t) for t in 0:r-1 ]; init=one(Kcoeff))\n    SX, X = polynomial_ring(ZZ, \"X\")\n    function pbf(m,r)\n        (r < 0 || r > m) && return zero(SX)\n        r == 0 && return one(SX)\n        return pbf(m-1,r-1) + X^(r+1)*pbf(m-1,r)\n    end\n    Bf(2,5) == evaluate(pbf(5,2), Q)\nend",
+   "scope": "exact",
+   "instance_exactness": "exact",
+   "index_coverage": {
+    "var": "(m,r)",
+    "range": "(5,2)",
+    "stopped_by": "witness"
+   },
+   "expect": false,
+   "justifies": [
+    "step:lemma.grid.gaussian"
+   ]
+  },
+  {
+   "id": "control.hh-sign-mutation",
+   "kind": "control",
+   "backend": "oscar",
+   "frame": "MUTATION: substitution 1+(Q+1)x instead of 1+(Q-1)x",
+   "expr": "let\n    qint = t -> (Q^t - 1)/(Q - 1)\n    nubad = k -> prod([ ((1+(Q+1)*l1) - Q^t)/(Q^k - Q^t) for t in 0:k-1 ]; init=one(Kcoeff))\n    hh = k -> prod([ (l1 - qint(t))/(qint(k) - qint(t)) for t in 0:k-1 ]; init=one(Kcoeff))\n    nubad(2) == hh(2)\nend",
+   "scope": "exact",
+   "instance_exactness": "exact",
+   "index_coverage": {
+    "var": "k",
+    "range": "k=2",
+    "stopped_by": "witness"
+   },
+   "expect": false,
+   "justifies": [
+    "step:attribution.hh-dictionary"
+   ]
+  },
+  {
+   "id": "control.coefficientwise-coarsening",
+   "kind": "control",
+   "backend": "oscar",
+   "frame": "GOAL-DRIFT CLASS: nu_2 coefficientwise A_z-integral (the v1 coarsening) must FAIL",
+   "expr": "let\n    iszq = function(v; even=false)\n        n = numerator(v); d = denominator(v)\n        length(d) == 1 || return false\n        coeff(d,1) == 1 || return false\n        dv = exponent_vector(d,1)\n        all(dv[i] == 0 for i in 2:5) || return false\n        even && dv[1] % 2 != 0 && return false\n        for j in 1:length(n)\n            ev = exponent_vector(n,j)\n            all(ev[i] == 0 for i in 2:5) || return false\n            even && (ev[1] - dv[1]) % 2 != 0 && return false\n            denominator(coeff(n,j)) == 1 || return false\n        end\n        return true\n    end\n    p = prod([ (Y1 - Q^t*one(RY))/(Q^2 - Q^t) for t in 0:1 ]; init=one(RY))\n    all( iszq(coeff(p, [i,0])) for i in 0:2 )\nend",
+   "scope": "exact",
+   "instance_exactness": "exact",
+   "index_coverage": {
+    "var": "r",
+    "range": "r=2",
+    "stopped_by": "witness"
+   },
+   "expect": false,
+   "justifies": [
+    "step:lemma.forward"
+   ],
+   "note": "grid-integral is NOT coefficient-integral: leading coeff 1/((Q^2-1)(Q^2-Q))"
+  },
+  {
+   "id": "control.odd-grid-mutation",
+   "kind": "control",
+   "backend": "oscar",
+   "frame": "MUTATION: evaluation at the odd node q^7 (outside the even grid)",
+   "expr": "let\n    iszq = function(v; even=false)\n        n = numerator(v); d = denominator(v)\n        length(d) == 1 || return false\n        coeff(d,1) == 1 || return false\n        dv = exponent_vector(d,1)\n        all(dv[i] == 0 for i in 2:5) || return false\n        even && dv[1] % 2 != 0 && return false\n        for j in 1:length(n)\n            ev = exponent_vector(n,j)\n            all(ev[i] == 0 for i in 2:5) || return false\n            even && (ev[1] - dv[1]) % 2 != 0 && return false\n            denominator(coeff(n,j)) == 1 || return false\n        end\n        return true\n    end\n    iszq( prod([ (q^7 - Q^t)/(Q^2 - Q^t) for t in 0:1 ]; init=one(Kcoeff)) )\nend",
+   "scope": "exact",
+   "instance_exactness": "exact",
+   "index_coverage": {
+    "var": "node",
+    "range": "q^7, r=2",
+    "stopped_by": "witness"
+   },
+   "expect": false,
+   "justifies": [
+    "step:lemma.grid.gaussian"
+   ]
+  }
+ ],
+ "expected_gaps_at_authoring": [],
+ "honesty_note": "A green gate = every computational claim verified at its stated grade + no uncovered computational step + controls refuting. It is NOT a proof: prose glue is human/agent reasoning until the Lean rung kernel-checks it (here the formal axis is separately CERTIFIED, 13 decls, clean triple). Window claims are CORROBORATED, never silently promoted.",
+ "document_sha256_at_transcription": "ff4015250c56f71ff12f94db5148cf25c70f42164aa931fbfa8167cf0a4378dc",
+ "document_inputs": [
+  "input:goalv0a-statement",
+  "input:conventions-frame"
+ ],
+ "document_revision_note_2026_08_09": "document anchor re-pinned after the criterion-13 citation pass (hypervisorA, Overseer-ordered closure prep): ancestry citations added to all six own-result environments, program-prose remark paragraphs replaced by a citation, bibliography added. NO mathematical statement or proof step changed; the pre-pass edition (sha 1bda5137...) is archived at informal/versions/proofv0a_pre-criterion13_2026-08-09.tex. Battery re-run cold against the new anchor same day.",
+ "document_revision_note_2026_08_10": "document anchor re-pinned after the Sandbox-wide NOTATION MIGRATION (Overseer-ordered in session 2026-08-10): former Q,q,z written q,v,t (q=v^2, t=z^2); A_z->A_t, K_z->K_t; product index t renamed s. NO mathematical statement or proof step changed. Pre-migration edition (sha 9096506d...) archived at informal/versions/proofv0a_pre-notation_2026-08-10.tex. Battery re-run same day. Supersedes the 2026-08-09 anchor note below as the current pin; both notes are history.",
+ "document_revision_note_2026_08_11": "anchor re-pinned after the F_t rename (Overseer, 2026-08-11: the family field is written F_t, not K_t) \u2014 symbols only, nothing mathematical; previous edition sha 7110a472...; battery re-run same day.",
+ "document_revision_note_2026_08_12": "criterion-6 editorial referee pass (EDITORIAL_REFEREE_REPORT_2026-08-12.md, PASS-WITH-EDITS): B1 migration-note rewording (pure-rename dictionary; square-root frame gloss separated), B2 Harman-Hopkins Lusztig attribution corrected to R_q[K,v] (their z + adjoined square roots = our T+ and v), E1 injectivity of U -> U (x) Frac(A_t) stated. No mathematical step changed; statement anchor untouched; document sha re-pinned to bbd6f055bd5aff614d1a6575b24949d8fd2b805ebda20e33e5c706f28713bbae. Battery re-run follows this note.",
+ "document_revision_note_2026_09_15": "blackboard face for the rings (the Overseer's word, 2026-09-15, relayed by the Shadow, envelope 20260915T100230Z-shadow-371514-01a8 -- see the sandbox journal): \\At and \\Ft now expand to \\mathbb{A}_t and \\mathbb{F}_t; the two macro lines plus a one-sentence dated note on the face page are the only change. NO mathematical statement or proof step changed; statement anchor untouched (goalv0a_SIGNED_2026-07-19.tex sha 91a50173...); previous edition sha bbd6f055... archived at informal/versions/proofv0a_pre-blackboard_2026-09-15.tex; document sha re-pinned to ff4015250c56f71ff12f94db5148cf25c70f42164aa931fbfa8167cf0a4378dc. Battery re-run follows this note (first run on castalia)."
+}

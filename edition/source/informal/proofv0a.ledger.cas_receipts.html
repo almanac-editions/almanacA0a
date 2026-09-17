@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAS-oracle cross-check receipts — proofv0a.ledger.json (2026-08-05) — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><picture class="mark"><source media="(prefers-color-scheme: dark)" srcset="../../almanac-mark-dark.svg"><img src="../../almanac-mark.svg" width="92" alt="almanac"></picture></a>
+<a class="back" href="../../index.html">&larr; the almanac</a>
+<h1 id="cas-oracle-cross-check-receipts-proofv0aledgerjson-2026-08-05">CAS-oracle cross-check receipts — proofv0a.ledger.json (2026-08-05)</h1>
+<p>Warm kernel 127.0.0.1:9917 (HybridQuantum+Oscar), via the CAS MCP (casmcp/0.1); refute-first
+semantics. Every scalar-arithmetic claim family of the ledger was mirrored on the oracle
+independently of Backend A before the battery ran. Certificates (sha256 of the checked
+expression, kernel UTC timestamps 2026-08-05T21:44-45Z):</p>
+<table>
+<thead>
+<tr>
+<th>Ledger claims covered</th>
+<th>Oracle check</th>
+<th>Certificate sha256</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>G2 (Gaussian reindexing, Lemma 1(b))</td>
+<td>identity, 4 seeds incl. edge m=r=8</td>
+<td><code>0ad2cad23cc5…422c</code></td>
+<td>CONFIRMED 4/4</td>
+</tr>
+<tr>
+<td>G3 (reflection, Lemma 1(c))</td>
+<td>identity, 4 seeds incl. (n,r)=(3,2),(1,5)</td>
+<td><code>71630bfdc109…2ac3</code></td>
+<td>CONFIRMED 4/4</td>
+</tr>
+<tr>
+<td>G1 + R1-diag + H2 + F2 (vanishing / diagonal / node transport / shift)</td>
+<td>batch eval</td>
+<td><code>eff32217424b…a6c3</code></td>
+<td>OK (true,true,true,true)</td>
+</tr>
+<tr>
+<td>control.reflection-exponent-drop, control.offdiagonal-not-one, control.hh-sign-mutation</td>
+<td>batch eval, mutations</td>
+<td><code>c329dd5b2491…31f1</code></td>
+<td>OK (false,false,false) — all refute</td>
+</tr>
+<tr>
+<td>control.odd-grid-mutation (denominator obstruction) + L1 (clearing witness, corrected mirror)</td>
+<td>batch eval</td>
+<td><code>0ac9f415395b…26ee</code></td>
+<td>OK (5-term denominator ⇒ non-integral; witness true)</td>
+</tr>
+</tbody>
+</table>
+<p>Not oracle-mirrored (Backend A only, by instrument scope): R2 (matrix inverse integrality —
+needs the membership tester), A1 (product closure — same), H1 (free-variable rational identity
+— kernel has no free x), control.pascal-shift-mutation and control.coefficientwise-coarsening
+(need ZZ[X]-construction / coefficient extraction). These ran only in the ledger battery.</p>
+<p>Incident log (honesty): one earlier batch (<code>3864c84b…860d</code>) errored on an empty product at
+r=0 (Julia typing, not mathematics; range restricted to r≥1 in the re-run), and my first
+ad-hoc mirror of the L1 witness carried a transcription slip (<code>2*(3+i)</code> for <code>2*(n-1+i)</code>) that
+returned false against the CORRECT ledger claim — caught and corrected in <code>0ac9f415…</code>; the
+certified identity <code>71630bfd…</code> had already confirmed the true formula at the same (n,r).</p>
+</main></body></html>

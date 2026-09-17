@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adversarial referee report — PROOFv0a.tex — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><picture class="mark"><source media="(prefers-color-scheme: dark)" srcset="../../almanac-mark-dark.svg"><img src="../../almanac-mark.svg" width="92" alt="almanac"></picture></a>
+<a class="back" href="../../index.html">&larr; the almanac</a>
+<h1 id="adversarial-referee-report-proofv0atex">Adversarial referee report — PROOFv0a.tex</h1>
+<p><strong>Target:</strong> <code>sandboxv0a/informal/PROOFv0a.tex</code> (stand-alone proof of the three clauses of goalv0a)
+<strong>Against:</strong> <code>sandboxv0a/informal/goalv0a.tex</code> (signed, tex sha <code>91a50173…5a7e</code>, lock <code>goalv0a.lock.json</code>)
+<strong>Companion consulted:</strong> <code>informal/goal_memory.md</code>; HH transcript
+<code>corpus/literature/transcribed/harman-hopkins-quantum-integer-valued-polynomials.md</code>
+<strong>Oracle:</strong> warm CAS on 127.0.0.1:9917 via <code>sandboxv0/engine/cas_client.sh</code> (AbstractAlgebra rational
+function field in <code>q</code>, auto-simplifying; <code>Q := q^2</code>). Date: 2026-07-20.</p>
+<h2 id="verdict-confirm-with-findings">Verdict: <strong>CONFIRM-WITH-FINDINGS</strong></h2>
+<p>The proof is mathematically correct and byte-faithful to the signed statement. Every load-bearing
+step (reflection formula and its exponent, unitriangularity, the Z[Q^{±1}]-inverse base-change, the
+z-spectator reduction, Laurent clearing, window-to-full) survives adversarial recomputation. The
+findings below are <strong>cosmetic citation/notation slips confined to the Attribution remark</strong> and one
+non-blocking phrasing over-claim; <strong>none</strong> weakens or strengthens the theorem or breaks any argument.</p>
+<hr>
+<h2 id="attack-by-attack-results">Attack-by-attack results</h2>
+<h3 id="1-reflection-formula-_rqn-1r-qnrcr2-nr1-r_q-confirmed">(1) Reflection formula ν_r(Q^{−n}) = (−1)^r Q^{−nr−C(r,2)} [n+r−1, r]_Q — CONFIRMED</h3>
+<p>Recomputed <code>ν_r(Q^{−n}) − (−1)^r Q^{−nr−C(r,2)}·[n+r−1,r]_Q</code> from first principles for four (n,r),
+including a hostile pair. Exact client expressions (form
+<code>prod([ (q^(-2n) - q^(2t))/(q^(2r) - q^(2t)) for t in 0:r-1 ]) - (-1)^r * q^(-2*n*r - r*(r-1)) * prod([ (q^(2*(n-1+i)) - 1)/(q^(2*i) - 1) for i in 1:r ])</code>):</p>
+<ul>
+<li>(n=2,r=3) → <code>OK   0</code></li>
+<li>(n=3,r=2) → <code>OK   0</code></li>
+<li>(n=1,r=4) → <code>OK   0</code></li>
+<li>(n=5,r=4) hostile → <code>OK   0</code></li>
+</ul>
+<p>The exponent is exactly <code>Q^{−nr−C(r,2)}</code>, i.e. <code>q</code> to the power <code>−2nr − r(r−1)</code>. Cross-check:
+<code>ν_2(Q^{−3})</code> returned <code>(q^8+q^6+2q^4+q^2+1)//q^14</code>, an even-power (hence Z[Q^{±1}]) Laurent
+polynomial equal to <code>Q^{−7}[4,2]_Q</code> as the formula predicts. Independent sympy check
+<code>hh_dictionary_check.py</code> test C → <strong>PASS</strong>. Lemma 1(c) is correct.</p>
+<h3 id="2-unitriangularity-_rqm0-mr-_rqr1-confirmed">(2) Unitriangularity ν_r(Q^m)=0 (m&lt;r), ν_r(Q^r)=1 — CONFIRMED</h3>
+<p>Client form <code>prod([ (q^(2m) - q^(2t))/(q^(2r) - q^(2t)) for t in 0:r-1 ])</code>:</p>
+<ul>
+<li>Diagonal: <code>ν_3(Q^3)=ν_4(Q^4)=ν_5(Q^5)</code> → <code>OK  1</code>, <code>OK 1</code>, <code>OK 1</code>.</li>
+<li>Sub-diagonal: <code>ν_3(Q^0)=ν_3(Q^1)=ν_3(Q^2)=0</code>; <code>ν_4(Q^1)=ν_4(Q^3)=0</code> → all <code>OK 0</code>.</li>
+<li>Part (b): <code>ν_3(Q^5)</code> → <code>OK    q^12+q^10+2*q^8+2*q^6+2*q^4+q^2+1</code>, identical to the explicit Gaussian
+  binomial <code>[5,3]_Q</code>; <code>ν_2(Q^4)−[4,2]_Q → OK    0</code>. sympy test A → <strong>PASS</strong>.</li>
+<li>The q-Pascal recurrence invoked in Lemma 1(b) proof, <code>[5,3]_Q − ([4,2]_Q + Q^3[4,3]_Q)</code> →
+  <code>OK   0</code> (matches transcript eq:qpascal, <code>[n,k]_Q = q^k[n−1,k]_Q + [n−1,k−1]_Q</code>).</li>
+</ul>
+<p>So V = (B_r(m))_{0≤m,r≤d} is lower unitriangular, det V = 1. Correct.</p>
+<h3 id="3-base-change-qq-vs-qq-qq2-confirmed-and-the-direct-argument-is-airtight">(3) Base change Q(q) vs Q(Q), Q=q² — CONFIRMED, and the direct argument is airtight</h3>
+<p><code>Z[Q^{±1}] = Z[q^{±2}] ⊆ Z[q^{±1}] ⊆ A_z</code> is correct. The reverse-inclusion coordinates are obtained
+by the <strong>direct</strong> route the proof itself gives as "most directly": V is lower-unitriangular with
+entries in Z[Q^{±1}], so V⁻¹ = (I+N)⁻¹ = I−N+N²−… is lower-unitriangular with entries in the same ring
+Z[Q^{±1}] ⊆ A_z; with the value vector v ∈ A_z^{d+1}, c = V⁻¹v ∈ A_z^{d+1}. This needs <strong>no</strong>
+flatness hypothesis. The additional "free with basis {1,q}, hence flat, grade-preserving" paragraph
+is correct but redundant (not load-bearing). The remark <code>Q(Q) ∩ Z[q^{±1}] = Z[Q^{±1}]</code> is also true
+(a Laurent poly in Z[q^{±1}] fixed by q↦−q has only even powers) but is likewise not load-bearing.
+No error; flatness/window-finiteness is genuinely justified because the window matrix is finite
+(d+1 square) and unitriangular.</p>
+<h3 id="4-z-spectator-evaluation-acts-z-coefficient-wise-confirmed">(4) z-spectator: evaluation acts z-coefficient-wise — CONFIRMED</h3>
+<p>ev_χ is the K_z-algebra substitution Y̌ ↦ Q^χ = q^{2χ}; the substituted value lies in Z[q^{±1}] and
+carries no z, while coefficients live in K_z = Q(q)[z^{±1}]. Hence for g = Σ_r c_r ν_r with
+c_r = Σ_k c_{r,k} z^k, one has ev_χ(g) = Σ_k (Σ_r B_r(χ) c_{r,k}) z^k, so z-degree is preserved and
+membership ev_χ(g) ∈ A_z is equivalent, per fixed k, to the same unitriangular system over Z[Q^{±1}]
+with RHS in Z[q^{±1}]. The reduction is valid.</p>
+<h3 id="5-laurent-clearing-confirmed-both-directions">(5) Laurent clearing — CONFIRMED (both directions)</h3>
+<p>Y̌^N f ∈ K_z[Y̌] for N ≥ max negative exponent; ev_χ(Y̌^N f) = Q^{Nχ}·ev_χ(f) with Q^{Nχ} a unit of
+A_z, so f ∈ N^ev ⇔ Y̌^N f ∈ N^ev, and the decomposition transfers back by the same unit. Correct.
+<code>ν_2(Q^{−3})</code> being a genuine Z[Q^{±1}]-Laurent value confirms the unit-multiplication mechanics.</p>
+<h3 id="6-window-to-full-union-over-d-and-shifts-u-confirmed-no-gap">(6) Window-to-full (union over d and shifts u) — CONFIRMED, no gap</h3>
+<p>Lemma 3 uses only the finite window χ = 0,…,d (a <em>subset</em> of the all-χ integrality available from
+g ∈ N^ev), which already pins c_r ∈ A_z by unitriangularity; union over d covers all polynomial
+degrees, and Laurent clearing places every f in the u = −N slice of S = Σ_u Σ_r A_z Y̌^u ν_r(Y̌).
+Complete partition of the χ-cases (χ≥r: 1(b); 0≤χ&lt;r: 1(a); χ&lt;0: 1(c)). No gap.</p>
+<h3 id="7-citation-audit-matches-one-cosmetic-notation-slip-f1">(7) Citation audit — MATCHES (one cosmetic notation slip, F1)</h3>
+<ul>
+<li><code>Prop.~§1.2, prop:qbinom</code> ↔ transcript line 43 <code>Proposition [§1.2] {label: prop:qbinom}</code>. ✔</li>
+<li><code>Prop.~§4.3, prop:localization</code>, R_q = R_q^+ ⊗_{Z[q]} Z[q^{±1}] ↔ transcript line 91–92. ✔</li>
+<li>z-variable / Cartan-part-of-Lusztig remark ↔ transcript §4 remark (line 96). ✔</li>
+<li>arXiv:1601.06110 ↔ transcript line 5. ✔</li>
+<li>"their q = our Q = q²" ↔ dictionary card / transcript §5 (their single deformation parameter). ✔</li>
+<li>Node map: Y̌ = 1 + (Q−1)x sends x=[n]<em x="(X−1)/(Q−1)">Q ↦ Q^n (checked: 1+(Q−1)(Q^n−1)/(Q−1) = Q^n). ✔
+  Term-by-term basis transport HH q-binomial |</em> = ν_k(X): sympy test B → <strong>PASS</strong>.</li>
+<li><strong>Lean anchors verified by reading the files:</strong>
+  <code>Sandbox/A1/UQ/NewtonSpan.lean:298</code> is <code>theorem nuNewtonIntegral_iff_mem_span …</code> (name and line
+  exact; docstring matches the quoted description "grid criterion = membership in the A_z-span of the
+  product Newton generators"). <code>Sandbox/A1/UQ/CenterNewtonTransfer.lean:604</code> is
+  <code>theorem gl2_center_closed_newton_laurent …</code> (name and line exact; docstring matches "passage to
+  the full Laurent even lattice"). Both exist at the quoted lines. ✔</li>
+</ul>
+<h3 id="8-byte-faithfulness-to-goalv0atex-faithful-one-non-blocking-phrasing-point-f3">(8) Byte-faithfulness to goalv0a.tex — FAITHFUL (one non-blocking phrasing point, F3)</h3>
+<p>Definitions of A_z, K_z, Q; the algebra U and its relations; toral/even/Y̌; N^ev; U^{hyb,ev}=N^ev and
+Z(U^ev)=U^ev∩Z(U⊗<em u_Z="u∈Z">{K_z}Frac(A_z)); HC=id, W={1}, (N^ev)^W=N^ev; ν_r — all reproduced without change.
+Goal clauses (i),(ii),(iii) are stated identically (the boxed HC iso and the exact sum
+Σ</em> A_z Y̌^u ν_r(Y̌)). No weakening, no strengthening, no convention change. In particular
+the four documented traps are respected: Λ=Z (Y̌ present, N^ev ⊋ A_z[Y̌^±]), NO q-shift (ev_χ(Y̌)=Q^χ
+with no spurious Q; 2ρ=0), W trivial (clause (ii) degenerates cleanly, no Weyl claim leaked), and the
+Newton lattice is strictly larger than the monomial ring (ν_r is the reason). The clause (ii)
+identity chain Z(U^ev)=U^ev∩(U⊗Frac(A_z))=U^ev is valid because K_z ↪ Frac(A_z)=Q(q,z) is injective
+and U is K_z-free, so U ↪ U⊗Frac(A_z).}Σ_{r≥0</p>
+<hr>
+<h2 id="findings-all-minor-none-blocks-acceptance">Findings (all minor; none blocks acceptance)</h2>
+<ol>
+<li>
+<p><strong>[cosmetic, citation notation — Attribution, PROOFv0a.tex lines ~352 &amp; ~361]</strong> The HH q-binomial
+   coefficient <em>polynomials</em> are typeset with the plain symbol <code>\binom{x}{k}</code> ("…freely generated …
+   by the q-binomial coefficient polynomials $\binom{x}{k}$" and "carries each basis term
+   $\binom{x}{k}$ onto $\nu_k(\Yc)$"). HH's object (prop:qbinom §1.2) is the q-deformed
+   $\qbinom{x}{k}$ with denominator $q^{\binom{k}{2}}[k]_q!$ — distinct from the classical Pólya
+   basis $\binom{x}{k}$ (prop:binom §1.1). The citation, the ring, and the prose ("q-binomial
+   coefficient polynomials") are correct and the transport was CAS-verified (sympy test B); only the
+   symbol is the un-deformed one. Recommend writing $\qbinom{x}{k}$ (or an explicit "HH's" glyph).</p>
+</li>
+<li>
+<p><strong>[minor, notation collision — Attribution, PROOFv0a.tex line ~360]</strong> The parenthetical
+   "(equivalently their $z$-variable $z=(q-1)x+1$…)" quotes HH's formula in HH's $q$, but in this
+   document $q$ denotes the honest square root with $Q=q^2$, so read literally in the proof's own
+   notation the affine map is $z=(Q-1)x+1$, not $(q-1)x+1$. The primary, load-bearing substitution
+   $\Yc = 1+(Q-1)x$ (same line) is written correctly in $Q$; the "their" qualifier makes the
+   parenthetical a faithful source quote, but the dual use of the letter $q$ is a latent hazard.
+   Recommend "(their $z$-variable, in their parameter $Q$: $z=(Q-1)x+1$)".</p>
+</li>
+<li>
+<p><strong>[non-blocking phrasing — Conventions, PROOFv0a.tex lines ~70–71]</strong> ev_χ is first defined as "the
+   K_z-algebra homomorphism substituting the unit Q^χ for Y̌" (correct, well-defined, fixes K_z) and
+   then also called "the unique A_z-linear ring homomorphism with ev_χ(Y̌)=Q^χ". Uniqueness among
+   <em>merely A_z-linear</em> ring homomorphisms is not literally forced (one must also fix Q(q)); the map
+   is pinned by being a K_z-algebra map, which the proof does state. goalv0a's own Def 2 says
+   "A_z-linear map … determined by ev(Y̌)=Q^χ", so this inherits the source's looseness rather than
+   introducing drift. N^ev is the identical set either way; no consequence for any argument.</p>
+</li>
+</ol>
+<h2 id="oracle-transcript-representative-exact-replies">Oracle transcript (representative, exact replies)</h2>
+<pre><code>$ cas_client.sh 'prod([ (q^(-2*2) - q^(2*t))/(q^(2*3) - q^(2*t)) for t in 0:2 ]) - (-1)^3 * q^(-2*2*3 - 3*2) * prod([ (q^(2*(2-1+i)) - 1)/(q^(2*i) - 1) for i in 1:3 ])'
+OK  0                                   # reflection (n=2,r=3)
+$ cas_client.sh 'prod([ (q^(-2*5) - q^(2*t))/(q^(2*4) - q^(2*t)) for t in 0:3 ]) - (-1)^4 * q^(-2*5*4 - 4*3) * prod([ (q^(2*(5-1+i)) - 1)/(q^(2*i) - 1) for i in 1:4 ])'
+OK  0                                   # reflection (n=5,r=4) hostile
+$ cas_client.sh 'prod([ (q^(2*3) - q^(2*t))/(q^(2*3) - q^(2*t)) for t in 0:2 ])'   # ν_3(Q^3)
+OK  1
+$ cas_client.sh 'prod([ (q^(2*2) - q^(2*t))/(q^(2*3) - q^(2*t)) for t in 0:2 ])'   # ν_3(Q^2), m&lt;r
+OK  0
+$ cas_client.sh 'prod([ ((q^2)^(-3) - (q^2)^t)/((q^2)^2 - (q^2)^t) for t in 0:1 ])' # ν_2(Q^-3)
+OK  (q^8 + q^6 + 2*q^4 + q^2 + 1)//q^14
+$ python3 sandboxv0a/informal/hh_dictionary_check.py
+A. nu_r(Q^m) == Gaussian binom [m,r]_Q          : PASS
+B. HH q-binomial(x) |_{x=(X-1)/(Q-1)} == nu_k(X): PASS
+C. reflection nu_r(Q^-n) = (-1)^r Q^{-rn-C(r,2)} [n+r-1,r]_Q: PASS
+</code></pre>
+<p><strong>Bottom line:</strong> accept PROOFv0a.tex. The three clauses are proved correctly and the write-up is
+faithful to the signed goalv0a.tex; only the three cosmetic/phrasing items above (all in the
+Attribution/Conventions prose, none in a proof step) warrant a light editorial pass.</p>
+</main></body></html>

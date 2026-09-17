@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Human-facing editorial referee report — goalv0a.tex and proofv0a.tex — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><picture class="mark"><source media="(prefers-color-scheme: dark)" srcset="../../almanac-mark-dark.svg"><img src="../../almanac-mark.svg" width="92" alt="almanac"></picture></a>
+<a class="back" href="../../index.html">&larr; the almanac</a>
+<h1 id="human-facing-editorial-referee-report-goalv0atex-and-proofv0atex">Human-facing editorial referee report — goalv0a.tex and proofv0a.tex</h1>
+<p><strong>Lens:</strong> SANDBOX_STANDARD §1 criterion 6 (human-facing editorial referee), at full weight.
+Route A makes these manuscripts the outward almanac artifact, so the reader I refereed for is a
+competent mathematician <strong>outside</strong> this program, reading the PDF with no access to the sandbox
+record.</p>
+<p><strong>Date:</strong> 2026-08-12.
+<strong>Subjects (as read):</strong></p>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>sha256</th>
+<th>lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>informal/goalv0a.tex</code></td>
+<td><code>7c46f318f07d2703c94595a8a867bd297b65d48f15eee4e6a66d06e815b1d44d</code></td>
+<td>111</td>
+</tr>
+<tr>
+<td><code>informal/proofv0a.tex</code></td>
+<td><code>c42cbf8fc204bc04773dc308e9dd4c29efb65d64a3ebc1a2eeaacc6feb875cd1</code></td>
+<td>414</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Context read:</strong> <code>versions/goalv0a_SIGNED_2026-07-19.tex</code> (byte-frozen anchor, sha <code>91a50173…5a7e</code>),
+<code>versions/goalv0a_SIGNED_2026-07-19_current-notation.tex</code>, <code>versions/proofv0a_pre-notation_2026-08-10.tex</code>,
+<code>REFEREE_REPORT_PROOFv0a.md</code> (hostile mathematical referee, CONFIRM-WITH-FINDINGS),
+<code>CITATION_VERIFICATION_2026-08-09.md</code>, <code>../SCOPE_CONTRACT.md</code>, <code>../goalv0a.lock.json</code>,
+<code>../APPROVAL_STATE.json</code>, <code>proofv0a.ledger.json</code> + <code>proofv0a.current.report.json</code>,
+and the cited source at <code>corpus/literature/arxiv_src/1601.06110/{main.tex,main.bbl}</code> plus its
+Library transcript.</p>
+<p><strong>This report is advisory and read-only.</strong> No manuscript byte was touched.</p>
+<hr>
+<h2 id="verdict-also-restated-at-the-end">VERDICT (also restated at the end)</h2>
+<p><strong>PASS-WITH-EDITS.</strong> 2 BLOCKING · 15 EDITORIAL · 12 NIT. The mathematics is sound and the
+statement has <strong>not</strong> drifted from the signed anchor (mechanical proof below). Both BLOCKING
+findings are one-sentence fixes.</p>
+<hr>
+<h2 id="semantic-drift-check-vs-the-signed-anchor">Semantic-drift check vs the signed anchor</h2>
+<p><strong>VERDICT: NO DRIFT. The live <code>goalv0a.tex</code> is a pure notation transform of the byte-frozen
+signed anchor, verified mechanically, not by eye.</strong></p>
+<p>Method: I applied the lock's declared dictionary (<code>goalv0a.lock.json</code> →
+<code>notation_migration_2026_08_10.dictionary</code>) to the <em>signed anchor's own bytes</em> —
+<code>\Az→\At</code>, <code>\Kz→\Ft</code>, <code>A_z→A_t</code>, <code>K_z→F_t</code>, then <code>Q→q</code>, <code>q→v</code>, <code>z→t</code> on standalone
+math tokens, then the product index <code>t→s</code> inside Definition 5 — and diffed the result against
+the live edition with the three declared non-mathematical items normalised away:</p>
+<ol>
+<li>the added migration note paragraph (live lines 25–30),</li>
+<li><code>\newtheorem{goal}</code> → <code>\newtheorem*{goal}</code> (post-signing style rule: the Goal is unnumbered),</li>
+<li><code>\boxed{…}</code> removed from clause (ii) (post-signing style rule: the Goal is displayed plainly),</li>
+<li><code>\date{July 19, 2026 --- draft, unsigned}</code> → <code>\date{}</code>.</li>
+</ol>
+<p><strong>Result: byte-identical.</strong> Every ring, every relation, every quantifier, all three clauses.
+In particular: <code>A_t = Z[v^{±1}, t^{±1}]</code> <strong>is</strong> the signed <code>A_z = Z[q^{±1}, z^{±1}]</code> under the
+dictionary — the family parameter was <strong>renamed</strong> (<code>z ↦ t</code>), not squared, and the base ring is the
+same ring. <code>K_{n,+}K_{n,-}=t^{\,n}</code> is the signed <code>=z^{\,n}</code>. <code>ev_χ(Ŷ)=q^{χ}</code> is the signed
+<code>=Q^{χ}</code>. Clause (iii)'s sum is the signed sum. <strong>No weakening, no strengthening, no hypothesis
+added, no convention changed.</strong></p>
+<p>I ran the same transform against <code>versions/proofv0a_pre-notation_2026-08-10.tex</code>. The migration
+of the proof is likewise mathematically inert; the only non-mechanical differences are (a) the
+added edition note, (b) the index rename <code>t→s</code>, (c) three places where an over-eager earlier pass
+had renamed <strong>Harman–Hopkins' own</strong> parameter <code>q</code> to <code>v</code> and the live edition correctly restores
+their symbol (<code>$q$-Pascal</code>, <code>$q$-binomials</code>, <code>$q$-deformed</code>, <code>\mathcal R_q^{+}</code>), (d) a repaired
+<code>$Z[…]$</code> → <code>$\Z[…]$</code> typo at line 99, (e) a <code>\qedhere</code> display upgrade at 241–244. All improvements.</p>
+<p><strong>One caveat, and it is the report's first BLOCKING finding:</strong> the sentence that <em>announces</em> the
+migration to the reader (<code>goalv0a.tex:26–28</code>, <code>proofv0a.tex:34–36</code>) describes the dictionary in a
+way that invites the reader to conclude the opposite of what I just verified. See B1.</p>
+<hr>
+<h2 id="blocking-a-reader-is-misled">BLOCKING (a reader is misled)</h2>
+<h3 id="b1-the-migration-sentence-asserts-t-z2-with-z-undefined-and-thereby-invites-the-reader-to-infer-a-ring-change-that-did-not-happen">B1 — the migration sentence asserts <code>t = z²</code>, with <code>z</code> undefined, and thereby invites the reader to infer a ring change that did not happen</h3>
+<p><code>goalv0a.tex:26–28</code>:</p>
+<blockquote>
+<p>Signed July 19, 2026; this is the notation-migrated edition of August 10, 2026
+(same statement, current symbols: the former $Q,q,z$ are written $q,v,t$, with
+$q=v^{2}$ and $t=z^{2}$).</p>
+</blockquote>
+<p><code>proofv0a.tex:34–36</code> carries the identical clause.</p>
+<p>Three defects compound here:</p>
+<ol>
+<li><strong><code>z</code> is the only symbol in either manuscript that is used and never defined.</strong> It occurs
+   exactly twice in the two documents outside this sentence — nowhere in <code>goalv0a.tex</code>, and once
+   in <code>proofv0a.tex:384</code> ("our square root of $t$"), which presupposes the very definition that is
+   missing. First-use completeness fails on the manuscript's first line of prose.</li>
+<li><strong>The parallel construction is false.</strong> "$q=v^{2}$" restates the signed frame's own
+   <code>Q=q^{2}</code> under the rename and is correct. "$t=z^{2}$" has no counterpart in the signed frame:
+   the signed <code>z</code> had no square root. Set side by side as a matched pair, the two look like the
+   two halves of one dictionary, which they are not.</li>
+<li><strong>The natural misreading is exactly the drift the reader is checking for.</strong> A reader who takes
+   "the former <code>z</code> is written <code>t</code>, with <code>t=z²</code>" at face value concludes that the new family
+   parameter is the <em>square</em> of the signed one, hence
+   <code>A_t = Z[v^{±1}, z^{±2}] ⊊ Z[q^{±1}, z^{±1}] = A_z</code> — a strictly smaller base ring, i.e. a
+   different (weaker) theorem. That conclusion is wrong, but the sentence is what produces it.
+   The one paragraph whose job is to certify "same statement" is the one paragraph that
+   undermines it.</li>
+</ol>
+<p><strong>Proposed rewording (both files, identical clause):</strong></p>
+<blockquote>
+<p>Signed July 19, 2026; this is the notation-migrated edition of August 10–11, 2026. The
+statement is unchanged — only symbols were renamed, by the Sandbox-wide dictionary
+$Q\mapsto q$, $q\mapsto v$, $z\mapsto t$: the relation formerly written $Q=q^{2}$ now reads
+$q=v^{2}$, and the family parameter formerly written $z$ is now written $t$.</p>
+</blockquote>
+<p>If the program wants the four-symbol current frame on the record, append one sentence rather than
+folding it into the dictionary:</p>
+<blockquote>
+<p>(In the current Sandbox-wide frame, $v$ and $z$ denote the square roots $v^{2}=q$ and
+$z^{2}=t$; only $v$ and $t$ occur below.)</p>
+</blockquote>
+<p><strong>Owner must confirm which reading is intended before editing</strong> — if <code>t = z²</code> was meant as a
+relation between the <em>signed</em> <code>z</code> and the current <code>t</code>, then my drift verdict above and the lock's
+own dictionary are in conflict with the manuscript, and that is an AMEND-class question, not an
+editorial one. Everything I measured says it was not meant that way.</p>
+<h3 id="b2-the-attribution-remark-attributes-harmanhopkins-lusztig-identification-to-the-wrong-object">B2 — the Attribution remark attributes Harman–Hopkins' Lusztig identification to the wrong object</h3>
+<p><code>proofv0a.tex:383–386</code>:</p>
+<blockquote>
+<p>The node-preserving affine substitution $\Yc=1+(q-1)x$ (their \S4
+$z$-variable --- their symbol, unrelated to our square root of $t$ --- which is
+remarked there to give the Cartan part of Lusztig's integral form) carries the
+grid node $x=[n]_q$ to $\Yc=q^{n}$ …</p>
+</blockquote>
+<p>The <code>which</code> attaches to "their §4 $z$-variable", so the manuscript says HH remark that the
+$z$-variable gives the Cartan part of Lusztig's integral form. <strong>They do not.</strong> The source
+(<code>corpus/literature/arxiv_src/1601.06110/main.tex:417</code>, verbatim) says:</p>
+<blockquote>
+<p>Going one step further, if we formally adjoin square roots $K^2 = z$ and $v^2 = q$, then the
+ring $\mathcal{R}<em v>q[K,v]$ is equivalent to the Cartan part of Luztig's [sic] integral form of the
+quantum group $U</em>_2)$.}(\mathfrak{sl</p>
+</blockquote>
+<p>The identification is of <code>R_q[K,v]</code> — the $z$-variable <strong>plus</strong> the adjoined square roots — not of
+the $z$-variable. On an outward artifact whose citations are meant to be checkable, a reader who
+opens the source finds the manuscript's claim inexact. The correction is also <em>more favourable</em>
+to this program, and <code>CITATION_VERIFICATION_2026-08-09.md</code> step 3 already records why: HH's
+adjoined <code>K</code> (with <code>K²=z</code>) and <code>v</code> (with <code>v²=q</code>) are literally this manuscript's <code>T^{+}</code>
+(with <code>(T^{+})²=Ŷ</code>) and <code>v</code> — the program frame <strong>is</strong> the square-root cover their remark
+constructs. The manuscript is giving away its own best sentence and misciting at the same time.</p>
+<p>The em-dash aside ("their symbol, unrelated to our square root of $t$") should go with it: it
+leans on the undefined <code>z</code> of B1, and post-migration the collision it defends against no longer
+exists (their <code>z</code> vs our <code>t</code> are different letters now). The positive statement — their <code>z</code> <strong>is</strong>
+our <code>Ŷ</code> — is the one the reader needs.</p>
+<p><strong>Proposed rewording:</strong></p>
+<blockquote>
+<p>The node-preserving affine substitution $\Yc=1+(q-1)x$ is exactly their \S4 $z$-variable; it
+carries the grid node $x=[n]_q$ to $\Yc=q^{n}$ and carries each basis term $\qbinom{x}{k}$ onto
+$\nu_k(\Yc)$ \emph{term by term} --- the factors $(q-1)$ cancel in every Newton ratio. (They
+remark further that on adjoining square roots $K^{2}=z$, $v^{2}=q$ --- which is precisely the
+passage to our $T^{+}$ and our $v$ --- the ring $\mathcal R_q[K,v]$ is equivalent to the Cartan
+part of Lusztig's integral form of $U_v(\mathfrak{sl}_2)$. Nothing below rests on that remark.)</p>
+</blockquote>
+<hr>
+<h2 id="editorial-should-fix">EDITORIAL (should fix)</h2>
+<h3 id="e1-proofv0atex150151-clause-iis-key-equality-rests-on-an-injectivity-that-is-never-stated">E1 — <code>proofv0a.tex:150–151</code> — clause (ii)'s key equality rests on an injectivity that is never stated</h3>
+<blockquote>
+<p>the middle equality because $\Uev=\Nev\subseteq U$ maps into
+$U\otimes_{\Ft}\operatorname{Frac}(\At)$.</p>
+</blockquote>
+<p>"Maps into" is not enough to license <code>Uev ∩ (U ⊗ Frac(A_t)) = Uev</code>, which requires <code>Uev</code> to sit
+<em>inside</em> the base-changed algebra as a subset — i.e. requires <code>U → U ⊗_{F_t} Frac(A_t)</code> to be
+injective. It is (the hostile referee supplied the reason at its item 8), but the manuscript
+never says so. This is the one place in the document where a careful reader is asked to accept a
+step the text does not justify, and it is in the shortest, most-read proof.</p>
+<p><strong>Proposed:</strong> "…the middle equality because $U\hookrightarrow U\otimes_{\Ft}\operatorname{Frac}(\At)$
+is injective — $\Ft\hookrightarrow\operatorname{Frac}(\At)=\mathbb Q(v,t)$ and $U$ is free over
+$\Ft$ — so $\Uev=\Nev\subseteq U$ is literally a subset of the base-changed algebra."</p>
+<h3 id="e2-proofv0atex80-is-used-in-a-document-that-never-introduces-a-root-system">E2 — <code>proofv0a.tex:80</code> — <code>Φ⁺</code> is used in a document that never introduces a root system</h3>
+<blockquote>
+<p>Because $\Phi^{+}=\emptyset$ at $GL_1$, the \emph{even hybrid family integral form} is …</p>
+</blockquote>
+<p><code>proofv0a.tex</code> advertises itself as <em>stand-alone</em> (title, and line 33). It defines <code>v</code>, <code>t</code>, <code>q</code>,
+<code>A_t</code>, <code>F_t</code>, <code>U</code>, <code>T^±</code>, <code>Ŷ</code>, <code>ev_χ</code>, <code>N^ev</code>, <code>W</code> — but never <code>Φ</code> or <code>Φ⁺</code>. A reader without
+<code>goalv0a.tex</code> meets an undefined symbol carrying the load of the definition.</p>
+<p><strong>Proposed:</strong> "Because the root system of $GL_1$ is empty ($\Phi=\Phi^{+}=\emptyset$), the …"</p>
+<h3 id="e3-proofv0atex310340-lemma-3s-proof-states-the-same-argument-three-times-and-says-so-twice-in-its-own-voice">E3 — <code>proofv0a.tex:310–340</code> — Lemma 3's proof states the same argument three times, and says so twice in its own voice</h3>
+<p>The core argument occupies lines 300–308 and is complete there. It is then repeated as
+<em>The $t$-spectator argument</em> (310–325), which closes "This is the same conclusion reached above",
+and again as <em>Base change</em> (327–340), which closes "Equivalently, and most directly:" followed by
+a verbatim restatement of lines 306–308. The hostile referee already flagged the second repetition
+as "correct but redundant (not load-bearing)". For the human reader this is the manuscript's
+largest readability defect: 30 of a 40-line proof are restatement, twice self-declared as such,
+and it reads as though the author did not trust the argument.</p>
+<p><strong>Proposed:</strong> keep 280–308 unchanged; replace 310–340 with two sentences, e.g.</p>
+<blockquote>
+<p>\emph{Where $t$ goes.}\; The map $\ev_m$ substitutes only $\Yc\mapsto q^{m}$; it touches neither
+$v$ nor $t$, so $V$ and $V^{-1}$ have entries in $\Z[q^{\pm1}]$ and the system decouples over the
+$t$-powers. No flatness or base-change argument is needed: $V^{-1}$ has entries in
+$\Z[q^{\pm1}]\subseteq\At$ and $\mathbf v\in\At^{d+1}$, so $\mathbf c\in\At^{d+1}$, and in
+particular honest odd powers of $v$ in the $c_r$ cause no difficulty.</p>
+</blockquote>
+<p>This is the single largest quality gain available and the single largest diff; see the churn
+analysis.</p>
+<h3 id="e4-proofv0atex375-387-the-same-object-typeset-two-different-ways-one-of-them-a-tall-inline-box">E4 — <code>proofv0a.tex:375, 387</code> — the same object typeset two different ways, one of them a tall inline box</h3>
+<p>The document defines <code>\qbinom</code> (line 23) and uses it correctly six times (196, 199, 216, 236, 239,
+242). The Attribution then writes the <em>same</em> $q$-binomial coefficient polynomial as
+<code>$\begin{bmatrix}x\\k\end{bmatrix}_{q}$</code> twice. Besides the inconsistency, an inline <code>bmatrix</code> is a
+two-row box in a text line: it inflates leading in the surrounding paragraph in the PDF. (This is
+the referee's finding F1 half-discharged — the <em>un-deformed</em> <code>\binom</code> was correctly removed, but
+the replacement did not use the document's own macro.)</p>
+<p><strong>Proposed:</strong> <code>$\qbinom{x}{k}$</code> at both sites.</p>
+<h3 id="e5-proofv0atex236238-k_q-used-only-k_q-defined">E5 — <code>proofv0a.tex:236–238</code> — <code>[k]_q!</code> used, only <code>[k]_q</code> defined</h3>
+<blockquote>
+<p>$=\frac{[n+r-1]_q!\,/\,[n-1]_q!}{[r]_q!}=\qbinom{n+r-1}{r}$, where $[k]_q=(q^{k}-1)/(q-1)$ and the
+common powers of $(q-1)$ cancel.</p>
+</blockquote>
+<p>The factorial is introduced in the display and glossed only for the non-factorial. It reappears at
+line 377.</p>
+<p><strong>Proposed:</strong> "…where $[k]_q=(q^{k}-1)/(q-1)$, $[k]_q!=[1]_q[2]_q\cdots[k]_q$, and the common
+powers of $(q-1)$ cancel."</p>
+<h3 id="e6-proofv0atex314316-wrong-base-ring-named-for-the-basis-actually-used">E6 — <code>proofv0a.tex:314–316</code> — wrong base ring named for the basis actually used</h3>
+<blockquote>
+<p>expand each coordinate along the free $\Z[v^{\pm1}]$-basis of $t$-powers: $c_r=\sum_{k}c_{r,k}\,t^{k}$
+with $c_{r,k}\in\mathbb Q(v)$.</p>
+</blockquote>
+<p>A <code>Z[v^{±1}]</code>-basis with coefficients declared in <code>Q(v)</code> is a mismatch: <code>{t^k}</code> is a basis of <code>F_t</code>
+over <code>Q(v)</code> and of <code>A_t</code> over <code>Z[v^{±1}]</code>, and the argument uses both. As written the reader has
+to repair the sentence before using it.</p>
+<p><strong>Proposed:</strong> "expand each coordinate along the $t$-powers — a basis of $\Ft$ over $\mathbb Q(v)$,
+and of $\At$ over $\Z[v^{\pm1}]$ — writing $c_r=\sum_k c_{r,k}t^{k}$ with $c_{r,k}\in\mathbb Q(v)$."
+(Survives the E3 compression; fold in whichever version is kept.)</p>
+<h3 id="e7-proofv0atex372-378-internal-library-labels-leak-into-the-human-facing-document">E7 — <code>proofv0a.tex:372, 378</code> — internal Library labels leak into the human-facing document</h3>
+<blockquote>
+<p>Their \S1 Proposition (Prop.~\S1.2, \texttt{prop:qbinom}), the …
+… their \S4 Proposition (Prop.~\S4.3, \texttt{prop:localization}), …</p>
+</blockquote>
+<p><code>\texttt{prop:qbinom}</code> and <code>\texttt{prop:localization}</code> are LaTeX labels from this program's
+transcript of the source. They are meaningless to an outside reader and read as machine noise in a
+typeset paper. Separately, "Prop.~\S1.2" reads as a <em>section</em> number; the source prints
+"Proposition 1.2".</p>
+<p><strong>Proposed:</strong> "their Proposition 1.2, the $q$-analogue of …" and "their Proposition 4.3,
+$\mathcal R_q=\mathcal R_q^{+}\otimes_{\Z[q]}\Z[q^{\pm1}]$, is the bilateral localization."
+(Both numbers verified against the source.)</p>
+<h3 id="e8-proofv0atex406410-citesandboxgl2-is-unresolvable-to-any-reader-outside-the-program">E8 — <code>proofv0a.tex:406–410</code> — <code>\cite{SandboxGL2}</code> is unresolvable to any reader outside the program</h3>
+<blockquote>
+<p>\bibitem{SandboxGL2} SandboxA, \emph{The centre of the even hybrid family quantum $GL_2$}
+(closure record of the signed goal, revision A1+R5), Sandbox record, 2026.</p>
+</blockquote>
+<p>No identifier, no location, no availability statement — yet this is the <em>sole</em> support for the
+clause (ii) parenthetical (line 136) and for the "rank-one specialization of that transport" claim
+(line 396), i.e. for the manuscript's entire in-program ancestry. On the outward artifact the
+reader is told a result exists and given no way to reach it.</p>
+<p><strong>Proposed:</strong> state what it is and that it is internal, e.g. "…, signed goal <code>center-GL2</code>, closure
+record (revision A1+R5), Project Sandbox internal record, 2026 (not publicly available)."</p>
+<p><strong>Gate caution:</strong> the obvious richer fix — naming the certified Lean declarations
+(<code>nuNewtonIntegral_iff_mem_span</code>, <code>gl2_center_closed_newton_laurent</code>), which
+<code>CITATION_VERIFICATION_2026-08-09.md</code> verified at their source lines — risks tripping
+<code>manuscript_gate</code> P2 (<code>no … formalisation language</code>) and P3 (<code>no computational evidence</code>). Test the
+gate before committing to that variant.</p>
+<h3 id="e9-proofv0atex134-396-rank-one-here-rank-0-everywhere-else-in-the-sandbox">E9 — <code>proofv0a.tex:134, 396</code> — "rank-one" here, "rank-0" everywhere else in the sandbox</h3>
+<blockquote>
+<p>The rank-one, $\Phi^{+}=\emptyset$ degeneration of the even hybrid Harish--Chandra isomorphism …
+The $GL_1$ statement above is the rank-one specialization of that transport.</p>
+</blockquote>
+<p><code>SCOPE_CONTRACT.md</code> ("the <strong>rank-0 base case</strong> of the root GOAL"), <code>APPROVAL_STATE.json</code>
+("GL_1 (the rank-0 base case…)") and <code>REPORT.md</code> ("degenerate at rank 0") all say rank <strong>0</strong>. Both
+are defensible (torus rank 1, semisimple rank 0), and neither document defines which it means. A
+route-A reader who reads the manuscript and then the sandbox page meets both numbers for the same
+object.</p>
+<p><strong>Proposed:</strong> on first use, "the rank-one (equivalently, semisimple-rank-zero) degeneration …", or
+drop the number: "the $GL_1$ degeneration of …". Harmonise with whatever the outward pages say.</p>
+<h3 id="e10-goalv0atex-carries-no-criterion-13-adopted-and-the-gate-says-that-blocks-publication-of-the-edition-publication-gating">E10 — <code>goalv0a.tex</code> carries no <code>% criterion-13: adopted</code>, and the gate says that blocks publication of the edition [publication-gating]</h3>
+<p><code>manuscript_gate.py --kind goal</code> on the live file returns <strong>PASS</strong>, but with:</p>
+<blockquote>
+<p>NOTE: criterion 13 (ancestry) is reported but NOT enforced for this file — it carries no
+<code>% criterion-13: adopted</code> line. … <strong>An edition may not be published while any of its manuscripts
+still lacks the declaration.</strong></p>
+</blockquote>
+<p>followed by five G9 NOTICEs (lines 42, 55, 68, 78, 89 — every definition, no citation and no
+<code>\nopredecessor</code>). <code>proofv0a.tex</code> adopted the rule at its line 2 and passes P9 cleanly. Since route
+A is a publication path, the goal manuscript is currently the thing standing in front of it.</p>
+<p><strong>This is not an editorial edit and I do not recommend making it as one.</strong> Adding the declaration
+converts the five NOTICEs into FAILURES, so it must be accompanied by a citation or
+<code>\nopredecessor</code> on five definitions of a <strong>hash-locked, Overseer-signed statement</strong>. Route to the
+Overseer under the SANDBOX_STANDARD §5 amendment protocol, with the observation that four of the
+five definitions are specializations of the root <code>informal/goal.tex</code> and the fifth (Newton divided
+classes) has the Harman–Hopkins ancestry the proof already cites.</p>
+<h3 id="e11-goalv0atex5860-ev_-is-under-determined-as-defined-inherited-recommend-no-edit">E11 — <code>goalv0a.tex:58–60</code> — <code>ev_χ</code> is under-determined as defined (inherited; recommend NO edit)</h3>
+<blockquote>
+<p>For $\chi\in X_\Lambda$ let $\mathrm{ev}<em>\chi$ be the $\At$-linear map on even toral elements
+determined by $\mathrm{ev}</em>\chi(\Yc)=q^{\,\chi}$.</p>
+</blockquote>
+<p>An <code>A_t</code>-<strong>linear map</strong> on <code>F_t[Ŷ^{±1}]</code> is not determined by its value at <code>Ŷ</code>; multiplicativity
+is what pins it. The proof silently upgrades this to "the $\Ft$-algebra homomorphism substituting
+the unit $q^{\chi}$ for $\Yc$" (<code>proofv0a.tex:67–69</code>), which is correct and defines the same <code>N^ev</code>.
+The looseness is <strong>verbatim in the signed anchor</strong> — it is not drift, and the hostile referee
+recorded the same point (its finding 3).</p>
+<p><strong>Recommendation: record, do not edit.</strong> Repairing it touches the locked statement.</p>
+<h3 id="e12-goalv0atex3234-58-64-x_-is-never-said-to-be-anything-inherited-recommend-no-edit">E12 — <code>goalv0a.tex:32–34, 58, 64</code> — <code>X_Λ</code> is never said to <em>be</em> anything (inherited; recommend NO edit)</h3>
+<blockquote>
+<p>the cocharacter lattice is $\Lambda=\mathbb Z$, and $X_\Lambda=\mathbb Z$.</p>
+</blockquote>
+<p>The reader is told the value and never the meaning, then <code>χ</code> is quantified over <code>X_Λ</code> at line 58
+and over <code>ℤ</code> at line 64, six lines apart, with no word that they are the same index set. Inherited
+verbatim from the signed anchor. <strong>Record, do not edit</strong> (a gloss would change a definition of a
+locked statement). Worth one line in whatever front-matter the almanac wraps around the PDF.</p>
+<h3 id="e13-proofv0atex3638-the-opening-sentence-mislabels-what-is-proved">E13 — <code>proofv0a.tex:36–38</code> — the opening sentence mislabels what is proved</h3>
+<blockquote>
+<p>The result identifies the even hybrid integral form of the family quantum $GL_1$ with its
+centre and with a Newton (divided-class) lattice;</p>
+</blockquote>
+<p><code>U^{hyb,ev}</code> <strong>is</strong> <code>N^ev</code> by definition (line 81, and <code>goalv0a.tex</code> Def 3). So "identifies … with
+a Newton lattice" describes a definition, not a result. The actual content of clause (iii) is the
+identification of the <em>evaluation-integrality</em> lattice with the <em>span of the divided classes</em> —
+which the next clause of the same sentence then correctly names as HH's theorem. The first thing
+the reader is told about the paper is the one thing the paper does not do.</p>
+<p><strong>Proposed:</strong> "The result shows that the even hybrid integral form of the family quantum $GL_1$ —
+cut out by integrality of all evaluations on the grid $q^{\mathbb Z}$ — is an $\At$-subalgebra, is
+its own centre, and is spanned over $\At$ by the shifted Newton divided classes; clause~(iii) is the
+bilateral quantum Pólya theorem of Harman and Hopkins, transported to the multiplicative grid of the
+toral algebra (attribution remark at the end)."</p>
+<h3 id="e14-proofv0atex74-the-referees-finding-3-re-examined-the-manuscript-is-right-no-edit">E14 — <code>proofv0a.tex:74</code> — the referee's finding 3 re-examined: the manuscript is RIGHT, no edit</h3>
+<blockquote>
+<p>It is the unique $\At$-linear ring homomorphism with $\ev_\chi(\Yc)=q^{\chi}$, and it fixes
+$\Ft$ (hence $\At$) pointwise.</p>
+</blockquote>
+<p><code>REFEREE_REPORT_PROOFv0a.md</code> finding 3 calls this uniqueness claim not "literally forced". I
+checked it and it <strong>is</strong> forced: an <code>A_t</code>-linear ring homomorphism fixes <code>Z[v^{±1}]</code> pointwise, and
+a ring homomorphism into a domain that fixes <code>Z[v]</code> pointwise fixes every <code>a/b ∈ Q(v)</code> (from
+<code>φ(a/b)·b = φ(a) = a</code>), hence fixes <code>F_t = Q(v)[t^{±1}]</code>; together with <code>ev_χ(Ŷ)=q^χ</code> that
+determines the map on <code>F_t[Ŷ^{±1}]</code>. <strong>No edit.</strong> Recorded so the point is not re-raised a third
+time. (The sentence order would read better as "It fixes <code>F_t</code> (hence <code>A_t</code>) pointwise, and is the
+unique ring homomorphism doing so with <code>ev_χ(Ŷ)=q^χ</code>" — cosmetic only.)</p>
+<h3 id="e15-proofv0atex162164-a-bare-paragraph-doing-a-remark-environments-job">E15 — <code>proofv0a.tex:162–164</code> — a bare paragraph doing a <code>remark</code> environment's job</h3>
+<blockquote>
+<p>\noindent
+There is no content here beyond commutativity: at $GL_1$ the rational centre is everything,
+$\HC$ is the identity, and Weyl invariance is vacuous.</p>
+</blockquote>
+<p>The document declares a <code>remark</code> environment and uses it once (line 368). This paragraph is a
+remark set as loose body text. (Its <em>content</em> is exactly the honesty item <code>SCOPE_CONTRACT.md</code>
+requires "wherever v0a is cited", and it discharges it — the objection is only to the packaging.)
+Wrapping it renumbers the Attribution remark 1→2; nothing in the ledger cites a Remark number.</p>
+<hr>
+<h2 id="nit">NIT</h2>
+<ul>
+<li><strong>N1 — <code>goalv0a.tex:42, 55, 68, 78, 89, 97</code>.</strong> All six <code>\label</code>s are orphans; the file contains
+  no <code>\ref</code>. <code>goalv0a.aux</code> further shows <code>\newlabel{goal:main}{{}{1}}</code> — because the Goal
+  environment is starred, the label resolves to an <strong>empty</strong> number, so any future
+  <code>\ref{goal:main}</code> would silently print nothing. Latent, harmless today.</li>
+<li><strong>N2 — <code>proofv0a.tex:12</code>.</strong> <code>\newtheorem{definition}{Definition}</code> is declared and never used
+  (Conventions uses run-in <code>\emph{…}</code> headings).</li>
+<li><strong>N3 — <code>proofv0a.tex:9–13</code>.</strong> <code>theorem</code>/<code>proposition</code>/<code>lemma</code> have independent counters, so
+  "Proposition 1", "Theorem 1" and "Lemma 1" coexist. <strong>Do not "fix" this.</strong>
+  <code>proofv0a.ledger.json</code> cites the numbers verbatim ("Lemma 1(a)", "Lemma 1(b)", "Lemma 1(c)",
+  "Lemma 2", "Lemma 3 core", "Theorem 1 assembly"); a shared counter would silently desynchronise
+  every ledger claim label from the manuscript.</li>
+<li><strong>N4 — <code>proofv0a.tex:99</code> vs <code>187</code>.</strong> "$\Z[q^{\pm1}]$-<em>integral</em>" is defined in the body and used
+  only in a subsection title.</li>
+<li><strong>N5 — <code>proofv0a.tex:33–35</code>.</strong> "the notation-migrated edition of August 10, 2026 of the refereed
+  proof of July 19, 2026" — stacked "of"s. Suggest "This is the August 10, 2026 notation-migrated
+  edition of the proof of July 19, 2026 (refereed the following day)."</li>
+<li><strong>N6 — <code>goalv0a.tex:26</code>, <code>proofv0a.tex:34</code>.</strong> The edition date is stale: both say "August 10,
+  2026", but the live files also carry the 2026-08-11 <code>K_t → F_t</code> rename
+  (<code>goalv0a.lock.json → f_t_rename_2026_08_11</code>; <code>proofv0a.ledger.json →
+  document_revision_note_2026_08_11</code>). Fold "August 10–11" into the B1 rewrite.</li>
+<li><strong>N7 — <code>goalv0a.tex:51</code> vs <code>proofv0a.tex:57</code>.</strong> <code>T^{\pm}:=K_{1,\pm}</code> vs <code>T^{\pm}=K_{1,\pm}</code>;
+  likewise <code>goalv0a.tex:72</code> <code>\subset</code> vs <code>proofv0a.tex:81</code> <code>\subseteq</code> for the same inclusion.</li>
+<li><strong>N8 — <code>proofv0a.tex:218–220</code>.</strong> The <code>q</code>-Pascal induction also needs the boundary
+  <code>\qbinom{m}{r}=0</code> for <code>r&gt;m</code>; only <code>\qbinom{m}{0}=1</code> is given.</li>
+<li><strong>N9 — <code>proofv0a.tex:369–370</code>.</strong> The Attribution's own opening gives the reference inline
+  ("(arXiv:1601.06110)") rather than <code>\cite{HarmanHopkins}</code> — in the one remark whose subject is
+  attribution. Both then appear, with the bibliography, three times in one page.</li>
+<li><strong>N10 — <code>proofv0a.tex:373</code>.</strong> Set-builder <code>:</code> in inline math; <code>\colon</code> (which the source itself
+  uses) sets the spacing correctly.</li>
+<li><strong>N11 — <code>goalv0a.tex:50</code>.</strong> "no generators $e_i,F_i$" — mixed case. This <em>matches</em> the
+  program-wide convention (<code>[e_i,F_i]=K_i^+ − K_i^-</code>, root <code>CLAUDE.md</code>); leave it, but an outside
+  reader will read it as a typo, so it may deserve a note in the almanac front matter.</li>
+<li><strong>N12 — <code>proofv0a.tex:401–404</code>.</strong> Harman–Hopkins is cited by arXiv identifier only. The
+  identifier is <strong>correct</strong> (verified against <code>corpus/literature/arxiv_src/1601.06110</code>). If the
+  program wants the published venue it must be sourced separately — the local copy is the preprint
+  and I did not verify a journal reference.</li>
+</ul>
+<hr>
+<h2 id="verified-clean-checked-no-finding-recorded-so-these-are-not-re-litigated">Verified clean (checked, no finding — recorded so these are not re-litigated)</h2>
+<ol>
+<li><strong>"Pólya's 1919 theorem" (<code>proofv0a.tex:371–372</code>) is FAITHFUL to the source,</strong> despite the
+   misleading Library bib key <code>polya1915ganzwertige</code>. The source writes
+   <code>\begin{proposition}[P\'olya 1919~\cite{polya1915ganzwertige}]</code> (<code>main.tex:99</code>) and the entry is
+   <em>J. Reine Angew. Math.</em> <strong>149</strong> (1919), 97–116 (<code>main.bbl:266–284</code>). I flagged this as a
+   suspected date error and it survived.</li>
+<li><strong>Every Harman–Hopkins quotation is verbatim:</strong> the <code>R_q^+</code> definition, "freely generated as a
+   <code>Z[q]</code>-module by the <code>q</code>-binomial coefficient polynomials", the denominator <code>q^{C(k,2)}[k]_q!</code>,
+   the additive grid <code>x=[n]_q</code>, Proposition 4.3 <code>R_q = R_q^+ ⊗_{Z[q]} Z[q^{±1}]</code>, and the node map
+   <code>x=[n]_q ↦ Ŷ=q^n</code>. Numbering 1.2 and 4.3 both check out against the source's per-section counter.</li>
+<li><strong>"their parameter $q$ coincides with our $q$ ($=v^{2}$), so their displayed formulas read
+   verbatim on our side" (<code>proofv0a.tex:380–381</code>) is correct</strong> and is the migration's genuine
+   payoff — the pre-migration edition had to carry a dictionary here and no longer does.</li>
+<li><strong>The term-by-term transport claim (<code>proofv0a.tex:386–388</code>) is exact.</strong> I recomputed:
+   <code>∏_{s&lt;k}(q^k−q^s) = q^{C(k,2)} ∏_{i=1}^{k}(q^i−1)</code>, which is precisely HH's denominator, so
+   <code>qbinom(x,k)|_{x=(Ŷ−1)/(q−1)} = ν_k(Ŷ)</code> on the nose and the <code>(q−1)</code> factors do cancel.</li>
+<li><strong>The SCOPE_CONTRACT honesty stance is honoured, not oversold.</strong> Clause (iii) is named as
+   Harman–Hopkins' theorem in the <em>opening paragraph</em> (line 38), again in the theorem's own
+   parenthetical (178–181), and the in-program <code>GL_2</code> ancestry is stated at 392–396 with the
+   <code>GL_1</code> statement called "the rank-one specialization of that transport". The mandatory Weyl
+   caveat is discharged at 162–164. I found <strong>no</strong> sentence claiming clause (iii) as new.</li>
+<li><strong>No legacy symbol survives the migration</strong> anywhere in either manuscript. <code>Q</code>, <code>A_z</code>, <code>K_z</code>,
+   <code>K_t</code> and the product index <code>t</code> appear nowhere except inside the migration sentence itself
+   (B1) and in the deliberate reference to HH's own <code>z</code> (B2).</li>
+<li><strong>Both files build warning-free</strong> (<code>goalv0a.log</code>, <code>proofv0a.log</code>: zero warnings, zero
+   over/underfull boxes, no undefined references). <code>manuscript_gate</code>: goal PASS (8 rules + 1
+   NOTICE, see E10), proof <strong>PASS 9/9</strong> with criterion-13 enforced.</li>
+<li><strong><code>goalv0a.pdf</code> sha <code>cfaa2f86…</code> matches <code>goalv0a.lock.json → current_edition_pdf_sha256</code>.</strong></li>
+</ol>
+<hr>
+<h2 id="which-edits-are-worth-the-byte-churn">Which edits are worth the byte-churn</h2>
+<p>Any byte change to <code>proofv0a.tex</code> forces a ledger document re-pin
+(<code>document_sha256_at_transcription</code>), a battery re-run, a PDF rebuild, and a gate re-run. <strong>You pay
+that once whether you fix one finding or fifteen — so batch them into a single pass, or do none.</strong></p>
+<p><strong>Worth it — one batched pass on <code>proofv0a.tex</code>:</strong> B2, E1, E2, E3, E4, E5, E6, E7, E8, E9, E13,
+plus N5, N6, N8, N9, N10 folded in for free. E3 is the largest diff and the largest reader gain;
+including it is the whole reason to open the file.</p>
+<p><strong>Worth it — one pass on <code>goalv0a.tex</code>, confined to the migration note (lines 25–30):</strong> B1, N6.
+This paragraph is editorial matter added at migration; it is <strong>not</strong> part of the signed statement,
+so it can be repaired without the amendment protocol. Update <code>current_edition_tex_sha256</code> and
+<code>current_edition_pdf_sha256</code> in <code>goalv0a.lock.json</code> afterwards.</p>
+<p><strong>Not worth it / must not be done as an editorial edit:</strong></p>
+<ul>
+<li><strong>N3</strong> (shared theorem counter) — actively harmful; would desynchronise the ledger claim labels.</li>
+<li><strong>E11, E12</strong> — inherited verbatim from the signed anchor; repairing them is a statement
+  amendment (SANDBOX_STANDARD §5), not an editorial pass.</li>
+<li><strong>E10</strong> — publication-gating, but the remedy touches five definitions of a locked statement.
+  Overseer decision.</li>
+<li><strong>E14</strong> — no edit; the manuscript is correct.</li>
+<li><strong>E15, N1, N2, N4, N7, N11, N12</strong> — fold in only because the file is already open; none justifies
+  a re-pin on its own.</li>
+</ul>
+<hr>
+<h2 id="collateral-outside-my-two-subjects-read-only-reported-to-the-owner">Collateral (outside my two subjects; read-only, reported to the owner)</h2>
+<p>Not findings against the manuscripts, but a route-A reader who follows the manuscript into the
+record will hit these:</p>
+<ol>
+<li><strong><code>APPROVAL_STATE.json → notation_migration_2026_08_10.current_proof_tex_sha256 =
+   "7110a472…"</code> is STALE.</strong> The live <code>proofv0a.tex</code> is <code>c42cbf8f…</code>. The ledger and its report are
+   <em>current</em> (both pin <code>c42cbf8f…</code>, re-pinned by <code>document_revision_note_2026_08_11</code> after the
+   <code>F_t</code> rename); it is the approval record that was not carried forward. Anyone verifying the
+   manuscript against the approval record today gets a hash mismatch.</li>
+<li><strong><code>CITATION_VERIFICATION_2026-08-09.md</code> addendum (lines 82–92)</strong> quotes the same stale
+   <code>7110a472…</code> and states the dictionary as "<code>A_z→A_t, K_z→K_t</code>" — superseded by the <code>F_t</code> naming
+   of 2026-08-11, which the live manuscripts already use.</li>
+<li><strong><code>REPORT.md</code></strong> still reads "<strong>Approval-2 … NOT SIGNED</strong>"; <code>APPROVAL_STATE.json</code> records it
+   SIGNED at <code>2026-07-20T12:59:23Z</code>. The report is dated 2026-07-20 (wave 3) and predates the
+   signature by hours.</li>
+<li><strong>Not a defect:</strong> the ledger's claim strings are in legacy symbols (<code>[m r]_Q</code>, <code>Z[Q^{pm}]</code>,
+   <code>z-spectator</code>). <code>proofv0a.ledger.json → frame</code> explicitly declares this — the expressions are
+   code against the shared engine preload, whose API keeps the legacy names, and the note supplies
+   the translation. Correctly handled.</li>
+</ol>
+<hr>
+<h2 id="verdict">VERDICT</h2>
+<p><strong>PASS-WITH-EDITS.</strong></p>
+<table>
+<thead>
+<tr>
+<th>class</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BLOCKING</td>
+<td>2</td>
+</tr>
+<tr>
+<td>EDITORIAL</td>
+<td>15</td>
+</tr>
+<tr>
+<td>NIT</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Semantic-drift check vs the signed anchor: NO DRIFT</strong> — the live <code>goalv0a.tex</code> is byte-identical
+to the mechanical dictionary transform of <code>versions/goalv0a_SIGNED_2026-07-19.tex</code> (sha
+<code>91a50173…5a7e</code>), modulo the added migration note and the three declared post-signing style
+conformances. The proof's migration is likewise mathematically inert.</p>
+<p>Both BLOCKING findings are one-sentence repairs (B1 in both files, B2 in the proof). Neither the
+mathematics nor the statement is in question; what is in question is that the paragraph certifying
+"same statement" invites the reader to infer a smaller base ring (B1), and that the one place
+where the manuscript reports what its cited source says, it reports something the source does not
+say (B2). On an outward artifact both must go before publication. Everything else is quality of
+exposition, and the compression of Lemma 3 (E3) is the item that would most change how the
+manuscript reads.</p>
+</main></body></html>

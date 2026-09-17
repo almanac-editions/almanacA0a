@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CITATION VERIFICATION CYCLE — proofv0a.tex (criterion 13, SANDBOX_STANDARD §1.13(b)) — almanacA0a</title>
+<style>
+:root{--paper:#fbfbfa;--ink:#16181a;--dim:#585f66;--rule:#e3e6e8;--link:#2a78d6;--code:#f2f4f5}
+@media (prefers-color-scheme:dark){
+ :root{--paper:#14171a;--ink:#e9edf0;--dim:#9aa4ac;--rule:#2a3036;--link:#7cb2f2;--code:#1c2126}}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);margin:0;
+ font:16.5px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+main{max-width:47rem;margin:0 auto;padding:2.6rem 1.2rem 5rem}
+h1,h2,h3{line-height:1.25;margin:2.2rem 0 .7rem}
+h1{font-size:1.8rem;margin-top:0} h2{font-size:1.28rem;border-bottom:1px solid var(--rule);padding-bottom:.3rem}
+h3{font-size:1.06rem}
+a{color:var(--link)} p,li{overflow-wrap:anywhere}
+code{background:var(--code);padding:.12em .35em;border-radius:3px;font-size:.9em}
+pre{background:var(--code);padding:.85rem 1rem;border-radius:5px;overflow-x:auto}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.94em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.42rem .6rem;text-align:left;vertical-align:top}
+blockquote{margin:1rem 0;padding:.1rem 1rem;border-left:3px solid var(--rule);color:var(--dim)}
+hr{border:0;border-top:1px solid var(--rule);margin:2rem 0}
+.back{display:inline-block;margin-bottom:1.6rem;font-size:.92em}
+.mark{float:right;margin:0 0 1.2rem 1.5rem;width:92px}
+.mark img{display:block;width:92px;height:auto}
+@media (max-width:520px){.mark,.mark img{width:64px}}
+img{max-width:100%;height:auto}
+</style>
+</head>
+<body><main>
+<a href="https://github.com/almanac-editions" style="text-decoration:none;display:inline-block" aria-label="almanac editions — the series home"><picture class="mark"><source media="(prefers-color-scheme: dark)" srcset="../../almanac-mark-dark.svg"><img src="../../almanac-mark.svg" width="92" alt="almanac"></picture></a>
+<a class="back" href="../../index.html">&larr; the almanac</a>
+<h1 id="citation-verification-cycle-proofv0atex-criterion-13-sandbox_standard-113b">CITATION VERIFICATION CYCLE — proofv0a.tex (criterion 13, SANDBOX_STANDARD §1.13(b))</h1>
+<p>Run 2026-08-09 by hypervisorA (Overseer-ordered signature-readiness pass). Document under
+verification: <code>informal/proofv0a.tex</code>, post-citation-pass edition,
+sha256 <code>9096506dc0cdfd65c3d779274e84c382b0664a884f0872bebb259c20c294114f</code>
+(pre-pass edition sha <code>1bda5137…</code> archived at <code>informal/versions/proofv0a_pre-criterion13_2026-08-09.tex</code>;
+the citation pass added attribution only — no mathematical statement or proof step changed, so
+the referee CONFIRM of <code>REFEREE_REPORT_PROOFv0a.md</code> carries).</p>
+<h2 id="step-1-machine-check-manuscript_gate-g9p9">Step 1 — machine check (manuscript_gate G9/P9)</h2>
+<p><code>python3 harness/manuscript_gate.py --kind proof …/proofv0a.tex</code>:
+<strong>MACHINE VERDICT: PASS (8/8)</strong> with <code>% criterion-13: adopted</code> present, hence P9 ENFORCED, not
+advisory. All six own-result environments (2 propositions, 1 theorem, 3 lemmas) carry a
+citation. Clean rebuild, 0 LaTeX warnings (<code>proofv0a.log</code> beside the source).</p>
+<h2 id="step-2-every-citation-resolves-to-a-card">Step 2 — every citation resolves to a card</h2>
+<table>
+<thead>
+<tr>
+<th>manuscript site</th>
+<th>\cite key</th>
+<th>resolving card(s)</th>
+<th>card status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prop. (clause i)</td>
+<td>HarmanHopkins</td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code></td>
+<td>literature card, single-pass (see caveat C1)</td>
+</tr>
+<tr>
+<td>Prop. (clause ii)</td>
+<td>SandboxGL2</td>
+<td><code>gl2-hc-image-theorem</code></td>
+<td>ours, theorem, FULLY CERTIFIED 2026-07-09</td>
+</tr>
+<tr>
+<td>Thm. (clause iii)</td>
+<td>HarmanHopkins §§1,4</td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code> + <code>lit-harman-bilateral-q-integer-localization</code></td>
+<td>literature cards (C1 applies to the first; the second is the pre-existing 07-16 card)</td>
+</tr>
+<tr>
+<td>Lem. grid</td>
+<td>HarmanHopkins §1</td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code>; companion program card <code>even-newton-gaussian-grid-values</code> (ours, theorem)</td>
+<td>as above</td>
+</tr>
+<tr>
+<td>Lem. fwd</td>
+<td>HarmanHopkins §1</td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code></td>
+<td>as above</td>
+</tr>
+<tr>
+<td>Lem. rev</td>
+<td>HarmanHopkins §1</td>
+<td><code>lit-harman-q-polya-qbinomial-basis</code> (interpolation proof, printed pp. 3–4)</td>
+<td>as above</td>
+</tr>
+<tr>
+<td>Attribution remark (Lusztig sentence)</td>
+<td>HarmanHopkins §4</td>
+<td><code>lit-harman-z-variable-lusztig-cartan-form</code></td>
+<td><strong>literature-remark</strong> — see caveat C2</td>
+</tr>
+</tbody>
+</table>
+<p>The Harman–Hopkins transcript itself has been on the shelf, refereed, since 2026-07-16; the
+2026-08-09 Librarian pass added the two missing statement cards and struck four stale
+"on our shelf, unlinked and untranscribed" sentences from three other records (the only
+instance of that stale claim shelf-wide, per the Librarian's sweep).</p>
+<h2 id="step-3-every-cited-card-carries-its-convention-frame">Step 3 — every cited card carries its convention frame</h2>
+<p>All resolving cards carry <code>conventions_gap</code>/frame notes. The load-bearing entries:
+- their q is our Q = q²; their grid is ADDITIVE (x = [n]_q), ours MULTIPLICATIVE (Y̌ = Q^n)
+  via the node-preserving substitution Y̌ = 1 + (Q−1)x; their Gaussian binomial is ONE-SIDED.
+- NAME COLLISION, listed first on both new cards: <strong>their z is our Y̌</strong> (the grid coordinate),
+  NOT the free invertible parameter z of A_z. The manuscript's "their §4 z-variable" wording
+  refers to their symbol; the program's z is a spectator throughout the proof.
+- their square roots (K² = z, v² = q in their notation) are exactly the program's unsquared
+  variables — the program frame IS the square-root cover their §4 remark constructs.
+- <code>gl2-hc-image-theorem</code> carries the two-frame trap (unshifted Y̌ vs shifted Y) and the
+  eF/Fe-order Casimir translation note.
+- Kernel certificates recorded on the new cards: basis normalisation on the grid 49/49
+  (n,k ≤ 6); 1 + (Q−1)[n]_Q = Q^n at seeds n = 0,1,2,5,7.</p>
+<h2 id="step-4-no-predecessor-judgements">Step 4 — no-predecessor judgements</h2>
+<p>NONE USED — every own-result environment carries a positive citation, so there is no
+no-predecessor claim to referee. (Step 4 is vacuous on this manuscript.)</p>
+<h2 id="step-5-what-the-search-wanted-and-the-library-lacked-acquisition-requests">Step 5 — what the search wanted and the Library lacked → acquisition requests</h2>
+<ul>
+<li>The quantum Harish–Chandra isomorphism itself (the literature ancestor of clause (ii);
+  the in-program predecessor resolves, the classical/quantum source does not):
+  <strong>filed</strong> <code>corpus/requests/LR-20260809T093836Z-hypervisorA-quantum-harish-chandra-source.md</code>.</li>
+</ul>
+<h2 id="caveats-recorded-so-the-signature-reads-them">Caveats, recorded so the signature reads them</h2>
+<ul>
+<li><strong>C1.</strong> The two 2026-08-09 cards are <strong>single-pass, NOT refereed</strong>, and say so in their own
+  <code>status_note</code> (the 2026-08-03 audit found unaudited single-pass cards unreliable in a
+  predictable way). This does NOT weaken the manuscript's own correctness — its proofs are
+  self-contained, the semiformal ledger re-verifies them (gate PASS 18/18 cold, 2026-08-09),
+  and the formal axis is kernel-certified independently. The cards serve ANCESTRY, and the
+  ancestry claim they support (clause (iii) = bilateral quantum Pólya transported) is also
+  independently pinned by the ledger's dictionary claims. A Librarian referee pass on the two
+  cards is desirable hygiene, not a closure blocker; it is on the Librarian's queue.</li>
+<li><strong>C2.</strong> The Harman–Hopkins §4 Lusztig-Cartan-form connection is <strong>one unproved sentence of
+  running text</strong> in the source (hence the <code>literature-remark</code> grade). The manuscript already
+  phrases it as "remarked there" and rests nothing on it: the transport used by the proof is
+  the elementary node-preserving substitution, proved in-manuscript.</li>
+<li><strong>C3.</strong> The T^Lus = N = T_WN = T_HH four-way reconciliation named elsewhere on the shelf
+  remains OPEN (three frame differences block chaining; no normalisation fixed shelf-wide).
+  This manuscript does not chain through it and does not need it; recorded here so the
+  citation resolution is not read as resolving that.</li>
+</ul>
+<p><strong>Cycle verdict: COMPLETE.</strong> Steps 1–3 and 5 discharged; step 4 vacuous. The one open
+follow-up (Librarian referee pass on the two new cards, C1) is filed on the owning seat.</p>
+<h2 id="addendum-2026-08-10-notation-migration">Addendum 2026-08-10 — notation migration</h2>
+<p>The Overseer-ordered Sandbox-wide notation migration (former Q,q,z → current q,v,t;
+q=v², t=z²; A_z→A_t, K_z→K_t; scope: only SandboxA0a) was applied to the live editions
+the same day. The citation pass above is unaffected in substance: all six environments
+keep their citations, the resolution table is unchanged, and the HH dictionary
+SIMPLIFIES — their printed parameter q now coincides with our q, and their adjoined
+square roots are exactly our v and z. Re-runs on the migrated edition (tex sha
+7110a472…): manuscript_gate --kind proof PASS 8/8 (criterion-13 enforced); ledger gate
+PASS 18/18 claims / 6/6 controls / 14/14 steps against the re-pinned anchor. The 08-09
+edition shas quoted above remain correct as history of that run.</p>
+</main></body></html>
