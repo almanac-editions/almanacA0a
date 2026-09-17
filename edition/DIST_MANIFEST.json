@@ -1,0 +1,1227 @@
+{
+ "schema": "almanac-distribution/v1",
+ "name": "almanacA0a",
+ "build_class": "PUBLISHABLE",
+ "build_class_reason": "every shipped file matches its manifest hash",
+ "build_class_rule": "ALMANAC_EDITION_MANIFEST \u00a712.7: a distributable is PUBLISHABLE only with zero DRIFT rows. Any DRIFT means the zip would freeze bytes the tree has not frozen, so the build is a PREVIEW and declares itself one on its own face. The \u00a712.2 cold re-hash at deposit is what turns a preview into a publishable build.",
+ "edition": "almanacA0a \u2014 the centre of the even hybrid family quantum GL1 (PILOT)",
+ "assembled_from_manifest": "2026-08-13",
+ "assembled_by": "assemble_almanac.py",
+ "counts": {
+  "note": "THREE DISTINCT NUMBERS DESCRIBE THIS ARTIFACT, each defined below, so the authoritative one is always explicit.",
+  "files_shipped": 128,
+  "files_shipped_means": "every file in the EDITION except the two written last, CHECKSUMS.txt and DIST_MANIFEST.json, which cannot hash themselves. This is the number of lines in CHECKSUMS.txt.",
+  "files_on_disk": 140,
+  "files_on_disk_means": "files_shipped, plus CHECKSUMS.txt and DIST_MANIFEST.json, plus the 10 repository-furniture files at the archive root (.gitattributes, .gitignore, .gitlab-ci.yml, .nojekyll, AGENTS.md, CITATION.cff, LICENSE, LICENSE-CC-BY-4.0, README.md, index.html), which ship but sit outside the edition CHECKSUMS.txt certifies. This is what `find . -type f` reports in the unzipped directory.",
+  "provenance_rows": 138,
+  "provenance_rows_means": "rows in files[] below: one per shipped file, edition and root furniture alike, so provenance_rows = files_shipped + 10 root files. (Before 2026-08-26 this was 69 against 80 shipped, because the Palomar layer, the front matter and the renderer were copied without being recorded. hypervisorA caught it at re-acceptance.)"
+ },
+ "file_count": 128,
+ "file_count_means": "alias of counts.files_shipped, kept for readers of earlier editions",
+ "integrity": {
+  "ok": 125,
+  "drifted": 0,
+  "missing": 0,
+  "drifted_paths": [],
+  "missing_paths": [],
+  "how_to_read_this": "DRIFT means the shipped bytes differ from the hash recorded in the edition manifest. The edition's rows are NOT frozen until deposit, so drift before that point is expected and governed \u2014 but it is recorded here rather than smoothed over, because a manifest hash that no longer matches its file is exactly the kind of green-looking wrong answer this project refuses to ship."
+ },
+ "files": [
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/EDITION.md",
+   "dist_path": "edition/EDITION.md",
+   "sha256_in_manifest": "89ad062a2bf0d18b7a58637b32c731ed86739d6ac93bd0a81b2ef1a2fbdafdd4",
+   "role": "edition: assembled by the Editor",
+   "sha256_shipped": "89ad062a2bf0d18b7a58637b32c731ed86739d6ac93bd0a81b2ef1a2fbdafdd4",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/CONCORDANCE.json",
+   "dist_path": "edition/CONCORDANCE.json",
+   "sha256_in_manifest": "7bb67e52bd66fb8510015b3623b7c11e0623f5b432a58b5be7f3fe07303f019b",
+   "role": "edition: assembled by the Editor",
+   "sha256_shipped": "7bb67e52bd66fb8510015b3623b7c11e0623f5b432a58b5be7f3fe07303f019b",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/EMBEDDING_NOTE.md",
+   "dist_path": "edition/EMBEDDING_NOTE.md",
+   "sha256_in_manifest": "ff906c92aefac33010131fbbb3f188fbe8039d6c2d21592ab4bdc8803ac8748f",
+   "role": "edition: assembled by the Editor",
+   "sha256_shipped": "ff906c92aefac33010131fbbb3f188fbe8039d6c2d21592ab4bdc8803ac8748f",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/ANCESTRY.md",
+   "dist_path": "edition/ANCESTRY.md",
+   "sha256_in_manifest": "0d67c8f3962cc97ed38c15d03ed935e94f6e3c241973a4ba066477fa136a0571",
+   "role": "edition: assembled by the Editor",
+   "sha256_shipped": "0d67c8f3962cc97ed38c15d03ed935e94f6e3c241973a4ba066477fa136a0571",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/AUTHORSHIP.md",
+   "dist_path": "edition/AUTHORSHIP.md",
+   "sha256_in_manifest": "9c323634383b7348c4c5048dfcd14fee487b0cb36e51fc106ea8e0e08608ce80",
+   "role": "edition: assembled by the Editor",
+   "sha256_shipped": "9c323634383b7348c4c5048dfcd14fee487b0cb36e51fc106ea8e0e08608ce80",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/almanac.html",
+   "dist_path": "edition/almanac.html",
+   "sha256_in_manifest": "75f71d3e0363b9711f95eb00dfe659f38a9e1b157c8cc9bfa88d423da9bcafaa",
+   "role": "edition: the reading view \u2014 what a reader sees",
+   "sha256_shipped": "75f71d3e0363b9711f95eb00dfe659f38a9e1b157c8cc9bfa88d423da9bcafaa",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_almanac.py",
+   "dist_path": "edition/render_almanac.py",
+   "sha256_in_manifest": "955b1808c90f5fd45778f9dd0b7c157926b61c27e7b9e7c3506e1ea0b20cc842",
+   "role": "edition: generator for the reading view (renders from the edition's own JSON; no transcription)",
+   "sha256_shipped": "955b1808c90f5fd45778f9dd0b7c157926b61c27e7b9e7c3506e1ea0b20cc842",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/almanac.artifact.html",
+   "dist_path": "edition/almanac.artifact.html",
+   "sha256_in_manifest": "9e16027926c1afcaa429374b3120bb07db218575fcfc972f69359160b4d2a30d",
+   "role": "edition: the READER'S EDITION \u2014 the form a reader receives",
+   "sha256_shipped": "9e16027926c1afcaa429374b3120bb07db218575fcfc972f69359160b4d2a30d",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_artifact.py",
+   "dist_path": "edition/render_artifact.py",
+   "sha256_in_manifest": "c3645bfad0a2d0d5fffb0a1c0721301c00c0b453d34d92cbae2854d2fdecca20",
+   "role": "edition: generator for the reader's edition (renders from the edition's own data; no transcription)",
+   "sha256_shipped": "c3645bfad0a2d0d5fffb0a1c0721301c00c0b453d34d92cbae2854d2fdecca20",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/verify_edition.py",
+   "dist_path": "edition/verify_edition.py",
+   "sha256_in_manifest": "5bd05b5bb13a50eb614f514ecbc340f1bc2f809ec24558adf9a9ab2efe9aa6ac",
+   "role": "edition: the \u00a712.2 gate, executable \u2014 cold re-hash of every row, re-pin, and derivation of the aggregates",
+   "sha256_shipped": "5bd05b5bb13a50eb614f514ecbc340f1bc2f809ec24558adf9a9ab2efe9aa6ac",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/almanac.explained.html",
+   "dist_path": "edition/almanac.explained.html",
+   "sha256_in_manifest": "208f6f812e15bd0e438a4dc5ee579d98ba020db619ce0213e13606b498ecc65b",
+   "role": "edition: the EXPLANATORY COMPANION \u2014 the mathematics explained for a reader from outside the programme",
+   "sha256_shipped": "208f6f812e15bd0e438a4dc5ee579d98ba020db619ce0213e13606b498ecc65b",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_explained.py",
+   "dist_path": "edition/render_explained.py",
+   "sha256_in_manifest": "9916e4462fc1a58456101b393aa4debe5d8da342167e7b22eeebbd3496806b18",
+   "role": "edition: generator for the reader's companion page (TeX -> MathML at build time; template embedded; added 2026-08-29 when the page gained typeset mathematics and, with it, a regeneration path)",
+   "sha256_shipped": "9916e4462fc1a58456101b393aa4debe5d8da342167e7b22eeebbd3496806b18",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_docs.py",
+   "dist_path": "edition/render_docs.py",
+   "sha256_in_manifest": "2b1746d59ba9c443b18648bce5e9405cbe9670bbaa5f426816a1a1ae51b5d5f8",
+   "role": "edition: the generator for the guides' HTML pages \u2014 renders the markdown guides so a browser shows a page rather than a text file",
+   "sha256_shipped": "2b1746d59ba9c443b18648bce5e9405cbe9670bbaa5f426816a1a1ae51b5d5f8",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_formal.py",
+   "dist_path": "edition/render_formal.py",
+   "sha256_in_manifest": "855f178951f795990f52bfc608edb3bb49003d98ccc9f49cefe43f47485e317d",
+   "role": "edition: the generator for formal.html \u2014 the formal layer as a page, assembled from the concordance and the release log",
+   "sha256_shipped": "855f178951f795990f52bfc608edb3bb49003d98ccc9f49cefe43f47485e317d",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/paper.pdf",
+   "dist_path": "edition/paper.pdf",
+   "sha256_in_manifest": "41776dfd4c4d887914d67af1e8a000e68d059db269f11ef84cc45fd4bfef852f",
+   "role": "edition: the paper, the edition's reading document",
+   "sha256_shipped": "41776dfd4c4d887914d67af1e8a000e68d059db269f11ef84cc45fd4bfef852f",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/paper.tex",
+   "dist_path": "edition/paper.tex",
+   "sha256_in_manifest": "485f92eaabebe921073150ca3a0f190568d32188cda539963bdb0f9418b209e0",
+   "role": "edition: the paper's LaTeX source",
+   "sha256_shipped": "485f92eaabebe921073150ca3a0f190568d32188cda539963bdb0f9418b209e0",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_paper.py",
+   "dist_path": "edition/render_paper.py",
+   "sha256_in_manifest": "f0189f2b2df5fd4161fcb9294a2f4ba2f44586582aff7b95372cb7bc9f5ff8b1",
+   "role": "edition: the paper's assembler",
+   "sha256_shipped": "f0189f2b2df5fd4161fcb9294a2f4ba2f44586582aff7b95372cb7bc9f5ff8b1",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_informal.py",
+   "dist_path": "edition/render_informal.py",
+   "sha256_in_manifest": "187805ff9391f362ea41e816f6c602074c6f29089a4cfc55ffd9fab4897fe96c",
+   "role": "edition: the informal layer as a page \u2014 the ink layer's renderer",
+   "sha256_shipped": "187805ff9391f362ea41e816f6c602074c6f29089a4cfc55ffd9fab4897fe96c",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "Sandbox/A1/GL1/FamilyField1.lean",
+   "dist_path": "edition/source/lean/FamilyField1.lean",
+   "sha256_in_manifest": "38bd6fd436556b6335b029992435438179a74e0635cc021b13952dde7fdcde6d",
+   "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+   "sha256_shipped": "38bd6fd436556b6335b029992435438179a74e0635cc021b13952dde7fdcde6d",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "Sandbox/A1/GL1/GOALv0a.lean",
+   "dist_path": "edition/source/lean/GOALv0a.lean",
+   "sha256_in_manifest": "3db277a957cb02a8132502e3286a6c0073d6538852165fec735af1a56a57b540",
+   "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+   "sha256_shipped": "3db277a957cb02a8132502e3286a6c0073d6538852165fec735af1a56a57b540",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "Sandbox/A1/GL1/KzBridge.lean",
+   "dist_path": "edition/source/lean/KzBridge.lean",
+   "sha256_in_manifest": "5eb1114a674dc6f15a63a33e80d4848a93c9c0283343a24e7aa3f808ac662669",
+   "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+   "sha256_shipped": "5eb1114a674dc6f15a63a33e80d4848a93c9c0283343a24e7aa3f808ac662669",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "Sandbox/A1/GL1/NewtonUnivGrid.lean",
+   "dist_path": "edition/source/lean/NewtonUnivGrid.lean",
+   "sha256_in_manifest": "4ab6656818b57967fdd90de98ba214e0f792b1a103a63215600534217d483599",
+   "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+   "sha256_shipped": "4ab6656818b57967fdd90de98ba214e0f792b1a103a63215600534217d483599",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "Sandbox/A1/GL1/NewtonUnivSpan.lean",
+   "dist_path": "edition/source/lean/NewtonUnivSpan.lean",
+   "sha256_in_manifest": "1d1a1e50e95363b522e7c7368d7b1bb9027c1bd61cb8087f6d99af56d1652211",
+   "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+   "sha256_shipped": "1d1a1e50e95363b522e7c7368d7b1bb9027c1bd61cb8087f6d99af56d1652211",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "Sandbox/A1/GL1/NonDegeneracy.lean",
+   "dist_path": "edition/source/lean/NonDegeneracy.lean",
+   "sha256_in_manifest": "69160c8b53a5c260d7d7754d2d8f2cc4dd3d4e55bdce1f336a62b7487e976835",
+   "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+   "sha256_shipped": "69160c8b53a5c260d7d7754d2d8f2cc4dd3d4e55bdce1f336a62b7487e976835",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "Sandbox/A1/GL1/PresentedU.lean",
+   "dist_path": "edition/source/lean/PresentedU.lean",
+   "sha256_in_manifest": "5a5a7e68e8da1479efaf89ce3bfcb8eb4b412a70b4f969a7305f9e5e333b74d4",
+   "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+   "sha256_shipped": "5a5a7e68e8da1479efaf89ce3bfcb8eb4b412a70b4f969a7305f9e5e333b74d4",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/CLOSURE_SIGNATURE.json",
+   "dist_path": "edition/source/record/CLOSURE_SIGNATURE.json",
+   "sha256_in_manifest": "e998991026bf33f1929b9a027dd778d80af687a20e50f37986add28bb814c834",
+   "role": "closure: the Overseer's approval-5 signature",
+   "sha256_shipped": "e998991026bf33f1929b9a027dd778d80af687a20e50f37986add28bb814c834",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/almanac/GL1Newton/Manifest.toml",
+   "dist_path": "edition/source/instrument/Manifest.toml",
+   "sha256_in_manifest": "f1b03d86c5851fbd8aac6fe81a859374d2da5a2d2c387f359aaecbf23e438896",
+   "role": "instrument: THE dependency pin",
+   "sha256_shipped": "f1b03d86c5851fbd8aac6fe81a859374d2da5a2d2c387f359aaecbf23e438896",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/almanac/GL1Newton/Project.toml",
+   "dist_path": "edition/source/instrument/Project.toml",
+   "sha256_in_manifest": "c0f6b59e49457d8ba99b94ea0454cb8e8a0e140f8577604e5da1188df5633ad0",
+   "role": "instrument: package intent",
+   "sha256_shipped": "c0f6b59e49457d8ba99b94ea0454cb8e8a0e140f8577604e5da1188df5633ad0",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/almanac/GL1Newton/README.md",
+   "dist_path": "edition/source/instrument/README.md",
+   "sha256_in_manifest": "a58c89265daa54d0f2a261b180b4f9de68107f26111931b9c584168f03c7f88f",
+   "role": "instrument: API + provenance",
+   "sha256_shipped": "a58c89265daa54d0f2a261b180b4f9de68107f26111931b9c584168f03c7f88f",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/almanac/GL1Newton/src/GL1Newton.jl",
+   "dist_path": "edition/source/instrument/src/GL1Newton.jl",
+   "sha256_in_manifest": "e97031691f1e16fac724c87e4c73a397fdb90b5129526c07dc68036dae8e006a",
+   "role": "instrument: the ten stems",
+   "sha256_shipped": "e97031691f1e16fac724c87e4c73a397fdb90b5129526c07dc68036dae8e006a",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/almanac/GL1Newton/src/qFunctions.jl",
+   "dist_path": "edition/source/instrument/src/qFunctions.jl",
+   "sha256_in_manifest": "49d7ac11877c230df6587a42e6d844a28b9548910a9a9ed379821477261e02d9",
+   "role": "instrument: the v-side symmetric family",
+   "sha256_shipped": "49d7ac11877c230df6587a42e6d844a28b9548910a9a9ed379821477261e02d9",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/almanac/GL1Newton/test/runtests.jl",
+   "dist_path": "edition/source/instrument/test/runtests.jl",
+   "sha256_in_manifest": "5ca55e936cf175a70614b232d567baf5c5009e036942a93bc35bd526970a480d",
+   "role": "instrument: the acceptance battery",
+   "sha256_shipped": "5ca55e936cf175a70614b232d567baf5c5009e036942a93bc35bd526970a480d",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/cow/COW_FAITHFULNESS_PANEL.md",
+   "dist_path": "edition/source/record/cow/COW_FAITHFULNESS_PANEL.md",
+   "sha256_in_manifest": "ef3a23212773c999cfded3db98fb15643294825a8bb5d73629dd39bbe4a57dce",
+   "role": "faithfulness: the three-engine CoW panel",
+   "sha256_shipped": "ef3a23212773c999cfded3db98fb15643294825a8bb5d73629dd39bbe4a57dce",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/formal/RELEASE_20260721_source_all_clean.log",
+   "dist_path": "edition/source/record/formal/RELEASE_20260721_source_all_clean.log",
+   "sha256_in_manifest": "0fd29a50dc3666bb6be47032db7c0c450a097f8a503423e9541bdea3456c61fc",
+   "role": "formal: the release_verify --source log cited by the closure",
+   "sha256_shipped": "0fd29a50dc3666bb6be47032db7c0c450a097f8a503423e9541bdea3456c61fc",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/formal/SOURCE_MANIFEST.json",
+   "dist_path": "edition/source/record/formal/SOURCE_MANIFEST.json",
+   "sha256_in_manifest": "7153982ec001d5e43dedab8cb5144d8218d6a2b36cea839ab66275fc7eb6420d",
+   "role": "formal: the source-cone description",
+   "sha256_shipped": "7153982ec001d5e43dedab8cb5144d8218d6a2b36cea839ab66275fc7eb6420d",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/formal/TERMINAL_CONSISTENCY_RECORD.json",
+   "dist_path": "edition/source/record/formal/TERMINAL_CONSISTENCY_RECORD.json",
+   "sha256_in_manifest": "8decaf25da948c5e3c737e7f8ffe07f88373de608a7976e1d43ab3303b51861b",
+   "role": "closure: the durable evidence record the signature rests on",
+   "sha256_shipped": "8decaf25da948c5e3c737e7f8ffe07f88373de608a7976e1d43ab3303b51861b",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/CITATION_VERIFICATION_2026-08-09.md",
+   "dist_path": "edition/source/informal/CITATION_VERIFICATION_2026-08-09.md",
+   "sha256_in_manifest": "383391181ef3fb2ad48270dd60c1fcf021bfb261b505eab07327cdbf919b5382",
+   "role": "ancestry: the criterion-13 cycle of record",
+   "sha256_shipped": "383391181ef3fb2ad48270dd60c1fcf021bfb261b505eab07327cdbf919b5382",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/EDITORIAL_REFEREE_REPORT_2026-08-12.md",
+   "dist_path": "edition/source/informal/EDITORIAL_REFEREE_REPORT_2026-08-12.md",
+   "sha256_in_manifest": "e8034b17455cb0af0476a89fcc1f7b7fe7ebd386293c49a90a231d89743d222b",
+   "role": "editorial referee report (criterion 6)",
+   "sha256_shipped": "e8034b17455cb0af0476a89fcc1f7b7fe7ebd386293c49a90a231d89743d222b",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/REFEREE_REPORT_PROOFv0a.md",
+   "dist_path": "edition/source/informal/REFEREE_REPORT_PROOFv0a.md",
+   "sha256_in_manifest": "6e31018c647ebfba656e90a011f497eb81fc00c1798af85b6476065f1db0fb0d",
+   "role": "referee report on the proof",
+   "sha256_shipped": "6e31018c647ebfba656e90a011f497eb81fc00c1798af85b6476065f1db0fb0d",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/goalv0a.pdf",
+   "dist_path": "edition/source/informal/goalv0a.pdf",
+   "sha256_in_manifest": "36e31c34eb4dfbb79055729a613464d2b8c5bf8646504ec9305e6fc0839505be",
+   "role": "informal: the signed goal, typeset",
+   "sha256_shipped": "36e31c34eb4dfbb79055729a613464d2b8c5bf8646504ec9305e6fc0839505be",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/goalv0a.tex",
+   "dist_path": "edition/source/informal/goalv0a.tex",
+   "sha256_in_manifest": "5853d84f33b785b6060b46b05e39d6f19899a095bb341f139051b3099f84f8f4",
+   "role": "informal: the signed goal statement",
+   "sha256_shipped": "5853d84f33b785b6060b46b05e39d6f19899a095bb341f139051b3099f84f8f4",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/proofv0a.ledger.cas_receipts.md",
+   "dist_path": "edition/source/informal/proofv0a.ledger.cas_receipts.md",
+   "sha256_in_manifest": "44db338e8f5185e8bb7f3c717b6520431f8cd2935b51a3b376c5972021bff894",
+   "role": "semiformal: CAS oracle receipts",
+   "sha256_shipped": "44db338e8f5185e8bb7f3c717b6520431f8cd2935b51a3b376c5972021bff894",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/proofv0a.ledger.json",
+   "dist_path": "edition/source/informal/proofv0a.ledger.json",
+   "sha256_in_manifest": "b21d04814d1d621ae9ab99d3483f01fcaa9885f32df4ce673885bc723082f27e",
+   "role": "semiformal: the claim ledger with per-claim declared ranges",
+   "sha256_shipped": "b21d04814d1d621ae9ab99d3483f01fcaa9885f32df4ce673885bc723082f27e",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/proofv0a.pdf",
+   "dist_path": "edition/source/informal/proofv0a.pdf",
+   "sha256_in_manifest": "7c998d49db884743f8eb09c11d5cf335ba465bb1c9a751e228d01c80994496fd",
+   "role": "informal: the proof, typeset",
+   "sha256_shipped": "7c998d49db884743f8eb09c11d5cf335ba465bb1c9a751e228d01c80994496fd",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/informal/proofv0a.tex",
+   "dist_path": "edition/source/informal/proofv0a.tex",
+   "sha256_in_manifest": "ff4015250c56f71ff12f94db5148cf25c70f42164aa931fbfa8167cf0a4378dc",
+   "role": "informal: the complete proof",
+   "sha256_shipped": "ff4015250c56f71ff12f94db5148cf25c70f42164aa931fbfa8167cf0a4378dc",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/n1_clause3_referee_pin.jl",
+   "dist_path": "edition/source/record/n1_clause3_referee_pin.jl",
+   "sha256_in_manifest": "6cb7108c675da7f4659e1fe9f55c3a8203a34f86b49407ba4065e1c125cffecb",
+   "role": "oracle: the clause-(iii) independent referee pin",
+   "sha256_shipped": "6cb7108c675da7f4659e1fe9f55c3a8203a34f86b49407ba4065e1c125cffecb",
+   "status": "OK"
+  },
+  {
+   "group": "substrate",
+   "source_path": "SandboxA/sandboxA0a/n1_clause3_referee_pin.out",
+   "dist_path": "edition/source/record/n1_clause3_referee_pin.out",
+   "sha256_in_manifest": "fbfcb22a015155adb26628c9316102f450dffb27e06e3fe4c9cca52a1d1cd2c5",
+   "role": "oracle: the pin's recorded verdict",
+   "sha256_shipped": "fbfcb22a015155adb26628c9316102f450dffb27e06e3fe4c9cca52a1d1cd2c5",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-jantzen-6-26-hypothesis-weakening-q-not-root-of-unity.md",
+   "dist_path": "edition/sources-cited/statements/lit-jantzen-6-26-hypothesis-weakening-q-not-root-of-unity.md",
+   "sha256_in_manifest": "0b5f2b685144147c15332bd9edff62e38fc71a32599eccabed057eec5faf46cd",
+   "role": "card: Jantzen \u00a76.26 \u2014 the book's own removal of the char-0 / q-transcendental hypotheses from Thm 6.25 in favour of 'q not a root of unity', via \u00a78.30",
+   "sha256_shipped": "0b5f2b685144147c15332bd9edff62e38fc71a32599eccabed057eec5faf46cd",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "SandboxA/sandboxA0a/informal/EDITION_ACCEPTANCE_2026-08-13.md",
+   "dist_path": "edition/source/informal/EDITION_ACCEPTANCE_2026-08-13.md",
+   "sha256_in_manifest": "2e9d82647107ae3b1b245ac0bf06e189d0e65c9605a9870674a54f0fe392d899",
+   "role": "closure: hypervisorA's typed ACCEPTANCE of this edition \u2014 the document this manifest's own status field cites",
+   "sha256_shipped": "2e9d82647107ae3b1b245ac0bf06e189d0e65c9605a9870674a54f0fe392d899",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/reports/HARMAN-HOPKINS-C1-REFEREE-PASS-2026-08-13.md",
+   "dist_path": "edition/sources-cited/reports/HARMAN-HOPKINS-C1-REFEREE-PASS-2026-08-13.md",
+   "sha256_in_manifest": "93175757cf9f63b1bd7bb5c490c2d90ef670500e8ad09f455911afe1f0a5a276",
+   "role": "ancestry: the C1 referee pass over the two Harman\u2013Hopkins cards, cited by CONCORDANCE.json and gaps/GAPS.md",
+   "sha256_shipped": "93175757cf9f63b1bd7bb5c490c2d90ef670500e8ad09f455911afe1f0a5a276",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "Sandbox.lean",
+   "dist_path": "edition/source/other/Sandbox.lean.slice.txt",
+   "sha256_in_manifest": "4e00a21022373d2ad5d0b04346e8e435b79738fd6264d7532f15b66fd938a9be",
+   "role": "formal: the seven GL1 import lines of the estate's Lean import root \u2014 evidence that THIS edition's seven Lean sources are imported by it. WHAT IT DOES NOT ESTABLISH: that those sources are sorry-free on the clean axiom triple. That is the release log, which is its own row; this row is about imports and nothing else.",
+   "slice_rule": {
+    "regex": "^import Sandbox\\.A1\\.GL1(\\.|$)",
+    "sort": true,
+    "reproduce": "the matching lines of Sandbox.lean, sorted, joined by newline, one trailing newline, sha256 of the UTF-8 bytes",
+    "why": "A whole-file hash was the wrong instrument for this row's claim and was wrong in BOTH directions: it fired on an import added for the AN tree, which has nothing to do with GL1, and it would NOT have fired if a GL1 import were removed while the file changed size elsewhere. The slice isolates the bytes the claim is about, so it fires exactly when a GL1 source leaves the import root and at no other time."
+   },
+   "shipped_is": "a SLICE of the source file, not the file - the lines its regex selects, sorted. The rule ships with it so a reader reproduces it from their own copy of the source.",
+   "sha256_shipped": "4e00a21022373d2ad5d0b04346e8e435b79738fd6264d7532f15b66fd938a9be",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-habiro-le-mixed-pbw-hopf-form.md",
+   "dist_path": "edition/sources-cited/statements/lit-habiro-le-mixed-pbw-hopf-form.md",
+   "sha256_in_manifest": "6ebf8888ec59b1fdd6e64a0d15e8cf05c2eccf40762b784cf9f4b08b8e578f9c",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "6ebf8888ec59b1fdd6e64a0d15e8cf05c2eccf40762b784cf9f4b08b8e578f9c",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/requests/LR-20260809T093836Z-hypervisorA-quantum-harish-chandra-source.md",
+   "dist_path": "edition/sources-cited/requests/LR-20260809T093836Z-hypervisorA-quantum-harish-chandra-source.md",
+   "sha256_in_manifest": "13ead43adaa3ec0aa01bc7c4eb5f9d658c85536d1643d47de6c86196b9bc62aa",
+   "role": "ancestry: the one acquisition request the manuscript-level cycle filed, with its disposition",
+   "sha256_shipped": "13ead43adaa3ec0aa01bc7c4eb5f9d658c85536d1643d47de6c86196b9bc62aa",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/even-gaussian-span-not-newton-lattice-refuted.md",
+   "dist_path": "edition/sources-cited/statements/even-gaussian-span-not-newton-lattice-refuted.md",
+   "sha256_in_manifest": "1bc9730ed690ad6b381b3874d7bcbf049e3dbbcd507a3292daf1ee50c597acb8",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "1bc9730ed690ad6b381b3874d7bcbf049e3dbbcd507a3292daf1ee50c597acb8",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/even-newton-gaussian-grid-values.md",
+   "dist_path": "edition/sources-cited/statements/even-newton-gaussian-grid-values.md",
+   "sha256_in_manifest": "41f67b32ca5101afe3278a5e5fc48b15cb719b42c13f48f9ad0d24bc8f9bcc9b",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "41f67b32ca5101afe3278a5e5fc48b15cb719b42c13f48f9ad0d24bc8f9bcc9b",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/gl2-hc-image-theorem.md",
+   "dist_path": "edition/sources-cited/statements/gl2-hc-image-theorem.md",
+   "sha256_in_manifest": "cfb0eb7d2818498f725efa18b249f98d4d7905427f568bbea38cf5f2963337a1",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "cfb0eb7d2818498f725efa18b249f98d4d7905427f568bbea38cf5f2963337a1",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-cahen-chabert-ex15-erratum-two-misprints.md",
+   "dist_path": "edition/sources-cited/statements/lit-cahen-chabert-ex15-erratum-two-misprints.md",
+   "sha256_in_manifest": "70d6faf39ce3cd0b34645d6931c63b5fada759d0fcb12f0ef0ee57e16735171a",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "70d6faf39ce3cd0b34645d6931c63b5fada759d0fcb12f0ef0ee57e16735171a",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-cahen-chabert-vandermonde-coefficient-descent.md",
+   "dist_path": "edition/sources-cited/statements/lit-cahen-chabert-vandermonde-coefficient-descent.md",
+   "sha256_in_manifest": "902cb264cf3b6ce77892ea9f22fcd44eb4cff229a042f93472c1cfd7c6b083d5",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "902cb264cf3b6ce77892ea9f22fcd44eb4cff229a042f93472c1cfd7c6b083d5",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-dcp-generic-harish-chandra-isomorphism.md",
+   "dist_path": "edition/sources-cited/statements/lit-dcp-generic-harish-chandra-isomorphism.md",
+   "sha256_in_manifest": "f29dc994a360bc766cfe9d2c346d4b48b3bc6c3d73ed0fe24ef11c724c4bffe8",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "f29dc994a360bc766cfe9d2c346d4b48b3bc6c3d73ed0fe24ef11c724c4bffe8",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-dcp-verma-contravariant-shapovalov.md",
+   "dist_path": "edition/sources-cited/statements/lit-dcp-verma-contravariant-shapovalov.md",
+   "sha256_in_manifest": "27ef91c3b865ff69fe21ea8e7e292bc29f83b2a50bf3072ab8166809e705a811",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "27ef91c3b865ff69fe21ea8e7e292bc29f83b2a50bf3072ab8166809e705a811",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-gramain-geometric-progression-integer-valued-basis.md",
+   "dist_path": "edition/sources-cited/statements/lit-gramain-geometric-progression-integer-valued-basis.md",
+   "sha256_in_manifest": "6bc7439d94425a064ac09a40fe03b093577bffab3320d616d8ac0c49896385ef",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "6bc7439d94425a064ac09a40fe03b093577bffab3320d616d8ac0c49896385ef",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-harman-bilateral-q-integer-localization.md",
+   "dist_path": "edition/sources-cited/statements/lit-harman-bilateral-q-integer-localization.md",
+   "sha256_in_manifest": "47ffb589806c7e134c95a201cb06a462cc15aa40984ac0d5789cb04e688ccb44",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "47ffb589806c7e134c95a201cb06a462cc15aa40984ac0d5789cb04e688ccb44",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-harman-q-polya-qbinomial-basis.md",
+   "dist_path": "edition/sources-cited/statements/lit-harman-q-polya-qbinomial-basis.md",
+   "sha256_in_manifest": "3b2c5dd6f7fb3dacd145ff95cbceeaff3adb50c25b7fb0a71bc78d507d517eb4",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "3b2c5dd6f7fb3dacd145ff95cbceeaff3adb50c25b7fb0a71bc78d507d517eb4",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-harman-z-variable-lusztig-cartan-form.md",
+   "dist_path": "edition/sources-cited/statements/lit-harman-z-variable-lusztig-cartan-form.md",
+   "sha256_in_manifest": "37b2d558044d169bc85d0970bf4c55231885cf8869361bf5af94a38e6caa1c89",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "37b2d558044d169bc85d0970bf4c55231885cf8869361bf5af94a38e6caa1c89",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-jantzen-harish-chandra-even-torus.md",
+   "dist_path": "edition/sources-cited/statements/lit-jantzen-harish-chandra-even-torus.md",
+   "sha256_in_manifest": "dcfc3d0e9464ef0aeb5265454750845f0fca01e8fda491b7078e5d6521d9dcaa",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "dcfc3d0e9464ef0aeb5265454750845f0fca01e8fda491b7078e5d6521d9dcaa",
+   "status": "OK"
+  },
+  {
+   "group": "cited",
+   "source_path": "corpus/statements/lit-lusztig-triangular-decomposition-toral-freeness.md",
+   "dist_path": "edition/sources-cited/statements/lit-lusztig-triangular-decomposition-toral-freeness.md",
+   "sha256_in_manifest": "5a2ca7f58af04d11d1773cacbcf730a21d650d30a2df110a1a80b7cfb50f164c",
+   "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+   "sha256_shipped": "5a2ca7f58af04d11d1773cacbcf730a21d650d30a2df110a1a80b7cfb50f164c",
+   "status": "OK"
+  },
+  {
+   "group": "edition",
+   "source_path": "MANIFEST.json",
+   "dist_path": "edition/MANIFEST.json",
+   "sha256_shipped": "108474926a2e141eb7b6be6d9207e70d6c9955c4636fc6f0acc04834cbe10211",
+   "status": "OK",
+   "role": "the edition's own machine-readable manifest"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/README.md",
+   "dist_path": "edition/replay/README.md",
+   "sha256_shipped": "be304b7d0a061686b023306986b5af313fde706af2233aa3964b4f20d0f5fc7e",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/SOURCES.json",
+   "dist_path": "edition/replay/SOURCES.json",
+   "sha256_shipped": "0481f9167fbe1acf6dd7bdd7ca540bc66b72fcf4b3266e1e60569522da2f9c85",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Verify.lean",
+   "dist_path": "edition/replay/Verify.lean",
+   "sha256_shipped": "b3d1c927d53839cee3afdf1110271441792d4034702ca56d5e870349011f6903",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/lake-manifest.json",
+   "dist_path": "edition/replay/lake-manifest.json",
+   "sha256_shipped": "4edd31cc24cb10557194bd1b54fa50bb9f51ef889d3e6a0d181ae1e983172a71",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/lakefile.toml",
+   "dist_path": "edition/replay/lakefile.toml",
+   "sha256_shipped": "bc378f5ef8f2afb14875650e426cb1594b93f84ea96265b4146843953a73af30",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/lean-toolchain",
+   "dist_path": "edition/replay/lean-toolchain",
+   "sha256_shipped": "54727eec5cba149c18842e6deb5c41b369d66455c93ce135d7d5347c782b2325",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/replay.sh",
+   "dist_path": "edition/replay/replay.sh",
+   "sha256_shipped": "ca36ed248b81506cbf6777620bca080806d571521a003f1e3d56a44890cc7ffd",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/Center.lean",
+   "dist_path": "edition/replay/Sandbox/A1/Center.lean",
+   "sha256_shipped": "b59e79c6546ef027c2ce4d8df8999e22b942464b28b1240210344579f0edf650",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/CenterIntegralRows.lean",
+   "dist_path": "edition/replay/Sandbox/A1/CenterIntegralRows.lean",
+   "sha256_shipped": "53e27d9b53ec9007273328876df767a8e91840771ac25b9e9ad4d8a6b039ae4e",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/CenterLattice.lean",
+   "dist_path": "edition/replay/Sandbox/A1/CenterLattice.lean",
+   "sha256_shipped": "51b5ea459cff9920951bd6102afe472362f3875a93474474fa55d19dc057e161",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/CenterNewton.lean",
+   "dist_path": "edition/replay/Sandbox/A1/CenterNewton.lean",
+   "sha256_shipped": "f69ab42c55371935b380b0ed2bcc0d74a06be805a6bfe0bdb4468f5a1c630810",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/CenterNewtonZ.lean",
+   "dist_path": "edition/replay/Sandbox/A1/CenterNewtonZ.lean",
+   "sha256_shipped": "86bb3bcaeea2caa6549e98dcd412d229afd6858627fb81260e0e5a76b5da51aa",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/CenterPoly.lean",
+   "dist_path": "edition/replay/Sandbox/A1/CenterPoly.lean",
+   "sha256_shipped": "6cb01ce50c1b0fbbb82336dce0ad529fc855ecb4a5fc015407f20e7f3e8533c2",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/CenterSupport.lean",
+   "dist_path": "edition/replay/Sandbox/A1/CenterSupport.lean",
+   "sha256_shipped": "111ca940aa9f71993ba8ba732ea882a5bcb3e5c13e5af756903f157f3b007b0c",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/LaurentZZ.lean",
+   "dist_path": "edition/replay/Sandbox/A1/LaurentZZ.lean",
+   "sha256_shipped": "3fdf147f33f06283211576f6578426f134cad1510e3671fcb8479e6faa324980",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/QArith.lean",
+   "dist_path": "edition/replay/Sandbox/A1/QArith.lean",
+   "sha256_shipped": "ae3c2c424ac52a1fb9cdda90f105a79bdb5388c1e6c16f7a9dea55b44864c04c",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/Verma.lean",
+   "dist_path": "edition/replay/Sandbox/A1/Verma.lean",
+   "sha256_shipped": "e29d187d434f928036009e2c351392aee03865b555104d086d7a7aae6cae4288",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/GL1/FamilyField1.lean",
+   "dist_path": "edition/replay/Sandbox/A1/GL1/FamilyField1.lean",
+   "sha256_shipped": "38bd6fd436556b6335b029992435438179a74e0635cc021b13952dde7fdcde6d",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/GL1/GOALv0a.lean",
+   "dist_path": "edition/replay/Sandbox/A1/GL1/GOALv0a.lean",
+   "sha256_shipped": "3db277a957cb02a8132502e3286a6c0073d6538852165fec735af1a56a57b540",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/GL1/KzBridge.lean",
+   "dist_path": "edition/replay/Sandbox/A1/GL1/KzBridge.lean",
+   "sha256_shipped": "5eb1114a674dc6f15a63a33e80d4848a93c9c0283343a24e7aa3f808ac662669",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/GL1/NewtonUnivGrid.lean",
+   "dist_path": "edition/replay/Sandbox/A1/GL1/NewtonUnivGrid.lean",
+   "sha256_shipped": "4ab6656818b57967fdd90de98ba214e0f792b1a103a63215600534217d483599",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/GL1/NewtonUnivSpan.lean",
+   "dist_path": "edition/replay/Sandbox/A1/GL1/NewtonUnivSpan.lean",
+   "sha256_shipped": "1d1a1e50e95363b522e7c7368d7b1bb9027c1bd61cb8087f6d99af56d1652211",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/GL1/NonDegeneracy.lean",
+   "dist_path": "edition/replay/Sandbox/A1/GL1/NonDegeneracy.lean",
+   "sha256_shipped": "69160c8b53a5c260d7d7754d2d8f2cc4dd3d4e55bdce1f336a62b7487e976835",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/Sandbox/A1/GL1/PresentedU.lean",
+   "dist_path": "edition/replay/Sandbox/A1/GL1/PresentedU.lean",
+   "sha256_shipped": "5a5a7e68e8da1479efaf89ce3bfcb8eb4b412a70b4f969a7305f9e5e333b74d4",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/run-of-record/RUN.md",
+   "dist_path": "edition/replay/run-of-record/RUN.md",
+   "sha256_shipped": "c1c77feda803182dbcb908fc4a05bbb62a97acb9ca71c2aa609ade25217cd282",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "replay",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/replay/run-of-record/replay_axioms.txt",
+   "dist_path": "edition/replay/run-of-record/replay_axioms.txt",
+   "sha256_shipped": "9bddfbfdf10b6ade265eda7a93ec8db5024834606a84f42f6e408930ebe6934b",
+   "status": "OK",
+   "role": "standalone proof rebuild: sources, pins, and the one command"
+  },
+  {
+   "group": "palomar",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/palomar/README.md",
+   "dist_path": "edition/palomar/README.md",
+   "sha256_shipped": "8c1d7586b512c341563d52e131a2f9c3ee216b5d27d088ff4b4d6a2e73ffac63",
+   "status": "OK",
+   "role": "Palomar / Mathlib-Initiative disclosure layer"
+  },
+  {
+   "group": "palomar",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/palomar/emit_formalization.py",
+   "dist_path": "edition/palomar/emit_formalization.py",
+   "sha256_shipped": "0749bd8d1db7553038fa2f2c5f1e5f02adae6b8fb0bb21c3febddb1240ffabd3",
+   "status": "OK",
+   "role": "Palomar / Mathlib-Initiative disclosure layer"
+  },
+  {
+   "group": "palomar",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/palomar/formalization.yaml",
+   "dist_path": "edition/palomar/formalization.yaml",
+   "sha256_shipped": "436fb8dda2a9abe45c97023cfa7d844aec372b3947c26201ed9c13698f3d45ae",
+   "status": "OK",
+   "role": "Palomar / Mathlib-Initiative disclosure layer"
+  },
+  {
+   "group": "palomar",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/palomar/validate_formalization.py",
+   "dist_path": "edition/palomar/validate_formalization.py",
+   "sha256_shipped": "566d3be350a26fa7bb507e9446489de93fbc3be639ad13355426a85ef1d00b02",
+   "status": "OK",
+   "role": "Palomar / Mathlib-Initiative disclosure layer"
+  },
+  {
+   "group": "palomar",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/palomar/schema/formalization.schema.json",
+   "dist_path": "edition/palomar/schema/formalization.schema.json",
+   "sha256_shipped": "22bd0b61631535fc68efbdf01e3013362437673ac836d721dfbdf80773244ec3",
+   "status": "OK",
+   "role": "Palomar / Mathlib-Initiative disclosure layer"
+  },
+  {
+   "group": "palomar",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/palomar/schema/v0.3.schema.json",
+   "dist_path": "edition/palomar/schema/v0.3.schema.json",
+   "sha256_shipped": "93247a8093ea0bb622650e8f387bcc95c4e4c7941408974d6779341844262b27",
+   "status": "OK",
+   "role": "Palomar / Mathlib-Initiative disclosure layer"
+  },
+  {
+   "group": "palomar",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/palomar/schema/v0.4.schema.json",
+   "dist_path": "edition/palomar/schema/v0.4.schema.json",
+   "sha256_shipped": "25ff6b25ca4511635aff4443cf20480c15e59dddf19591c730950b442ea54fce",
+   "status": "OK",
+   "role": "Palomar / Mathlib-Initiative disclosure layer"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/index.html",
+   "dist_path": "edition/index.html",
+   "sha256_shipped": "05465e7f936a082139e371576425bd1394b1f8f80c0c8126de594af0044c0c35",
+   "status": "OK",
+   "role": "the door: a lead sentence and links, nothing else",
+   "sha256_source": "e1242bf05a186a24e515c2cee4c7c9cc363fd2d2b3a17aa850bbf24d2406765e",
+   "transformed_at_assembly": "The shipped bytes differ from the source: this file is transformed during assembly. Both hashes are given because only one of them is what you downloaded."
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/statements.html",
+   "dist_path": "edition/statements.html",
+   "sha256_shipped": "c5fc9cd22ed43a20cf0cac8914f4e5e53a42b359298f76d03c9561da6f7785a0",
+   "status": "OK",
+   "role": "the twelve statements with their warrants \u2014 filters, search, one row each, offline",
+   "sha256_source": "23db6a32768eef86a07f1f09b7b86c6d937252b70a91a3bb05a5469206f8ecdf",
+   "transformed_at_assembly": "The shipped bytes differ from the source: this file is transformed during assembly. Both hashes are given because only one of them is what you downloaded."
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/AGENTS.md",
+   "dist_path": "AGENTS.md",
+   "sha256_shipped": "b75bcaa71f900847b2d492289a73e66e9ffa2e14bc93d9f41412e67f197df064",
+   "status": "OK",
+   "role": "root pointer for an agent handed this repository"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/README.md",
+   "dist_path": "README.md",
+   "sha256_shipped": "b07938eb1eace76ed15b3610ce6a5970dd286d20605bbae2320d7a141fc021d7",
+   "status": "OK",
+   "role": "repository front page",
+   "sha256_source": "e533c582972924f515f6aa0f331ac9b38399c39eba6ccb0784341ef6bf0b28ca",
+   "transformed_at_assembly": "The shipped bytes differ from the source: this file is transformed during assembly. Both hashes are given because only one of them is what you downloaded."
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/FOR_A_HUMAN.md",
+   "dist_path": "edition/FOR_A_HUMAN.md",
+   "sha256_shipped": "618ec62e584e34bad41585626080475eada16e13d97997e12bcb22d6fbdde521",
+   "status": "OK",
+   "role": "the human's guide, incl. software installation"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/FOR_AN_AI_AGENT.md",
+   "dist_path": "edition/FOR_AN_AI_AGENT.md",
+   "sha256_shipped": "45b79bc4fbaeec7ef0d02ac8518ce20ef77fdc6c4df05ebb9fbed0773be4a200",
+   "status": "OK",
+   "role": "operating instructions for an AI agent"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/w-ink.svg",
+   "dist_path": "edition/w-ink.svg",
+   "sha256_shipped": "c4dc71012f9294906f261a33cd60a2a4c911ac4fcb80f300b15991af3106db53",
+   "status": "OK",
+   "role": "the warrant name INK, set in its own colour"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/w-ink-dark.svg",
+   "dist_path": "edition/w-ink-dark.svg",
+   "sha256_shipped": "dcbe278ae81f28ca2733d8f66f095476f38e26f62e8a45b60b2826f643ebf470",
+   "status": "OK",
+   "role": "the warrant name INK, dark theme"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/w-orange.svg",
+   "dist_path": "edition/w-orange.svg",
+   "sha256_shipped": "ace80298fba6e71480d85eddfc7b9cd2ae171404075e50b3eafa732037d44c59",
+   "status": "OK",
+   "role": "the warrant name ORANGE, set in its own colour"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/w-orange-dark.svg",
+   "dist_path": "edition/w-orange-dark.svg",
+   "sha256_shipped": "b8a5ab2cfc3927b6503f5cc9fb5d52844e221294563c92b6a29d969ea6b15d81",
+   "status": "OK",
+   "role": "the warrant name ORANGE, dark theme"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/w-blue.svg",
+   "dist_path": "edition/w-blue.svg",
+   "sha256_shipped": "9630c848a2b3245cc0c56bb81df564adb7c7e0e55f6e1c54b790cc33dcaf3112",
+   "status": "OK",
+   "role": "the warrant name BLUE, set in its own colour"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/w-blue-dark.svg",
+   "dist_path": "edition/w-blue-dark.svg",
+   "sha256_shipped": "5d35bb27fc0d81ae24d9d95aeedf0aa141036e857832113c64c0ddd15c39ca43",
+   "status": "OK",
+   "role": "the warrant name BLUE, dark theme"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/almanac-mark.svg",
+   "dist_path": "edition/almanac-mark.svg",
+   "sha256_shipped": "2eec9bdc405dd640c9f9d54b24967de847d107d2c83a3921d352b01219cbdc38",
+   "status": "OK",
+   "role": "the ALMANAC family mark, SQUARE CUT, transparent - the in-page mark on every markdown face (Overseer, 2026-08-30)"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/almanac-mark-dark.svg",
+   "dist_path": "edition/almanac-mark-dark.svg",
+   "sha256_shipped": "941b11b3f914c74f83c9978115e6b9a1bb4b30cd0236de2ecfaa30267af41fb2",
+   "status": "OK",
+   "role": "the square in-page mark - dark theme"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/almanac-logo.svg",
+   "dist_path": "edition/almanac-logo.svg",
+   "sha256_shipped": "f4c89dd3221e95e38af391e6d5511be7fc8ef3e1bf6cc3ed109fe9ada75fcecc",
+   "status": "OK",
+   "role": "the ALMANAC family mark, horizontal wordmark - retained for horizontal surfaces"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/almanac-logo-dark.svg",
+   "dist_path": "edition/almanac-logo-dark.svg",
+   "sha256_shipped": "85b402eb2dbebedc98680a65672fd3c3fb2324b9ea7cdeefa5c2d209a64d8ee5",
+   "status": "OK",
+   "role": "the ALMANAC family mark - dark theme, for the README picture element"
+  },
+  {
+   "group": "repository-furniture",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/gitignore.txt",
+   "dist_path": ".gitignore",
+   "sha256_shipped": "f1bb8745e827993437963d477a5ee256ca6a098946da514125ce8c0373fc0b51",
+   "status": "OK",
+   "role": "ignore rules for the published repository"
+  },
+  {
+   "group": "repository-furniture",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/root_index.html",
+   "dist_path": "index.html",
+   "sha256_shipped": "2d0210c34c8db2a5115e8f3a5fac5a1d6af5a605ede45ad83c634d6e1cda9c07",
+   "status": "OK",
+   "role": "signpost at the archive root: sends a reader to edition/index.html"
+  },
+  {
+   "group": "repository-furniture",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/nojekyll.txt",
+   "dist_path": ".nojekyll",
+   "sha256_shipped": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "status": "OK",
+   "role": "tells GitHub Pages to serve the tree as it stands, without Jekyll"
+  },
+  {
+   "group": "repository-furniture",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/gitattributes.txt",
+   "dist_path": ".gitattributes",
+   "sha256_shipped": "0d29f0ddd857dc6bb6e06eb0bc5424bd4c69a07eb6d2226178829c7ecdd6c421",
+   "status": "OK",
+   "role": "keeps the shipped renderers and rendered pages out of GitHub's language bar"
+  },
+  {
+   "group": "repository-furniture",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/gitlab-ci.yml",
+   "dist_path": ".gitlab-ci.yml",
+   "sha256_shipped": "ecc0674341f9104c975a6a92ff9d45b8980586e94009e7dde94bae8a4a253a82",
+   "status": "OK",
+   "role": "publishes edition/ as the site root on GitLab Pages; inert elsewhere"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/LICENSE",
+   "dist_path": "LICENSE",
+   "sha256_shipped": "4944fe18de739119ebf48ab20fb0dac909895bd493ed3750275fe9277de3497b",
+   "status": "OK",
+   "role": "the licence for the software: canonical MIT, alone in this file so a licence detector can match it"
+  },
+  {
+   "group": "front-matter",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/LICENSE-CC-BY-4.0",
+   "dist_path": "LICENSE-CC-BY-4.0",
+   "sha256_shipped": "c6723847de64b868a8d3658ef581b0b9aab9dee58a555354839e62d7a96400ec",
+   "status": "OK",
+   "role": "the licence for the text, the mathematics and the data: CC BY 4.0, with the file-by-file split"
+  },
+  {
+   "group": "edition",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/render_index.py",
+   "dist_path": "edition/render_index.py",
+   "sha256_shipped": "d25960aeaacccbec1ea440aa004cfb1a05a1af2bdc14553353797cf630d1d8aa",
+   "status": "OK",
+   "role": "regenerates index.html from the record"
+  },
+  {
+   "group": "repository-furniture",
+   "source_path": "SandboxA/sandboxA0a/almanac/edition/dist_src/CITATION.cff",
+   "dist_path": "CITATION.cff",
+   "sha256_shipped": "54f1b07cafa6972b8bd87d823b83155b7e9d020159da848ee0050bad5bf79016",
+   "status": "OK",
+   "role": "citation metadata \u2014 publishable builds only"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) formal.html",
+   "dist_path": "edition/formal.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "49fb3a31452ca60f56b9b4a40ba0fe3e579044e4822c527cb30e8ea22727add9",
+   "status": "GENERATED \u2014 assembled from CONCORDANCE.json and the release log",
+   "role": "edition: the formal layer as a page"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) informal.html",
+   "dist_path": "edition/informal.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "b3e23ed593ac2add83367506a30444c44ddb5a955d1cbea6ffea7f00e8c39511",
+   "status": "GENERATED \u2014 assembled from CONCORDANCE.json's ink row",
+   "role": "edition: the informal layer as a page"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) ANCESTRY.html",
+   "dist_path": "edition/ANCESTRY.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "7e85dde394f923a2a1f70844fb3985fb532d73968ac30a3439066a5a91541c0d",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) AUTHORSHIP.html",
+   "dist_path": "edition/AUTHORSHIP.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "8dfa60d21c1b49af897012022def3ee9281fad767ab0979db46f2702c0e1cbd3",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) EDITION.html",
+   "dist_path": "edition/EDITION.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "890f4b473303cae8e547d92becbd833b2504ef69883509f47306d532fd6212ed",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) EMBEDDING_NOTE.html",
+   "dist_path": "edition/EMBEDDING_NOTE.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "8ed9e68f41ba8db7116307d8633ee439c3bd5d67fe688a23e3902a2b626593ca",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) FOR_AN_AI_AGENT.html",
+   "dist_path": "edition/FOR_AN_AI_AGENT.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "badb714b8cace0161e097c4f2b6e3af84cd4dbb2f879c81b4f347a84a6c95355",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) FOR_A_HUMAN.html",
+   "dist_path": "edition/FOR_A_HUMAN.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "0e81b022afc1bfa3217db1f279c4d7e1bcac9093e5d0cf92c76fdb635f2faeba",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) source/informal/CITATION_VERIFICATION_2026-08-09.html",
+   "dist_path": "edition/source/informal/CITATION_VERIFICATION_2026-08-09.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "1f5759789690ed0d9283a7af5dba2b61b214b726600dfa75153d9d58df0623eb",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) source/informal/EDITION_ACCEPTANCE_2026-08-13.html",
+   "dist_path": "edition/source/informal/EDITION_ACCEPTANCE_2026-08-13.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "a870319d1691ffdd364ad546071053d9f90897edd59b5ac30a15a17a24aeab01",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) source/informal/EDITORIAL_REFEREE_REPORT_2026-08-12.html",
+   "dist_path": "edition/source/informal/EDITORIAL_REFEREE_REPORT_2026-08-12.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "76044ad1d322e26688293c21e637229f561efa95ac0ee389b726a774f62ac5a9",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) source/informal/REFEREE_REPORT_PROOFv0a.html",
+   "dist_path": "edition/source/informal/REFEREE_REPORT_PROOFv0a.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "48f35d0bf622e4bb13e89766030b958601c5ce9b943284237ae44eb1ec692382",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  },
+  {
+   "group": "edition",
+   "source_path": "(generated) source/informal/proofv0a.ledger.cas_receipts.html",
+   "dist_path": "edition/source/informal/proofv0a.ledger.cas_receipts.html",
+   "sha256_in_manifest": null,
+   "sha256_shipped": "629c49face7639c9830105070ff3fd00f1f4d0d4d1b91e361ce292889bd6a4ed",
+   "status": "GENERATED \u2014 rendered from the markdown beside it, at build time",
+   "role": "edition: a guide, rendered for a browser"
+  }
+ ]
+}

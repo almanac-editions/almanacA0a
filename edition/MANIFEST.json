@@ -1,0 +1,820 @@
+{
+  "schema": "almanac-edition-manifest/v1",
+  "edition": "almanacA0a — the centre of the even hybrid family quantum GL1 (PILOT)",
+  "built_utc": "2026-08-13",
+  "built_by": "the Almanac Editor (AD-27)",
+  "status": "DEPOSITED 2026-09-17 as 10.5281/zenodo.22808195 — the edition of record, version 0.1.0; accepted 2026-08-13 by the tree owner; rows frozen at deposit.",
+  "purpose": "So that 'the edition' is a CHECKABLE SET — an enumerated, hashed list of exactly its files.",
+  "self_reference_note": "MANIFEST.json cannot contain its own hash — and NEITHER CAN almanac.artifact.html, which renders its inventory from this file (F-E10, 2026-08-14: its row therefore carries sha256 null, not a hash of the previous render). Every OTHER file listed carries a sha256; re-hash and compare to detect drift.",
+  "drift_checks": [
+    {
+      "utc": "2026-08-14",
+      "by": "the Editor",
+      "scope": "all 54 listed artifacts re-hashed against disk",
+      "result": "51/54 resolved on the first pass. Two CARD rows had drifted (F-E9) and are re-pinned above; the third was the structurally impossible self-hash (F-E10). No substrate artifact has drifted. The set is now 55 rows: ACTIVITY.md was added (F-E11 — cited by how_to_re_measure yet never listed), and the typed '50 artifacts' size line was replaced by a measured one.",
+      "ruling": "Architect REPORT 20260814T123531Z-architect-18819-55fe, same hour: manifest §12 opened. 12.1 shipped artifacts travel as REFERENCE (path + sha-as-measured + date), never a copy, and the drift-notification duty generalises to every owner of a shipped artifact. 12.2 the DEPOSIT RE-HASH GATE — every row re-measured cold immediately before deposit; notification is the courtesy, measurement is the gate. 12.3 self-reference is a RELATION, not a filename: any artifact rendering or embedding manifest content ships sha256:null + reason, prints the same fact in-page, and verifies by regeneration from pinned inputs. The repairs recorded here were adopted verbatim as 12.3.",
+      "finding": "F-E9 — the accepted drift protocol binds hypervisorA for the SUBSTRATE and says nothing about CARDS, which ship in the edition under 'cards travel', are owned by the Librarian, and change on the Librarian's tick. Both cards moved within four hours of acceptance, on this seat's own request (F-A6). Nothing obliged anyone to tell the Editor; the disclosure that did arrive came as a courtesy REPORT into an inbox no one is obliged to read before deposit."
+    }
+  ],
+  "substrate_artifacts": [
+    {
+      "path": "Sandbox/A1/Center.lean",
+      "sha256": "b59e79c6546ef027c2ce4d8df8999e22b942464b28b1240210344579f0edf650",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "474 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/CenterIntegralRows.lean",
+      "sha256": "53e27d9b53ec9007273328876df767a8e91840771ac25b9e9ad4d8a6b039ae4e",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "414 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/CenterLattice.lean",
+      "sha256": "51b5ea459cff9920951bd6102afe472362f3875a93474474fa55d19dc057e161",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "299 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/CenterNewton.lean",
+      "sha256": "f69ab42c55371935b380b0ed2bcc0d74a06be805a6bfe0bdb4468f5a1c630810",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "116 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/CenterNewtonZ.lean",
+      "sha256": "86bb3bcaeea2caa6549e98dcd412d229afd6858627fb81260e0e5a76b5da51aa",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "254 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/CenterPoly.lean",
+      "sha256": "6cb01ce50c1b0fbbb82336dce0ad529fc855ecb4a5fc015407f20e7f3e8533c2",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "403 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/CenterSupport.lean",
+      "sha256": "111ca940aa9f71993ba8ba732ea882a5bcb3e5c13e5af756903f157f3b007b0c",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "159 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/GL1/FamilyField1.lean",
+      "sha256": "38bd6fd436556b6335b029992435438179a74e0635cc021b13952dde7fdcde6d",
+      "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+      "produced_by": "the programme"
+    },
+    {
+      "path": "Sandbox/A1/GL1/GOALv0a.lean",
+      "sha256": "3db277a957cb02a8132502e3286a6c0073d6538852165fec735af1a56a57b540",
+      "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+      "produced_by": "the programme",
+      "note": "carries GOALv0aStatement (8 fields) and the endpoint GOALv0a; verified clean triple by the Editor 2026-08-13"
+    },
+    {
+      "path": "Sandbox/A1/GL1/KzBridge.lean",
+      "sha256": "5eb1114a674dc6f15a63a33e80d4848a93c9c0283343a24e7aa3f808ac662669",
+      "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+      "produced_by": "the programme"
+    },
+    {
+      "path": "Sandbox/A1/GL1/NewtonUnivGrid.lean",
+      "sha256": "4ab6656818b57967fdd90de98ba214e0f792b1a103a63215600534217d483599",
+      "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+      "produced_by": "the programme"
+    },
+    {
+      "path": "Sandbox/A1/GL1/NewtonUnivSpan.lean",
+      "sha256": "1d1a1e50e95363b522e7c7368d7b1bb9027c1bd61cb8087f6d99af56d1652211",
+      "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+      "produced_by": "the programme"
+    },
+    {
+      "path": "Sandbox/A1/GL1/NonDegeneracy.lean",
+      "sha256": "69160c8b53a5c260d7d7754d2d8f2cc4dd3d4e55bdce1f336a62b7487e976835",
+      "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+      "produced_by": "the programme",
+      "note": "the non-degeneracy witnesses the source manifest declares ABSENT — they are here, certified clean (F-E3)"
+    },
+    {
+      "path": "Sandbox/A1/GL1/PresentedU.lean",
+      "sha256": "5a5a7e68e8da1479efaf89ce3bfcb8eb4b412a70b4f969a7305f9e5e333b74d4",
+      "role": "formal: Lean source (in the build cone, imported by Sandbox.lean)",
+      "produced_by": "the programme"
+    },
+    {
+      "path": "Sandbox/A1/LaurentZZ.lean",
+      "sha256": "3fdf147f33f06283211576f6578426f134cad1510e3671fcb8479e6faa324980",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "112 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/QArith.lean",
+      "sha256": "ae3c2c424ac52a1fb9cdda90f105a79bdb5388c1e6c16f7a9dea55b44864c04c",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "481 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "Sandbox/A1/Verma.lean",
+      "sha256": "e29d187d434f928036009e2c351392aee03865b555104d086d7a7aae6cae4288",
+      "role": "formal: Lean source in the certified import closure (shipped in replay/ so the rebuild is standalone)",
+      "produced_by": "the programme",
+      "note": "226 lines; reached by walking imports from the seven certified GL1 modules. Added 2026-09-16 on the Overseer's release decision, after a review of the public download found the edition shipped 7 of the 17 modules the build needs. NOT shipped by this row: place() would drop it in source/other/ under its bare basename, losing the module hierarchy a Lean build needs. It travels in replay/Sandbox/A1/ instead, copied there by render_replay.py. The row exists to PIN the bytes so verify_edition catches drift — shipping and pinning are separate jobs and this is the case that separates them.",
+      "ships": false
+    },
+    {
+      "path": "SandboxA/sandboxA0a/CLOSURE_SIGNATURE.json",
+      "sha256": "e998991026bf33f1929b9a027dd778d80af687a20e50f37986add28bb814c834",
+      "role": "closure: the Overseer's approval-5 signature",
+      "produced_by": "recorded by hypervisorA 2026-08-13",
+      "note": "claims 13 certified decls; see finding F-E1"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/GL1Newton/Manifest.toml",
+      "sha256": "f1b03d86c5851fbd8aac6fe81a859374d2da5a2d2c387f359aaecbf23e438896",
+      "role": "instrument: THE dependency pin",
+      "produced_by": "extracted from HybridQuantum at commit 7ddb2e8f, 2026-08-10; a pinned snapshot, not independently developed"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/GL1Newton/Project.toml",
+      "sha256": "c0f6b59e49457d8ba99b94ea0454cb8e8a0e140f8577604e5da1188df5633ad0",
+      "role": "instrument: package intent",
+      "produced_by": "extracted from HybridQuantum at commit 7ddb2e8f, 2026-08-10; a pinned snapshot, not independently developed"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/GL1Newton/README.md",
+      "sha256": "a58c89265daa54d0f2a261b180b4f9de68107f26111931b9c584168f03c7f88f",
+      "role": "instrument: API + provenance",
+      "produced_by": "extracted from HybridQuantum at commit 7ddb2e8f, 2026-08-10; a pinned snapshot, not independently developed"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/GL1Newton/src/GL1Newton.jl",
+      "sha256": "e97031691f1e16fac724c87e4c73a397fdb90b5129526c07dc68036dae8e006a",
+      "role": "instrument: the ten stems",
+      "produced_by": "extracted from HybridQuantum at commit 7ddb2e8f, 2026-08-10; a pinned snapshot, not independently developed"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/GL1Newton/src/qFunctions.jl",
+      "sha256": "49d7ac11877c230df6587a42e6d844a28b9548910a9a9ed379821477261e02d9",
+      "role": "instrument: the v-side symmetric family",
+      "produced_by": "extracted from HybridQuantum at commit 7ddb2e8f, 2026-08-10; a pinned snapshot, not independently developed"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/GL1Newton/test/runtests.jl",
+      "sha256": "5ca55e936cf175a70614b232d567baf5c5009e036942a93bc35bd526970a480d",
+      "role": "instrument: the acceptance battery",
+      "produced_by": "extracted from HybridQuantum at commit 7ddb2e8f, 2026-08-10; a pinned snapshot, not independently developed"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/cow/COW_FAITHFULNESS_PANEL.md",
+      "sha256": "ef3a23212773c999cfded3db98fb15643294825a8bb5d73629dd39bbe4a57dce",
+      "role": "faithfulness: the three-engine CoW panel",
+      "produced_by": "panel of three distinct engines incl. a Fable seat; terminal FAITHFUL"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/formal/RELEASE_20260721_source_all_clean.log",
+      "sha256": "0fd29a50dc3666bb6be47032db7c0c450a097f8a503423e9541bdea3456c61fc",
+      "role": "formal: the release_verify --source log cited by the closure",
+      "produced_by": "engine/release_verify.sh --source, 2026-07-21",
+      "note": "6 lines; contains 5 PASS lines, all KzBridge — finding F-E1"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/formal/SOURCE_MANIFEST.json",
+      "sha256": "7153982ec001d5e43dedab8cb5144d8218d6a2b36cea839ab66275fc7eb6420d",
+      "role": "formal: the source-cone description",
+      "produced_by": "2026-07-21",
+      "note": "INTERNALLY CONTRADICTORY AND STALE — finding F-E3; shipped as historical record only, with the rows' own measured state as the edition's authority"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/formal/TERMINAL_CONSISTENCY_RECORD.json",
+      "sha256": "8decaf25da948c5e3c737e7f8ffe07f88373de608a7976e1d43ab3303b51861b",
+      "role": "closure: the durable evidence record the signature rests on",
+      "produced_by": "scripts/post_panel_finalize, 2026-08-12"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/CITATION_VERIFICATION_2026-08-09.md",
+      "sha256": "383391181ef3fb2ad48270dd60c1fcf021bfb261b505eab07327cdbf919b5382",
+      "role": "ancestry: the criterion-13 cycle of record",
+      "produced_by": "hypervisorA, 2026-08-09"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/EDITORIAL_REFEREE_REPORT_2026-08-12.md",
+      "sha256": "e8034b17455cb0af0476a89fcc1f7b7fe7ebd386293c49a90a231d89743d222b",
+      "role": "editorial referee report (criterion 6)",
+      "produced_by": "the editorial referee"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/REFEREE_REPORT_PROOFv0a.md",
+      "sha256": "6e31018c647ebfba656e90a011f497eb81fc00c1798af85b6476065f1db0fb0d",
+      "role": "referee report on the proof",
+      "produced_by": "the referee"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/goalv0a.pdf",
+      "sha256": "36e31c34eb4dfbb79055729a613464d2b8c5bf8646504ec9305e6fc0839505be",
+      "role": "informal: the signed goal, typeset",
+      "produced_by": "latexmk"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/goalv0a.tex",
+      "sha256": "5853d84f33b785b6060b46b05e39d6f19899a095bb341f139051b3099f84f8f4",
+      "role": "informal: the signed goal statement",
+      "produced_by": "the programme, signed by the Overseer 2026-07-19; notation-migrated edition 2026-08-10",
+      "note": "Criterion-13 cycle still owed for this artifact — finding F-E5, the publication blocker"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/proofv0a.ledger.cas_receipts.md",
+      "sha256": "44db338e8f5185e8bb7f3c717b6520431f8cd2935b51a3b376c5972021bff894",
+      "role": "semiformal: CAS oracle receipts",
+      "produced_by": "the CAS oracle"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/proofv0a.ledger.json",
+      "sha256": "b21d04814d1d621ae9ab99d3483f01fcaa9885f32df4ce673885bc723082f27e",
+      "role": "semiformal: the claim ledger with per-claim declared ranges",
+      "produced_by": "hypervisorA, 2026-08-05",
+      "note": "18 claims / 6 controls / 14 steps; the source of the declared ranges in the concordance"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/proofv0a.pdf",
+      "sha256": "7c998d49db884743f8eb09c11d5cf335ba465bb1c9a751e228d01c80994496fd",
+      "role": "informal: the proof, typeset",
+      "produced_by": "latexmk"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/proofv0a.tex",
+      "sha256": "ff4015250c56f71ff12f94db5148cf25c70f42164aa931fbfa8167cf0a4378dc",
+      "role": "informal: the complete proof",
+      "produced_by": "the programme; criterion-13 cycle complete 2026-08-09",
+      "note": "carries '% criterion-13: adopted'; manuscript_gate 9/9 with the criterion ENFORCED, re-run 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/n1_clause3_referee_pin.jl",
+      "sha256": "6cb7108c675da7f4659e1fe9f55c3a8203a34f86b49407ba4065e1c125cffecb",
+      "role": "oracle: the clause-(iii) independent referee pin",
+      "produced_by": "the N1 arc, 2026-07-21"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/n1_clause3_referee_pin.out",
+      "sha256": "fbfcb22a015155adb26628c9316102f450dffb27e06e3fe4c9cca52a1d1cd2c5",
+      "role": "oracle: the pin's recorded verdict",
+      "produced_by": "as above",
+      "note": "VERDICT PROVED_BOUNDED window=8 positives=60 hostiles=5 separator=1 disagreements=0"
+    }
+  ],
+  "edition_artifacts": [
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/EDITION.md",
+      "sha256": "89ad062a2bf0d18b7a58637b32c731ed86739d6ac93bd0a81b2ef1a2fbdafdd4",
+      "role": "edition: assembled by the Editor",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/CONCORDANCE.json",
+      "sha256": "7bb67e52bd66fb8510015b3623b7c11e0623f5b432a58b5be7f3fe07303f019b",
+      "role": "edition: assembled by the Editor",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/EMBEDDING_NOTE.md",
+      "sha256": "ff906c92aefac33010131fbbb3f188fbe8039d6c2d21592ab4bdc8803ac8748f",
+      "role": "edition: assembled by the Editor",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/ANCESTRY.md",
+      "sha256": "0d67c8f3962cc97ed38c15d03ed935e94f6e3c241973a4ba066477fa136a0571",
+      "role": "edition: assembled by the Editor",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/AUTHORSHIP.md",
+      "sha256": "9c323634383b7348c4c5048dfcd14fee487b0cb36e51fc106ea8e0e08608ce80",
+      "role": "edition: assembled by the Editor",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/gaps/GAPS.md",
+      "sha256": "84a9b6202a1a489186377e5f0cb613e1b4b4e76ef87c369f4a527f05267530f2",
+      "role": "edition: assembled by the Editor",
+      "produced_by": "the Almanac Editor, 2026-08-13",
+      "ships": false,
+      "ships_note": "Overseer, 2026-08-30: an internal findings register is not reader material. The file stays in the edition and in the record — the form requires it never to be absent — and no longer travels in the distributable. Its reader-facing account is EDITION.md, 'What this edition found'."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/MEASUREMENT_LOG.md",
+      "sha256": "ffe117f267d5fb3ed07e3ce6fab03f31c31dc4fcacfc271bc93fcdc64999f56d",
+      "role": "edition: assembled by the Editor",
+      "produced_by": "the Almanac Editor, 2026-08-13",
+      "ships": false,
+      "withheld": "Pinned by this edition's manifest and NOT distributed with it (2026-09-17): the edition's working measurement log. Its figures — the cost of the edition, hour by hour — are carried in this manifest's cost block; the log itself is running commentary and is held in the record, not published."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/ACTIVITY.md",
+      "sha256": "16684bf0d5770d748d32a676cf64399dd30533696ff0921e04647bb3a37cc82c",
+      "role": "edition: the campaign journal — the per-activity timestamps the measurement log is summed from",
+      "produced_by": "the Almanac Editor, 2026-08-13 onward",
+      "self_reference": "F-E11, 2026-08-14 — a THIRD instance of the §12.3 relation, and it had been UNLISTED while the manifest cited it: `how_to_re_measure` sends a reader here to re-derive the cost figure, and this file was not in the checkable set at all (the F-E7 class). It cannot be pinned before deposit, because the journal records the act of writing the manifest — every entry, including the one recording the pinning, falsifies the pin. Under §12.2 it pins at the deposit re-hash gate, when journalling for this edition stops. STATE.md is deliberately NOT listed: it is this seat's resume header, working state rather than edition content, and nothing in the edition cites it.",
+      "ships": false,
+      "ships_note": "2026-08-30, Overseer at first read of the repository: process records are the seat's, and the Architect's edition layout (§0) never listed this file. It stays in the record and in this inventory; the distributable carries the edition, not the seat's journal."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/DEFINITION_VERDICTS_2026-08-13.md",
+      "sha256": "a005c6b264e6a9bbad573793841eda114eb0f8d7c2fbfc51fa5774796cf3d508",
+      "role": "edition: §6b evidence — the five per-definition ancestry verdicts",
+      "produced_by": "the Almanac Editor, 2026-08-13",
+      "ships": false,
+      "ships_note": "2026-08-30, Overseer at first read of the repository: process records are the seat's, and the Architect's edition layout (§0) never listed this file. It stays in the record and in this inventory; the distributable carries the edition, not the seat's journal."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/almanac.html",
+      "sha256": "75f71d3e0363b9711f95eb00dfe659f38a9e1b157c8cc9bfa88d423da9bcafaa",
+      "role": "edition: the reading view — what a reader sees",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/render_almanac.py",
+      "sha256": "955b1808c90f5fd45778f9dd0b7c157926b61c27e7b9e7c3506e1ea0b20cc842",
+      "role": "edition: generator for the reading view (renders from the edition's own JSON; no transcription)",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/almanac.artifact.html",
+      "sha256": "9e16027926c1afcaa429374b3120bb07db218575fcfc972f69359160b4d2a30d",
+      "role": "edition: the READER'S EDITION — the form a reader receives",
+      "produced_by": "the Almanac Editor, 2026-08-13",
+      "self_reference": "NO HASH IS RECORDABLE HERE, and this is structural, not an omission — finding F-E10, 2026-08-14. The page renders its own inventory FROM this manifest, so any sha written here is embedded into the page and thereby falsified by the very act of writing it. Until 2026-08-14 this row carried b7a25bae…, the hash of the PREVIOUS render, while the file on disk hashed 8d46f37f…: one row of an integrity record that could never resolve, in the one artifact a reader is most likely to check. Verify this file instead by re-running render_artifact.py (sha recorded above) over this manifest and comparing bytes."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/render_artifact.py",
+      "sha256": "c3645bfad0a2d0d5fffb0a1c0721301c00c0b453d34d92cbae2854d2fdecca20",
+      "role": "edition: generator for the reader's edition (renders from the edition's own data; no transcription)",
+      "produced_by": "the Almanac Editor, 2026-08-13"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/verify_edition.py",
+      "sha256": "5bd05b5bb13a50eb614f514ecbc340f1bc2f809ec24558adf9a9ab2efe9aa6ac",
+      "role": "edition: the §12.2 gate, executable — cold re-hash of every row, re-pin, and derivation of the aggregates",
+      "produced_by": "the Almanac Editor, 2026-08-14",
+      "self_reference": "sha256 null under §12.3's RELATION test, for a reason worth stating: this file WRITES this manifest, so a hash recorded here pins the output of the run that does the pinning. It verifies by being RE-RUN — bare, it must report 0 drift. Written because the gate had been a HABIT of one seat's, run as an ad-hoc snippet at each summon: a habit is not re-runnable by the next seat and cannot be pointed at inside a deposit act. As a habit it caught F-E9, F-E10 and F-E11 before the Architect made it a rule."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/almanac.explained.html",
+      "sha256": "208f6f812e15bd0e438a4dc5ee579d98ba020db619ce0213e13606b498ecc65b",
+      "role": "edition: the EXPLANATORY COMPANION — the mathematics explained for a reader from outside the programme",
+      "produced_by": "the Almanac Editor, 2026-08-15, on the Overseer's request",
+      "note": "HAND-WRITTEN, and therefore hashable — unlike almanac.artifact.html it does NOT render from this manifest, so §12.3's self-reference relation does not apply to it. It explains and does not certify; where it and the register disagree, the register is right. See the explanatory_companion block for its URL and its build-time oracle verification."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/render_explained.py",
+      "sha256": "9916e4462fc1a58456101b393aa4debe5d8da342167e7b22eeebbd3496806b18",
+      "role": "edition: generator for the reader's companion page (TeX -> MathML at build time; template embedded; added 2026-08-29 when the page gained typeset mathematics and, with it, a regeneration path)",
+      "produced_by": "the Shadow, 2026-08-29"
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/render_docs.py",
+      "sha256": "2b1746d59ba9c443b18648bce5e9405cbe9670bbaa5f426816a1a1ae51b5d5f8",
+      "role": "edition: the generator for the guides' HTML pages — renders the markdown guides so a browser shows a page rather than a text file",
+      "produced_by": "the Almanac Editor, 2026-09-03",
+      "added": "2026-09-03 — the published site served .md as plain text. The markdown files stay; these are siblings. Ships so an unzipped copy can regenerate them, which is the same rule the other four generators travel under."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/render_formal.py",
+      "sha256": "855f178951f795990f52bfc608edb3bb49003d98ccc9f49cefe43f47485e317d",
+      "role": "edition: the generator for formal.html — the formal layer as a page, assembled from the concordance and the release log",
+      "produced_by": "the Almanac Editor, 2026-09-03",
+      "added": "2026-09-03 — 'Going further' had been pointing a browser at a .lean file and a build log."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/paper.pdf",
+      "sha256": "41776dfd4c4d887914d67af1e8a000e68d059db269f11ef84cc45fd4bfef852f",
+      "role": "edition: the paper, the edition's reading document",
+      "produced_by": "render_paper.py, assembled from sandboxA0a/informal/goalv0a.tex and proofv0a.tex; paper.tex reproduces byte-for-byte from those two sources. The type-A programme's signed goal was a third source until 2026-09-08, when the GL_n section was removed on the Overseer's instruction; the paper no longer reads it, and its path is deliberately not written here because §12.4 reads a path in this manifest as a CITATION and would require a row for a file this edition no longer uses."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/paper.tex",
+      "sha256": "485f92eaabebe921073150ca3a0f190568d32188cda539963bdb0f9418b209e0",
+      "role": "edition: the paper's LaTeX source",
+      "produced_by": "render_paper.py, assembled from sandboxA0a/informal/goalv0a.tex and proofv0a.tex; paper.tex reproduces byte-for-byte from those two sources. The type-A programme's signed goal was a third source until 2026-09-08, when the GL_n section was removed on the Overseer's instruction; the paper no longer reads it, and its path is deliberately not written here because §12.4 reads a path in this manifest as a CITATION and would require a row for a file this edition no longer uses."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/render_paper.py",
+      "sha256": "f0189f2b2df5fd4161fcb9294a2f4ba2f44586582aff7b95372cb7bc9f5ff8b1",
+      "role": "edition: the paper's assembler",
+      "produced_by": "render_paper.py, assembled from sandboxA0a/informal/goalv0a.tex and proofv0a.tex; paper.tex reproduces byte-for-byte from those two sources. The type-A programme's signed goal was a third source until 2026-09-08, when the GL_n section was removed on the Overseer's instruction; the paper no longer reads it, and its path is deliberately not written here because §12.4 reads a path in this manifest as a CITATION and would require a row for a file this edition no longer uses."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/almanac/edition/render_informal.py",
+      "sha256": "187805ff9391f362ea41e816f6c602074c6f29089a4cfc55ffd9fab4897fe96c",
+      "role": "edition: the informal layer as a page — the ink layer's renderer",
+      "produced_by": "the Shadow, 2026-09-04, on the Overseer's instruction that the informal layer get a page like the other two"
+    }
+  ],
+  "reproducibility_recipe": {
+    "principle": "Pin by VERSION, never by name. A proof that compiles today compiles against THAT Mathlib, not 'Mathlib'.",
+    "lean_toolchain": "leanprover/lean4:v4.30.0",
+    "mathlib_revision": "c5ea00351c28e24afc9f0f84379aa41082b1188f (inputRev v4.30.0)",
+    "julia": {
+      "project_compat_floor": "1.10",
+      "manifest_julia_version": "1.12.6",
+      "note": "the Manifest is the pin; the Project is only an intent"
+    },
+    "oscar": {
+      "project_compat_floor": "1.7",
+      "manifest_resolved_version": "1.8.0",
+      "git_tree_sha1": "6da224b10d8658c12ee216ba0a9e05616929d192",
+      "uuid": "f1435218-dba5-11e9-1e4d-f1a5fab5fc13"
+    },
+    "singular_or_other_cas": "used only THROUGH Oscar; no standalone Singular or Magma computation contributed to this edition",
+    "estate_commit_for_the_record_cited": "a4c04990",
+    "how_to_re_run_the_instrument": "engine/job_gate.py medium --name <name> -- julia --project=SandboxA/sandboxA0a/almanac/GL1Newton -e 'using Pkg; Pkg.instantiate(); Pkg.test()'  → expected: 87/87 PASS (measured 2026-08-13). First run precompiles ~106 dependencies (~4 min).",
+    "how_to_re_check_the_axioms": "For each declaration in CONCORDANCE.json: #print axioms <name>, expecting exactly [propext, Classical.choice, Quot.sound]. The estate's own certifier is engine/release_verify.sh --source; the Editor could NOT run it (finding F-E2) and used the Lean language server read-only instead.",
+    "what_the_recipe_does_NOT_promise": "A pinned toolchain makes a re-run POSSIBLE, not IDENTICAL. Floating-point, parallel scheduling and resource-dependent search may differ. Where a result depends on a bounded search the BOUND IS PART OF THE CLAIM (CONCORDANCE.json declared_range) and must be re-runnable at that bound.",
+    "unpinnable_dependencies": [
+      "none identified — every dependency of this edition resolves to a version, and the Julia side additionally to a git-tree-sha1"
+    ]
+  },
+  "gate_results": {
+    "manuscript_gate_proofv0a": "PASS 9/9, criterion 13 ENFORCED (re-run by the Editor 2026-08-13)",
+    "manuscript_gate_goalv0a": "PASS on literal goal rules; NOTICE on G9 — the criterion-13 ancestry for this artifact is discharged at edition level per manifest §6a, all three conditions verified met; publication UNBLOCKED 2026-08-13.",
+    "release_verify_source": "NOT RUN BY THIS SEAT — writes outside the Editor's write surface (F-E2). Axioms measured read-only instead.",
+    "idiom_ledger": "formal/NO_ANALOGUE_QUEUE.md is empty (no no_analogue entries recorded).",
+    "instrument_battery": "87/87 PASS, measured 2026-08-13 under the heavy-compute gate."
+  },
+  "rehashed_utc": "2026-08-30 (CONCORDANCE.json re-hashed and re-pinned after the second Overseer-instructed non-claims pass, which also touched this manifest's own prose; the remaining rows stand as measured 2026-08-29, and the deposit gate re-measures everything cold. Previous: 2026-08-29 — edition artifacts re-hashed after the first non-claims cut and the MathML typesetting; substrate artifacts untouched, their rows are the tree owner's — and 2026-08-13.)",
+  "cost": {
+    "note": "Machine-readable so it can be rendered without transcription. The most important number in this edition is what it COST, not what it certified — see MEASUREMENT_LOG.md.",
+    "sessions": [
+      {
+        "session": 1,
+        "date": "2026-08-13",
+        "wall_clock_minutes": 205,
+        "human_minutes": 0,
+        "human_acts": "the summon, the seat design, and the closure signature — no human read, wrote, reviewed or decided anything in the assembly",
+        "agent_detail": "1 Editor session + 4 subagents (2 opus, 1 sonnet, 1 opus Librarian); 3 ran concurrently, so the one-worker-no-parallelism equivalent is ~210 min",
+        "heavy_compute_runs": 1,
+        "heavy_compute_detail": "engine/job_gate.py medium — GL1Newton battery, 242 s precompile + 3.2 s tests, rc=0, 87/87 PASS"
+      }
+    ],
+    "wall_clock_minutes_total": 205,
+    "human_minutes_total": 0,
+    "how_to_re_measure": "ACTIVITY.md carries the per-activity timestamps this is summed from; MEASUREMENT_LOG.md carries the activity-level ledger with the human/agent split per row."
+  },
+  "substrate_drift_check": "verified 2026-08-13: no substrate artifact has drifted",
+  "acquisitions": {
+    "gramain_lnm1415": {
+      "status": "FULFILLED 2026-08-13",
+      "held_as": "corpus/literature/pdf/Cinquante Ans de Polynomes - Fifty Years of Polynomials LNM 1415.pdf",
+      "note": "a VOLUME; the cited article is Gramain, pp. 123-137, and the predecessor is his Prop 2.2, p. 124",
+      "effect": "discharges the §6b block on def:nev in the CITE direction",
+      "card": "lit-gramain-geometric-progression-integer-valued-basis"
+    },
+    "cahen_chabert_ams48": {
+      "status": "FULFILLED and READ 2026-08-13",
+      "held_as": "corpus/literature/pdf/Cahen Chabert Integer-valued polynomials.pdf",
+      "verified": "title page read: Paul-Jean Cahen & Jean-Luc Chabert, Integer-Valued Polynomials, AMS Mathematical Surveys and Monographs vol. 48 — the RIGHT Cahen, distinct from Moshé Cahen, the author the local quantization files cite",
+      "pdf_page_offset": "printed page 1 = PDF page 25 (verified: printed p.6 = PDF p.30)",
+      "gated_nothing": "confirmed 2026-08-13: it blocked no \\nopredecessor declaration; def:nev cites Gramain",
+      "wanted_for": "row A0a-09's open rigidity question; reading in progress",
+      "outcome": "Prop I.3.1 + Remarks I.3.2 (printed p.9) resolve row A0a-09's 'none located'; Ch II Ex 15 confirms Gramain as the source of record and yields two card findings",
+      "card": "lit-cahen-chabert-vandermonde-coefficient-descent"
+    },
+    "lr_ids": "none owed — both sources HELD; the ancestry record cites CARD IDS, which is what resolves under criterion 13 (Librarian ruling 2026-08-13, accepted)"
+  },
+  "acceptance": {
+    "by": "hypervisorA, tree owner and review counterparty",
+    "utc": "2026-08-13",
+    "record": "SandboxA/sandboxA0a/informal/EDITION_ACCEPTANCE_2026-08-13.md",
+    "on_request": "20260813T145357Z-editor-96569-9a6a (Overseer-directed)",
+    "means": "a faithful and non-overclaiming account of the closed record; deposit, outward release and the row-freeze are separate later acts in the recorded chain",
+    "conditions": [
+      "deposit sequenced AFTER instrument item 2 (the fresh enumerated-cone release_verify log)",
+      "drift protocol governs: owner mails on landing, Editor re-hashes and re-gates before deposit; rows freeze at deposit"
+    ],
+    "chain": "Editor (produced) -> hypervisorA (accepted) -> Librarian's door (deposit) -> Overseer (outward)"
+  },
+  "citation_scope_note": "§12.4 SIXTH THROUGH NINTH INSTANCES, 2026-08-14 — and the cause is this seat's own lesson turned back on it. The citation audit added an hour earlier scanned for CORPUS ids only, because this edition thinks in cards; widened to EVERY repo path cited in a shipped file, it immediately found four more artifacts cited as evidence and never listed (rows below): the typed ACCEPTANCE that makes this edition's own status claim true, the C1 referee pass behind a discharged finding, the routing document a defect claim is measured against, and the Lean import root that the phrase 'in the build cone' is evidence-for. A CHECK INHERITS THE CATEGORIES OF WHOEVER WROTE IT — stated by the Librarian about their own two-shelf sweep, proved here within the hour against the seat that quoted it. DELIBERATELY NOT ROWS, with the reason recorded as §12.4's converse requires: engine/job_gate.py and engine/release_verify.sh are named as PROCEDURE (how a computation was run, who runs the certifier), not cited as documents whose CONTENT warrants a claim — the artefact that warrants is the release log, which is a row. THE TEST THAT SETTLES IT, from the Librarian who reviewed this line rather than let it pass (20260814T145238Z-librarian-9143-289d): IF THE FILE'S CONTENT CHANGED, WOULD ANY CLAIM IN THIS EDITION BECOME FALSE? For the release log, yes. For the gate script, no — a different job_gate would not make a recorded run untrue. And the practical bound: listing procedure paths would drag the whole engine into every edition's checkable set and make the set meaningless by size. The exclusion is recorded rather than silent so it is reviewable as a judgement instead of readable as an omission.",
+  "card_artifacts": [
+    {
+      "path": "corpus/statements/lit-jantzen-6-26-hypothesis-weakening-q-not-root-of-unity.md",
+      "sha256": "0b5f2b685144147c15332bd9edff62e38fc71a32599eccabed057eec5faf46cd",
+      "role": "card: Jantzen §6.26 — the book's own removal of the char-0 / q-transcendental hypotheses from Thm 6.25 in favour of 'q not a root of unity', via §8.30",
+      "produced_by": "the Librarian, 2026-08-15 (commit 3432f4d7), read at 200 dpi as page images",
+      "added": "2026-08-15, §12.4 — cited by ANCESTRY.md §4 rider 1, which this card CORRECTED: the edition stated the §6.25 proof's hypotheses as if they bounded the theorem, when the book lifts them two pages later. VERIFIED INDEPENDENTLY HERE from the shelf PDF's own text layer — §6.26's prose is legible even where the surrounding mathematics is not. NOTE THE UNVERIFIED LINK, flagged on the card and in §4: §6.26 rests on §8.30, which NEITHER SEAT HAS READ; this seat confirmed §8.30 exists at the cited location but could not verify its content. The chain is only as verified as its unread link, and nothing in this edition depends on the extension."
+    },
+    {
+      "path": "corpus/literature/refmine/mined_cards/collab-notes/lit-v2.jantzen-dilated-linkage-blocks.md",
+      "sha256": "c08400d82b1ba2be82b2d24fb93bdc02653a21cb51a8e66506a9c513d7ab9bc2",
+      "role": "ancestry: the second card naming Jantzen GSM 6 in its body but NOT as a source — the evidence for ANCESTRY.md §10's single-carded finding",
+      "produced_by": "the Librarian",
+      "added": "2026-08-15, §12.4 — and this one is the audit catching the seat that built it, minutes after the citation was written. ANCESTRY.md §10 cites this card as the evidence that Jantzen GSM 6 has exactly ONE source-card in the Library; the gate reported it as cited-not-row on the very next run. A NEGATIVE CITATION IS STILL A CITATION: the card is named to establish what it does NOT do, and a reader cannot check that claim without the file.",
+      "ships": false,
+      "withheld": "Pinned by this edition's manifest and NOT distributed with it (2026-09-16). It is cited by the edition's ancestry as evidence and the row stays so that the checkable set remains closed under citation (§12.4); the bytes are withheld under the estate's standing rule on material from unannounced work. The full reason is recorded in the edition's journal, which is not published."
+    },
+    {
+      "path": "SandboxA/sandboxA0a/informal/EDITION_ACCEPTANCE_2026-08-13.md",
+      "sha256": "2e9d82647107ae3b1b245ac0bf06e189d0e65c9605a9870674a54f0fe392d899",
+      "role": "closure: hypervisorA's typed ACCEPTANCE of this edition — the document this manifest's own status field cites",
+      "produced_by": "hypervisorA, 2026-08-13",
+      "added": "2026-08-14, §12.4 — the edition's status line says ACCEPTED and pointed at this file for a day without listing it. The record that makes this edition's own headline claim true was outside its checkable set."
+    },
+    {
+      "path": "corpus/reports/HARMAN-HOPKINS-C1-REFEREE-PASS-2026-08-13.md",
+      "sha256": "93175757cf9f63b1bd7bb5c490c2d90ef670500e8ad09f455911afe1f0a5a276",
+      "role": "ancestry: the C1 referee pass over the two Harman–Hopkins cards, cited by CONCORDANCE.json and gaps/GAPS.md",
+      "produced_by": "the Librarian, 2026-08-13",
+      "added": "2026-08-14, §12.4 — the evidence on which finding F-A1 was discharged."
+    },
+    {
+      "path": "corpus/CARD_ROUTING_2026-07-17.md",
+      "sha256": "99868c262cb75898763eee9d3830f700480b2de36d06122d84b1ba3e80d55f29",
+      "role": "ancestry: the Overseer-approved routing document, cited by ANCESTRY.md as the measurement behind the center-GL1 routing gap",
+      "produced_by": "the Librarian/root seat, Overseer-directed, 2026-07-17 (amended 2026-07-25)",
+      "added": "2026-08-14, §12.4 — a defect claim is only checkable if the document it is measured against is obtainable.",
+      "ships": false,
+      "withheld": "Pinned by this edition's manifest and NOT distributed with it (2026-09-16). It is cited by the edition's ancestry as evidence and the row stays so that the checkable set remains closed under citation (§12.4); the bytes are withheld under the estate's standing rule on material from unannounced work. The full reason is recorded in the edition's journal, which is not published."
+    },
+    {
+      "path": "Sandbox.lean",
+      "sha256": "4e00a21022373d2ad5d0b04346e8e435b79738fd6264d7532f15b66fd938a9be",
+      "role": "formal: the seven GL1 import lines of the estate's Lean import root — evidence that THIS edition's seven Lean sources are imported by it. WHAT IT DOES NOT ESTABLISH: that those sources are sorry-free on the clean axiom triple. That is the release log, which is its own row; this row is about imports and nothing else.",
+      "produced_by": "the programme",
+      "added": "2026-08-14, §12.4 — four substrate rows describe themselves as imported by this file; the file itself was not listed, so the property could not be checked. SLICED 2026-08-31 on hypervisorA's ruling as tree owner (REPORT 20260831T175022Z-hypervisorA-88500-6082), after the whole-file pin stopped this edition's freeze for a change made in another tree (commit 5c62a9f1, one import line for AN). Bytes settled as of 5c62a9f1, cited on their confirmation.",
+      "slice_rule": {
+        "regex": "^import Sandbox\\.A1\\.GL1(\\.|$)",
+        "sort": true,
+        "reproduce": "the matching lines of Sandbox.lean, sorted, joined by newline, one trailing newline, sha256 of the UTF-8 bytes",
+        "why": "A whole-file hash was the wrong instrument for this row's claim and was wrong in BOTH directions: it fired on an import added for the AN tree, which has nothing to do with GL1, and it would NOT have fired if a GL1 import were removed while the file changed size elsewhere. The slice isolates the bytes the claim is about, so it fires exactly when a GL1 source leaves the import root and at no other time."
+      }
+    },
+    {
+      "path": "corpus/literature/transcribed/own-habiro-le-even-hybrid-centers-explicit-torus.md",
+      "sha256": "47b445ee501ac3cdd4700b30a454cb9247f28f680be8196bd10b040aedb5e78c",
+      "role": "ancestry: the programme's own transcript cited by ANCESTRY.md and CONCORDANCE.json as the predecessor for the explicit-torus half",
+      "produced_by": "the programme",
+      "added": "2026-08-14 under §12.4, THIRD instance — found by running the Librarian's derived-vs-citable shape over this edition's own prose. Cited as evidence by two shipped files and never a row.",
+      "ships": false,
+      "withheld": "Pinned by this edition's manifest and NOT distributed with it (2026-09-16). It is cited by the edition's ancestry as evidence and the row stays so that the checkable set remains closed under citation (§12.4); the bytes are withheld under the estate's standing rule on material from unannounced work. The full reason is recorded in the edition's journal, which is not published."
+    },
+    {
+      "path": "corpus/statements/lit-habiro-le-mixed-pbw-hopf-form.md",
+      "sha256": "6ebf8888ec59b1fdd6e64a0d15e8cf05c2eccf40762b784cf9f4b08b8e578f9c",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian",
+      "added": "2026-08-14 under §12.4, FOURTH instance — cited by DEFINITION_VERDICTS_2026-08-13.md, the §6b evidence for the marker act, and never a row. A card carrying evidence for a RECORD ACT is the last one that should have been unlisted."
+    },
+    {
+      "path": "corpus/objects/gl4.coordinate-split-torus.md",
+      "sha256": "d2197c9da70961906cec663d7aa2b7a33bee888628cbd000894b9e54b51b5d31",
+      "role": "ancestry: the object-registry entry cited beside the transcript for the coordinate convention",
+      "produced_by": "the programme",
+      "added": "2026-08-14 under §12.4, FIFTH instance — cited by ANCESTRY.md and CONCORDANCE.json, never a row. NOTE the class it belongs to: an OBJECT registry entry, not a card or a transcript — the edition had no habit of listing objects at all, so this was invisible to every check that thought in cards.",
+      "ships": false,
+      "withheld": "Pinned by this edition's manifest and NOT distributed with it (2026-09-16). It is cited by the edition's ancestry as evidence and the row stays so that the checkable set remains closed under citation (§12.4); the bytes are withheld under the estate's standing rule on material from unannounced work. The full reason is recorded in the edition's journal, which is not published."
+    },
+    {
+      "path": "corpus/MINING_LOG.md",
+      "sha256": "308693545e2c23f523f28fc9c86850c21e0a9ef3d5fe6922987d79b03a90c396",
+      "role": "ancestry: the Library's journal of the §6b searches — the SECOND home a cited search must be findable in",
+      "produced_by": "the Librarian; the 2026-08-13 §6b entry written 2026-08-14, commit 650200ae",
+      "added": "2026-08-14 under §12.4, the SECOND instance the clause caught and again by a neighbour's report rather than by the clause. ANCESTRY.md §8.4 cites this journal as the evidence that the searches behind the \\nopredecessor verdicts are findable outside this edition; §6b's whole purpose is that a cited search has two homes, so the edition citing a home it does not check was the defect. NOTE the drift exposure this row carries by construction: it is the Librarian's live journal and will move on every Library tick — it is pinned as-measured (§12.1) and re-measured at the deposit gate (§12.2), never frozen here.",
+      "expected_drift": "DECLARED IN ADVANCE by the row's owner, 2026-08-14 (REPORT 20260814T140726Z-librarian-72794-700b): this row WILL move again the same day — the goalv2 criterion-13 residue (two card-writing jobs against a held source), the carding of Kostant–Kumar (shelved that morning, not yet carded), and the Vinberg print-only cluster if its route opens. Recorded because a forecast is worth more than a notification: the deposit gate will find new bytes here and the next seat already knows WHY, instead of meeting an unexplained mismatch and having to ask. This is the healthy shape of §12.1 — not 'tell me after you move', but 'tell me you are going to'. THE LIMIT, from the forecaster themself and worth more than the forecast: A FORECAST THAT GOES STALE IS WORSE THAN NONE, because the next seat trusts it and stops asking. So the three causes are good AS OF 2026-08-14T14:12Z, and the obligation to update them before deposit is the Librarian's own, taken explicitly — not a duty this edition's clauses carry. If the deposit gate finds bytes these causes do not explain, THE FORECAST IS THE THING THAT FAILED, and it should be discarded rather than reasoned from.",
+      "expected_drift_amended": "2026-08-14T14:20Z — THE RIDER FIRED WITHIN EIGHT MINUTES, AND THE MECHANISM DID WHAT IT WAS FOR. A FOURTH cause landed that none of the three covered: commit 0c011fb9, the Librarian journalling this very exchange (+51 lines, no other file touched). Under the rider that was grounds to DISCARD the forecast — so its owner amended it instead, unprompted and BEFORE this gate was run, which is precisely the outcome the rider exists to produce. Causes now: (1) goalv2 c13 residue, (2) Kostant–Kumar carding, (3) Vinberg cluster if its route opens, (4) journalling of this exchange — LANDED. Good as of 14:20Z. THE DRIFT WAS THEN MEASURED HERE (e4dd4e26… → 076e3463…, gate exit 1) WITH THE EXPLANATION ALREADY IN HAND, and the cause was verified independently rather than accepted: the on-disk sha equals the blob committed in 0c011fb9. Re-pinned. The whole §12 apparatus running once, end to end, on a live change — forecast, amendment, detection, independent confirmation, re-pin.",
+      "expected_drift_RETIRED": "2026-08-15T00:24Z — FORECASTING FOR THIS ROW IS RETIRED BY AGREEMENT; the standing arrangement is BLIND RE-MEASUREMENT at every summon and at the deposit gate. The row's owner settled it on this seat's own argument — a mechanism that only works while both seats are awake is WORSE than no mechanism, because it looks like one — and went a step further: BLIND RE-MEASUREMENT IS THE DEFAULT AND A FORECAST IS THE EXCEPTION, NEVER THE STANDING STATE. It costs the reader nothing, never goes stale, and does not depend on the writer being in session. A forecast will still be sent, narrowly: only for a change this seat could not anticipate from the row itself and would read as alarming — 'about to rewrite 241 files in one commit' qualifies; 'the c13 residue continues' does not, because the gate discovers that as fast as a message could say it. BOUNDED, IMMINENT, UNUSUAL, AND WITH AN EXPIRY STAMPED ON IT rather than a standing list of causes — since anything stated as a standing list is exactly the thing that goes stale. The two records below are kept as the evidence for that rule, not as live forecasts.",
+      "expected_drift_spent": "2026-08-15, FIRST GATE RUN OF THE DAY — THE FORECAST IS SPENT AND IS RECORDED AS SUCH BY ITS RECIPIENT, since its author's session ended before it could be amended again. Drift 4c8351f6… → 1961fe79… from commit 2ae64ef2 (08-14 22:00, +48 lines, MINING_LOG only); verified as always — the on-disk sha equals the HEAD blob, so these are committed bytes. WHAT THE CAUSES COVER: the entry carries the Kostant–Kumar carding (cause 2, landed — read at 200 dpi as page images because the text layer renders x_i as '.x_,') and further goalv2 c13 residue with the GKM card (cause 1). WHAT THEY DO NOT: a Higson printed-formula finding, which is no cause on the list. Three of four causes have now landed and one uncovered item arrived, so the forecast NO LONGER PREDICTS — it only explains what has already happened, which is precisely the stale state its own rider warns against (a forecast that goes stale is worse than none, because the next seat trusts it and stops asking). It is therefore CLOSED here rather than carried forward, and a fresh forecast has been asked for. THE RULE THIS EXERCISES: a forecast's expiry is enforceable by the party who RELIES on it, not only by the party who owes it — otherwise it decays exactly when its author is unavailable, which is when it is most likely to be trusted.",
+      "at_commit": "625d250253fa138c1550b3b607c835eb844c2b18",
+      "at_commit_why": "An APPEND-ONLY JOURNAL, not a card. The Librarian corrected their own 'settled' answer within the hour (20260901T112750Z-librarianCM-71933-bb5d): a card reaches a state and stays there; a journal is only ever CURRENT, and they appended to it an hour after answering. Measured: 5404 -> 5460 -> 5542 -> 5559 -> 5637 lines. A hash-on-disk pin would go stale on their next working session, and its drift would be EXPECTED rather than a signal - which would train this seat to absorb their rows routinely and defeat the --only guard. The row therefore cites a fixed historical state that no later wave can move, and the edition SHIPS the bytes at that commit rather than the working tree's. Drift on the three statement CARDS remains a signal and is still treated as one. WHERE THE BYTES LIVE, AS OF 2026-09-11: the estate replaced HQ's history with a fresh orphan commit that day, so `git show 625d2502:…` no longer resolves in the live repository. The Architect's §14 survey caught what that does here — the verifier raised before any of the 75 rows reported, and the edition could be neither verified nor rebuilt. blob_at now reads three routes in descending strength: the live history; a clone of the pre-swap bundle if ALMANAC_HISTORY_BUNDLE names one; and, last, a TRACKED BYTE-COPY kept inside the edition at pinned/corpus__MINING_LOG.md.at-625d250253fa, accepted only when its sha256 equals the one this row records. THAT LAST ROUTE IS NOT INDEPENDENT EVIDENCE and the tool says so on the line it prints: it proves the bytes are the ones this manifest names, and cannot prove this manifest was ever right. It exists so the edition can be REBUILT after the swap; the bundle is what still VERIFIES it.",
+      "ships": false,
+      "withheld": "Pinned by this edition's manifest and NOT distributed with it (2026-09-16). It is cited by the edition's ancestry as evidence and the row stays so that the checkable set remains closed under citation (§12.4); the bytes are withheld under the estate's standing rule on material from unannounced work. The full reason is recorded in the edition's journal, which is not published."
+    },
+    {
+      "path": "corpus/requests/LR-20260809T093836Z-hypervisorA-quantum-harish-chandra-source.md",
+      "sha256": "13ead43adaa3ec0aa01bc7c4eb5f9d658c85536d1643d47de6c86196b9bc62aa",
+      "role": "ancestry: the one acquisition request the manuscript-level cycle filed, with its disposition",
+      "produced_by": "hypervisorA (request), the Librarian (disposition, 2026-08-10)",
+      "added": "2026-08-14 under §12.4 — ANCESTRY.md §4 cites this path as the evidence that the cycle filed exactly one request and that it was fulfilled WITHOUT acquisition. Cited by a shipped artifact and therefore owed a row; it was not one until the Librarian's REPORT 20260814T135500Z-librarian-11910-94be prompted this seat to re-read its own citations. THE FIRST DEFECT §12.4 CAUGHT — and it was caught by a neighbour seat's nudge, not by the clause: the clause names the class, and the check that applies it is still a seat re-reading."
+    },
+    {
+      "path": "corpus/statements/even-gaussian-span-not-newton-lattice-refuted.md",
+      "sha256": "1bc9730ed690ad6b381b3874d7bcbf049e3dbbcd507a3292daf1ee50c597acb8",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/even-newton-gaussian-grid-values.md",
+      "sha256": "41f67b32ca5101afe3278a5e5fc48b15cb719b42c13f48f9ad0d24bc8f9bcc9b",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/gl2-hc-image-theorem.md",
+      "sha256": "cfb0eb7d2818498f725efa18b249f98d4d7905427f568bbea38cf5f2963337a1",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-cahen-chabert-ex15-erratum-two-misprints.md",
+      "sha256": "70d6faf39ce3cd0b34645d6931c63b5fada759d0fcb12f0ef0ee57e16735171a",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian",
+      "re_pinned": "2026-08-14 by the Editor, finding F-E9. Build-time sha was 429837a1…; the Librarian amended the card 2026-08-13T21:42Z (REPORT 20260813T213149Z-librarian-31337-70a6): the F-A6 line and the retraction/un-retraction sequence table. The change is ADDITIVE and was re-read against this edition's claims — nothing the edition asserts about the card was altered."
+    },
+    {
+      "path": "corpus/statements/lit-cahen-chabert-vandermonde-coefficient-descent.md",
+      "sha256": "902cb264cf3b6ce77892ea9f22fcd44eb4cff229a042f93472c1cfd7c6b083d5",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-dcp-generic-harish-chandra-isomorphism.md",
+      "sha256": "f29dc994a360bc766cfe9d2c346d4b48b3bc6c3d73ed0fe24ef11c724c4bffe8",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-dcp-verma-contravariant-shapovalov.md",
+      "sha256": "27ef91c3b865ff69fe21ea8e7e292bc29f83b2a50bf3072ab8166809e705a811",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-gramain-geometric-progression-integer-valued-basis.md",
+      "sha256": "6bc7439d94425a064ac09a40fe03b093577bffab3320d616d8ac0c49896385ef",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian",
+      "re_pinned": "2026-08-14 by the Editor, finding F-E9. Build-time sha was 733c93fd…; the Librarian amended the withdrawn-trap entry 2026-08-13T21:42Z with F-A6 (a machine certificate certifies its INPUT, not the SOURCE). Additive; re-read against this edition's claims, nothing asserted here was altered."
+    },
+    {
+      "path": "corpus/statements/lit-harman-bilateral-q-integer-localization.md",
+      "sha256": "47ffb589806c7e134c95a201cb06a462cc15aa40984ac0d5789cb04e688ccb44",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-harman-q-polya-qbinomial-basis.md",
+      "sha256": "3b2c5dd6f7fb3dacd145ff95cbceeaff3adb50c25b7fb0a71bc78d507d517eb4",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-harman-z-variable-lusztig-cartan-form.md",
+      "sha256": "37b2d558044d169bc85d0970bf4c55231885cf8869361bf5af94a38e6caa1c89",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-jantzen-harish-chandra-even-torus.md",
+      "sha256": "dcfc3d0e9464ef0aeb5265454750845f0fca01e8fda491b7078e5d6521d9dcaa",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    },
+    {
+      "path": "corpus/statements/lit-lusztig-triangular-decomposition-toral-freeness.md",
+      "sha256": "5a2ca7f58af04d11d1773cacbcf730a21d650d30a2df110a1a80b7cfb50f164c",
+      "role": "card: the project's own written statement ABOUT a source, carrying its convention frame",
+      "produced_by": "the Librarian"
+    }
+  ],
+  "contents_policy": {
+    "rule": "AD-21 §6 — CARDS TRAVEL, SOURCES DO NOT. A card is our own writing about someone else's statement and ships inside the edition; the source itself is referenced by author/title/section and never redistributed.",
+    "ships_inside_the_edition": [
+      "edition_artifacts — the 8 files the Editor wrote (the almanac proper)",
+      "card_artifacts — the 13 statement cards the concordance's ancestry fields resolve to",
+      "substrate_artifacts — the project's OWN work over which the edition is built: the two manuscripts (.tex and .pdf), the Lean sources, the Julia instrument, the ledgers, the referee/panel reports, the closure records and logs"
+    ],
+    "referenced_but_NEVER_redistributed": [
+      "Gramain, LNM 1415 pp.123-137 (held locally at corpus/literature/pdf/, NOT shipped)",
+      "Cahen-Chabert, AMS Surveys 48 (held locally, NOT shipped)",
+      "Harman-Hopkins arXiv:1601.06110 (held locally, NOT shipped)",
+      "De Concini-Procesi LNM 1565; Jantzen GSM 6; Lusztig; Habiro-Le; Polya; Polya-Szego; Gauss — referenced only, several not held at all"
+    ],
+    "why_the_distinction_is_load_bearing": "A reader receives the project's own writing in full — including its writing ABOUT other people's results, with the convention frame under which the project reads them — and obtains the sources themselves as they normally would. Shipping a card is attribution; shipping a source would be redistribution.",
+    "size": "DERIVED by verify_edition.py, 85 rows measured: 3.0 MB; no third-party PDF is included. Never type this number — §12.5."
+  },
+  "explanatory_companion": {
+    "path": "SandboxA/sandboxA0a/almanac/edition/almanac.explained.html",
+    "url": "https://claude.ai/code/artifact/cb582f11-5de8-4fe9-bb97-f6cbc3649a1e",
+    "built_utc": "2026-08-15",
+    "visibility": "PRIVATE — same standing as the reader's edition; outward release is a separate Overseer act",
+    "what_it_is": "A HUMAN-FACING COMPANION built on the Overseer's request, explaining the mathematics to a reader from outside the programme: Pólya as the template, the coefficient-vs-value gap, the three witnesses each checkable in one line, the descent, the certification split, and what is open. IT EXPLAINS AND DOES NOT CERTIFY.",
+    "how_it_differs_from_the_readers_edition": "The reader's edition is GENERATED from CONCORDANCE.json and MANIFEST.json with no hand transcription, and is the record a checker reads. This companion is WRITTEN — editorial prose, hand-authored, drawing its mathematical statements from that register. The distinction is load-bearing and is stated on the companion's own face: where the two disagree, the record is right and the companion is wrong.",
+    "verification_at_build_time": "Every value it prints was RECOMPUTED on the warm CAS oracle while it was written, not copied across: the six grid values of ν₁ at q^χ for χ ∈ −2…3 (certificate expr sha256 c8f6e252…), and the odd-node witness ν₁(v³) = (v²+v+1)/(v+1) together with the dependency identity (q−1)ν₁ − Y̌ + 1 = 0 (certificate 245a2d1f…). A companion that explains a checked record with unchecked arithmetic would be the worst artifact in the set.",
+    "§12.6": "It is a published copy and inherits the clause: a redeploy is part of any repair to it, and at deposit it is re-published from the deposited bytes or retired."
+  },
+  "readers_edition": {
+    "url": "https://claude.ai/code/artifact/ec7d154a-aa18-4bbe-9240-2a19734fc4d1",
+    "visibility": "PRIVATE — published on the Overseer's explicit direction for pre-signature review; outward release is a separate Overseer act",
+    "sovereign_copy": "SandboxA/sandboxA0a/almanac/edition/almanac.html, served in-house",
+    "generated_by": "render_artifact.py, from CONCORDANCE.json and MANIFEST.json at render time — no hand transcription",
+    "redeployed": "2026-08-19 (session 5), same URL, within the same private pre-release standing — the §12.6(1) redeploy in the SAME ACT as the repin of MEASUREMENT_LOG.md and ACTIVITY.md; the latest published version was viewed before republishing, and the tab icon was set to 📜 (recorded here as the first favicon on record, so the next redeploy has something to keep stable). Previously: 2026-08-14, same URL, within the same private pre-release standing — the copy under review was showing the pre-repair hashes and a '54 artifacts' byline.",
+    "F-E12": "RULED — manifest §12.6 (Architect 20260814T124410Z-architect-64561-f666), 'read-but-not-held surfaces'. (1) A redeploy is part of the repair, not a follow-up: any published copy is re-published IN THE SAME ACT that changes a file it renders from, and a repair whose published surface still shows the defect is an UNFINISHED REPAIR. (2) The manifest records the redeploy date beside the URL — a dated measurement like any other row — and the row verifies by regeneration-and-republication. (3) AT DEPOSIT the gate extends one surface outward: every published copy is re-published from the deposited bytes, or RETIRED, within the deposit act itself, so a reader's surface can never outlive the record it renders. The finding as reported: THE COPY UNDER REVIEW IS A SHIPPED SURFACE THAT NO CLAUSE REACHED, and it is the one a reviewer actually reads. §12.2 gates at DEPOSIT; this copy exists to be read BEFORE deposit, which is its whole purpose. §12.4 closes the checkable set under citation and this manifest cites the URL — but a remote page cannot carry a sha, so it cannot be a row in the ordinary way. For four hours after the repair it displayed hashes this seat had already corrected: the record was right and the thing a human was looking at was wrong. Verify by regeneration (§12.3) plus a re-publish whenever the file it renders from changes; the standing rule adopted here is that a redeploy is part of the repair, not a follow-up to it."
+  },
+  "repository": {
+    "url": "https://github.com/almanac-editions/almanacA0a",
+    "visibility": "public",
+    "visibility_note": "PUBLIC since 2026-09-09, measured unauthenticated: the repository page answers 200, the organisation reports public_repos 1, and the API reports visibility 'public'. README, LICENSE, edition/paper.pdf and AlmanacA0a.zip (1,618,830 bytes) all fetch anonymously. This records a MEASUREMENT, not an intention; it changes when the repository does.",
+    "remote_head_as_of": {
+      "commit": "ce1b556",
+      "measured_utc": "2026-08-30T08:26Z",
+      "measured_by": "dashboard, git ls-remote; agreeing with this seat's STATE.md and the staging clone"
+    },
+    "currency_caveat": "This records a measurement at a moment, not a standing claim. The remote moves when the Overseer pushes; nothing here re-measures it.",
+    "why_this_field_exists": "dashboard carried the URL as a hardcoded constant in monitor.py, sourced from this seat's STATE.md prose. A location that lives only in another seat's prose is one their page cannot follow when it moves. Requested by dashboard 2026-08-30 (…26608-3d0f); this is the field.",
+    "url_note": "Moved to the almanac-editions organisation 2026-08-30 (the Overseer created it; the previous personal path read as improvised in print). The old path redirects to the same HEAD — verified here over SSH, both resolving to ce1b556.",
+    "previous_url": "(a personal account's repository, superseded by the organisation's; not linked)",
+    "licence": {
+      "software": "MIT",
+      "text_and_data": "CC-BY-4.0",
+      "copyright": "Tamás Hausel and the Institute of Science and Technology Austria (ISTA)",
+      "decided": "2026-09-07, by the project's director",
+      "files": [
+        "LICENSE — canonical MIT, alone in the file so a licence detector can match it",
+        "LICENSE-TEXT-AND-DATA — CC BY 4.0, with the file-by-file split"
+      ],
+      "split_into_two_files": "2026-09-09. One dual-licence document was accurate and undetectable: GitHub published the repository as license 'Other / NOASSERTION', which tells a reader less than either licence does. The terms did not change; only which file a machine can read did.",
+      "what_the_sidebar_says": "MIT. That is the licence detectable from LICENSE and it governs the code. The mathematics is CC BY 4.0 and the README says so above the fold.",
+      "note": "Third-party work is NOT covered and none is redistributed: the statement cards describe the literature and name where each source is held, rather than carrying it."
+    },
+    "renamed": "2026-09-10, from AlmanacA0a. The mark is the lowercase word 'almanac' and its THREE A's are the three warrants — ink, orange, blue. A capital first A is one of those three letters set differently from the other two, which breaks the symmetry the mark is built on. previous_url below is left at its own spelling: it records where the repository used to be, under the name it had then."
+  },
+  "substrate_repin_authority": [
+    {
+      "rows": [
+        "corpus/MINING_LOG.md",
+        "corpus/statements/even-gaussian-span-not-newton-lattice-refuted.md",
+        "corpus/statements/even-newton-gaussian-grid-values.md",
+        "corpus/statements/gl2-hc-image-theorem.md"
+      ],
+      "settled_by": "hypervisorA, mail 20260830T132433Z-hypervisorA-57232-40dd (typed decision e9773710; boundary: bytes inside their 06be96fd acceptance AND last authored by the corpus owner)",
+      "note": "Rows outside this seat's write surface, re-pinned on a named authority rather than absorbed. The attribution is the record of who read the bytes.",
+      "confirmed_by_the_content_owner": "librarianCM, mail 20260901T111812Z-librarianCM-76657-160d, 2026-09-01 — measured INDEPENDENTLY by a three-way blob read (HEAD : index : disk) rather than by mtime, on the stated ground that a Dropbox-synced tree dates the SYNC and not the act. Their four sha256 values agree with this manifest's pins and with the bytes on disk, checked here a third time before recording: 14927be5… / 1bc9730e… / 41f67b32… / cfb0eb7d….",
+      "why_this_matters": "The re-pin was authorised by the TREE OWNER (hypervisorA) and is now confirmed by the CONTENT OWNER (the Librarian), who says why each is settled rather than merely quiet: MINING_LOG's drift is one act, a struck head-format change, and its arc is closed by the Architect's grammar repair; the two F-A6 cards and gl2-hc-image-theorem were last touched by an alias-vocabulary pass that decided no content question, with no WITHDRAWN-PENDING and no open erratum. Authorisation and confirmation are different acts by different owners, and the row now carries both."
+    },
+    {
+      "rows": [
+        "corpus/literature/transcribed/own-habiro-le-even-hybrid-centers-explicit-torus.md",
+        "corpus/statements/lit-jantzen-harish-chandra-even-torus.md"
+      ],
+      "settled_by": "librarianCM, 20260904T114913Z-shadow-471917-c59f",
+      "note": "Rows outside this seat's write surface, re-pinned on a named authority rather than absorbed. The attribution is the record of who read the bytes."
+    },
+    {
+      "rows": [
+        "corpus/literature/transcribed/own-habiro-le-even-hybrid-centers-explicit-torus.md"
+      ],
+      "settled_by": "librarianCM, 20260907T234738Z-librarianCM-2784683-41b0 (committed b77717b9)",
+      "note": "Rows outside this seat's write surface, re-pinned on a named authority rather than absorbed. The attribution is the record of who read the bytes."
+    },
+    {
+      "rows": [
+        "SandboxA/sandboxA0a/almanac/GL1Newton/Project.toml",
+        "SandboxA/sandboxA0a/almanac/GL1Newton/README.md",
+        "SandboxA/sandboxA0a/almanac/GL1Newton/src/GL1Newton.jl",
+        "SandboxA/sandboxA0a/almanac/GL1Newton/src/qFunctions.jl"
+      ],
+      "settled_by": "hypervisorA, 20260913T220527Z-hypervisorA-3260763-6132",
+      "note": "Rows outside this seat's write surface, re-pinned on a named authority rather than absorbed. The attribution is the record of who read the bytes."
+    },
+    {
+      "rows": [
+        "SandboxA/sandboxA0a/informal/goalv0a.tex",
+        "SandboxA/sandboxA0a/informal/goalv0a.pdf",
+        "SandboxA/sandboxA0a/informal/proofv0a.tex",
+        "SandboxA/sandboxA0a/informal/proofv0a.pdf",
+        "SandboxA/sandboxA0a/informal/proofv0a.ledger.json",
+        "SandboxA/sandboxA0a/CLOSURE_SIGNATURE.json",
+        "SandboxA/sandboxA0a/formal/TERMINAL_CONSISTENCY_RECORD.json"
+      ],
+      "settled_by": "hypervisorA, REPORTs 20260915T113101Z-hypervisorA-419742-8ba8 and 20260915T113309Z-hypervisorA-423381-43bd (commit e2b4c2b6)",
+      "note": "Rows outside this seat's write surface, re-pinned on a named authority rather than absorbed. The attribution is the record of who read the bytes."
+    }
+  ],
+  "anchor_policy": {
+    "rule": "AN EDITION ANCHORS BY CONTENT. The bytes it names must be obtainable from inside the edition or its shipped substrate. A commit reference is PROVENANCE and is never required to verify.",
+    "why": "The commit was never needed for IDENTITY. Every row already names its bytes by sha256; the commit named WHERE THE BYTES CAME FROM. The one row that carried a commit pins an APPEND-ONLY JOURNAL whose on-disk hash goes stale by design, so the real requirement was 'a fixed historical state no later wave can move' — and a fixed state is identified by its HASH. Keeping the bytes meets that requirement without making this edition depend on the repository's history, which is a property no edition controls and which the estate changed on 2026-09-11.",
+    "the_cost_of_this_rule_stated_here_because_it_is_real": "Content-anchoring plus shipped bytes makes a row SELF-ATTESTING: it proves the bytes are the ones this manifest names, and CANNOT prove this manifest was ever right. The cure is not a commit — it is an external archive: a preservation bundle, or a deposit under a persistent identifier. CONTENT FOR RESOLUTION, EXTERNAL ARCHIVE FOR INDEPENDENCE. verify_edition.py prints which of the two a reader is holding, on the line it emits.",
+    "as_measured_here_2026_09_11": "75 of 75 rows carry a content sha256. ONE carries a commit reference (corpus/MINING_LOG.md at 625d2502), now kept as provenance and no longer required to resolve. ONE carries a slice rule over Sandbox.lean's import lines, which is content-derived and history-free.",
+    "ruled": "ACM-45 §9b (architectCM, 2026-09-11), in this seat's wording. The repair that prompted it was committed FIRST — 7dcda7b6, before the history swap and before the ruling — so the ruling records the rule rather than causing the fix."
+  },
+  "doi": "10.5281/zenodo.22808195",
+  "deposited": "2026-09-17"
+}
