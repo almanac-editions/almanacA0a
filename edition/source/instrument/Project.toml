@@ -1,0 +1,17 @@
+name = "GL1Newton"
+uuid = "f03d7243-8e5b-44d6-aaef-669aa9c6f579"
+authors = ["Project Sandbox (almanacA0a pilot)"]
+version = "0.1.0"
+
+[deps]
+Oscar = "f1435218-dba5-11e9-1e4d-f1a5fab5fc13"
+
+[compat]
+Oscar = "1.7"
+julia = "1.10"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
